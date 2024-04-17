@@ -57,7 +57,7 @@ function CaseItem({ ...props }) {
                 <div className="case-list-item-bot">
                     <div className="case-list-item-img">
                         <div className="case-list-item-img-inner">
-                            <img className='img img-h' src={props.data.images[0].image_item.url} alt='' width={props.data.images[0].image_item.dimensions.width} height={props.data.images[0].image_item.dimensions.height} />
+                            <img className='img img-h' src={props.data.images[0]?.image_item.url} alt='' width={props.data.images[0]?.image_item.dimensions.width} height={props.data.images[0]?.image_item.dimensions.height} />
                         </div>
                     </div>
                     <div className="case-list-item-link">

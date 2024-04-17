@@ -8,7 +8,7 @@ import compareGood from '@/assets/comp-good-2.svg';
 import compareBad from '@assets/comp-bad-2.svg';
 
 const list = await Promise.all(
-    compare_list.map(async (compare: any, idx: number) => {
+    compare_list.map((compare: any, idx: number) => {
         let item = getByUID('compare', compare.item.uid)
         return item
     })

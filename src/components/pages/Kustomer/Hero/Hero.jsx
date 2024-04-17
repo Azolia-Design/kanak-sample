@@ -9,24 +9,81 @@ function KustomerHero(props) {
     const [currentPos, setCurrentPos] = useState(0);
     const [onDrag, setOnDrag] = useState(false);
     const trackRef = useRef();
-
-    const productArr = [
-        {
-            url: '/glb/58-bowl-clean-transformed.glb',
-            scale: [.38, .38, .38],
-            rotation: [0, Math.PI * .3, Math.PI * -.035]
-        },
-        {
-            url: '/glb/42-ramen-grip-clean-transformed.glb',
-            scale: [.8, .8, .8],
-            rotation: [0, Math.PI * .25, 0]
-        },
-        {
-            url: '/glb/13-burger-box-clean-transformed.glb',
-            scale: [1.1, 1.1, 1.1],
-            rotation: [0, Math.PI * -.065, Math.PI * .02]
-        },
-    ]
+    const productArr = {
+        "Retail": [
+            {
+                url: '/glb/3-elegant-compartments-plates-clean-transformed.glb',
+                scale: [1.6, 1.6, 1.6],
+                rotation: [Math.PI * -.5, 0, 0]
+            },
+            {
+                url: '/glb/xc-12g-bowl-clean-transformed.glb',
+                scale: [1.15, 1.15, 1.15],
+            },
+            {
+                url: '/glb/1-plate-clean-transformed.glb',
+                scale: [.8, .8, .8],
+                rotation: [0, Math.PI * -.065, Math.PI * .03]
+            },
+        ],
+        "Food Service": [
+            {
+                url: '/glb/64-oval-bowl-clean-transformed.glb',
+                scale: [.85, .85, .85],
+            },
+            {
+                url: '/glb/42-ramen-grip-clean-transformed.glb',
+                scale: [.8, .8, .8],
+                rotation: [0, Math.PI * .25, 0]
+            },
+            {
+                url: '/glb/banking-dish-natural-clean-transformed.glb',
+                scale: [.7, .7, .7],
+                rotation: [0, Math.PI * .5, 0]
+            },
+        ],
+        "Food Processors": [
+            {
+                url: '/glb/58-bowl-clean-transformed.glb',
+                scale: [.35, .35, .35],
+                rotation: [0, Math.PI * .3, Math.PI * -.035]
+            },
+            {
+                url: '/glb/banking-dish-natural-clean-transformed.glb',
+                scale: [.7, .7, .7],
+            },
+            {
+                url: '/glb/13-burger-box-clean-transformed.glb',
+                scale: [1.1, 1.1, 1.1],
+                rotation: [0, Math.PI * -.065, Math.PI * .02]
+            },
+        ],
+        "Education": [
+            {
+                url: '/glb/48-monte-tray-clean-transformed.glb',
+            },
+            {
+                url: '/glb/xc-12g-bowl-clean-transformed.glb',
+                scale: [1.15, 1.15, 1.15],
+            },
+            {
+                url: '/glb/KA10054-clean-transformed.glb',
+                scale: [.75, .75, .75],
+                position: [0, 0.03, 0]
+            },
+        ],
+        "Medical": [
+            {
+                url: '/glb/48-monte-tray-clean-transformed.glb',
+                scale: [0, 0, 0]
+            },
+            {
+                url: '/glb/plates-80-transformed.glb',
+                scale: [.75, .75, .75],
+                position: [0, 0.03, 0]
+            },
+        ]
+    }
 
     const handleOnDown = (e) => {
         setOnDrag(true);
@@ -94,7 +151,7 @@ function KustomerHero(props) {
                 <h1 className="heading h0 txt-black txt-up kustomer-hero-title">{props.title}</h1>
             </div>
             <div className="kustomer-hero-slide" ref={trackRef} data-percentage={0} data-prev-percentage={0}>
-                <KustomerHeroThree list={productArr} onDrag={onDrag} currentPos={currentPos} currentIdx={currentIdx} />
+                <KustomerHeroThree list={productArr[props.page_title]} onDrag={onDrag} currentPos={currentPos} currentIdx={currentIdx} />
             </div>
         </section>
     )

@@ -16,7 +16,6 @@ function CursorMain({ ...props }) {
         return a + (b - a) * t;
     }
 
-
     function getCursor(e) {
         pointer.x = e.clientX;
         pointer.y = e.clientY;

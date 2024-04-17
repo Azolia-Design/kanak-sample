@@ -29,7 +29,7 @@ sustainList.map(({ data, uid }, idx) => {
 const productList = await Promise.all(
     sustainList
         .reduce((acc, curr) => acc.concat(curr.data.product_list), [])
-        .map(async (data: any) => {
+        .map((data: any) => {
             let item = getByUID("product", data.product.uid);
             return item;
         }),

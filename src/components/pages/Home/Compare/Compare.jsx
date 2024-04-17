@@ -74,7 +74,7 @@ function HomeCompare(props) {
                 [el.querySelectorAll('.home-comp-main-slide-detail-ic'), {opacity: 1, scale: 1}, {duration: 1, at: .2}],
             ]
             inView(el, () => {
-                timeline(sequenceItem, {delay: idx % 2 == 0 ? 0 : idx * .2}).finished.then(() => {
+                timeline(sequenceItem, {delay: idx * .2}).finished.then(() => {
                     el.querySelectorAll('.home-comp-main-slide-detail-ic').forEach(el => el.removeAttribute('style'))
                     itemTitle.revert()
                     itemSubTitle.revert();

@@ -20,7 +20,7 @@ newTitle = newTitle
     .replace("Award-", "<span>Award-</span>");
 
 const list = await Promise.all(
-    client_list.map(async (client: any) => {
+    client_list.map((client: any) => {
         let item = getByUID("client", client.item.uid);
         return item;
     }),

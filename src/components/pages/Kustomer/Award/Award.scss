@@ -25,60 +25,81 @@
     &-product {
         grid-column: 1/9;
         grid-row: 1/3;
-        padding-inline: var(--padding-side);
-        display: grid;
-        justify-content: center;
+        justify-self: center;
+        @include size(69.2rem);
+        position: relative;
 
         @include md {
             grid-column: 1/6;
-            padding: 0;
-            height: fit-content;
+            @include size(30.5rem);
         }
-
         @include sm {
             grid-column: 1/-1;
             grid-row: 2/3;
-            padding-left: 2.4rem;
-            padding-right: 2.4rem;
-        }
-
-        &-inner {
-            grid-column: 1/2;
-            grid-row: 1/2;
-            aspect-ratio: 1;
-            background-color: var(--cl-bg-dark);
-            border-radius: 100vmax;
+            width: 100%;
+            height: auto;
+            display: flex;
+            flex-direction: column;
+            contain: paint;
         }
 
         &-img {
             position: relative;
-            grid-column: 1/2;
-            grid-row: 1/2;
-            align-self: start;
-            padding: 3.6rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             z-index: 3;
-
-            @include md {
-                padding: 1.5rem;
+            @include size(100%);
+            @include sm {
+                // position: absolute;
+                // inset: 7%;
+                // padding-top: 100%;
+                padding: 0 7%;
             }
-
-            &-three {
+            &:before {
+                content: '';
                 position: absolute;
-                @include size(100%)
+                @include size(100%);
+                top: 0;
+                left: 0;
+                background-color: var(--cl-bg-dark);
+                border-radius: 50%;
+                z-index: 1;
+                @include sm {
+                    position: relative;
+                    padding-top: 100%;
+                }
+            }
+            &-three {
+                z-index: 3;
+                position: relative;
+                @include size(150%);
+                @include md {
+                    @include size(170%);
+                }
+                @include sm {
+                    position: absolute;
+                    @include size(120%);
+                }
             }
         }
 
         &-qr {
-            grid-column: 1/2;
-            grid-row: 2/3;
-            align-self: end;
-            justify-self: end;
-
+            position: absolute;
+            bottom: -7.94%;
+            right: 0;
+            z-index: 3;
+            @include md {
+                bottom: 0;
+                transform: translateY(100%);
+            }
             @include sm {
+                position: relative;
                 align-self: center;
                 justify-self: center;
-                margin-top: 4rem;
-                margin-bottom: 4rem;
+                position: relative;
+                transform: none;
+                margin: 4rem 0;
             }
 
             &-wrap {
@@ -97,6 +118,7 @@
                 }
 
                 @include sm {
+                    @include size(12.5vw);
                     margin: unset;
                 }
             }
@@ -141,7 +163,7 @@
         &-label {
             @include md {
                 @include text(h5);
-                margin-right: -.5rem;
+                margin-right: -1rem;
             }
         }
 

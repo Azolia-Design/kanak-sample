@@ -8,7 +8,6 @@ import Client from "@pages/Home/Client/Client.astro";
 import Compare from "@pages/Home/Compare/Compare.astro";
 import Partner from "@pages/Home/Partner/Partner.astro";
 import Value from "@pages/Home/Value/Value.astro";
-import CTA from "@pages/Home/CTA/CTA.astro";
 
 import HeroThree from "@pages/Home/HeroThree/HeroThree.astro";
 
@@ -46,5 +45,4 @@ const { data } = await getPage("home");
 		title={data.values_title[0].text}
 		value_list={data.values_list}
 	/>
-	<!-- <CTA title={data.cta_title} cta_bg={data.cta_bg} /> -->
 </Layout>

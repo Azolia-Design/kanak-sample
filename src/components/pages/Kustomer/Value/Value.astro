@@ -8,7 +8,7 @@ import KustomerValueItem from "./ValueItem";
 import KustomerValue from "./Value";
 
 const list = await Promise.all(
-    Astro.props.value_list.map(async (value: any) => {
+    Astro.props.value_list.map((value: any) => {
         let item = getByUID("values", value);
         return item;
     }),

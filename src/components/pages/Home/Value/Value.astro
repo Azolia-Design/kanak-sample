@@ -9,7 +9,7 @@ import HomeValueItem from './ValueItem';
 import HomeValue from "./Value";
 
 const list = await Promise.all(
-Astro.props.value_list.map(async (value: any) => {
+Astro.props.value_list.map((value: any) => {
         let item = getByUID('values', value.item.uid)
         return item
     })

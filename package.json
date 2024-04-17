@@ -14,7 +14,7 @@
     "@fontsource-variable/inter": "^5.0.16",
     "@gsap/react": "^2.1.0",
     "@nanostores/react": "^0.7.2",
-    "@prismicio/client": "^7.3.1",
+    "@prismicio/client": "^7.4.0",
     "@prismicio/helpers": "^2.3.9",
     "@react-three/drei": "^9.99.3",
     "@react-three/fiber": "^8.15.16",

@@ -1,14 +1,13 @@
-import { useRef, useEffect, useState, Suspense, Fragment, useMemo } from "react";
+import { useRef, useEffect, useState, Suspense } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import useWindowSize from "@hooks/useWindowSize";
 import { suspend } from 'suspend-react'
 import { animate, timeline, inView } from "motion";
 import { Fork } from '@pages/Home/HeroThree/Fork.jsx';
 import { Environment, ContactShadows, AdaptiveDpr } from "@react-three/drei";
-import { useSpring, useTransition, animated, easings } from '@react-spring/three'
+import { useTransition, animated } from '@react-spring/three'
 import { GetModel } from "../../../common/GetModel.jsx";
 import { useProductIndex } from "@contexts/StoreGlobal.js";
-import * as ut from '@/js/utils.js'
 
 const warehouse = import('/envMap/warehouse.hdr?url').then((module) => module.default)
 function Content(props) {

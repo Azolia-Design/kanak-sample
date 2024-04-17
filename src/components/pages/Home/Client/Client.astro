@@ -15,7 +15,7 @@ let lastWord = newTitle.join(' ').split(' ')[newTitle.join(' ').split(' ').lengt
 newTitle = newTitle.join('').replace(lastWord, `<div class="txt-green">${lastWord}</div>`).replace('Award-', '<span>Award-</span>');
 
 const list = await Promise.all(
-    client_list.map(async (client: any) => {
+    client_list.map((client: any) => {
         let item = getByUID('client', client.item.uid);
         return item;
     })

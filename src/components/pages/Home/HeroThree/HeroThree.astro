@@ -3,14 +3,14 @@ const { product_kategory_list } = Astro.props;
 import { getByUID } from "@/prismic.js";
 import HomeHeroThree from "./HeroThree.jsx";
 const list = await Promise.all(
-    product_kategory_list.map(async (product_group: any) => {
+    product_kategory_list.map((product_group: any) => {
         let group = getByUID("product_group", product_group.item.uid);
         return group;
     }),
 );
 let standardList = list.filter((el) => !el.data.is_sustainables);
 let featuredItemList = await Promise.all(
-    standardList.map(async (product_group: any) => {
+    standardList.map((product_group: any) => {
         let featuredItem = getByUID(
             "product",
             product_group.data.product_list.filter(

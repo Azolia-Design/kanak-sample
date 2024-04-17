@@ -16,7 +16,7 @@ const renderWords = replaceWord
 let newTitle = title.replace(replaceWord, renderWords);
 
 const list = await Promise.all(
-    brand_list.map(async (brand: any) => {
+    brand_list.map((brand: any) => {
         let item = getByUID("brand", brand.item.uid);
         return item;
     }),

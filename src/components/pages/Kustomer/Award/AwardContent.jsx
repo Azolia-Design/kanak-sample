@@ -1,13 +1,9 @@
-import "./Award.scss"
-import ArrowUpRight from "@/components/globals/IcArrow/ArrowUpRight"
 import { useEffect } from "react"
-import SplitType from 'split-type';
+import ArrowUpRight from "@/components/globals/IcArrow/ArrowUpRight";
 import { animate, timeline, stagger, inView } from "motion";
-
-function KustomerAward({ ...props }) {
-
+import SplitType from 'split-type';
+function KustomerAwardContent(props) {
     useEffect(() => {
-
         const title = new SplitType('.kustomer-award-head-title', { types: 'lines, words', lineClass: 'split-line' })
         const label = new SplitType('.kustomer-award-head-label', { types: 'lines, words', lineClass: 'split-line' })
         const describe = new SplitType('.kustomer-award-content-des p', { types: 'lines, words', lineClass: 'split-line' })
@@ -51,46 +47,30 @@ function KustomerAward({ ...props }) {
         }, { margin: "-40% 0px -40% 0px" })
     }, [])
     return (
-        <section className="kustomer-award">
-            <div className="container grid">
-                <div className="kustomer-award-product">
-                    <div className="kustomer-award-product-inner"></div>
-                    <div className="kustomer-award-product-img">
-                        <div className="kustomer-award-product-img-three"></div>
-                        {props.imgPlate}
-                    </div>
-                    <div className="kustomer-award-product-qr">
-                        <div className="kustomer-award-product-qr-wrap">
-                            <img src={props.qr.url} alt={props.qr.alt} />
-                        </div>
-                    </div>
+        <>
+            <div className="kustomer-award-head">
+                <div className="kustomer-award-head-img">
+                    <img src={props.medal.url} alt={props.medal.alt} />
                 </div>
-                <div className="kustomer-award-head">
-                    <div className="kustomer-award-head-img">
-                        <img src={props.medal.url} alt={props.medal.alt} />
-                    </div>
-                    <div className="heading h4 txt-black txt-up kustomer-award-head-label">
-                        {props.label}
-                    </div>
-                    <h1 className="heading h0 txt-black txt-up kustomer-award-head-title">
-                        {props.title}
-                    </h1>
+                <div className="heading h4 txt-black txt-up kustomer-award-head-label">
+                    {props.label}
                 </div>
-                <div className="kustomer-award-content">
-
-                    <div className="txt txt-18 txt-med kustomer-award-content-des">
-                        {props.describe}
-                    </div>
-                    <div className="kustomer-award-content-link">
-                        <a href="#" className="kustomer-award-content-link-inner" data-cursor="txtLink">
-                            <div className="txt txt-18 txt-bold">{props.btn}</div>
-                            <ArrowUpRight />
-                        </a>
-                    </div>
+                <h1 className="heading h0 txt-black txt-up kustomer-award-head-title">
+                    {props.title}
+                </h1>
+            </div>
+            <div className="kustomer-award-content">
+                <div className="txt txt-18 txt-med kustomer-award-content-des">
+                    {props.describe}
+                </div>
+                <div className="kustomer-award-content-link">
+                    <a href="#" className="kustomer-award-content-link-inner" data-cursor="txtLink">
+                        <div className="txt txt-18 txt-bold">{props.btn}</div>
+                        <ArrowUpRight />
+                    </a>
                 </div>
             </div>
-        </section>
+        </>
     )
 }
-
-export default KustomerAward
+export default KustomerAwardContent;

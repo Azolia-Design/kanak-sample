@@ -3,7 +3,7 @@ import { getByUID } from "@/prismic.js";
 import KustomerBenefit from "./Benefit";
 
 const list = await Promise.all(
-    Astro.props.list.map(async (uid: any) => {
+    Astro.props.list.map((uid: any) => {
         let item = getByUID("benefit", uid);
         return item;
     }),

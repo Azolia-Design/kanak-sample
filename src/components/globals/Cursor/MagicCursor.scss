@@ -1,0 +1,57 @@
+@use '@styles/mixins' as *;
+@use '@styles/colors' as *;
+
+.cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1001;
+    pointer-events: none;
+    &-main {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        top: 0;
+        left: 0;
+        border-radius: 50%;
+        transition-property: width, height, background-color, border-color;
+        transition-duration: 500ms;
+        transition-timing-function: ease;
+        background-color: var(--cl-orange);
+        &.default {
+            @include size(1.2rem);
+        }
+        &.arrow {
+            @include size(9.6rem);
+        }
+        &-inner {
+            overflow: hidden;
+            width: 100%;
+            &-detail {
+                position: relative;
+                width: 100%;
+                transition: all 0.4s ease;
+                opacity: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                &.is-show {
+                    opacity: 1;
+                    .cursor-main-ic {
+                        transform: scale(1);
+                        transition-delay: 0ms;
+                    }
+                }
+            }
+        }
+    }
+    &-ic {
+        color: var(--cl-txt-light);
+        transform: scale(.1);
+        transition: all 500ms ease-out .1s;
+    }
+}

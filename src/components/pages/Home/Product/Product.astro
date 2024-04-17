@@ -11,14 +11,14 @@ import HomeProduct from './Product';
 import HomeProductList from './ProductList'
 
 const list = await Promise.all(
-    product_kategory_list.map(async (product_group: any) => {
+    product_kategory_list.map((product_group: any) => {
         let group = getByUID('product_group', product_group.item.uid)
         return group
     })
 )
 let standardList = list.filter(el => !el.data.is_sustainables)
 let featuredItemList = await Promise.all(
-    standardList.map(async (product_group: any) => {
+    standardList.map((product_group: any) => {
         let featuredItem = getByUID('product', product_group.data.product_list.filter((el: any) => el.is_featured)[0].product.uid)
         return featuredItem;
     })

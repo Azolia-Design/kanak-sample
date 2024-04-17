@@ -8,7 +8,7 @@ import { getByUID } from "@/prismic.js";
 import HomeIndustry from "./Industry";
 
 const list = await Promise.all(
-    industry_list.map(async (industry: any) => {
+    industry_list.map((industry: any) => {
         let item = getByUID("industry", industry.item.uid);
         return item;
     }),
