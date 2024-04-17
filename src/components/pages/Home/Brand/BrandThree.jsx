@@ -4,7 +4,6 @@ import { Environment, ContactShadows, AdaptiveDpr} from "@react-three/drei";
 import useWindowSize from "@hooks/useWindowSize";
 import gsap from 'gsap';
 import { suspend } from 'suspend-react'
-import { useGSAP } from '@gsap/react';
 import { GetModel } from "../../../common/GetModel.jsx";
 import { useStore } from '@nanostores/react';
 import { brandIndex } from '@contexts/StoreGlobal';
@@ -48,7 +47,7 @@ function Content({...props}) {
         <>
             <group ref={wrap} position={[-.25, -.1, 0]} rotation={[Math.PI * .075,Math.PI * .05,0]}>
                 <group ref={brandsWrap} scale={[8,8,8]}>
-                    <group ref={brands} 
+                    <group ref={brands}
                     position={[0, 0, 0]}
                     >
                         {props.list.map((item, idx) => {
@@ -57,7 +56,7 @@ function Content({...props}) {
                                     return (
                                         <mesh key={idx} name={item.uid} position={[.016,.02,.284]} rotation={[0, -Math.PI * .5,0]}>
                                             <GetModel file='/glb/m_box-clean-transformed.glb'  visible={props.top ? true : false}
-                                            scale={[.82,.82,.82]} 
+                                            scale={[.82,.82,.82]}
                                             position={[-.03,0,0.01]}
                                             rotation={[Math.PI * 0,Math.PI * .6,Math.PI * .05]}
                                             />
@@ -69,7 +68,7 @@ function Content({...props}) {
                                     return (
                                         <mesh key={idx} name={item.uid} position={[-.05,.1,-.1]} rotation={[Math.PI * .1,-Math.PI * .5, 0]}>
                                             <GetModel file='/glb/klamshell-79-transformed.glb' visible={props.top ? false : true}
-                                            scale={[.86,.86,.86]} 
+                                            scale={[.86,.86,.86]}
                                             position={[-.02,0,0]}
                                             rotation={[Math.PI * 0,Math.PI * -.7,Math.PI * .05]}
                                             />
@@ -80,7 +79,7 @@ function Content({...props}) {
                         })}
                     </group>
                 </group>
-            </group>            
+            </group>
             <directionalLight intensity={.2} position={[-.2, .2,.2]} lookAt={[0,0,.3]}/>
             <directionalLight intensity={.2} position={[.2, 0,.2]} lookAt={[0,0,.3]}/>
             <Environment files={suspend(warehouse)} frames={degraded ? 1 : Infinity} resolution={256}/>
@@ -102,13 +101,13 @@ function HomeBrandThree({...props}) {
                 <Canvas camera={{ fov: fov, near: 0.1, far: 10000, position: [0, 0, perspective], aspect: width / height }} shadows>
                     <Content width={width} height={height} list={props.list} top={true}/>
                     <AdaptiveDpr pixelated />
-                </Canvas>                
+                </Canvas>
             </div>
             <div className={`home-brand-canvas-inner-item ${activeIndex == 0 ? 'blur' : ''}`}>
                 <Canvas camera={{ fov: fov, near: 0.1, far: 10000, position: [0, 0, perspective], aspect: width / height }} shadows>
                     <Content width={width} height={height} list={props.list} top={false}/>
                     <AdaptiveDpr pixelated />
-                </Canvas>                
+                </Canvas>
             </div>
             </>
         )

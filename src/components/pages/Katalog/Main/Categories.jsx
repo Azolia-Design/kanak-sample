@@ -1,8 +1,9 @@
-import { memo, useMemo, useState, useEffect } from 'react';
+import { memo, useMemo, useState, useEffect, useRef } from 'react';
 import cn from 'clsx';
 import { formatData } from '@utils/text';
-import { searchURLParams } from '@utils/parse';
+import { updateQueryParam } from '@utils/parse';
 import useOutsideAlerter from '@hooks/useOutsideAlerter';
+import ArrowDropdown from "@/components/globals/IcArrow/ArrowDropdown.jsx";
 
 function Category({ children, isActive, onClick }) {
     return (
@@ -16,7 +17,10 @@ function Category({ children, isActive, onClick }) {
 }
 
 function Categories({ data, originCategory, filter, setFilter }) {
+    const ref = useRef();
+    const [isDropdown, setIsDropdown] = useState(false);
     const [currentCategory, setCurrentCategory] = useState(filter.category);
+    useOutsideAlerter(ref, () => setIsDropdown(false))
     const list = useMemo(() => {
         let currList = [...new Set(data.map((item) => item.category))];
 
@@ -33,20 +37,34 @@ function Categories({ data, originCategory, filter, setFilter }) {
     }, [data, filter, currentCategory]);
 
     useEffect(() => {
-        if (!currentCategory) return;
-        if (!list.includes(currentCategory)) {
-            console.log("run")
-            setCurrentCategory(list[0]);
-            setFilter({ ...filter, category: list[0] })
-        }
-        else {
+        if (currentCategory) {
             setCurrentCategory(filter.category)
         }
-    }, [list, filter, currentCategory])
+    }, [list])
 
     return (
         <div className="katalog-main-cate">
-            <ul className="katalog-main-cate-list">
+            <button
+                ref={ref}
+                className={cn("katalog-main-filter-list-toggle-btn katalog-main-filter-list-toggle-btn-cate", { "active": isDropdown })}
+                onClick={(e) => setIsDropdown(!isDropdown)}>
+                <div className="txt txt-18 txt-bold katalog-main-filter-list-toggle-txt">
+                    <div className="katalog-main-filter-list-toggle-txt-wrap">
+                        <div className="txt-16 txt-up txt-black katalog-main-filter-list-toggle-txt-head">Product</div>
+                        <div className="katalog-main-filter-list-toggle-txt-title">
+                            {filter.category}
+                        </div>
+                    </div>
+                </div>
+                <div className={`ic ic-20 katalog-main-filter-list-toggle-ic`}>
+                    <ArrowDropdown />
+                </div>
+            </button>
+            <ul
+                ref={ref}
+                className={cn("katalog-main-cate-list", { "active": isDropdown })}
+                data-lenis-prevent
+            >
                 {list.map((category) => (
                     <Category
                         key={category}
@@ -54,7 +72,8 @@ function Categories({ data, originCategory, filter, setFilter }) {
                         onClick={() => {
                             setFilter?.({ ...filter, category })
                             setCurrentCategory(category);
-                            window.history.replaceState(null, null, searchURLParams(window.location.href, 'category', formatData(category)));
+                            setIsDropdown(false);
+                            window.history.replaceState(null, null, updateQueryParam([{ key: 'category', value: formatData(category) }]));
                         }}>
                         {category}
                     </Category>

@@ -3,7 +3,7 @@ import { convertDate } from "@utils/text.js"
 import { useEffect, useState, useRef } from 'react';
 
 import SplitType from 'split-type';
-import { animate, timeline, stagger, inView, createStyleString } from "motion";
+import { animate, timeline, stagger, inView } from "motion";
 
 function CateListItem(props) {
     const itemRef = useRef()

@@ -5,7 +5,7 @@ import { getLenis } from '@/components/core/lenis';
 
 
 import SplitType from 'split-type';
-import { animate, timeline, stagger, inView, createStyleString } from "motion";
+import { animate, timeline, stagger, inView } from "motion";
 
 
 function PolicyMain({ ...props }) {
