@@ -1,5 +1,14 @@
 ---
 import ComplianceProcedure from "./Procedure";
+import Image from "astro/components/Image.astro";
+import img from "@assets/qc-Ser-svg.svg";
+import { convertHighlight } from "@/components/utils/text";
 ---
 
-<ComplianceProcedure />
+<ComplianceProcedure
+    {...Astro.props}
+    client:visible={{ rootMargin: "100% 0% 100% 0%" }}
+>
+    <Fragment set:html={convertHighlight(Astro.props.des)} slot="newDes" />
+    <Image src={img} alt="" slot="img" class="img img-h" />
+</ComplianceProcedure>

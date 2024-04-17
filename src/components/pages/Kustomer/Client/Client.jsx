@@ -11,17 +11,14 @@ function KustomerClient({ ...props }) {
         const subTitle = new SplitType(q('.kustomer-client-sub'), { types: 'lines, words', lineClass: "split-line" })
         animate(title.words, { opacity: 0, transform: 'translateY(100%)' }, { duration: 0 })
         animate(subTitle.words, { opacity: 0, transform: 'translateY(12px)' }, { duration: 0 })
-        animate('.kustomer-client-title-wrap img', { opacity: 0, transform: 'translateY(10%) scale(.8)' }, { duration: 0 })
         const sequence = [
             [title.words, { opacity: 1, transform: 'none' }, { duration: .8, delay: stagger(.05) }],
             [subTitle.words, { opacity: 1, transform: 'none' }, { duration: .6, delay: stagger(.02), at: '<' }],
-            ['.kustomer-client-title-wrap img', { opacity: 1, transform: 'none' }, { duration: .8, delay: .2, at: '<' }]
         ]
         inView('.kustomer-client-title-wrap', () => {
             timeline(sequence).finished.then(() => {
                 title.revert()
                 subTitle.revert()
-                q('.kustomer-client-title-wrap img').removeAttribute('style')
             })
         }, { margin: "-30% 0px -30% 0px" });
 
@@ -62,7 +59,6 @@ function KustomerClient({ ...props }) {
                         <h2 className="heading h0 txt-up txt-black kustomer-client-title">
                             {props.title}
                         </h2>
-                        {props.imgQuality}
                     </div>
                     <div className="kustomer-client-sub-wrap">
                         <p className="heading h6 txt-up txt-black kustomer-client-sub">

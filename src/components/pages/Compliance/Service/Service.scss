@@ -3,7 +3,12 @@
 
 .complian-ser {
     padding-top: 17.6rem;
+    padding-bottom: 20rem;
 
+    @include md {
+        padding-top: 8rem;
+        padding-bottom: 6rem;
+    }
 
     &-title {
         grid-column: 2/16;
@@ -11,6 +16,14 @@
         max-width: 124.2rem;
         margin-left: auto;
         margin-right: auto;
+        margin-bottom: 4rem;
+
+        @include md {
+            grid-column: 1/-1;
+            max-width: 75.4rem;
+            margin-bottom: 2rem;
+            @include text(h1);
+        }
     }
 
     &-sub {
@@ -20,5 +33,86 @@
         margin-left: auto;
         margin-right: auto;
         margin-bottom: 10rem;
+
+        @include md {
+            grid-column: 1/-1;
+            max-width: 40rem;
+            @include text(16);
+            margin-bottom: 6rem;
+        }
+    }
+
+    &-main {
+        position: relative;
+        grid-column: 1/-1;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+
+        &-item {
+            position: relative;
+            grid-column: span 1;
+            padding: 4rem;
+            display: flex;
+            align-items: center;
+            column-gap: 4rem;
+
+            @include md {
+                padding: 2rem;
+                column-gap: 2rem;
+            }
+
+            &-ic {
+                flex-shrink: 0;
+
+                .ic {
+                    @include md {
+                        @include size(6rem);
+                    }
+                }
+
+                img {
+                    height: 100%;
+                    width: 100%;
+                    object-fit: contain;
+                }
+            }
+
+            &-title {
+
+                @include md {
+                    @include text(h6);
+                }
+            }
+
+            .line-mid {
+                position: absolute;
+                top: 0;
+                right: -.1rem;
+            }
+
+            .line-bot {
+                position: absolute;
+                bottom: -.1rem;
+                left: 0;
+            }
+        }
+
+        .line-top {
+            position: absolute;
+            top: -.1rem;
+            left: 0;
+        }
+
+        .line-left {
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .line-right {
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
     }
 }

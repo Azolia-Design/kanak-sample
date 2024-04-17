@@ -87,11 +87,15 @@ function GlobalFooter(props) {
     const accordionClick = (index) => {
         setActiveIndex((prevIndex) => (prevIndex === index ? null : index));
     };
-
+    useEffect(() => {
+        console.log(props.hideLine);
+    }, [])
     return (
         <footer className="ft bg-light">
             <div className="container grid">
-                <div className="line line-top"></div>
+                {!props.hideLine && (
+                    <div className="line line-top"></div>
+                )}
                 <div className="ft-left">
                     <div className="ft-head">
                         <div className="ft-logo">

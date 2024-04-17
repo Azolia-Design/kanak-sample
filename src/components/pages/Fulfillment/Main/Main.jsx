@@ -60,7 +60,6 @@ function FulfillMain({ ...props }) {
     const debounceHover = useDebounceCallback(setIdxActive, 200);
 
     useEffect(() => {
-        console.log(props.list);
         // Anim Img
         animate('.fulfill-main-img', { opacity: 0, transform: "translateY(6rem)" }, { duration: 0 })
 

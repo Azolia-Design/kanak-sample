@@ -1,7 +1,6 @@
 ---
 import { getByUID } from "@/prismic.js";
 import { Image } from "astro:assets";
-import quality from "@assets/quality.png";
 import map from "@assets/usa-map.svg";
 import KustomerClient from "./Client";
 
@@ -33,13 +32,6 @@ const list = await Promise.all(
     client:visible={{ rootMargin: "100% 0px 100% 0px" }}
 >
     <Fragment set:html={newTitle} slot="title" />
-    <Image
-        src={quality}
-        class="kustomer-client-title-quality"
-        alt="quality"
-        width={quality.width / 2}
-        slot="imgQuality"
-    />
     <Image src={map} alt="world map" slot="imgMap" />
     <Fragment slot="listLogo">
         {

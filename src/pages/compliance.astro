@@ -6,11 +6,32 @@ import Procedure from "@pages/Compliance/Procedure/Procedure.astro";
 import Service from "@pages/Compliance/Service/Service.astro";
 
 import { getPage } from "@/prismic.js";
-const { data } = await getPage("fullfilment_page");
+const { data, uid } = await getPage("compliance");
 ---
 
-<Layout title="Testing, QC and Compliance">
-    <Hero />
-    <Procedure />
-    <Service />
+<Layout
+    title="Testing, QC and Compliance"
+    data_page="Compliance"
+    explore_data={uid}
+    footer_cta={data.cta_title[0]?.text}
+    footer_bg={data.cta_background}
+>
+    <Hero
+        title={data.hero_title}
+        sub={data.hero_subtitle}
+        img={data.hero_image}
+    />
+    <Procedure
+        title={data.procedure_title}
+        label={data.procedure_label}
+        des={data.procedure_des}
+        btn={data.procedure_button}
+        list={data.procedure_list}
+    />
+    <Service
+        data={data}
+        title={data.service_title}
+        sub={data.service_subtitle}
+        list={data.service_list}
+    />
 </Layout>

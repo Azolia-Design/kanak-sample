@@ -9,6 +9,7 @@ const { data } = await getPage("fullfilment_page");
 
 <Layout
     title="Fulfillment"
+    data_page="Fulfillment"
     footer_cta={data.cta_title[0]?.text}
     footer_bg={data.cta_background}
 >
