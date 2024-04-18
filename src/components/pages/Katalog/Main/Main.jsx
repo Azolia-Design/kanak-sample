@@ -122,60 +122,60 @@ function KatalogMain({ allItem, ...props }) {
         if (window.innerWidth < 768) {
             setLimit(4)
         }
-        // animate('.katalog-main-line-top', { scaleX: 0, transformOrigin: "left" }, { duration: 0 })
-        // animate('.katalog-main-line-bot', { scaleX: 0, transformOrigin: "left" }, { duration: 0 })
-        // animate('.katalog-main-line-left', { scaleY: 0, transformOrigin: "top" }, { duration: 0 })
-        // animate('.katalog-main-line-right', { scaleY: 0, transformOrigin: "top" }, { duration: 0 })
-        // animate('.katalog-main-list-line', { scaleY: 0, transformOrigin: "top" }, { duration: 0 })
-        // animate('.katalog-main-filter-list-pdf', { opacity: 0 }, { duration: 0 })
-        // animate('.katalog-main-filter-list-toggle-btn', { opacity: 0 }, { duration: 0 })
-        // animate('.katalog-main-filter .line-bot', { scaleX: 0, transformOrigin: "left" }, { duration: 0 })
-        // animate('.katalog-main-cate-list .katalog-main-cate-item', { transform: "translateX(-2rem)", opacity: 0 }, { duration: 0 })
+        animate('.katalog-main-line-top', { scaleX: 0, transformOrigin: "left" }, { duration: 0 })
+        animate('.katalog-main-line-bot', { scaleX: 0, transformOrigin: "left" }, { duration: 0 })
+        animate('.katalog-main-line-left', { scaleY: 0, transformOrigin: "top" }, { duration: 0 })
+        animate('.katalog-main-line-right', { scaleY: 0, transformOrigin: "top" }, { duration: 0 })
+        animate('.katalog-main-list-line', { scaleY: 0, transformOrigin: "top" }, { duration: 0 })
+        animate('.katalog-main-filter-list-pdf', { opacity: 0 }, { duration: 0 })
+        animate('.katalog-main-filter-list-toggle-btn', { opacity: 0 }, { duration: 0 })
+        animate('.katalog-main-filter .line-bot', { scaleX: 0, transformOrigin: "left" }, { duration: 0 })
+        animate('.katalog-main-cate-list .katalog-main-cate-item', { transform: "translateX(-2rem)", opacity: 0 }, { duration: 0 })
 
-        // const sequence = [
-        //     ['.katalog-main-line-top', { scaleX: 1 }, { duration: .6, at: 0 }],
-        //     ['.katalog-main-line-bot', { scaleX: 1 }, { duration: .8, at: .1 }],
-        //     ['.katalog-main-line-left', { scaleY: 1 }, { duration: .6, at: .1 }],
-        //     ['.katalog-main-line-right', { scaleY: 1 }, { duration: .6, at: .1 }],
-        //     ['.katalog-main-list-line', { scaleY: 1 }, { duration: .6, at: .1 }],
-        //     ['.katalog-main-filter .line-bot', { scaleX: 1 }, { duration: .6, at: .1 }],
-        //     ['.katalog-main-filter-list-toggle-btn', { opacity: 1 }, { duration: .4, at: .6 }],
-        //     ['.katalog-main-cate-list .katalog-main-cate-item', { transform: "none", opacity: 1 }, { duration: .5, delay: stagger(.05), at: .2 }],
-        // ]
+        const sequence = [
+            ['.katalog-main-line-top', { scaleX: 1 }, { duration: .6, at: 0 }],
+            ['.katalog-main-line-bot', { scaleX: 1 }, { duration: .8, at: .1 }],
+            ['.katalog-main-line-left', { scaleY: 1 }, { duration: .6, at: .1 }],
+            ['.katalog-main-line-right', { scaleY: 1 }, { duration: .6, at: .1 }],
+            ['.katalog-main-list-line', { scaleY: 1 }, { duration: .6, at: .1 }],
+            ['.katalog-main-filter .line-bot', { scaleX: 1 }, { duration: .6, at: .1 }],
+            ['.katalog-main-filter-list-toggle-btn', { opacity: 1 }, { duration: .4, at: .6 }],
+            ['.katalog-main-cate-list .katalog-main-cate-item', { transform: "none", opacity: 1 }, { duration: .5, delay: stagger(.05), at: .2 }],
+        ]
 
-        // const splitTitles = []
-        // document.querySelectorAll('.katalog-main-filter-list-dropdown .katalog-main-filter-item').forEach((item, idx) => {
-        //     const label = new SplitType(item.querySelector('.katalog-main-filter-item-txt'), { types: 'lines, words', lineClass: 'split-line' })
-        //     animate(label.words, { opacity: 0, transform: "translateY(100%)" }, { duration: 0 })
-        //     sequence.push(
-        //         [label.words, { opacity: 1, transform: "none" }, { duration: .4, delay: stagger(.02), at: .2 + .04 * idx }],
-        //     )
-        //     splitTitles.push(label)
-        // })
-        // if (window.innerWidth > 767) {
-        //     sequence.push(
-        //         ['.katalog-main-filter-list-pdf', { opacity: 1 }, { duration: .6, at: .6 }]
-        //     )
-        // } else {
-        //     sequence.push(
-        //         ['.katalog-main-filter-list-pdf', { opacity: 1 }, { duration: .6, at: .1 }]
-        //     )
-        // }
+        const splitTitles = []
+        document.querySelectorAll('.katalog-main-filter-list-dropdown .katalog-main-filter-item').forEach((item, idx) => {
+            const label = new SplitType(item.querySelector('.katalog-main-filter-item-txt'), { types: 'lines, words', lineClass: 'split-line' })
+            animate(label.words, { opacity: 0, transform: "translateY(100%)" }, { duration: 0 })
+            sequence.push(
+                [label.words, { opacity: 1, transform: "none" }, { duration: .4, delay: stagger(.02), at: .2 + .04 * idx }],
+            )
+            splitTitles.push(label)
+        })
+        if (window.innerWidth > 767) {
+            sequence.push(
+                ['.katalog-main-filter-list-pdf', { opacity: 1 }, { duration: .6, at: .6 }]
+            )
+        } else {
+            sequence.push(
+                ['.katalog-main-filter-list-pdf', { opacity: 1 }, { duration: .6, at: .1 }]
+            )
+        }
 
-        // inView(".katalog-main", () => {
-        //     timeline(sequence).finished.then(() => {
-        //         splitTitles.forEach(item => item.revert())
-        //         document.querySelector('.katalog-main-line-top').removeAttribute('style')
-        //         document.querySelector('.katalog-main-line-bot').removeAttribute('style')
-        //         document.querySelector('.katalog-main-line-left').removeAttribute('style')
-        //         document.querySelector('.katalog-main-line-right').removeAttribute('style')
-        //         document.querySelector('.katalog-main-list-line').removeAttribute('style')
-        //         document.querySelector('.katalog-main-filter-list-pdf').removeAttribute('style')
-        //         document.querySelector('.katalog-main-filter-list-toggle-btn').removeAttribute('style')
-        //         document.querySelector('.katalog-main-filter .line-bot').removeAttribute('style')
-        //         document.querySelectorAll('.katalog-main-cate-list .katalog-main-cate-item').forEach(item => item.removeAttribute('style'))
-        //     })
-        // })
+        inView(".katalog-main", () => {
+            timeline(sequence).finished.then(() => {
+                splitTitles.forEach(item => item.revert())
+                document.querySelector('.katalog-main-line-top').removeAttribute('style')
+                document.querySelector('.katalog-main-line-bot').removeAttribute('style')
+                document.querySelector('.katalog-main-line-left').removeAttribute('style')
+                document.querySelector('.katalog-main-line-right').removeAttribute('style')
+                document.querySelector('.katalog-main-list-line').removeAttribute('style')
+                document.querySelector('.katalog-main-filter-list-pdf').removeAttribute('style')
+                document.querySelector('.katalog-main-filter-list-toggle-btn').removeAttribute('style')
+                document.querySelector('.katalog-main-filter .line-bot').removeAttribute('style')
+                document.querySelectorAll('.katalog-main-cate-list .katalog-main-cate-item').forEach(item => item.removeAttribute('style'))
+            })
+        })
     }, [])
 
     useEffect(() => {
@@ -199,9 +199,9 @@ function KatalogMain({ allItem, ...props }) {
                         <div className="katalog-main-filter-list">
                             <Kustomers list={props.kustomerList} filter={filter} setFilter={setFilter} />
                             <div className="katalog-main-filter-list-pdf-wrap">
-                                <a href="#" className="btn katalog-main-filter-list-pdf" data-cursor="hide">
+                                <a href="#" className="btn katalog-main-filter-list-pdf" data-cursor="txtLink" data-cursor-txtlink="child">
                                     <div className="line line-ver line-left"></div>
-                                    <div className="txt txt-20 txt-med katalog-main-filter-list-pdf-txt">Download Catalog</div>
+                                    <div className="txt txt-20 txt-med katalog-main-filter-list-pdf-txt" data-cursor-txtlink-child>Download Catalog</div>
                                 </a>
                             </div>
                         </div>

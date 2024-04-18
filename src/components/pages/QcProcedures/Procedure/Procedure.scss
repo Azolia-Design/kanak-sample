@@ -76,6 +76,13 @@
         display: flex;
         column-gap: .8rem;
         align-items: center;
+        transition: color .4s ease;
+
+        @media (hover:hover) {
+            &:hover {
+                color: var(--cl-orange);
+            }
+        }
     }
 
     &-main {
