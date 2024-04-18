@@ -1,9 +1,72 @@
 import './Procedure.scss'
-import { useEffect } from 'react';
+import { useEffect } from 'react'
+import { animate, timeline, stagger, inView } from "motion";
+import SplitType from 'split-type';
 import ArrowUpRight from "@components/globals/IcArrow/ArrowUpRight"
 
 function ComplianceProcedure({ ...props }) {
     useEffect(() => {
+        // Anim Title
+        const label = new SplitType(".complian-proce-label", { types: 'lines, words', lineClass: 'split-line' })
+        const title = new SplitType(".complian-proce-title", { types: 'lines, words', lineClass: 'split-line' })
+        const sub = new SplitType(".complian-proce-sub", { types: 'lines, words', lineClass: 'split-line' })
+        const link = new SplitType(".complian-proce-link-txt", { types: 'lines, words', lineClass: 'split-line' })
+
+        animate(label.words, { opacity: 0, transform: "translateY(100%)" }, { duration: 0 })
+        animate(title.words, { opacity: 0, transform: "translateY(100%)" }, { duration: 0 })
+        animate(sub.words, { opacity: 0, transform: "translateY(100%)" }, { duration: 0 })
+        animate(link.words, { opacity: 0, transform: "translateY(100%)" }, { duration: 0 })
+        animate(document.querySelector('.complian-proce-link .ic'), { opacity: 0, transform: "translate(-100%, 100%)" }, { duration: 0 })
+
+        const sequence = [
+            [label.words, { opacity: 1, transform: "none" }, { duration: .6, delay: stagger(.005), at: 0 }],
+            [title.words, { opacity: 1, transform: "none" }, { duration: .6, delay: stagger(.035), at: 0.1 }],
+            [sub.words, { opacity: 1, transform: "none" }, { duration: .6, delay: stagger(.006), at: 0.25 }],
+            [link.words, { opacity: 1, transform: "none" }, { duration: .6, delay: stagger(.02), at: 0.3 }],
+            [document.querySelector('.complian-proce-link .ic'), { opacity: 1, transform: "none" }, { duration: .6, at: .45 }],
+        ]
+        inView('.complian-proce', () => {
+            timeline(sequence).finished.then(() => {
+                title.revert()
+                label.revert()
+                sub.revert()
+                link.revert()
+                document.querySelector('.complian-proce-link .ic').removeAttribute('style');
+            })
+        }, { margin: "-40% 0px -20% 0px" })
+
+        // Anim Item
+        const procedures = document.querySelectorAll('.complian-proce-main-item');
+        procedures.forEach((el, idx) => {
+            let itemTitle = new SplitType(el.querySelector('.complian-proce-main-item-title-txt'), { types: 'lines, words', lineClass: 'split-line' })
+            let itemSub = new SplitType(el.querySelector('.complian-proce-main-item-sub'), { types: 'lines, words', lineClass: 'split-line' })
+            animate(el.querySelector('.line-top'), { scaleX: 0 }, { duration: 0 })
+            animate(el.querySelector('.complian-proce-main-item-title-dot'), { scale: 0 }, { duration: 0 })
+            animate(itemTitle.words, { opacity: 0, transform: 'translateY(100%)' }, { duration: 0 })
+            animate(itemSub.words, { opacity: 0, transform: 'translateY(12px)' }, { duration: 0 })
+            animate(el.querySelector('.complian-proce-main-item-img img'), { scale: 1.2, opacity: 0 }, { duration: 0 })
+            el.querySelector('.line-bot') && animate(el.querySelector('.line-bot'), { scaleX: 0 }, { duration: 0 })
+
+            const sequenceItem = [
+                [el.querySelector('.line-top'), { scaleX: 1 }, { duration: 1 }],
+                [el.querySelector('.complian-proce-main-item-title-dot'), { scale: 1 }, { duration: .6, at: .1 }],
+                [itemTitle.words, { opacity: 1, transform: 'translateY(0%)' }, { duration: .6, delay: stagger(.05), at: .2 }],
+                [itemSub.words, { opacity: 1, transform: 'none' }, { duration: .6, delay: stagger(.005), at: .2 }],
+                [el.querySelector('.complian-proce-main-item-img img'), { scale: 1, opacity: 1 }, { duration: 1.2, easing: 'ease-out', at: .3 }],
+                [el.querySelector('.line-bot') && el.querySelector('.line-bot') && el.querySelector('.line-bot'), { scaleX: 1 }, { duration: .8, at: .35 }]
+            ]
+
+            inView(el, () => {
+                timeline(sequenceItem).finished.then(() => {
+                    itemTitle.revert()
+                    itemSub.revert()
+                    el.querySelectorAll('.line').forEach(item => item.removeAttribute('style'))
+                    el.querySelector('.complian-proce-main-item-title-dot').removeAttribute('style');
+                    el.querySelector('.complian-proce-main-item-img img').removeAttribute('style');
+                    el.querySelector('.line-bot') && el.querySelector('.line-bot').removeAttribute('style')
+                })
+            }, { margin: "-20% 0px -20% 0px" });
+        })
     }, [])
     return (
         <section className='complian-proce'>
@@ -23,8 +86,8 @@ function ComplianceProcedure({ ...props }) {
                         <div className="complian-proce-main-item bg-light" key={idx} style={
                             {
                                 '--idx': idx + 1,
-                                '--pd-bot': 5 - idx - 1,
-                                '--mg-top': idx == 0 ? 0 : 5 - idx
+                                '--pd-bot': props.list.length - idx - 1,
+                                '--mg-top': idx == 0 ? 0 : props.list.length - idx
                             }
                         }>
                             <div className="complian-proce-main-item-inner">
@@ -45,7 +108,7 @@ function ComplianceProcedure({ ...props }) {
                                         <img src={item.item_image.url} alt={item.item_image.alt} width={item.item_image.dimensions.width} height={item.item_image.dimensions.height} className='img img-h' />
                                     </div>
                                 </div>
-                                {idx == 4 && (<div className="line line-bot"></div>)}
+                                {idx == props.list.length - 1 && (<div className="line line-bot"></div>)}
                             </div>
                         </div>
                     ))}

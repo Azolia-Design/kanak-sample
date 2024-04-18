@@ -35,9 +35,6 @@ item.data.service_sub_items.forEach((el: any, idx: number) => {
 });
 
 const listCaseStudy = await getAllByType("case_study");
-const filterCaseStudy = listCaseStudy.filter(
-    (item) => item.data.category.toLowerCase().replace(" ", "-") === kustomer,
-);
 ---
 
 <Layout
@@ -126,10 +123,11 @@ const filterCaseStudy = listCaseStudy.filter(
     {
         !isEmpty(item.data.kase_study_title) && (
             <CaseStudy
+                currPage={kustomer}
                 label={item.data.kase_study_label}
                 title={item.data.kase_study_title[0].text}
                 des={item.data.kase_study_describe[0].text}
-                list={filterCaseStudy}
+                list={listCaseStudy}
             />
         )
     }

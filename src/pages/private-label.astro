@@ -1,0 +1,18 @@
+---
+import Layout from "@/layouts/Layout.astro";
+
+import Hero from "@pages/PrivateLabel/Hero/Hero.astro";
+
+import { getPage } from "@/prismic.js";
+const { data, uid } = await getPage("privatelabel_page");
+---
+
+<Layout
+    title="Private Label"
+    data_page="Private Label"
+    explore_data={uid}
+    footer_cta={data.cta_title[0]?.text}
+    footer_bg={data.cta_background}
+>
+    <Hero />
+</Layout>

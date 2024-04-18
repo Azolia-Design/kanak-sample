@@ -1,0 +1,27 @@
+@use '@styles/colors' as *;
+@use '@styles/mixins' as *;
+
+
+.private-hero {
+    height: 100vh;
+
+    .container.grid {
+        height: 100%;
+        padding-bottom: 15.6rem;
+    }
+
+    &-title {
+        grid-column: 1/11;
+        align-self: end;
+    }
+
+    &-content {
+        grid-column: 12/-1;
+        align-self: end;
+        margin-bottom: 1.5rem;
+
+        &-smtitle {
+            margin-bottom: 2rem;
+        }
+    }
+}
