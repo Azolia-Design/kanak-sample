@@ -10,6 +10,10 @@
         padding-bottom: 6rem;
     }
 
+    &.active {
+        z-index: 999;
+    }
+
     .container.grid {
         position: relative;
     }
@@ -125,8 +129,10 @@
                 &-btn {
                     display: flex;
                     align-items: center;
-                    padding: 1rem;
-                    padding-left: unset;
+                    padding-block: 1rem;
+                    padding-left: 2rem;
+                    grid-column: 1/5;
+                    grid-row: 1/2;
 
                     &-cate {
                         display: none;
@@ -134,7 +140,19 @@
                         @include sm {
                             display: flex;
                             border-left: .2rem solid var(--cl-txt);
+                            background-color: var(--cl-bg);
                             margin-left: -.1rem;
+                            margin-left: auto;
+                            pointer-events: auto;
+                            z-index: 5;
+                        }
+                    }
+
+                    &-kustomer {
+                        display: none;
+
+                        @include md {
+                            display: flex;
                         }
                     }
 
@@ -148,6 +166,8 @@
                     }
 
                     &.active {
+                        pointer-events: none;
+
                         .ic svg {
                             transform: rotate(180deg);
                         }
@@ -246,9 +266,6 @@
                 }
 
                 @include sm {
-                    position: absolute;
-                    transform: translateY(calc(-100% - 4rem));
-                    grid-column: 1/-1;
                     width: 100%;
                     background-color: var(--cl-orange);
                     padding: 1.85rem 2.4rem;
@@ -261,6 +278,12 @@
                         grid-column: 4/-1;
                         width: 100%;
                         grid-row: 1/2;
+                    }
+
+                    @include sm {
+                        position: absolute;
+                        transform: translateY(calc(-100% - 4rem));
+                        grid-column: 1/-1;
                     }
                 }
 
@@ -334,7 +357,15 @@
         }
 
         @include sm {
-            display: none;
+            grid-column: 1 / -1;
+            grid-row: 1 / 2;
+            padding: 0;
+            padding-top: .2rem;
+            padding-bottom: .2rem;
+            position: relative;
+            display: flex;
+            justify-content: end;
+            pointer-events: none;
         }
 
         &-list {
@@ -349,11 +380,50 @@
                 row-gap: 1.6rem;
                 padding-right: var(--grid-gap);
             }
+
+            @include sm {
+                position: absolute;
+                z-index: 3;
+                width: 100%;
+                row-gap: 0;
+                padding-right: 0;
+                top: 100%;
+                pointer-events: none;
+                opacity: 0;
+                transform: translateY(-2rem);
+                transition: all 0.4s ease-out;
+                pointer-events: none;
+                background: var(--bg-txt) repeat;
+                background-size: 40rem auto;
+                background-color: var(--cl-bg);
+                max-height: 32rem;
+                overflow-y: auto;
+                border-bottom: .2rem solid var(--cl-txt);
+                @include custom-scroll(.5rem, transparent, var(--cl-orange));
+
+                &.active {
+                    opacity: 1;
+                    transform: translate(0);
+                    pointer-events: auto;
+                }
+            }
         }
 
         &-item {
             display: flex;
             align-items: start;
+
+            @include sm {
+                width: 100%;
+                text-align: start;
+                border-bottom: .2rem solid var(--cl-txt);
+            }
+
+            .katalog-main-filter-list-toggle-btn-cate {
+                @include sm {
+                    height: calc(100% - .2rem);
+                }
+            }
 
             &-txt {
                 transition: transform .4s ease;
@@ -361,7 +431,12 @@
                 @include md {
                     @include text(16);
                 }
+
+                @include sm {
+                    @include text(20);
+                }
             }
+
 
             .dot {
                 position: absolute;
@@ -375,6 +450,10 @@
 
                 @include md {
                     top: 0.54rem;
+                }
+
+                @include sm {
+                    top: 2.9rem;
                 }
             }
 
@@ -391,10 +470,15 @@
                     align-items: start;
                 }
 
+                @include sm {
+                    width: 100%;
+                    padding: 2rem;
+                }
+
                 &:hover {
                     .dot {
                         opacity: 1;
-                        transition-delay: .8s;
+                        transition-delay: .2s;
                     }
 
                     .katalog-main-cate-item-txt {

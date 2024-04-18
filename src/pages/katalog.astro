@@ -11,8 +11,7 @@ const title = await data.title[0].text;
 const subtitle = await data.subtitle[0].text;
 ---
 
-<Layout title="Katalog" data_page="Katalog">
-    <ItemDtlPopup />
+<Layout title="Katalog">
     <Hero title={title} sub={subtitle} />
     <Main data={data} />
 </Layout>
