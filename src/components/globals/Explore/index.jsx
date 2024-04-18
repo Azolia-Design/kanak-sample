@@ -18,9 +18,7 @@ function GlobalExplore({ ...props }) {
                                 </div>
                             </div>
                             <h1 className="heading h2 txt-black txt-up global-explore-list-item-title">{data.name[0].text}</h1>
-                            {idx % 2 == 0 && (
-                                <div className="line line-ver line-mid"></div>
-                            )}
+                            <div className="line global-explore-list-item-line"></div>
                         </a>
                     ))}
                     <div className="line line-top"></div>

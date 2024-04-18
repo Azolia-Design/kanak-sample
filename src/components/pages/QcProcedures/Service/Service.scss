@@ -10,6 +10,10 @@
         padding-bottom: 6rem;
     }
 
+    @include sm {
+        padding-top: 6rem;
+    }
+
     &-title {
         grid-column: 2/16;
         text-align: center;
@@ -23,6 +27,12 @@
             max-width: 75.4rem;
             margin-bottom: 2rem;
             @include text(h1);
+        }
+
+        @include sm {
+            max-width: unset;
+            text-align: start;
+            @include text(h3);
         }
     }
 
@@ -40,6 +50,12 @@
             @include text(16);
             margin-bottom: 6rem;
         }
+
+        @include sm {
+            text-align: start;
+            max-width: unset;
+            margin-bottom: 4rem;
+        }
     }
 
     &-main {
@@ -47,6 +63,10 @@
         grid-column: 1/-1;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
+
+        @include sm {
+            grid-template-columns: repeat(1, 1fr);
+        }
 
         &-item {
             position: relative;
@@ -88,6 +108,10 @@
                 position: absolute;
                 top: 0;
                 right: -.1rem;
+
+                @include sm {
+                    display: none;
+                }
             }
 
             .line-bot {

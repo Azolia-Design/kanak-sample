@@ -87,6 +87,10 @@
             margin-top: 6rem;
         }
 
+        @include sm {
+            margin-top: 4rem;
+        }
+
         &-item {
             --height-overlap: 10rem;
             --top-distance: 14rem;
@@ -108,6 +112,7 @@
                 padding-bottom: 0;
                 margin-top: 0;
                 background-color: transparent;
+                padding-right: 2rem;
             }
 
             &-inner {
@@ -121,6 +126,14 @@
 
                 @include md {
                     height: 37rem;
+                }
+
+                @include sm {
+                    padding-top: 4rem;
+                    padding-bottom: unset;
+                    height: unset;
+                    flex-direction: column;
+                    row-gap: 4rem;
                 }
             }
 
@@ -141,10 +154,12 @@
 
                 &-bot {
                     bottom: 0;
+                }
+            }
 
-                    @include sm {
-                        display: none;
-                    }
+            &-content {
+                @include sm {
+                    order: 2;
                 }
             }
 
@@ -157,6 +172,10 @@
 
                 @include md {
                     column-gap: 2.8rem;
+                }
+
+                @include sm {
+                    margin-bottom: 2.4rem
                 }
 
                 &-txt {
@@ -175,6 +194,10 @@
                     @include md {
                         @include size(2rem);
                         margin-top: .9rem;
+                    }
+
+                    @include sm {
+                        display: none;
                     }
                 }
             }
