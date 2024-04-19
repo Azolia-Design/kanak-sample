@@ -63,7 +63,7 @@ function Item({ data, onClick, filter }) {
         <button className="katalog-main-list-item" data-popup="open" onClick={onClick} ref={itemRef}>
             <div className="katalog-main-list-item-img">
                 <div className="katalog-main-list-item-img-inner data-thumb">
-                    <img src={data.thumbnail.url} alt={data.thumbnail.alt} width={data.thumbnail.dimensions.width} className="img" />
+                    <img src={data.thumbnail.url} alt={data.thumbnail.alt} width={data.thumbnail?.dimensions?.width} className="img" />
                 </div>
             </div>
             <div className="katalog-main-list-item-info">
@@ -72,7 +72,7 @@ function Item({ data, onClick, filter }) {
                 <div className="katalog-main-list-item-info-qr">
                     <div className="line line-ver line-qr"></div>
                     <div className="katalog-main-list-item-info-qr-inner">
-                        <img src={data.qr.url} alt={data.qr.alt} width={data.qr.dimensions.width} />
+                        <img src={data.qr.url} alt={data.qr.alt} width={data.qr?.dimensions.width} />
                     </div>
                 </div>
             </div>

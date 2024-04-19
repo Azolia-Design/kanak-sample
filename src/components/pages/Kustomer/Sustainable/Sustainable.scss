@@ -6,6 +6,7 @@
     position: relative;
     padding-bottom: 21rem;
     z-index: 3;
+    overflow: hidden;
 
     @include md {
         padding-bottom: 14rem;

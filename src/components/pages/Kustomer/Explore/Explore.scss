@@ -21,6 +21,8 @@
         @include sm {
             @include text(h3);
             text-align: left;
+            border-top: .2rem solid var(--cl-txt);
+            padding-top: 6rem;
             margin-bottom: 6rem;
         }
     }
