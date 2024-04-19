@@ -133,9 +133,9 @@ function GlobalFooter(props) {
                         isOpen={activeIndex === 0}
                         onClick={() => accordionClick(0)}
                     >
-                        <MenuItem>Product Katalog</MenuItem>
-                        <MenuItem>Private Label</MenuItem>
-                        <MenuItem>Kustom Packaging Solutions</MenuItem>
+                        <MenuItem link='/katalog'>Product Katalog</MenuItem>
+                        <MenuItem link='/private-label'>Private Label</MenuItem>
+                        <MenuItem link='/kustom-packaging-solutions'>Kustom Packaging Solutions</MenuItem>
                         <MenuItem link='/qc-procedures'>Testing, QC & Compliance</MenuItem>
                     </MenuColumn>
                     <MenuColumn

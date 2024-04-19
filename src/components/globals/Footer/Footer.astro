@@ -12,9 +12,14 @@ import img from "@assets/ffment-thumb.jpg";
 const { title, bg, explore } = Astro.props;
 const currYear = new Date().getFullYear();
 const industryList = await getAllByType("industry");
-const customPackList = await getAllByType("brand");
 const testingQcpage = await getPage("compliance");
-const exploreList = await Promise.all([...customPackList, testingQcpage]);
+const kustomPackagingPage = await getPage("kustompackaging_page");
+const privateLabelPage = await getPage("privatelabel_page");
+const exploreList = await Promise.all([
+    privateLabelPage,
+    kustomPackagingPage,
+    testingQcpage,
+]);
 ---
 
 {

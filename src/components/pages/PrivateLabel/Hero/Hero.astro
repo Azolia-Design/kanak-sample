@@ -3,7 +3,6 @@ import PrivateHero from "./Hero";
 ---
 
 <PrivateHero
-    title="Kustom Private Label Program"
-    smallTitle="Revolutionize Your Shelves"
-    sub="You're not just stocking shelves; you're paving the way for a greener future and turning everyday dinnerware into a statement of conscience."
+    {...Astro.props}
+    client:visible={{ rootMargin: "100% 0px 100% 0px" }}
 />

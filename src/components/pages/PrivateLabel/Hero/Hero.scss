@@ -3,16 +3,32 @@
 
 
 .private-hero {
-    height: 100vh;
+    padding-bottom: 15.6rem;
 
-    .container.grid {
-        height: 100%;
-        padding-bottom: 15.6rem;
+    @include md {
+        padding-bottom: 6rem;
     }
 
     &-title {
         grid-column: 1/11;
-        align-self: end;
+        max-width: 100rem;
+        margin-top: 26rem;
+
+        @include md {
+            grid-column: 1/10;
+            max-width: 60rem;
+            margin-top: 21.5rem;
+            margin-bottom: 3rem;
+        }
+
+        @include sm {
+            grid-column: 1/-1;
+            max-width: unset;
+            @include text(h1);
+            text-align: center;
+            margin-top: 17.6rem;
+            margin-bottom: 16rem;
+        }
     }
 
     &-content {
@@ -20,8 +36,37 @@
         align-self: end;
         margin-bottom: 1.5rem;
 
+        @include md {
+            grid-column: 1/-1;
+            margin-bottom: unset;
+        }
+
+        @include sm {
+            text-align: center;
+            padding: 0 1.9rem;
+        }
+
         &-smtitle {
             margin-bottom: 2rem;
+
+            @include md {
+                margin-bottom: 1rem;
+            }
+
+            @include sm {
+                @include text(h5)
+            }
+        }
+
+        &-sub {
+            @include md {
+                @include text(16);
+                max-width: 38.5rem;
+            }
+
+            @include sm {
+                max-width: unset;
+            }
         }
     }
 }

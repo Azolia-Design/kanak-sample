@@ -1,0 +1,201 @@
+@use '@styles/colors' as *;
+@use '@styles/mixins' as *;
+
+.private-commitment {
+    padding-bottom: 18rem;
+
+    @include md {
+        padding-bottom: 6rem;
+    }
+
+    &-line {
+        &-top {
+            grid-column: 1/-1;
+        }
+
+        &-bot {
+            grid-column: 1/-1;
+        }
+    }
+
+    &-sticky {
+        grid-column: 1/9;
+        padding-top: 12rem;
+        padding-bottom: 6rem;
+
+        @include md {
+            grid-column: 1/7;
+            padding-top: 4rem;
+            margin-right: calc(4rem - var(--grid-gap));
+        }
+
+        @include sm {
+            padding-top: 0;
+            padding-bottom: 0;
+            margin-right: unset;
+            margin-bottom: 4rem;
+            grid-column: 1/-1;
+        }
+
+        &-wrapper {
+            position: sticky;
+            top: calc(50vh - 22rem);
+
+            @include md {
+                top: calc(50vh - 10rem);
+            }
+
+            @include sm {
+                position: static;
+            }
+        }
+    }
+
+    &-title {
+        margin-bottom: 4rem;
+        max-width: 80rem;
+
+        @include md {
+            @include text(h2);
+            margin-bottom: 2rem;
+        }
+
+        @include sm {
+            @include text(h2);
+        }
+
+        .txt-green {
+            display: inline;
+        }
+    }
+
+    &-sub {
+        margin-bottom: 4rem;
+
+        @include sm {
+            margin-bottom: 3rem;
+        }
+    }
+
+    &-link {
+        display: flex;
+        column-gap: .8rem;
+        align-items: center;
+        transition: color .4s ease;
+
+        @media (hover: hover) {
+            &:hover {
+                color: var(--cl-orange);
+            }
+        }
+
+        .ic {
+            flex-shrink: 0;
+        }
+    }
+
+
+    &-main {
+        --padding-layout: var(--grid-gap)/2;
+        position: relative;
+        grid-column: 9/-1;
+        margin-left: calc(var(--padding-layout));
+
+        @include md {
+            grid-column: 7/-1;
+            --padding-layout: 0px;
+        }
+
+        @include sm {
+            grid-column: 1/-1;
+        }
+
+        .line-ver {
+            position: absolute;
+            top: 0;
+            left: -.1rem;
+
+            @include sm {
+                display: none;
+            }
+        }
+
+        &-inner {
+            display: grid;
+            column-gap: var(--grid-gap);
+            grid-template-columns: repeat(8, 1fr);
+            margin-left: calc(var(--padding-layout) * -1);
+            row-gap: 6rem;
+            padding-top: 8rem;
+            padding-bottom: 2rem;
+
+            @include sm {
+                padding: 0;
+                row-gap: 4rem;
+            }
+        }
+
+        &-item {
+            grid-column: 2/-1;
+
+            @include sm {
+                grid-column: 1/-1;
+            }
+
+            &:last-child {
+                .line {
+                    display: none;
+                }
+            }
+
+            &-img {
+                width: 100%;
+                aspect-ratio: 1.895890411;
+                margin-bottom: 3.2rem;
+
+                @include sm {
+                    aspect-ratio: 1.3643724696;
+                }
+            }
+
+            &-content {
+                display: flex;
+                column-gap: 4rem;
+
+                @include md {
+                    flex-direction: column;
+                }
+
+                &-title {
+                    flex: 1;
+                    margin-bottom: 4rem;
+
+                    @include md {
+                        width: 100%;
+                        margin-bottom: .8rem;
+                        @include text(h5);
+                    }
+                }
+
+                &-des {
+                    width: 100%;
+
+                    @include md {
+                        @include text(16);
+                    }
+                }
+
+                &-info {
+                    width: 100%;
+                    align-self: end;
+                    max-width: 32.6rem;
+                    margin-bottom: 4rem;
+
+                    @include sm {
+                        max-width: unset;
+                    }
+                }
+            }
+        }
+    }
+}
