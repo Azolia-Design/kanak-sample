@@ -1,0 +1,142 @@
+@use '@styles/mixins' as *;
+@use '@styles/colors' as *;
+
+
+.global-explore {
+    color: var(--cl-txt-light);
+    padding-top: 6.7rem;
+
+    @include md {
+        padding-top: 6rem;
+    }
+
+    @include sm {
+        padding-top: 4rem;
+    }
+
+    &-title {
+        grid-column: 1/7;
+        margin-bottom: 6.7rem;
+
+        @include md {
+            grid-column: 1/-1;
+            margin-bottom: 4rem;
+        }
+
+        @include sm {
+            @include text(h5);
+            margin-left: 2rem;
+        }
+    }
+
+    &-list {
+        position: relative;
+        grid-column: 1/-1;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+
+        @include sm {
+            grid-template-columns: 1fr;
+            padding: 0 2rem;
+        }
+
+        &-item {
+            position: relative;
+            padding-top: 10rem;
+            padding-bottom: 10rem;
+            transition: color .4s ease;
+
+            @include md {
+                padding-top: 4rem;
+                padding-bottom: 4rem;
+            }
+
+            &-img {
+                margin-bottom: 6rem;
+
+                @include md {
+                    margin-bottom: 2rem;
+                }
+
+                &-inner {
+                    width: 100%;
+                    aspect-ratio: 1.7193877551;
+                    overflow: hidden;
+
+                    @include md {
+                        aspect-ratio: 1.7193877551
+                    }
+
+                    @include sm {
+                        aspect-ratio: 1.5051020408;
+                    }
+                }
+            }
+
+            &-title {
+                @include md {
+                    @include text(h4);
+                }
+            }
+
+            &-line {
+                position: absolute;
+                right: -.1rem;
+                top: 0;
+                @include size(.2rem, 100%);
+
+                @include sm {
+                    @include size(100%, .2rem);
+                }
+            }
+
+            &:nth-child(odd) {
+                padding-right: 11rem;
+
+                @include md {
+                    padding-right: 4rem;
+                }
+
+                @include sm {
+                    padding-right: unset;
+                }
+            }
+
+            &:nth-child(even) {
+                padding-left: 11rem;
+
+                .line {
+                    display: none;
+
+                    @include sm {
+                        display: block;
+                    }
+                }
+
+                @include md {
+                    padding-left: 4rem;
+                }
+
+                @include sm {
+                    padding-left: unset;
+                }
+            }
+
+            @media (hover: hover) {
+                &:hover {
+                    color: var(--cl-orange);
+                }
+            }
+        }
+
+        .line-top {
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            @include sm {
+                display: none;
+            }
+        }
+    }
+}

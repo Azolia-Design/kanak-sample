@@ -1,9 +1,18 @@
 ---
+import { formatData, isEmpty } from "@/components/utils/text";
 import KustomerCaseStudies from "./Casestudies";
+
+const filterCaseStudy = await Promise.all(
+    Astro.props.list.filter(
+        (item) => formatData(item.data.category) === Astro.props.currPage,
+    ),
+);
+
+const listItem = !isEmpty(filterCaseStudy) ? filterCaseStudy : Astro.props.list;
 ---
 
 <KustomerCaseStudies
-    list={Astro.props.list}
+    list={listItem}
     title={Astro.props.title}
     label={Astro.props.label}
     des={Astro.props.des}

@@ -52,7 +52,7 @@ function CaseRel({ itemLength, uid, data, image, ...props }) {
             <div className="casedtl-rel-main-item-link-wrapper">
                 <div className="casedtl-rel-main-item-img">
                     <div className="casedtl-rel-main-item-img-inner">
-                        <img className='img img-h' src={image?.image_item.url} alt='' width={image?.image_item.dimensions.width} height={image?.image_item.dimensions.height} />
+                        <img className='img img-h' src={image?.image_item?.url} alt='' width={image?.image_item?.dimensions.width} height={image?.image_item?.dimensions.height} />
                     </div>
                 </div>
                 <div className="casedtl-rel-main-item-link">

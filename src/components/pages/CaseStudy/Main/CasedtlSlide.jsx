@@ -1,24 +1,30 @@
 import { useEffect, useState } from 'react'
 import { useKeenSlider } from 'keen-slider/react'
 import "keen-slider/keen-slider.min.css"
-
+import { parseRem } from '@/js/utils';
 import { animate, timeline, stagger, inView } from "motion";
+import { isEmpty } from '@/components/utils/text';
 
 function CasedtlSlide({ ...props }) {
     const [loaded, setLoaded] = useState(false);
     const [currentSlide, setCurrentSlide] = useState(0);
-    const [sliderRef, instanceRef] = useKeenSlider({
-        initial: 0,
-        slideChanged(slider) {
-            setCurrentSlide(slider.track.details.rel)
-        },
-        created() {
-            setLoaded(true)
-        },
-    })
+    const [options, setOptions] = useState({});
+    const [sliderRef, instanceRef] = useKeenSlider(options)
 
     useEffect(() => {
+        if (props.data.images.length !== 0) {
+            setOptions({
+                initial: 0,
+                slideChanged(slider) {
+                    setCurrentSlide(slider.track.details.rel)
+                },
+                created() {
+                    setLoaded(true)
+                },
+            })
+        }
         if (!loaded) return
+
         animate('.casedtl-slide-line-ver', { scaleY: 0, transformOrigin: 'top' }, { duration: 0 })
         animate('.casedtl-slide-stick-line, .casedtl-slide-main-control > .line', { scaleX: 0, transformOrigin: 'left' }, { duration: 0 })
         animate('.casedtl-slide-main', { opacity: 0 }, { duration: 0 })
@@ -53,7 +59,7 @@ function CasedtlSlide({ ...props }) {
             <div className="line line-ver casedtl-slide-line-ver"></div>
             <div className="casedtl-slide-stick">
                 <div className="line casedtl-slide-stick-line"></div>
-                <div className="casedtl-slide-main">
+                <div className={`casedtl-slide-main ${props.data.images.length == 0 ? 'hidden' : ''}`}>
                     <div className="keen-slider casedtl-slide-main-inner" ref={sliderRef}>
                         {props.data.images.map((item, idx) => (
                             <div className="keen-slider__slide casedtl-slide-main-inner-item" key={idx}>
@@ -61,33 +67,31 @@ function CasedtlSlide({ ...props }) {
                             </div>
                         ))}
                     </div>
-                    <div className="casedtl-slide-main-control">
+                    <div className={`casedtl-slide-main-control ${props.data.images.length <= 1 && 'hidden'}`}>
                         <div className="line"></div>
                         <div className="casedtl-slide-main-pagi">
-                            {loaded && instanceRef && (
-                                props.data.images.map((item, idx) => (
-                                    <button className={"casedtl-slide-main-pagi-item" + (currentSlide === idx ? " active" : "")} key={idx}
-                                        onClick={() => {
-                                            instanceRef.current?.moveToIdx(idx)
-                                        }}>
-                                    </button>
-                                ))
-                            )}
+                            {props.data.images.map((item, idx) => (
+                                <button className={"casedtl-slide-main-pagi-item" + (currentSlide === idx ? " active" : "")} key={idx}
+                                    onClick={() => {
+                                        instanceRef?.current.moveToIdx(idx)
+                                    }}>
+                                </button>
+                            ))}
                         </div>
                         <div className="casedtl-slide-main-nav">
-                            {loaded && instanceRef && (
+                            {instanceRef && (
                                 <>
                                     <button className="casedtl-slide-main-nav-item casedtl-slide-main-nav-item-prev"
-                                        onClick={() => { instanceRef.current.prev() }}
-                                        disabled={instanceRef.current.track.details.rel === 0}>
+                                        onClick={() => { instanceRef.current ? instanceRef.current.prev() : false }}
+                                        disabled={instanceRef.current ? instanceRef?.current.track.details.rel === 0 : true}>
                                         <div className="line line-ver"></div>
                                         <div className="ic ic-40">
                                             {props.arrIcon}
                                         </div>
                                     </button>
                                     <button className="casedtl-slide-main-nav-item casedtl-slide-main-nav-item-next"
-                                        onClick={() => { instanceRef.current.next() }}
-                                        disabled={instanceRef.current.track.details.rel === instanceRef.current.track.details.maxIdx}>
+                                        onClick={() => { instanceRef?.current.next() }}
+                                        disabled={instanceRef.current ? instanceRef.current.track.details.rel === instanceRef?.current.track.details.maxIdx : false}>
                                         <div className="line line-ver"></div>
                                         <div className="ic ic-40">
                                             {props.arrIcon}

@@ -1,0 +1,69 @@
+@use '@styles/mixins' as *;
+@use '@styles/colors' as *;
+
+.complian-hero {
+
+    &-title {
+        margin-top: 23.1rem;
+        grid-column: 3/15;
+        text-align: center;
+        max-width: 105rem;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 4rem;
+
+        @include md {
+            margin-top: 19.5rem;
+            margin-bottom: 2rem;
+            grid-column: 1/-1;
+            @include text(180);
+        }
+
+        @include sm {
+            margin-top: 15.6rem;
+            @include text(h2);
+            width: 100%;
+            text-align: start;
+            margin-bottom: 1.6rem;
+        }
+    }
+
+    &-sub {
+        grid-column: 5/13;
+        max-width: 66rem;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 9rem;
+
+        @include md {
+            grid-column: 1/-1;
+            max-width: 40.2rem;
+            margin-bottom: 6rem;
+            @include text(16);
+        }
+
+        @include sm {
+            @include text(16);
+            text-align: start;
+            margin-bottom: 4rem;
+        }
+    }
+
+    &-img {
+        height: 100rem;
+
+        @include md {
+            height: 45rem;
+        }
+
+        @include sm {
+            height: 30rem;
+        }
+
+        &-inner {
+            height: 100%;
+            overflow: hidden;
+        }
+    }
+}

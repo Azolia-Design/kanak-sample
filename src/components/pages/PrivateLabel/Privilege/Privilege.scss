@@ -1,0 +1,222 @@
+@use '@styles/colors' as *;
+@use '@styles/mixins' as *;
+
+.private-privilege {
+    color: var(--cl-txt-light);
+    padding-top: 15rem;
+    contain: paint;
+
+    @include md {
+        padding-top: 8rem;
+    }
+
+    @include sm {
+        padding-top: 6rem;
+    }
+
+    &-head {
+        grid-column: 3/15;
+
+        @include md {
+            grid-column: 1/-1;
+        }
+    }
+
+    &-title {
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 4rem;
+
+        @include md {
+            @include text(h1);
+            margin-bottom: 2rem;
+            max-width: 52rem;
+        }
+
+        @include sm {
+            @include text(h2);
+        }
+
+        .txt-green {
+            @include text(180);
+
+            @include sm {
+                @include text(h1);
+            }
+        }
+    }
+
+    &-sub {
+        text-align: center;
+        max-width: 70rem;
+        margin-left: auto;
+        margin-right: auto;
+        opacity: .6;
+
+        @include md {
+            max-width: 43rem;
+        }
+
+        @include sm {
+            max-width: unset;
+            @include text(16);
+        }
+    }
+
+    &-main {
+        grid-column: 1/-1;
+        display: grid;
+        align-items: center;
+        justify-items: center;
+        grid-template-columns: 1fr;
+        justify-content: center;
+        align-items: center;
+        margin-top: calc(14rem*2);
+        margin-bottom: 24rem;
+
+        @include md {
+            margin-top: calc(6rem * 2);
+            margin-bottom: 8rem;
+        }
+
+        @include sm {
+            margin-top: 6rem;
+            margin-bottom: 6rem;
+        }
+    }
+
+    &-item {
+        grid-column: 1/2;
+        grid-row: 1/2;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        border-radius: 100vmax;
+        @include size(56rem);
+        transform-origin: center 1.3rem;
+        transform: rotate(calc(var(--idx) * 120deg));
+        margin-top: 26rem;
+        z-index: 1;
+
+        @include md {
+            transform-origin: center .05rem;
+            @include size(40rem);
+        }
+
+        @include sm {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 1;
+            grid-column: span 1;
+            grid-row: unset;
+            transform: unset;
+            margin-top: -2rem;
+
+            &:first-child {
+                margin-top: unset;
+            }
+        }
+
+        &::before {
+            position: absolute;
+            content: "";
+            display: block;
+            border-radius: 100vmax;
+            @include size(100%);
+            border: .2rem solid currentColor;
+            z-index: 0;
+            opacity: .3;
+        }
+
+        &-inner {
+            transform: rotate(calc(var(--idx) * -120deg));
+            @include size(100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+
+            @include md {
+                flex-direction: column;
+            }
+
+            @include sm {
+                transform: unset;
+            }
+        }
+
+        &-title {
+            max-width: 30rem;
+            transition: opacity .4s ease;
+            transition-delay: unset;
+            z-index: 1;
+
+            @include md {
+                @include text(h4);
+                max-width: 28rem;
+                margin-bottom: 1rem;
+            }
+
+            @include sm {
+                max-width: 26rem;
+                margin-bottom: 1rem;
+            }
+        }
+
+        &-sub {
+            color: var(--cl-txt);
+            max-width: 30rem;
+
+            @include md {
+                color: var(--cl-txt-light);
+                opacity: .6;
+            }
+
+            @include sm {
+                @include text(16);
+                max-width: 26rem;
+            }
+
+            &-wrap {
+                z-index: 2;
+                opacity: 0;
+                position: absolute;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                @include size(100%);
+                border-radius: 100vmax;
+                background-color: var(--cl-bg);
+                transition: opacity .4s ease;
+
+                @include md {
+                    position: relative;
+                    @include size(unset);
+                    opacity: 1;
+                    background-color: unset;
+                }
+            }
+        }
+
+        &.active,
+        &:hover {
+            z-index: 10;
+
+            .private-privilege-item-title {
+                opacity: 0;
+                transition-delay: .1s;
+
+                @include md {
+                    opacity: 1;
+                }
+            }
+
+            .private-privilege-item-sub-wrap {
+                opacity: 1;
+            }
+        }
+    }
+}

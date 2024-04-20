@@ -1,15 +1,12 @@
 ---
 import { getAllByType, getByUID } from "@/prismic";
-import { formatData } from "@/components/utils/text";
 import KatalogMain from "./Main";
 
 const { list_category: list } = Astro.props.data;
 
-const allTag = await getAllByType("industry");
-const tagList = [];
-allTag.map((el, idx) => {
-	!tagList.includes(el.data.title) && tagList.push(el.data.title);
-});
+const kustomers = await getAllByType("industry");
+const kustomerList = kustomers.map(({ data }) => data.title);
+
 let listUidCate = [];
 await list
 	.reduce((acc, curr) => acc.concat(curr.item.uid), [])
@@ -41,18 +38,19 @@ await Promise.all(
 					await getByUID("product", el.product.uid).then((item) => {
 						productList.push({
 							...item,
-							cate: formatData(data.name),
+							category: data.name,
 						});
 					});
 				}),
 			);
 		}),
 );
+
 ---
 
 <KatalogMain
-	tagList={tagList}
+	kustomerList={kustomerList}
 	cateList={cateList}
 	allItem={productList}
-	client:load
+	client:visible={{rootMargin: "100% 0% 100% 0%"}}
 />

@@ -1,0 +1,14 @@
+---
+import PrivateCaseStudies from "./Casestudies";
+import { getAllByType } from "@/prismic";
+
+const listCaseStudy = await getAllByType("case_study");
+---
+
+<PrivateCaseStudies
+    list={listCaseStudy}
+    title="REAL STORIES, REAL IMPACT"
+    label="KASE STUDIES"
+    des="Delving into real-life scenarios, these studies illustrate the profound influence and practical significance of various strategies, interventions, or decisions. Each story encapsulates the transformative power of real-world actions, offering valuable insights and inspiration for addressing similar challenges and driving positive change."
+    client:visible={{ rootMargin: "100% 0px 100% 0px" }}
+/>
