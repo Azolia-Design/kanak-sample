@@ -69,7 +69,7 @@ function PrivateDistribute(props) {
                         We guarantee your shelves stay stocked with top-notch products, rain or shine. Dealing with supply chain hiccups? We got you covered.
                     </p>
                     <div className="private-distribute-btn-wrap">
-                        <a href="#" className="private-distribute-btn" data-cursor="txtLink">
+                        <a href="#" className="txt-link private-distribute-btn" data-cursor="txtLink">
                             <div className="txt txt-18 txt-bold">Learn more</div>
                             <div className="ic ic-16"><ArrowUpRight /></div>
                         </a>

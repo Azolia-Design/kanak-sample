@@ -78,7 +78,7 @@
     }
 
     &-link {
-        display: flex;
+        display: inline-flex;
         column-gap: .8rem;
         align-items: center;
         transition: color .4s ease;
