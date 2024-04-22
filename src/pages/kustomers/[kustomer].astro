@@ -82,24 +82,18 @@ const listCaseStudy = await getAllByType("case_study");
                 label={item.data.katalog_label}
                 title={convertHighlight(item.data.katalog_title)}
                 describe={convertHighlight(item.data.katalog_des)}
-                group1={
-                    item.data.katalog_grp_1_title
-                        ? {
-                              title: item.data.katalog_grp_1_title,
-                              sub: item.data.katalog_grp_1_sub,
-                              list: item.data.katalog_grp_1_list,
-                          }
-                        : null
-                }
-                group2={
-                    item.data.katalog_grp_2_title
-                        ? {
-                              title: item.data.katalog_grp_2_title,
-                              sub: item.data.katalog_grp_2_sub,
-                              list: item.data.katalog_grp_2_list,
-                          }
-                        : null
-                }
+                groupData={[
+                    {
+                        title: item.data.katalog_grp_1_title,
+                        sub: item.data.katalog_grp_1_sub,
+                        list: item.data.katalog_grp_1_list,
+                    },
+                    {
+                        title: item.data.katalog_grp_2_title,
+                        sub: item.data.katalog_grp_2_sub,
+                        list: item.data.katalog_grp_2_list,
+                    }
+                ]}
             />
         )
     }

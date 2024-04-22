@@ -1,44 +1,34 @@
 ---
-import Image from "astro/components/Image.astro";
 import KustomerCatalogTitle from "./CatalogTitle";
-import KustomerCatalogList from "./CatalogList";
 import KustomerCatalogThree from "./CatalogThree";
+import KustomerCatalogGroup from "./CatalogGroup";
 
 import arrIcon from "@assets/arr-right.svg?raw";
-import qr from "@assets/kustomer-qr.png";
 import "./Catalog.scss";
 import { getByUID } from "@/prismic";
 
-const { title, describe, label, data } = Astro.props;
+const { title, describe, label, groupData } = Astro.props;
 
-let list1 = await Promise.all(
-	Astro.props.group1.list
-		.reduce((acc, curr) => acc.concat(curr.item), [])
-		.map(async ({ uid }) => {
-			return await getByUID("product_group", uid);
-		}),
-);
-let list2 = await Promise.all(
-	Astro.props.group2.list
-		.reduce((acc, curr) => acc.concat(curr.item), [])
-		.map(async ({ uid }) => {
-			return await getByUID("product_group", uid);
-		}),
-);
-let listCategory = [...list1, ...list2];
+/** (💡)  - Transform list id product group in each group to the list product data */
+let listGroup = await Promise.all(
+	groupData.map(async (group: any) => ({
+			...group,
+			list: await Promise.all(
+				group.list.map(async ({ item }) => await getByUID("product_group", item.uid))
+			)
+		})
+	)
+)
 
-let listItem = [];
-await Promise.all(
-	listCategory.map(async (item) => {
-		await getByUID(
-			"product",
-			item.data.product_list.filter((el: any) => el.is_featured)[0]
-				.product.uid,
-		).then((target) => {
-			listItem.push(target);
-		});
-	}),
-);
+/** (💡)  - Get all item in list group and call product feature */
+let listItem = await Promise.all(
+	listGroup
+		.reduce((arr, curr) => arr.concat(curr.list), [])
+		.map(async (category: any) => {
+			let { data } = await getByUID("product", category.data.product_list.find((el:any) => el.is_featured).product.uid)
+			return { ...category, product_feature: data }
+		})
+)
 ---
 
 <section class="kustomer-cata">
@@ -51,18 +41,32 @@ await Promise.all(
 			<Fragment set:html={describe} slot="describe" />
 		</KustomerCatalogTitle>
 		<div class="kustomer-cata-main">
-			<KustomerCatalogList
-				grp1={Astro.props.group1}
-				grp2={Astro.props.group2}
-				list={listCategory}
-				client:visible={{ rootMargin: "100% 0px 100% 0px" }}
-			/>
+			<div class="kustomer-cata-main-content-wrap">
+				{listGroup.map((group, idx) => (
+					<KustomerCatalogGroup
+						key={idx}
+						data={group}
+						listItem={listItem}
+						client:visible={{ rootMargin: "100% 0px 100% 0px" }}
+						>
+						<KustomerCatalogThree
+							slot="card"
+							isMobile={true}
+							listItem={listItem.filter(item1 => group.list.some(item2 => item1.id === item2.id))}
+							client:idle
+							client:media="(max-width: 767px)"
+						>
+							<Fragment set:html={arrIcon} slot="arrIcon" />
+						</KustomerCatalogThree>
+					</KustomerCatalogGroup>
+
+				))}
+			</div>
 			<KustomerCatalogThree
-				listCate={listCategory}
 				listItem={listItem}
-				client:load
+				client:media="(min-width: 768px)"
+				client:idle
 			>
-				<Image src={qr} alt="" slot="qr" class="ic ic-80" />
 				<Fragment set:html={arrIcon} slot="arrIcon" />
 			</KustomerCatalogThree>
 		</div>

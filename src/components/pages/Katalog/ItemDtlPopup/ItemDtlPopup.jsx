@@ -86,7 +86,6 @@ function GlobalPopup({ ...props }) {
             if (el.getAttribute('data-popup') === "open") {
                 el.addEventListener("click", function (e) {
                     Popup.open(e.target);
-                    console.log('as du');
                 });
             }
         });

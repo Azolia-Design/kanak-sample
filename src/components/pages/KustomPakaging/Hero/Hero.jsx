@@ -21,7 +21,7 @@ function KustomPackagingHero({ ...props }) {
     return (
         <section className="kuspack-hero">
             <div className="container grid">
-                <h1 className="heading txt-180 txt-black txt-up kuspack-hero-title">Kustom Krafted Packaging Solutions</h1>
+                <h1 className="heading txt-180 txt-black txt-up kuspack-hero-title">{props.title[0].text}</h1>
             </div>
         </section>
     )

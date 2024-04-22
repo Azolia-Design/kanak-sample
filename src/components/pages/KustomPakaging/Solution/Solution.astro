@@ -1,0 +1,55 @@
+---
+const { label, title, sub, list } = Astro.props;
+import { Image } from "astro:assets";
+import { getByUID } from "@/prismic.js";
+import KustomPackagingSolution from "./Solution";
+
+const listItem = await Promise.all(
+    list.map((industry: any) => {
+        let item = getByUID("industry", industry.item.uid);
+        return item;
+    }),
+);
+---
+
+<KustomPackagingSolution
+    label={label}
+    title={title}
+    sub={sub}
+    client:visible={{ rootMargin: "100% 0px 100% 0px" }}
+>
+    <Fragment slot="listServices">
+        {
+            listItem.map((item, idx) => (
+                <div class="grid kuspack-solution-main-item">
+                    <div class="kuspack-solution-main-item-ic">
+                        <Image
+                            src={item.data.icon.url}
+                            alt={item.data.icon.alt}
+                            class="ic ic-100"
+                            width={item.data.icon.dimensions.width}
+                            height={item.data.icon.dimensions.height}
+                        />
+                    </div>
+                    <div class="kuspack-solution-main-item-content">
+                        <h3 class="heading h4 txt-up txt-black kuspack-solution-main-item-title">
+                            {item.data.title}
+                        </h3>
+                        <p class="txt txt-18 txt-med kuspack-solution-main-item-sub">
+                            {item.data.sub_title}
+                        </p>
+                        <a
+                            href={"/kustomers/" + item.uid}
+                            data-cursor="txtLink"
+                            class="txt txt-18 txt-med txt-orange kuspack-solution-main-item-link txt-link"
+                        >
+                            Learn more
+                        </a>
+                    </div>
+                    <div class="line" />
+                    {idx == list.length - 1 && <div class="line line-bottom" />}
+                </div>
+            ))
+        }
+    </Fragment>
+</KustomPackagingSolution>

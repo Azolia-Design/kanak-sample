@@ -36,7 +36,12 @@ const { data, uid } = await getPage("privatelabel_page");
     <Collection />
     <Privilege />
     <Distribution />
-    <CaseStudies />
+    <CaseStudies
+        label={data.kase_studies_label}
+        title={data.kase_studies_title}
+        des={data.kase_studies_sub}
+        btn={data.kase_studies_btn}
+    />
     <Client
         title={homeData.data.client_title[0].text}
         sub_title={homeData.data.client_sub_title[0].text}

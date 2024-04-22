@@ -90,7 +90,7 @@
     &-menu {
         display: flex;
         align-items: center;
-        column-gap: 1.8rem;
+        column-gap: 1.2rem;
 
         @include md {
             display: none;
@@ -98,10 +98,27 @@
 
         &-item {
             position: relative;
-
+            display: flex;
+            align-items: center;
+            gap: 0 .2rem;
+            cursor: pointer;
+            &.active {
+                .header-menu-item-link,
+                .header-menu-item-ic {
+                    color: var(--cl-orange);
+                }
+            }
             &-link {
                 & * {
                     pointer-events: none;
+                }
+            }
+            &-ic {
+                margin-top: -.2rem;
+                transition: transform 0.4s ease, color 0.4s ease;
+                pointer-events: none;
+                &.active {
+                    transform: rotate(180deg);
                 }
             }
 
@@ -153,6 +170,7 @@
                 justify-content: space-between;
                 color: var(--cl-txt);
                 transition: color 400ms ease;
+                cursor: pointer;
 
                 &-ic {
                     contain: paint;
@@ -165,7 +183,8 @@
                     }
                 }
 
-                &:hover {
+                &:hover,
+                &.active {
                     color: var(--cl-orange);
 
                     .header-dropdown-item-ic .ic {
@@ -420,7 +439,7 @@
             margin-bottom: 4rem;
 
             @include sm {
-                // margin: 0;   
+                // margin: 0;
                 @include text(12);
                 text-align: center;
                 margin-top: 0;
