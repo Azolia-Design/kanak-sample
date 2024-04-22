@@ -57,7 +57,7 @@ function KareersPerk(props) {
             <div className="container">
                 <div className="kareer-perk-title-wrap">
                     <h3 className="heading h3 txt-up txt-black kareer-perk-sub">
-                        Elevating Employee Well-Being
+                        {props.label}
                     </h3>
                     <h2 className="heading h0 txt-up txt-black kareer-perk-title">
                         A Dive into Our Employee <span className="txt-green">Perks Paradise</span>

@@ -36,7 +36,7 @@ function ComplianceHero({ ...props }) {
             <div className="complian-hero-img">
                 <div className="line"></div>
                 <div className="complian-hero-img-inner">
-                    <img src={props.img.url} alt={props.img.alt} width={props.img.dimensions.width} className='img img-fill' />
+                    {props.heroBg}
                 </div>
             </div>
         </section>

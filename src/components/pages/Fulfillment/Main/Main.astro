@@ -1,5 +1,6 @@
 ---
 import { getByUID } from "@/prismic";
+import { Image } from "astro:assets";
 import { convertHighlight } from "@/components/utils/text";
 import FulfillMain from "./Main";
 const list = Astro.props.list;
@@ -16,8 +17,15 @@ let listItem = await Promise.all(
 
 <FulfillMain
     list={listItem}
-    img={Astro.props.img}
     client:visible={{ rootMargin: "100% 0px 100% 0px" }}
 >
+    <Image
+        src={Astro.props.img.url}
+        alt={Astro.props.img.alt || ""}
+        width={Astro.props.img.dimensions.width}
+        height={Astro.props.img.dimensions.height}
+        slot="heroBg"
+        class="img img-fill"
+    />
     <Fragment set:html={convertHighlight(Astro.props.title)} slot="title" />
 </FulfillMain>

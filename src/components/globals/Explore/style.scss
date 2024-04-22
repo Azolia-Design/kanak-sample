@@ -25,7 +25,6 @@
 
         @include sm {
             @include text(h5);
-            margin-left: 2rem;
         }
     }
 
@@ -37,7 +36,6 @@
 
         @include sm {
             grid-template-columns: 1fr;
-            padding: 0 2rem;
         }
 
         &-item {

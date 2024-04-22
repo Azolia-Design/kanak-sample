@@ -1,8 +1,18 @@
 ---
 import { Image } from "astro:assets";
 import KareersHero from './Hero';
-import kareerHeroBg from '@assets/kareer-hero-bg.jpg';
 ---
-<KareersHero client:load>
-    <Image src={kareerHeroBg} alt="" slot="heroBg" class="img img-fill"/>
+<KareersHero
+    title={Astro.props.title}
+    img={Astro.props.img}
+    client:load>
+
+    <Image
+        src={Astro.props.img.url}
+        alt=""
+        width={Astro.props.img.dimensions.width}
+        height={Astro.props.img.dimensions.height}
+        slot="heroBg"
+        class="img img-fill"
+    />
 </KareersHero>
