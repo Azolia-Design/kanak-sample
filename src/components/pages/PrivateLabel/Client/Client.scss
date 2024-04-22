@@ -1,15 +1,16 @@
 @use '@styles/mixins' as *;
 
 .kustomer-client {
-    padding-top: 28rem;
-
+    padding-top: 6rem;
+    padding-bottom: 20rem;
 
     @include md {
-        padding-top: 17rem;
+        padding-top: 9rem;
+        padding-bottom: 6rem;
     }
 
     @include sm {
-        padding-top: 14rem;
+        padding-top: unset;
         padding-bottom: 6rem;
     }
 

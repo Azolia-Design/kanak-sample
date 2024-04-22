@@ -10,9 +10,14 @@ const { data } = await getPage("kareers");
 ---
 
 <Layout title="Kareers" data_page="Kareers">
-    <Hero />
-    <Culture culture_list={data.culture_list} />
+    <Hero title={data.hero_title[0].text} img={data.hero_bg} />
+    <Culture title={data.culture_title} sub={data.culture_sub} list={data.culture_list} />
     <Gallery />
-    <Perk perk_list={data.perk_list} />
-    <Cta />
+    <Perk
+        label={data.perk_label}
+        perk_list={data.perk_list} />
+    <Cta
+        title={data.cta_title[0].text}
+        sub={data.cta_sub[0].text}
+    />
 </Layout>

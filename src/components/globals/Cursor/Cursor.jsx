@@ -40,7 +40,7 @@ function CursorMain({ ...props }) {
             let speed = 0.08;
             let targetEl;
             if (document.querySelectorAll('[data-cursor]:hover').length == 1) {
-                cursorInner.current.classList.remove('on-hover', 'on-hide', 'on-hover-sm')
+                cursorInner.current.classList.remove('on-hover', 'on-hide', 'on-hover-sm', 'on-hover-drag')
 
                 let type = document.querySelector('[data-cursor]:hover').getAttribute('data-cursor')
                 switch (type) {
@@ -49,6 +49,9 @@ function CursorMain({ ...props }) {
                         break;
                     case 'hide':
                         cursorInner.current.classList.add('on-hide')
+                        break;
+                    case 'drag':
+                        cursorInner.current.classList.add('on-hover-drag')
                         break;
                     case 'txtLink':
                         cursorInner.current.classList.add('on-hover-sm')
@@ -65,7 +68,7 @@ function CursorMain({ ...props }) {
                         break;
                 }
             } else {
-                cursorInner.current.classList.remove('on-hover', 'on-hide', 'on-hover-sm')
+                cursorInner.current.classList.remove('on-hover', 'on-hide', 'on-hover-sm', 'on-hover-drag')
             }
 
             cursor.current.style.transform = `translate(${lerp(cursorX, targetX, speed)}px, ${lerp(cursorY, targetY, speed)}px)`
@@ -86,6 +89,7 @@ function CursorMain({ ...props }) {
                     <div className="cursor-main-inner-ic ic ic-40">
                         {props.icExt}
                     </div>
+                    <div className="txt txt-18 txt-med cursor-main-inner-drag">Drag</div>
                 </div>
             </div>
         </div>

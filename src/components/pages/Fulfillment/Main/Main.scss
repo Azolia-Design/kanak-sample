@@ -6,6 +6,7 @@
     padding-bottom: 6.4rem;
 
     &-img {
+        overflow: hidden;
         height: 70rem;
 
         @include md {
@@ -18,9 +19,10 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 100%;
+            @include size(100%);
 
             img {
+                object-fit: cover;
                 mix-blend-mode: multiply;
             }
         }
@@ -207,6 +209,7 @@
             display: grid;
             align-items: center;
             grid-template-columns: 1fr;
+            overflow: hidden;
 
             @include md {
                 top: calc(50vh - 18.55rem);
@@ -219,7 +222,8 @@
             width: 100%;
             aspect-ratio: 0.8671679198;
             opacity: 0;
-            transition: opacity .4s ease;
+            transform: scale(1.1);
+            transition: opacity 0.4s ease-in-out, transform .4s ease-out;
 
             @include md {
                 aspect-ratio: 0.8652291105;
@@ -227,6 +231,7 @@
 
             &.active {
                 opacity: 1;
+                transform: scale(1);
             }
         }
     }

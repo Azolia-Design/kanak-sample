@@ -69,44 +69,14 @@ function PrivateDistribute(props) {
                         We guarantee your shelves stay stocked with top-notch products, rain or shine. Dealing with supply chain hiccups? We got you covered.
                     </p>
                     <div className="private-distribute-btn-wrap">
-                        <a href="#" className="private-distribute-btn" data-cursor="txtLink">
+                        <a href="#" className="txt-link private-distribute-btn" data-cursor="txtLink">
                             <div className="txt txt-18 txt-bold">Learn more</div>
                             <div className="ic ic-16"><ArrowUpRight /></div>
                         </a>
                     </div>
                 </div>
                 <div className="private-distribute-main">
-                    {[...Array(3)].map((item, idx) => (
-                        <div className="private-distribute-main-item bg-light" key={idx} style={
-                            {
-                                '--idx': idx + 1,
-                                '--pd-bot': 3 - idx - 1,
-                                '--mg-top': idx == 0 ? 0 : 3 - idx
-                            }
-                        }>
-                            <div className="private-distribute-main-item-inner">
-                                <div className="line line-top"></div>
-                                <div className="private-distribute-main-item-content">
-                                    <div className="private-distribute-main-item-title">
-                                        <div className="private-distribute-main-item-title-dot"></div>
-                                        <h3 className="heading h1 txt-up txt-black private-distribute-main-item-title-txt">
-                                            {/* {item.title} */}
-                                            Global Standards, Local Love
-                                        </h3>
-                                    </div>
-                                    <p className="txt txt-20 txt-med private-distribute-main-item-sub">
-                                        {/* {item.sub} */}
-                                        We scrutinize every inch of our products with 100% inspection. Only the cream of the crop makes it through our doors.
-                                    </p>
-                                </div>
-                                <div className="private-distribute-main-item-img">
-                                    {/* <img src={item.image.url} alt={item.image.alt} width={item.image.dimensions.width} height={item.image.dimensions.height} className='img img-h' /> */}
-                                    {props.img}
-                                </div>
-                                {idx == 2 && (<div className="line line-bot"></div>)}
-                            </div>
-                        </div>
-                    ))}
+                    {props.renderList}
                 </div>
             </div>
         </section>

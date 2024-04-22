@@ -140,3 +140,13 @@ html[data-page='Compliance'] {
         }
     }
 }
+
+html[data-page='Private Label'] {
+    .global-cta {
+        &-bg {
+            @include sm {
+                left: 0;
+            }
+        }
+    }
+}

@@ -69,7 +69,6 @@ function CasedtlMain(props) {
         let mainSplit = []
         let richtextSequence = []
         document.querySelectorAll('.casedtl-content-richtext *:not(astro-slot, .holder)').forEach((item, idx) => {
-            console.log(item);
             const richTxt = new SplitType(item, { types: 'lines, words', lineClass: 'split-line' })
             animate(richTxt.words, { opacity: 0, transform: "translateY(100%)" }, { duration: 0 })
             if (item.nodeName == 'P') {

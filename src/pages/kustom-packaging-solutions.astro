@@ -1,0 +1,21 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Hero from "@pages/KustomPakaging/Hero/Hero.astro";
+import Innovation from "@pages/KustomPakaging/Innovation/Innovation.astro";
+
+import { getPage } from "@/prismic.js";
+
+const homeData = await getPage("home");
+const { data, uid } = await getPage("kustompackaging_page");
+---
+
+<Layout
+    title="Kustom Packaging Solutions"
+    data_page="Kustom Packaging Solutions"
+    explore_data={uid}
+    footer_cta={data.cta_title[0]?.text}
+    footer_bg={data.cta_background}
+>
+    <Hero />
+    <Innovation />
+</Layout>

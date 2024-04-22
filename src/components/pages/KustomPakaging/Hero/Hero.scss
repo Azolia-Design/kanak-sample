@@ -1,0 +1,23 @@
+@use '@styles/colors' as *;
+@use '@styles/mixins' as *;
+
+.kuspack-hero {
+    &-title {
+        grid-column: 1/13;
+        margin-top: 27.8rem;
+        margin-bottom: 22.7rem;
+
+        @include md {
+            grid-column: 1/-1;
+            margin-top: 21.5rem;
+            margin-bottom: 10rem;
+        }
+
+        @include sm {
+            @include text(h1);
+            text-align: center;
+            margin-top: 19.6rem;
+            margin-bottom: 20rem;
+        }
+    }
+}

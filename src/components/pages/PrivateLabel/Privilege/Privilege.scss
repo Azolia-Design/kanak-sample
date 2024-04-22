@@ -86,18 +86,35 @@
         }
     }
 
-    &-item {
+    &-item-wrap {
         grid-column: 1/2;
         grid-row: 1/2;
+
+        @include sm {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 1;
+            grid-column: span 1;
+            grid-row: unset;
+            transform: unset;
+            margin-top: -2rem;
+
+            &:first-child {
+                margin-top: unset;
+            }
+        }
+    }
+
+    &-item {
         position: relative;
         display: flex;
         align-items: center;
         justify-content: center;
         text-align: center;
-        border-radius: 100vmax;
         @include size(56rem);
+        border-radius: 100vmax;
         transform-origin: center 1.3rem;
-        transform: rotate(calc(var(--idx) * 120deg));
+        transform: rotate(calc(var(--idx) * -120deg));
         margin-top: 26rem;
         z-index: 1;
 
@@ -132,7 +149,7 @@
         }
 
         &-inner {
-            transform: rotate(calc(var(--idx) * -120deg));
+            transform: rotate(calc(var(--idx) * 120deg));
             @include size(100%);
             display: flex;
             align-items: center;
@@ -150,7 +167,7 @@
 
         &-title {
             max-width: 30rem;
-            transition: opacity .4s ease;
+            transition: all .4s ease;
             transition-delay: unset;
             z-index: 1;
 
@@ -183,6 +200,7 @@
             &-wrap {
                 z-index: 2;
                 opacity: 0;
+                transform: scale(.85);
                 position: absolute;
                 display: flex;
                 align-items: center;
@@ -190,7 +208,11 @@
                 @include size(100%);
                 border-radius: 100vmax;
                 background-color: var(--cl-bg);
-                transition: opacity .4s ease;
+                transition: opacity 0.35s ease-in-out, transform 1.333s linear(
+                    0, 0.009, 0.035 2.1%, 0.141 4.4%, 0.723 12.9%, 0.938, 1.077 20.4%, 1.121,
+                    1.149 24.3%, 1.163 27%, 1.154 29.9%, 1.017 43.1%, 0.991, 0.977 51%,
+                    0.975 57.1%, 1.003 76.9%, 1
+                );
 
                 @include md {
                     position: relative;
@@ -206,6 +228,7 @@
             z-index: 10;
 
             .private-privilege-item-title {
+                transform: scale(1.4);
                 opacity: 0;
                 transition-delay: .1s;
 
@@ -215,6 +238,7 @@
             }
 
             .private-privilege-item-sub-wrap {
+                transform: scale(1);
                 opacity: 1;
             }
         }

@@ -8,5 +8,47 @@ import kareerCultItem from "@assets/kareer-cult-item.jpg";
     {...Astro.props}
     client:visible={{ rootMargin: "100% 0px 100% 0px" }}
 >
-    <Image src={kareerCultItem} alt="" slot="img" class="img img-h" />
+    <Fragment slot="renderList">
+        {
+            [...Array(3)].map((item, idx) => (
+                <div
+                    class="private-distribute-main-item bg-light"
+                    style={{
+                        "--idx": idx + 1,
+                        "--pd-bot": 3 - idx - 1,
+                        "--mg-top": idx == 0 ? 0 : 3 - idx,
+                    }}
+                >
+                    <div class="private-distribute-main-item-inner">
+                        <div class="line line-top" />
+                        <div class="private-distribute-main-item-content">
+                            <div class="private-distribute-main-item-title">
+                                <div class="private-distribute-main-item-title-dot" />
+                                <h3 class="heading h1 txt-up txt-black private-distribute-main-item-title-txt">
+                                    {/* {item.title} */}
+                                    Global Standards, Local Love
+                                </h3>
+                            </div>
+                            <p class="txt txt-20 txt-med private-distribute-main-item-sub">
+                                {/* {item.sub} */}
+                                We scrutinize every inch of our products with
+                                100% inspection. Only the cream of the crop
+                                makes it through our doors.
+                            </p>
+                        </div>
+                        <div class="private-distribute-main-item-img">
+                            {/* <img src={item.image.url} alt={item.image.alt} width={item.image.dimensions.width} height={item.image.dimensions.height} class='img img-h' /> */}
+                            <Image
+                                src={kareerCultItem}
+                                alt=""
+                                slot="img"
+                                class="img img-h"
+                            />
+                        </div>
+                        {idx == 2 && <div class="line line-bot" />}
+                    </div>
+                </div>
+            ))
+        }
+    </Fragment>
 </PrivateDistribute>
