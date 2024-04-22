@@ -93,7 +93,7 @@ function FulfillMain({ ...props }) {
             <div className="fulfill-main-img">
                 <div className="line"></div>
                 <div className="fulfill-main-img-inner">
-                    <img src={props.img.url} alt={props.img.alt} width={props.img.dimensions.width} className='img img-h' />
+                    <img src={props.img.url} alt={props.img.alt} width={props.img.dimensions.width} className='img' />
                 </div>
             </div>
             <div className="container grid">

@@ -75,9 +75,10 @@
         &-inner {
             background-color: var(--cl-bg);
             width: 100%;
-            aspect-ratio: 1.5191919192;
+            height: 49rem;
 
             @include sm {
+                height: unset;
                 aspect-ratio: 1.4626168224;
             }
 

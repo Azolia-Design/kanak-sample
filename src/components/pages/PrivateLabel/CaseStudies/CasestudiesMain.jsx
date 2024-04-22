@@ -56,7 +56,7 @@ function CaseStudiesItem({ ...props }) {
     }, [])
 
     return (
-        <a href={`/kase-studies/${props.data.uid}`} className="keen-slider__slide private-kasestu-main-item bg-light" ref={itemRef} data-cursor="ext">
+        <a href={`/kase-studies/${props.data.uid}`} className="keen-slider__slide private-kasestu-main-item bg-light" ref={itemRef} data-cursor="drag">
             <div className="txt txt-20 txt-bold private-kasestu-main-item-label">{props.data.data.category}</div>
             <h3 className="heading h4 txt-black txt-up private-kasestu-main-item-title">{props.data.data.title[0].text}</h3>
             <div className="private-kasestu-main-item-bot">

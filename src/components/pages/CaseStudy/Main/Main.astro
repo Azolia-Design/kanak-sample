@@ -11,47 +11,39 @@ import icArrowDown from "@assets/ic-arr-down.svg?raw";
 import arrIcon from "@assets/arr-right.svg?raw";
 const caseList = await getAllByType("case_study");
 const relList = caseList.filter(
-    (item: any) => item.data.category == Astro.props.data.category,
+  (item: any) => item.data.category == Astro.props.data.category,
 );
 const removeDupList = relList.filter(
-    (item: any) => item.uid != Astro.props.uid,
+  (item: any) => item.uid != Astro.props.uid,
 );
 ---
 
 <section class="casedtl">
-    <div class="container grid">
-        <CasedtlSlide {...Astro.props} client:visible>
-            <Fragment set:html={arrIcon} slot="arrIcon" />
-        </CasedtlSlide>
-        <CasedtlMain {...Astro.props} client:load>
-            <Image
-                slot="clientLogo"
-                src={Astro.props.data.client_logo.url}
-                alt=""
-                width={Astro.props.data.client_logo.dimensions.width
-                    ? Astro.props.data.client_logo.dimensions.width
-                    : "298"}
-                height={Astro.props.data.client_logo.dimensions.height
-                    ? Astro.props.data.client_logo.dimensions.height
-                    : "373"}
-            />
-            <Fragment
-                slot="content"
-                set:html={prismicH.asHTML(Astro.props.data.content)}
-            />
-        </CasedtlMain>
-        {
-            removeDupList.length !== 0 && (
-                <CasedtlRel
-                    {...Astro.props}
-                    list={removeDupList}
-                    client:visible
-                >
-                    <Fragment set:html={arrIcon} slot="arrIcon" />
-                    <Fragment set:html={icArrowExt} slot="icArrowExt" />
-                    <Fragment slot="icArrowDown" set:html={icArrowDown} />
-                </CasedtlRel>
-            )
-        }
-    </div>
+  <div class="container grid">
+    <CasedtlSlide {...Astro.props} client:visible>
+      <Fragment set:html={arrIcon} slot="arrIcon" />
+    </CasedtlSlide>
+    <CasedtlMain {...Astro.props} client:load>
+      <Image
+        slot="clientLogo"
+        src={Astro.props.data.client_logo.url}
+        alt=""
+        width={Astro.props.data.client_logo.dimensions.width}
+        height={Astro.props.data.client_logo.dimensions.height}
+      />
+      <Fragment
+        slot="content"
+        set:html={prismicH.asHTML(Astro.props.data.content)}
+      />
+    </CasedtlMain>
+    {
+      removeDupList.length !== 0 && (
+        <CasedtlRel {...Astro.props} list={removeDupList} client:visible>
+          <Fragment set:html={arrIcon} slot="arrIcon" />
+          <Fragment set:html={icArrowExt} slot="icArrowExt" />
+          <Fragment slot="icArrowDown" set:html={icArrowDown} />
+        </CasedtlRel>
+      )
+    }
+  </div>
 </section>

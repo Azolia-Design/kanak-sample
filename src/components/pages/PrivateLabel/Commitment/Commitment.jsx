@@ -4,6 +4,7 @@ import ArrowUpRight from "@/components/globals/IcArrow/ArrowUpRight";
 import { animate, timeline, stagger, inView } from "motion";
 import SplitType from 'split-type';
 import CommitmentMain from "./CommitmentMain";
+
 function PrivateCommitment({ ...props }) {
     useEffect(() => {
         const title = new SplitType(".private-commitment-title", { types: 'lines, words', lineClass: 'split-line' })
@@ -46,7 +47,7 @@ function PrivateCommitment({ ...props }) {
                     <div className="private-commitment-sticky-wrapper">
                         <h1 className="heading h0 txt-black txt-up private-commitment-title">{props.newTitle}</h1>
                         <div className="txt txt-18 txt-med private-commitment-sub">{props.sub}</div>
-                        <a href="#" className="private-commitment-link" data-cursor="txtLink">
+                        <a href="#" className="txt-link private-commitment-link" data-cursor="txtLink">
                             <div className="txt txt-18 txt-bold private-commitment-link-txt">{props.btn}</div>
                             <div className="ic ic-16"><ArrowUpRight /></div>
                         </a>
