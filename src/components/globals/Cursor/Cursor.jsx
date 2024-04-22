@@ -89,7 +89,7 @@ function CursorMain({ ...props }) {
                     <div className="cursor-main-inner-ic ic ic-40">
                         {props.icExt}
                     </div>
-                    <div className="txt txt-20 txt-med cursor-main-inner-drag">Drag</div>
+                    <div className="txt txt-18 txt-med cursor-main-inner-drag">Drag</div>
                 </div>
             </div>
         </div>
