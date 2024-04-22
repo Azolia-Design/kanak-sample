@@ -37,10 +37,11 @@
     }
 
     &-main {
-        grid-column: 1/6;
+        grid-column: 1/7;
         align-self: end;
         border: solid .2rem var(--cl-txt);
         background-color: var(--cl-bg);
+        max-width: 51rem;
 
         @include sm {
             grid-column: span 4;
@@ -93,16 +94,48 @@
     }
 }
 
-
 html[data-page='Fulfillment'] {
     .global-cta {
         &-main {
-            grid-column: 1/7;
             max-width: 55.5rem;
 
             @include md {
                 grid-column: 1/6;
-                max-width: unset ;
+                max-width: unset;
+            }
+        }
+    }
+}
+
+html[data-page='Kustomer'] {
+    .global-cta {
+        &-main {
+            max-width: 52.3rem;
+
+            @include md {
+                grid-column: 1/5;
+                margin-right: calc(var(--grid-gap)* -1);
+            }
+
+            @include sm {
+                grid-column: 1/-1;
+                margin-right: unset;
+            }
+        }
+    }
+}
+
+html[data-page='Compliance'] {
+    .global-cta {
+        &-main {
+            @include md {
+                grid-column: 1/6;
+                margin-right: calc(var(--grid-gap)* -1);
+            }
+
+            @include sm {
+                grid-column: 1/-1;
+                margin-right: unset;
             }
         }
     }

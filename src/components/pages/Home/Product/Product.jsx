@@ -11,16 +11,17 @@ function HomeProduct(props) {
         setIndex(0);
         scroll(({y}) => {
             if (document.querySelectorAll('.home-prod-cards-inner').length >= 1) {
-                if (y.progress >= .9) {
+                if (y.progress >= (window.innerWidth < 767 ? .76 : .9)) {
                     document.querySelector('.home-prod-cards-inner').classList.add('active')
-                } else {
+                }
+                else {
                     setIndex(0);
                     document.querySelector('.home-prod-cards-inner').classList.remove('active')
                 }
             }
         }, {
             target: document.querySelector('.home-prod-cards-inner'),
-            offset: ["start end", "center center"]
+            offset: ['start end', "center center"]
         })
     }, [])
     return (

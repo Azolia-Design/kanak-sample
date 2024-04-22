@@ -7,13 +7,13 @@ function KareersCta(props) {
     useEffect(() => {
         const title = new SplitType('.kareer-cta-title', { types: 'lines, words', lineClass: "split-line" });
         const subTitle = new SplitType('.kareer-cta-sub', { types: 'lines, words', lineClass: "split-line" });
-        animate(title.words, {opacity: 0, transform: 'translateY(100%)'}, {duration: 0})
-        animate(subTitle.words, {opacity: 0, transform: 'translateY(12px)'}, {duration: 0})
+        animate(title.words, { opacity: 0, transform: 'translateY(100%)' }, { duration: 0 })
+        animate(subTitle.words, { opacity: 0, transform: 'translateY(12px)' }, { duration: 0 })
         animate('.kareer-cta-btn-wrap', { opacity: 0, transform: "translateY(10px)" }, { duration: 0 });
         const sequence = [
-            [title.words, {opacity: 1, transform: 'none'}, {duration: .8, delay: stagger(.05)}],
-            [subTitle.words, {opacity: 1, transform: 'none'}, {duration: .6, delay: stagger(.02), at: '<'}],
-            ['.kareer-cta-btn-wrap', { opacity: 1, transform: 'none'}, { duration: .8, at: '-.5' }]
+            [title.words, { opacity: 1, transform: 'none' }, { duration: .8, delay: stagger(.05) }],
+            [subTitle.words, { opacity: 1, transform: 'none' }, { duration: .6, delay: stagger(.02), at: '<' }],
+            ['.kareer-cta-btn-wrap', { opacity: 1, transform: 'none' }, { duration: .8, at: '-.5' }]
         ]
         inView('.kareer-cta', () => {
             timeline(sequence).finished.then(() => {
@@ -34,10 +34,8 @@ function KareersCta(props) {
                         We are dedicated to fostering a dynamic and inclusive workplace where talent thrives, ideas flourish, and careers are built. If you are passionate about kanak and are seeking a rewarding and challenging career, consider becoming a part of our vibrant team.
                     </p>
                     <div className="kareer-cta-btn-wrap">
-                        <a href="#" className="btn btn-lg">
-                            <div className="txt txt-18 txt-up txt-med">
-                                Views open positions
-                            </div>
+                        <a href="#" className="btn btn-lg" data-cursor="txtLink" data-cursor-txtlink="child">
+                            <div className="txt txt-18 txt-up txt-med" data-cursor-txtlink-child>Views open positions</div>
                         </a>
                     </div>
                 </div>

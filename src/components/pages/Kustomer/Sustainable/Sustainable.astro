@@ -6,6 +6,7 @@ import KustomerSustain from "./Sustainable";
 
 import sustainable from "@assets/ic-sustainable.svg";
 import PDFIcon from "@assets/ic-pdf.svg?raw";
+import arrIcon from "@assets/arr-right.svg?raw";
 
 const susList = Astro.props.list.map((item) => item.sustainable_item.uid);
 const productGroup = await getAllByType("product_group");
@@ -42,5 +43,6 @@ const productList = await Promise.all(
     productList={productList}
 >
     <Fragment set:html={PDFIcon} slot="PDFIcon" />
+    <Fragment set:html={arrIcon} slot="arrIcon" />
     <Image src={sustainable} alt="" slot="sustainable" class="img img-fill" />
 </KustomerSustain>

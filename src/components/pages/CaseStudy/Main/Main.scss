@@ -33,6 +33,12 @@
 
             &>.line {
                 margin-bottom: 6rem;
+                opacity: 1;
+                transition: opacity .4s ease;
+
+                &.hidden {
+                    opacity: 0;
+                }
             }
         }
 
@@ -43,6 +49,10 @@
             border: solid .2rem var(--cl-txt);
             display: flex;
             flex-direction: column;
+
+            &.hidden {
+                opacity: .5;
+            }
 
             &-inner {
                 height: 100%;
@@ -61,6 +71,10 @@
                 height: 10rem;
                 position: relative;
                 display: flex;
+
+                &.hidden {
+                    display: none;
+                }
 
                 &>.line {
                     position: absolute;
@@ -102,7 +116,8 @@
                     transition: color 400ms ease;
                     margin-right: -.2rem;
                     position: relative;
-                    & > .line-ver {
+
+                    &>.line-ver {
                         position: absolute;
                         left: 0;
                         top: 0;
@@ -429,7 +444,8 @@
                 &-nav {
                     &-item {
                         @include size(5.8rem, 5.6rem);
-                        & > .line-ver {
+
+                        &>.line-ver {
                             display: block !important;
                         }
                     }
@@ -701,8 +717,10 @@
                     bottom: 4rem;
                     left: auto;
                     right: auto;
-                };
-                
+                }
+
+                ;
+
                 transition: all 400ms ease;
 
                 &-ic {

@@ -19,11 +19,11 @@ let newList = kustomerList.map((el, idx) => ({
 }));
 
 const pages = [
-    { name: "Kustomers", link: "/", type: "dropdown", sub_menu: [...newList] },
+    { name: "Kustomers", link: "/kustomers", type: "dropdown", sub_menu: [...newList] },
     { name: "Katalog", link: "/katalog", type: "" },
     {
         name: "Solutions",
-        link: "/",
+        link: "/solutions",
         type: "dropdown",
         sub_menu: [
             { name: "Private label", url: "/" },
@@ -33,7 +33,7 @@ const pages = [
     { name: "Fulfillment", link: "/fulfillment", type: "" },
     {
         name: "Resources",
-        link: "/",
+        link: "/resources",
         type: "dropdown",
         sub_menu: [
             { name: "Insights", url: "/insights" },
@@ -43,12 +43,14 @@ const pages = [
     { name: "Know us", link: "/", type: "" },
 ];
 const bodyFlagIc = await getImage({ src: bodyFlag, format: "svg" });
+const pathname = new URL(Astro.request.url).pathname;
 ---
 
 <HeaderGlobal
     pages={pages}
     bodyFlag={bodyFlagIc.src}
     currYear={currYear}
+    pathname={pathname}
     client:load
 >
     <Image src={kanakLogo} alt="Kanak Logo" slot="logo" class="img-h" />

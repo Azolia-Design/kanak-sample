@@ -21,6 +21,8 @@
         @include sm {
             @include text(h3);
             text-align: left;
+            border-top: .2rem solid var(--cl-txt);
+            padding-top: 6rem;
             margin-bottom: 6rem;
         }
     }
@@ -119,7 +121,7 @@
                 }
 
                 &-img {
-                    @include size(28.9rem, 40.1rem);
+                    width: 46rem;
                     align-self: end;
                     margin-top: auto;
                     transform-origin: right bottom;
@@ -127,7 +129,7 @@
                     mix-blend-mode: multiply;
 
                     @include md {
-                        @include size(20rem, 30rem);
+                        width: 28rem;
                     }
 
                     @include sm {
@@ -135,7 +137,6 @@
                         width: 100%;
                         height: unset;
                         overflow: hidden;
-                        aspect-ratio: 1.8244680851;
                         margin-bottom: 3.4rem;
 
                         img {

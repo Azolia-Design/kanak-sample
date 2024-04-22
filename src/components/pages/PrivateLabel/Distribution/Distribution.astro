@@ -1,0 +1,12 @@
+---
+import PrivateDistribute from "./Distribution.jsx";
+import Image from "astro/components/Image.astro";
+import kareerCultItem from "@assets/kareer-cult-item.jpg";
+---
+
+<PrivateDistribute
+    {...Astro.props}
+    client:visible={{ rootMargin: "100% 0px 100% 0px" }}
+>
+    <Image src={kareerCultItem} alt="" slot="img" class="img img-h" />
+</PrivateDistribute>

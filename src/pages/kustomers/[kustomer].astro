@@ -35,13 +35,11 @@ item.data.service_sub_items.forEach((el: any, idx: number) => {
 });
 
 const listCaseStudy = await getAllByType("case_study");
-const filterCaseStudy = listCaseStudy.filter(
-    (item) => item.data.category.toLowerCase().replace(" ", "-") === kustomer,
-);
 ---
 
 <Layout
     title={item.data.title}
+    data_page="Kustomer"
     footer_cta={item.data.cta_title[0]?.text}
     footer_bg={item.data.cta_background}
 >
@@ -84,31 +82,25 @@ const filterCaseStudy = listCaseStudy.filter(
                 label={item.data.katalog_label}
                 title={convertHighlight(item.data.katalog_title)}
                 describe={convertHighlight(item.data.katalog_des)}
-                group1={
-                    item.data.katalog_grp_1_title
-                        ? {
-                              title: item.data.katalog_grp_1_title,
-                              sub: item.data.katalog_grp_1_sub,
-                              list: item.data.katalog_grp_1_list,
-                          }
-                        : null
-                }
-                group2={
-                    item.data.katalog_grp_2_title
-                        ? {
-                              title: item.data.katalog_grp_2_title,
-                              sub: item.data.katalog_grp_2_sub,
-                              list: item.data.katalog_grp_2_list,
-                          }
-                        : null
-                }
+                groupData={[
+                    {
+                        title: item.data.katalog_grp_1_title,
+                        sub: item.data.katalog_grp_1_sub,
+                        list: item.data.katalog_grp_1_list,
+                    },
+                    {
+                        title: item.data.katalog_grp_2_title,
+                        sub: item.data.katalog_grp_2_sub,
+                        list: item.data.katalog_grp_2_list,
+                    }
+                ]}
             />
         )
     }
     {
         !isEmpty(item.data.explore_title) && (
             <Explore
-                listGroup={item.data.explore_list.map((el) => el.item)}
+                listGroup={item.data.explore_list}
                 title={convertHighlight(item.data.explore_title)}
             />
         )
@@ -125,10 +117,11 @@ const filterCaseStudy = listCaseStudy.filter(
     {
         !isEmpty(item.data.kase_study_title) && (
             <CaseStudy
+                currPage={kustomer}
                 label={item.data.kase_study_label}
                 title={item.data.kase_study_title[0].text}
                 des={item.data.kase_study_describe[0].text}
-                list={filterCaseStudy}
+                list={listCaseStudy}
             />
         )
     }

@@ -1,6 +1,5 @@
 import './Main.scss'
 import { useEffect, useState, useRef, Fragment } from 'react'
-import useDebounceCallback from "@hooks/useDebounce";
 import { animate, timeline, stagger, inView } from "motion";
 import SplitType from 'split-type';
 
@@ -57,10 +56,8 @@ function Item({ ...props }) {
 }
 function FulfillMain({ ...props }) {
     const [idxActive, setIdxActive] = useState(0);
-    const debounceHover = useDebounceCallback(setIdxActive, 200);
 
     useEffect(() => {
-        console.log(props.list);
         // Anim Img
         animate('.fulfill-main-img', { opacity: 0, transform: "translateY(6rem)" }, { duration: 0 })
 
@@ -109,7 +106,7 @@ function FulfillMain({ ...props }) {
                                 key={el.uid}
                                 data={el.data}
                                 isActive={idxActive == idx}
-                                mouseEnter={(e) => debounceHover(idx)}>
+                                mouseEnter={(e) => setIdxActive(idx)}>
                             </Item>
                         ))}
                     </div>

@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import SplitType from 'split-type';
-import { animate, timeline, stagger, inView, createStyleString } from "motion";
+import { animate, timeline, stagger, inView } from "motion";
 
 function ResourceCateHero({ ...props }) {
     useEffect(() => {

@@ -1,0 +1,9 @@
+---
+import Image from "astro/components/Image.astro";
+import ComplianceHero from "./Hero";
+---
+
+<ComplianceHero
+    {...Astro.props}
+    client:visible={{ rootMargin: "100% 0% 100% 0%" }}
+/>

@@ -3,9 +3,9 @@ import Image from "astro/components/Image.astro";
 import { getAllByType, getByUID } from "@/prismic";
 import KustomerExplore from "./Explore";
 const solutions = await getAllByType("solution");
-const list = await Promise.all(
+const listItem = await Promise.all(
     Astro.props.listGroup
-        .reduce((acc, curr) => acc.concat(curr.uid), [])
+        .reduce((acc, curr) => acc.concat(curr.item.uid), [])
         .map(async (uid: any) => {
             const item = await getByUID("brand", uid);
             const solution = await item.data.list.map((list: any) => {
@@ -15,11 +15,15 @@ const list = await Promise.all(
             return { ...item, list: solution };
         }),
 );
+const listImage = await Promise.all(
+    Astro.props.listGroup.reduce((acc, curr) => acc.concat(curr.image), []),
+);
 ---
 
 <KustomerExplore
     {...Astro.props}
-    groupItems={list}
+    listImg={listImage}
+    groupItems={listItem}
     client:visible={{ rootMargin: "100% 0px 100% 0px" }}
 >
     <Fragment set:html={Astro.props.title} slot="title" />

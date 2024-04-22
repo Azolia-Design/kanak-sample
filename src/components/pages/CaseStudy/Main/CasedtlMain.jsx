@@ -27,7 +27,7 @@ function CasedtlMain(props) {
         })
         const sequence = [
             ['.casedtl-bread .line', { scaleX: 1 }, { duration: 1, at: 0 }],
-            [breadcrumbText, { opacity: 1, transform: 'none' }, { duration: .6, delay: stagger(.04), at: .1}]
+            [breadcrumbText, { opacity: 1, transform: 'none' }, { duration: .6, delay: stagger(.04), at: .1 }]
         ]
         inView('.casedtl-bread', () => {
             timeline(sequence).finished.then(() => {
@@ -43,19 +43,17 @@ function CasedtlMain(props) {
         const title = new SplitType('.casedtl-content-title', { types: 'lines, words', lineClass: 'split-line' })
         let subTitle;
         animate(title.words, { opacity: 0, transform: 'translateY(100%)' }, { duration: 0 })
-        animate('.casedtl-content-client-img', { opacity: 0, transform: 'scale(.8)' }, { duration: 0 })
         animate('.casedtl-content-head .line', { scaleX: 0, transformOrigin: 'left' }, { duration: 0 })
 
         const titleSequence = [
-            [title.words, { opacity: 1, transform: 'none' }, { duration: .8, delay: stagger(.04 ), at: .2}],
-            ['.casedtl-content-client-img', { opacity: 1, transform: 'none' }, { duration: .8, at: .4 }],
+            [title.words, { opacity: 1, transform: 'none' }, { duration: .8, delay: stagger(.04), at: .2 }],
             ['.casedtl-content-head .line', { scaleX: 1 }, { duration: .8, at: .4 }],
         ]
 
         if (document.querySelector('.casedtl-content-sub')) {
             subTitle = new SplitType('.casedtl-content-sub', { types: 'lines, words', lineClass: 'split-line' })
             animate(subTitle.words, { opacity: 0, transform: 'translateY(100%)' }, { duration: 0 })
-            titleSequence.splice(1, 0, [subTitle.words, { opacity: 1, transform: 'none' }, { duration: .6, delay: stagger(.03), at: .5}],);
+            titleSequence.splice(1, 0, [subTitle.words, { opacity: 1, transform: 'none' }, { duration: .6, delay: stagger(.03), at: .5 }],);
         }
 
         inView('.casedtl-content-head', () => {
@@ -64,14 +62,14 @@ function CasedtlMain(props) {
                 if (document.querySelector('.casedtl-content-sub')) {
                     subTitle.revert()
                 }
-                document.querySelector('.casedtl-content-client-img').removeAttribute('style')
                 document.querySelector('.casedtl-content-head .line').removeAttribute('style')
             })
         }, { margin: "-15% 0px -15% 0px" })
 
         let mainSplit = []
         let richtextSequence = []
-        document.querySelectorAll('.casedtl-content-richtext astro-slot *').forEach((item, idx) => {
+        document.querySelectorAll('.casedtl-content-richtext *:not(astro-slot, .holder)').forEach((item, idx) => {
+            console.log(item);
             const richTxt = new SplitType(item, { types: 'lines, words', lineClass: 'split-line' })
             animate(richTxt.words, { opacity: 0, transform: "translateY(100%)" }, { duration: 0 })
             if (item.nodeName == 'P') {
@@ -93,9 +91,7 @@ function CasedtlMain(props) {
                 })
             })
         }, { margin: "-15% 0px -15% 0px" })
-
         // End Main Animation
-
     }, [])
 
     return (
@@ -124,16 +120,13 @@ function CasedtlMain(props) {
                 <div className="casedtl-content-head">
                     <div className="casedtl-content-title-wrap">
                         <h1 className="heading h3 txt-up txt-black casedtl-content-title">
-                            {props.data.title[0].text}
+                            {props.data.title[0]?.text}
                         </h1>
                         {props.data.sub_title && (
                             <h2 className="heading h6 txt-up txt-black casedtl-content-sub txt-green">
                                 {props.data.sub_title}
                             </h2>
                         )}
-                    </div>
-                    <div className="casedtl-content-client-img">
-                        {props.clientLogo}
                     </div>
                     <div className="line"></div>
                 </div>
