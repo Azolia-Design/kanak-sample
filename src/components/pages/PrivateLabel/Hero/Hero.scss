@@ -3,12 +3,12 @@
 
 
 .private-hero {
+    position: relative;
     padding-bottom: 15.6rem;
 
     @include md {
         padding-bottom: 6rem;
     }
-
     &-title {
         grid-column: 1/11;
         max-width: 100rem;
@@ -68,5 +68,12 @@
                 max-width: unset;
             }
         }
+    }
+    &-three {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: -10vh;
     }
 }
