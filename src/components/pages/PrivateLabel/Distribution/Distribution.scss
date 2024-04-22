@@ -1,0 +1,247 @@
+@use '@styles/mixins' as *;
+
+.private-distribute {
+    padding-top: 16.4rem;
+    padding-bottom: 13.7rem;
+    background-color: var(--cl-bg);
+    position: relative;
+    z-index: 3;
+
+    @include md {
+        padding-top: 6rem;
+    }
+
+    @include sm {
+        padding-top: 6rem;
+        padding-bottom: 0;
+    }
+
+    &>.line-top {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    &-title {
+        grid-column: 1/10;
+        max-width: 82rem;
+
+        @include md {
+            grid-column: 1/7;
+            margin-right: calc(var(--grid-gap) * -1);
+            max-width: 38.5rem;
+            @include text(h1);
+        }
+
+        @include sm {
+            @include text(h2);
+            grid-column: 1/-1;
+            margin-bottom: 2rem;
+            margin-right: unset;
+        }
+    }
+
+    &-sub-wrap {
+        grid-column: 12/17;
+        margin-left: -.2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+
+        @include md {
+            grid-column: 8/-1;
+            margin-left: unset;
+        }
+
+        @include sm {
+            grid-column: 1/-1;
+        }
+    }
+
+    &-sub {
+        margin-bottom: 4rem;
+
+        @include md {
+            @include text(16);
+            margin-bottom: 2rem;
+        }
+    }
+
+    &-btn {
+        display: flex;
+        align-items: center;
+        column-gap: .8rem;
+        transition: color .4s ease;
+
+        @media (hover: hover) {
+            &:hover {
+                color: var(--cl-orange);
+            }
+        }
+    }
+
+    &-main {
+        grid-column: 1/-1;
+        margin-top: 10rem;
+        position: relative;
+
+        @include md {
+            margin-top: 6rem;
+        }
+
+        @include sm {
+            margin-top: 4rem;
+        }
+
+        &-item {
+            --height-overlap: 10rem;
+            --top-distance: 14rem;
+
+            @include md {
+                --height-overlap: 14rem;
+                --top-distance: 6rem;
+            }
+
+            background-color: var(--cl-bg);
+            position: sticky;
+            top: calc(var(--top-distance) + var(--height-overlap) * var(--idx));
+            padding-bottom: calc(var(--height-overlap) * var(--pd-bot));
+            margin-top: calc(var(--height-overlap) * var(--mg-top) * -1);
+
+            @include sm {
+                position: relative;
+                top: auto;
+                padding-bottom: 0;
+                margin-top: 0;
+                background-color: transparent;
+            }
+
+            &-inner {
+                padding-top: 6rem;
+                padding-bottom: 6rem;
+                display: flex;
+                align-items: end;
+                justify-content: space-between;
+                column-gap: 4rem;
+                height: 34rem;
+
+                @include md {
+                    column-gap: 2.8rem;
+                    height: 26.6rem;
+                    align-items: start;
+                }
+
+                @include sm {
+                    height: unset;
+                    flex-direction: column;
+                    padding: 4rem 2rem 4rem 0;
+                }
+            }
+
+            .line {
+                position: absolute;
+                left: 0;
+                transform-origin: left;
+
+                &-top {
+                    top: 0;
+                }
+
+                &-bot {
+                    bottom: 0;
+
+                    @include sm {
+                        display: none;
+                    }
+                }
+            }
+
+            &-content {
+                align-self: start;
+            }
+
+            &-title {
+                display: flex;
+                align-items: start;
+                column-gap: 4rem;
+                margin-bottom: 4rem;
+
+                @include md {
+                    column-gap: 2.8rem;
+                    margin-bottom: 2.4rem;
+                }
+
+                @include sm {
+                    margin-bottom: 1rem
+                }
+
+                &-txt {
+                    @include md {
+                        @include text(h3);
+                    }
+
+                    @include sm {
+                        @include text(h5);
+                    }
+                }
+
+                &-dot {
+                    margin-top: 2rem;
+                    @include size(2.8rem);
+                    border-radius: 50%;
+                    flex: none;
+                    background-color: var(--cl-txt);
+
+                    @include md {
+                        @include size(2rem);
+                        margin-top: .9rem;
+                    }
+
+                    @include sm {
+                        display: none;
+                    }
+                }
+            }
+
+            &-sub {
+                margin-left: 6.8rem;
+                max-width: 64.4rem;
+
+                @include md {
+                    margin-left: 4.8rem;
+                    max-width: 37rem;
+                    @include text(16);
+                }
+
+                @include sm {
+                    margin-left: 0;
+                    margin-bottom: 2.4rem;
+                }
+            }
+
+            &-img {
+                flex: none;
+                height: 18rem;
+                overflow: hidden;
+
+                @include md {
+                    @include size(12rem);
+                }
+
+                @include sm {
+                    @include size(12.8rem);
+                }
+
+                img {
+                    width: 100% !important;
+                    height: 100% !important;
+
+                    @include sm {
+                        object-fit: cover;
+                        height: auto !important;
+                    }
+                }
+            }
+        }
+    }
+}

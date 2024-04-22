@@ -19,10 +19,17 @@ const OpBgTextureDark = await getImage({
 	format: "webp",
 	width: bgTextureDark.width,
 });
-const { title, hideNav = false, footer_cta, footer_bg } = Astro.props;
+const {
+	title,
+	data_page,
+	hideNav = false,
+	footer_cta,
+	footer_bg,
+	explore_data,
+} = Astro.props;
 ---
 
-<html lang="en" data-page={title}>
+<html lang="en" data-page={data_page ? data_page : ""}>
 	<BaseHead title={title} />
 
 	<body
@@ -33,7 +40,15 @@ const { title, hideNav = false, footer_cta, footer_bg } = Astro.props;
 		<div class="main on-load">
 			<slot />
 		</div>
-		{!hideNav && <Footer title={footer_cta} bg={footer_bg} />}
+		{
+			!hideNav && (
+				<Footer
+					title={footer_cta}
+					bg={footer_bg}
+					explore={explore_data}
+				/>
+			)
+		}
 		<script>
 			import main from "@/js/main";
 			setTimeout(() => {

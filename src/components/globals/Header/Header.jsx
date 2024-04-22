@@ -21,12 +21,21 @@ function HeaderGlobal(props) {
             if (inst.direction == 1) {
                 if (inst.scroll >= document.querySelector('.header').clientHeight) {
                     setIsHide(true);
+                    if (document.querySelector('.casedtl-slide-stick-line')) {
+                        document.querySelector('.casedtl-slide-stick-line').classList.add('hidden')
+                    }
                     setDropdownIdx(-1);
                 } else {
                     setIsHide(false);
+                    if (document.querySelector('.casedtl-slide-stick-line')) {
+                        document.querySelector('.casedtl-slide-stick-line').classList.remove('hidden')
+                    }
                 }
             } else if (inst.direction == -1) {
                 setIsHide(false);
+                if (document.querySelector('.casedtl-slide-stick-line')) {
+                    document.querySelector('.casedtl-slide-stick-line').classList.remove('hidden')
+                }
             }
         })
     }, [])

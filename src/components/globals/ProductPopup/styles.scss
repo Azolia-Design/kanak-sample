@@ -62,9 +62,8 @@
                 grid-template-columns: repeat(14, 1fr);
                 column-gap: var(--grid-gap);
                 padding: 7.9rem 0;
-                min-height: 68.3rem;
                 max-height: calc(100vh - var(--padding-2side)*2);
-                overflow-y: auto;
+
                 @include md {
                     padding: 5rem 0;
                     grid-template-columns: repeat(12, 1fr);
@@ -108,6 +107,7 @@
             }
 
             @include sm {
+                z-index: 10;
                 top: .6rem;
                 right: -1rem;
             }
@@ -125,6 +125,7 @@
             margin-left: calc(var(--grid-gap)* -1);
             align-self: center;
             height: 100%;
+            height: fit-content;
             display: flex;
             flex-direction: column;
 
@@ -145,38 +146,44 @@
                 grid-template-columns: 1fr;
                 align-items: center;
                 justify-content: center;
-                width: 100%;
-                height: 100%;
+                @include size(100%);
+                max-height: 46.9rem;
                 flex: 1;
                 cursor: grab;
 
-                @include md {
-                    aspect-ratio: 0.7894736842;
-                }
+                // @include md {
+                //     aspect-ratio: 0.7894736842;
+                // }
 
-                @include sm {
-                    aspect-ratio: 1.2077464789;
-                }
+                // @include sm {
+                //     aspect-ratio: 1.2077464789;
+                // }
 
                 &-inner {
                     grid-area: 1/1/2/2;
-                    padding: 0 2rem;
+                    padding: 2rem;
                     display: flex;
                     justify-content: center;
                     align-items: center;
                     opacity: 0;
+                    @include size(100%);
                     transform: scale(1.1);
                     pointer-events: none;
                     user-select: none;
-                    transition: opacity 0.4s ease-in-out, transform 1.333s linear(
-                        0, 0.009, 0.035 2.1%, 0.141 4.4%, 0.723 12.9%, 0.938, 1.077 20.4%, 1.121,
-                        1.149 24.3%, 1.163 27%, 1.154 29.9%, 1.017 43.1%, 0.991, 0.977 51%,
-                        0.975 57.1%, 1.003 76.9%, 1
-                    );
+                    transition: opacity 0.4s ease-in-out, transform 1.333s linear(0, 0.009, 0.035 2.1%, 0.141 4.4%, 0.723 12.9%, 0.938, 1.077 20.4%, 1.121,
+                            1.149 24.3%, 1.163 27%, 1.154 29.9%, 1.017 43.1%, 0.991, 0.977 51%,
+                            0.975 57.1%, 1.003 76.9%, 1);
+
                     &.active {
                         opacity: 1;
                         transform: scale(1);
                     }
+                }
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: contain;
                 }
 
                 .keen-slider__slide {
@@ -209,6 +216,7 @@
                     @include md {
                         @include size(.7rem);
                     }
+
                     &.active {
                         background-color: var(--cl-orange);
                     }
@@ -230,8 +238,10 @@
                             transform: rotate(180deg);
                         }
                     }
+
                     &.disable {
                         pointer-events: none;
+
                         .ic {
                             opacity: .2;
                         }
@@ -284,10 +294,18 @@
             flex-direction: column;
             // flex: 1;
             height: 100%;
+            border-bottom: .2rem solid var(--cl-txt);
+
+
+            @include md {
+                border-top: .2rem solid var(--cl-txt);
+                border-bottom: .2rem solid var(--cl-txt);
+            }
 
             @include sm {
                 display: block;
                 height: unset;
+                border: none;
             }
 
             &-head,
@@ -309,17 +327,39 @@
 
             &-item-wrap {
                 flex: 1 1 auto;
-                // height: 0;
-                padding-bottom: .2rem;
-                scrollbar-width: none;
+                overflow-y: auto;
+                @include custom-scroll(.5rem, transparent, var(--cl-orange));
+
+                // @include md {
+                //     margin-right: -.5rem;
+                //     padding-right: .5rem;
+                // }
 
                 @include sm {
                     flex: 0;
                     overflow: visible;
+                    padding-bottom: 5rem;
                 }
             }
 
             &-item {
+                &:first-child {
+                    .popup-itemdtl-table-item-div {
+                        @include sm {
+                            border-top: .2rem solid var(--cl-txt);
+                        }
+                    }
+                }
+
+                &:last-child {
+                    .popup-itemdtl-table-item-div {
+                        border-bottom: none;
+
+                        @include sm {
+                            border-bottom: .2rem solid var(--cl-txt);
+                        }
+                    }
+                }
 
                 .popup-itemdtl-table-model {
                     display: flex;

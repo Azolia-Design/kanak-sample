@@ -3,37 +3,50 @@ $sm-min: 768px;
 $md-min: 992px;
 $lg-min: 1728px;
 
-$xs-max: ($xs-min - 1); // Mobile
-$sm-max: ($sm-min - 1); // Tablet
-$md-max: ($md-min - 1); // Desktop
-$lg-max: ($lg-min - 1); // Large Desktop
+$xs-max: (
+	$xs-min - 1
+); // Mobile
+$sm-max: (
+	$sm-min - 1
+); // Tablet
+$md-max: (
+	$md-min - 1
+); // Desktop
+$lg-max: (
+	$lg-min - 1
+); // Large Desktop
 
 @mixin lg {
 	@media screen and (max-width: $lg-min) {
 		@content;
 	}
 }
+
 @mixin md {
 	@media screen and (max-width: $md-max) {
 		@content;
 	}
 }
+
 @mixin md-up {
 	@media screen and (min-width: $md-min ) {
 		@content;
 	}
 }
+
 // tablet
 @mixin sm {
 	@media screen and (max-width: $sm-max) {
 		@content;
 	}
 }
+
 @mixin sm-up {
 	@media screen and (min-width: $sm-min ) {
 		@content;
 	}
 }
+
 // mobile
 @mixin xs {
 	@media screen and (max-width: $xs-max) {
@@ -50,23 +63,29 @@ $lg-max: ($lg-min - 1); // Large Desktop
 	width: $w;
 	height: $h;
 }
+
 @mixin keyframes($animation-name) {
 	@-webkit-keyframes #{$animation-name} {
 		@content;
 	}
+
 	@-moz-keyframes #{$animation-name} {
 		@content;
 	}
+
 	@-ms-keyframes #{$animation-name} {
 		@content;
 	}
+
 	@-o-keyframes #{$animation-name} {
 		@content;
 	}
+
 	@keyframes #{$animation-name} {
 		@content;
 	}
 }
+
 @mixin animation($str) {
 	animation: #{$str};
 	-webkit-animation: #{$str};
@@ -74,6 +93,7 @@ $lg-max: ($lg-min - 1); // Large Desktop
 	-ms-animation: #{$str};
 	-o-animation: #{$str};
 }
+
 @mixin transform($args) {
 	transform: $args;
 	-webkit-transform: $args;
@@ -89,6 +109,7 @@ $lg-max: ($lg-min - 1); // Large Desktop
 	-ms-transform-origin: $args;
 	-o-transform-origin: $args;
 }
+
 @mixin transition($args) {
 	transition: $args;
 	-webkit-transition: $args;
@@ -96,6 +117,7 @@ $lg-max: ($lg-min - 1); // Large Desktop
 	-ms-transition: $args;
 	-o-transition: $args;
 }
+
 @mixin transition-delay($args) {
 	transition-delay: $args;
 	-webkit-transition-delay: $args;
@@ -103,15 +125,18 @@ $lg-max: ($lg-min - 1); // Large Desktop
 	-ms-transition-delay: $args;
 	-o-transition-delay: $args;
 }
+
 @mixin custom-scroll($width: 0.7rem, $bgTrack: #ddd, $bgThumb: #1D1D1D) {
 	&::-webkit-scrollbar {
 		width: $width;
 	}
+
 	&::-webkit-scrollbar-track {
 		background: $bgTrack;
 	}
+
 	&::-webkit-scrollbar-thumb {
 		background: $bgThumb;
-		border-radius: 2rem;
+		// border-radius: 2rem;
 	}
 }

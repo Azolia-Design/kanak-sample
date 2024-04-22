@@ -1,0 +1,38 @@
+---
+import Layout from "@/layouts/Layout.astro";
+
+import Hero from "@pages/PrivateLabel/Hero/Hero.astro";
+import Commitment from "@pages/PrivateLabel/Commitment/Commitment.astro";
+import Collection from "@pages/PrivateLabel/Collection/Collection.astro";
+import Privilege from "@pages/PrivateLabel/Privilege/Privilege.astro";
+import Distribution from "@pages/PrivateLabel/Distribution/Distribution.astro";
+import CaseStudies from "@pages/PrivateLabel/CaseStudies/Casestudies.astro";
+
+
+import { getPage } from "@/prismic.js";
+const { data, uid } = await getPage("privatelabel_page");
+---
+
+<Layout
+    title="Private Label"
+    data_page="Private Label"
+    explore_data={uid}
+    footer_cta={data.cta_title[0]?.text}
+    footer_bg={data.cta_background}
+>
+    <Hero
+        title={data.hero_title}
+        smTitle={data.hero_smtitle}
+        sub={data.hero_sub}
+    />
+    <Commitment
+        title={data.commitment_title}
+        sub={data.commitment_sub}
+        btn={data.commitment_btn}
+        list={data.commitment_list}
+    />
+    <Collection />
+    <Privilege />
+    <Distribution />
+    <CaseStudies />
+</Layout>

@@ -10,6 +10,10 @@
         padding-bottom: 6rem;
     }
 
+    &.active {
+        z-index: 999;
+    }
+
     .container.grid {
         position: relative;
     }
@@ -129,18 +133,24 @@
                     padding-left: 2rem;
                     grid-column: 1/5;
                     grid-row: 1/2;
+
                     &-cate {
                         display: none;
+
                         @include sm {
                             display: flex;
                             border-left: .2rem solid var(--cl-txt);
+                            background-color: var(--cl-bg);
                             margin-left: -.1rem;
                             margin-left: auto;
                             pointer-events: auto;
+                            z-index: 5;
                         }
                     }
+
                     &-kustomer {
                         display: none;
+
                         @include md {
                             display: flex;
                         }
@@ -157,6 +167,7 @@
 
                     &.active {
                         pointer-events: none;
+
                         .ic svg {
                             transform: rotate(180deg);
                         }
@@ -244,7 +255,7 @@
 
             &-pdf {
                 position: relative;
-                padding: 3.8rem 4rem;
+                padding: 3.8rem 7rem;
                 background-color: var(--cl-orange);
                 color: var(--cl-white);
                 transition: all .4s ease;
@@ -255,9 +266,6 @@
                 }
 
                 @include sm {
-                    position: absolute;
-                    transform: translateY(calc(-100% - 4rem));
-                    grid-column: 1/-1;
                     width: 100%;
                     background-color: var(--cl-orange);
                     padding: 1.85rem 2.4rem;
@@ -270,6 +278,12 @@
                         grid-column: 4/-1;
                         width: 100%;
                         grid-row: 1/2;
+                    }
+
+                    @include sm {
+                        position: absolute;
+                        transform: translateY(calc(-100% - 4rem));
+                        grid-column: 1/-1;
                     }
                 }
 
@@ -346,6 +360,8 @@
             grid-column: 1 / -1;
             grid-row: 1 / 2;
             padding: 0;
+            padding-top: .2rem;
+            padding-bottom: .2rem;
             position: relative;
             display: flex;
             justify-content: end;
@@ -364,6 +380,7 @@
                 row-gap: 1.6rem;
                 padding-right: var(--grid-gap);
             }
+
             @include sm {
                 position: absolute;
                 z-index: 3;
@@ -383,6 +400,7 @@
                 overflow-y: auto;
                 border-bottom: .2rem solid var(--cl-txt);
                 @include custom-scroll(.5rem, transparent, var(--cl-orange));
+
                 &.active {
                     opacity: 1;
                     transform: translate(0);
@@ -394,18 +412,26 @@
         &-item {
             display: flex;
             align-items: start;
+
             @include sm {
-                padding: 2rem;
                 width: 100%;
                 text-align: start;
                 border-bottom: .2rem solid var(--cl-txt);
             }
+
+            .katalog-main-filter-list-toggle-btn-cate {
+                @include sm {
+                    height: calc(100% - .2rem);
+                }
+            }
+
             &-txt {
                 transition: transform .4s ease;
 
                 @include md {
                     @include text(16);
                 }
+
                 @include sm {
                     @include text(20);
                 }
@@ -425,8 +451,9 @@
                 @include md {
                     top: 0.54rem;
                 }
+
                 @include sm {
-                    top: .9rem;
+                    top: 2.9rem;
                 }
             }
 
@@ -441,6 +468,11 @@
 
                 @include md {
                     align-items: start;
+                }
+
+                @include sm {
+                    width: 100%;
+                    padding: 2rem;
                 }
 
                 &:hover {

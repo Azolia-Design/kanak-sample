@@ -1,21 +1,60 @@
 ---
-import { Image } from "astro:assets"
-import logo from '@assets/kanak-logo.svg';
-import linkedIn from '@assets/ic-linkedin-ft.svg';
-import GlobalFooter from './Footer';
-import GlobalCTA from '@/components/globals/CTA'
-import { getAllByType } from '@/prismic.js';
+import { Image } from "astro:assets";
+import logo from "@assets/kanak-logo.svg";
+import linkedIn from "@assets/ic-linkedin-ft.svg";
+import GlobalFooter from "./Footer";
+import GlobalCTA from "@/components/globals/CTA";
+import GlobalExplore from "@/components/globals/Explore";
+import { getAllByType, getPage } from "@/prismic.js";
 
-const { title, bg } = Astro.props;
-const currYear = new Date().getFullYear()
-const industryList = await getAllByType('industry')
+import img from "@assets/ffment-thumb.jpg";
+
+const { title, bg, explore } = Astro.props;
+const currYear = new Date().getFullYear();
+const industryList = await getAllByType("industry");
+const testingQcpage = await getPage("compliance");
+const kustomPackagingPage = await getPage("kustompackaging_page");
+const privateLabelPage = await getPage("privatelabel_page");
+const exploreList = await Promise.all([
+    privateLabelPage,
+    kustomPackagingPage,
+    testingQcpage,
+]);
 ---
-{title && bg && (
-    <GlobalCTA title={Astro.props.title} client:visible={{rootMargin: "100% 0% 100% 0%"}}>
-        <Image src={Astro.props.bg.url} alt="" slot="background" class="img img-fill" width={Astro.props.bg.dimensions.width} height={Astro.props.bg.dimensions.height}/>
-    </GlobalCTA>
-)}
-<GlobalFooter currYear={currYear} list={industryList} client:visible={{rootMargin: "50% 0% 50% 0%"}}>
-    <Image src={logo} alt="kanak logo" class="img img-h" slot="logo"/>
-    <Image src={linkedIn} alt="Linkedin" class="ic ic-24" slot="imgLinkedIn"/>
+
+{
+    title && bg && (
+        <GlobalCTA
+            title={Astro.props.title}
+            client:visible={{ rootMargin: "100% 0% 100% 0%" }}
+        >
+            <Image
+                src={Astro.props.bg.url}
+                alt=""
+                slot="background"
+                class="img img-fill"
+                width={Astro.props.bg.dimensions.width}
+                height={Astro.props.bg.dimensions.height}
+            />
+        </GlobalCTA>
+    )
+}
+{
+    explore && (
+        <GlobalExplore
+            list={exploreList.filter((item) => item.uid !== explore)}
+            client:visible={{ rootMargin: "100% 0% 100% 0%" }}
+        >
+            <Image src={img} alt="" slot="img" class="img img-fill" />
+        </GlobalExplore>
+    )
+}
+<GlobalFooter
+    currYear={currYear}
+    list={industryList}
+    hideLine={explore ? true : false}
+    client:visible={{ rootMargin: "50% 0% 50% 0%" }}
+>
+    <Image src={logo} alt="kanak logo" class="img img-h" slot="logo" />
+    <Image src={linkedIn} alt="Linkedin" class="ic ic-24" slot="imgLinkedIn" />
 </GlobalFooter>

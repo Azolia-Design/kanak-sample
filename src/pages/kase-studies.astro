@@ -1,11 +1,19 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import Hero from '@pages/CaseStudies/Hero/Hero.astro';
-import Main from '@pages/CaseStudies/Main/Main.astro'
-import {getPage} from '@/prismic.js';
-const { data } = await getPage('case_studies');
+import Hero from "@pages/CaseStudies/Hero/Hero.astro";
+import Main from "@pages/CaseStudies/Main/Main.astro";
+import { getPage } from "@/prismic.js";
+const { data } = await getPage("case_studies");
 ---
-<Layout title="Case Studies">
-    <Hero title={data.hero_title[0].text} client_quote={data.hero_client_quote} client_name={data.hero_client_name} client_job={data.hero_client_job} client_avatar={data.hero_client_avatar} client_company={data.hero_client_company}/>
+
+<Layout title="Case Studies" data_page="Case Studies">
+    <Hero
+        title={data.hero_title[0].text}
+        client_quote={data.hero_client_quote}
+        client_name={data.hero_client_name}
+        client_job={data.hero_client_job}
+        client_avatar={data.hero_client_avatar}
+        client_company={data.hero_client_company}
+    />
     <Main />
 </Layout>

@@ -32,7 +32,6 @@ function Categories({ data, originCategory, filter, setFilter }) {
         currList.sort((a, b) => {
             return indexMap[a] - indexMap[b];
         });
-
         return currList;
     }, [data, filter, currentCategory]);
 
@@ -46,7 +45,7 @@ function Categories({ data, originCategory, filter, setFilter }) {
         <div className="katalog-main-cate">
             <button
                 ref={ref}
-                className={cn("katalog-main-filter-list-toggle-btn katalog-main-filter-list-toggle-btn-cate", { "active": isDropdown })}
+                className={cn("katalog-main-filter-list-toggle-btn katalog-main-filter-list-toggle-btn-cate bg-light", { "active": isDropdown })}
                 onClick={(e) => setIsDropdown(!isDropdown)}>
                 <div className="txt txt-18 txt-bold katalog-main-filter-list-toggle-txt">
                     <div className="katalog-main-filter-list-toggle-txt-wrap">
@@ -99,7 +98,6 @@ Categories.Dropdown = ({ data, filter, setFilter }) => {
     return (
         <div className={cn("katalog-main-filter-list-dropdown katalog-main-filter-list-dropdown-cate", { "active": isDropdown })}>
             <div className="katalog-main-filter-list-dropdown-inner" ref={ref}>
-                {/* {renderFilterDropdownCate} */}
                 {list.map((category) =>
                     <button
                         key={category}

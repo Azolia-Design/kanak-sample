@@ -87,11 +87,15 @@ function GlobalFooter(props) {
     const accordionClick = (index) => {
         setActiveIndex((prevIndex) => (prevIndex === index ? null : index));
     };
-
+    useEffect(() => {
+        console.log(props.hideLine);
+    }, [])
     return (
         <footer className="ft bg-light">
             <div className="container grid">
-                <div className="line line-top"></div>
+                {!props.hideLine && (
+                    <div className="line line-top"></div>
+                )}
                 <div className="ft-left">
                     <div className="ft-head">
                         <div className="ft-logo">
@@ -129,10 +133,10 @@ function GlobalFooter(props) {
                         isOpen={activeIndex === 0}
                         onClick={() => accordionClick(0)}
                     >
-                        <MenuItem>Product Katalog</MenuItem>
-                        <MenuItem>Private Label</MenuItem>
-                        <MenuItem>Kustom Packaging Solutions</MenuItem>
-                        <MenuItem link='/compliance'>Testing, QC & Compliance</MenuItem>
+                        <MenuItem link='/katalog'>Product Katalog</MenuItem>
+                        <MenuItem link='/private-label'>Private Label</MenuItem>
+                        <MenuItem link='/kustom-packaging-solutions'>Kustom Packaging Solutions</MenuItem>
+                        <MenuItem link='/qc-procedures'>Testing, QC & Compliance</MenuItem>
                     </MenuColumn>
                     <MenuColumn
                         title="Kustomers"

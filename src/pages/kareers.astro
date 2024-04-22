@@ -8,10 +8,11 @@ import Cta from "@/components/pages/Kareers/Cta/Cta.astro";
 import { getPage } from "@/prismic.js";
 const { data } = await getPage("kareers");
 ---
-<Layout title="Kareers">
-    <Hero/>
-    <Culture culture_list={data.culture_list}/>
+
+<Layout title="Kareers" data_page="Kareers">
+    <Hero />
+    <Culture culture_list={data.culture_list} />
     <Gallery />
-    <Perk perk_list={data.perk_list}/>
+    <Perk perk_list={data.perk_list} />
     <Cta />
 </Layout>

@@ -35,13 +35,11 @@ item.data.service_sub_items.forEach((el: any, idx: number) => {
 });
 
 const listCaseStudy = await getAllByType("case_study");
-const filterCaseStudy = listCaseStudy.filter(
-    (item) => item.data.category.toLowerCase().replace(" ", "-") === kustomer,
-);
 ---
 
 <Layout
     title={item.data.title}
+    data_page="Kustomer"
     footer_cta={item.data.cta_title[0]?.text}
     footer_bg={item.data.cta_background}
 >
@@ -102,7 +100,7 @@ const filterCaseStudy = listCaseStudy.filter(
     {
         !isEmpty(item.data.explore_title) && (
             <Explore
-                listGroup={item.data.explore_list.map((el) => el.item)}
+                listGroup={item.data.explore_list}
                 title={convertHighlight(item.data.explore_title)}
             />
         )
@@ -119,10 +117,11 @@ const filterCaseStudy = listCaseStudy.filter(
     {
         !isEmpty(item.data.kase_study_title) && (
             <CaseStudy
+                currPage={kustomer}
                 label={item.data.kase_study_label}
                 title={item.data.kase_study_title[0].text}
                 des={item.data.kase_study_describe[0].text}
-                list={filterCaseStudy}
+                list={listCaseStudy}
             />
         )
     }

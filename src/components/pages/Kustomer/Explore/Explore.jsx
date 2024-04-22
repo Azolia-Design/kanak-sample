@@ -26,13 +26,13 @@ function KustomerExplore({ ...props }) {
             <div className="container grid">
                 <h1 className="heading h0 txt-black txt-up kustomer-explore-title">{props.title}</h1>
                 <div className="kustomer-explore-main">
-                    {props.groupItems.map(item =>
+                    {props.groupItems.map((item, idx) =>
                         <ExploreItem
                             key={item.uid}
                             title={item.data.title}
                             label={item.data.name}
                             solutions={item.list}
-                            img={item.data.thumbnail}
+                            img={props.listImg[idx]}
                         />
                     )}
                 </div>

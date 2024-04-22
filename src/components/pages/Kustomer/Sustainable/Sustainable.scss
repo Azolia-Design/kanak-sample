@@ -16,6 +16,10 @@
         padding-bottom: 6rem;
     }
 
+    &.active {
+        z-index: 999;
+    }
+
     &-head {
         grid-column: 4/14;
         text-align: center;
@@ -205,6 +209,7 @@
 
                 @include md {
                     row-gap: 1.6rem;
+                    padding-right: 1rem;
                 }
 
                 @include sm {
@@ -244,6 +249,7 @@
                     }
 
                     &-txt {
+                        text-align: start;
                         transition: transform .4s ease;
                     }
 
@@ -339,6 +345,7 @@
                     display: flex;
                     align-items: center;
                     justify-content: center;
+                    width: 100%;
                     aspect-ratio: 1.068;
                     overflow: hidden;
 
@@ -348,10 +355,10 @@
                         justify-content: center;
                         @include size(64%, 55.26%);
 
-                        @include md {
-                            width: 23.3rem;
-                            height: auto;
-                        }
+                        // @include md {
+                        //     width: 23.3rem;
+                        //     height: auto;
+                        // }
                     }
 
                     img {
@@ -432,6 +439,11 @@
                 .line-bot {
                     position: absolute;
                     bottom: -.1rem;
+                }
+
+                .hidden-data {
+                    display: none;
+                    visibility: hidden;
                 }
             }
         }
