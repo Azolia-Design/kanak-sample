@@ -1,0 +1,11 @@
+@use '@styles/colors' as *;
+@use '@styles/mixins' as *;
+
+.kuspack-innova {
+
+    &-title-wrap {
+        grid-column: 1/9;
+    }
+
+    &-title {}
+}

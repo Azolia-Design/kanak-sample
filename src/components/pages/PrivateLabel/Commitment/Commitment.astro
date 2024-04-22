@@ -1,4 +1,5 @@
 ---
+import Image from "astro/components/Image.astro";
 import PrivateCommitment from "./Commitment";
 import { convertHighlight } from "@/components/utils/text";
 ---
@@ -8,4 +9,32 @@ import { convertHighlight } from "@/components/utils/text";
     client:visible={{ rootMargin: "100% 0px 100% 0px" }}
 >
     <Fragment set:html={convertHighlight(Astro.props.title)} slot="newTitle" />
+    <Fragment slot="renderList">
+        {
+            Astro.props.list.map((item, idx) => (
+                <div class="private-commitment-main-item">
+                    <div class="private-commitment-main-item-img">
+                        <Image
+                            src={item.image.url}
+                            alt=""
+                            width={item.image.dimensions.width}
+                            height={item.image.dimensions.height}
+                            class="img img-fill"
+                        />
+                    </div>
+                    <div class="private-commitment-main-item-content">
+                        <h3 class="heading h4 txt-black txt-up private-commitment-main-item-content-title">
+                            {item.title[0].text}
+                        </h3>
+                        <div class="private-commitment-main-item-content-info">
+                            <div class="txt txt-18 txt-med private-commitment-main-item-content-des">
+                                {item.subtitle}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="line" />
+                </div>
+            ))
+        }
+    </Fragment>
 </PrivateCommitment>

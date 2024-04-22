@@ -86,18 +86,35 @@
         }
     }
 
-    &-item {
+    &-item-wrap {
         grid-column: 1/2;
         grid-row: 1/2;
+
+        @include sm {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 1;
+            grid-column: span 1;
+            grid-row: unset;
+            transform: unset;
+            margin-top: -2rem;
+
+            &:first-child {
+                margin-top: unset;
+            }
+        }
+    }
+
+    &-item {
         position: relative;
         display: flex;
         align-items: center;
         justify-content: center;
         text-align: center;
-        border-radius: 100vmax;
         @include size(56rem);
+        border-radius: 100vmax;
         transform-origin: center 1.3rem;
-        transform: rotate(calc(var(--idx) * 120deg));
+        transform: rotate(calc(var(--idx) * -120deg));
         margin-top: 26rem;
         z-index: 1;
 
@@ -132,7 +149,7 @@
         }
 
         &-inner {
-            transform: rotate(calc(var(--idx) * -120deg));
+            transform: rotate(calc(var(--idx) * 120deg));
             @include size(100%);
             display: flex;
             align-items: center;

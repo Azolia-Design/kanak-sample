@@ -7,9 +7,11 @@ import Collection from "@pages/PrivateLabel/Collection/Collection.astro";
 import Privilege from "@pages/PrivateLabel/Privilege/Privilege.astro";
 import Distribution from "@pages/PrivateLabel/Distribution/Distribution.astro";
 import CaseStudies from "@pages/PrivateLabel/CaseStudies/Casestudies.astro";
-
+import Client from "@pages/PrivateLabel/Client/Client.astro";
 
 import { getPage } from "@/prismic.js";
+
+const homeData = await getPage("home");
 const { data, uid } = await getPage("privatelabel_page");
 ---
 
@@ -35,4 +37,9 @@ const { data, uid } = await getPage("privatelabel_page");
     <Privilege />
     <Distribution />
     <CaseStudies />
+    <Client
+        title={homeData.data.client_title[0].text}
+        sub_title={homeData.data.client_sub_title[0].text}
+        client_list={homeData.data.client_list}
+    />
 </Layout>
