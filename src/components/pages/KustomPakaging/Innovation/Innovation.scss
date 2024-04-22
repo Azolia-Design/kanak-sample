@@ -2,10 +2,66 @@
 @use '@styles/mixins' as *;
 
 .kuspack-innova {
+    padding-bottom: 16rem;
 
     &-title-wrap {
         grid-column: 1/9;
     }
 
-    &-title {}
+    &-label {
+        margin-bottom: 2rem;
+    }
+
+    &-title {
+        max-width: 79.4rem;
+        margin-bottom: 10rem;
+
+        .txt-green {
+            display: inline;
+        }
+    }
+
+    &-sub {
+        grid-column: 12/-1;
+        align-self: end;
+        margin-bottom: 10rem;
+    }
+
+    &-main {
+        grid-column: 1/-1;
+    }
+
+    &-item {
+        position: relative;
+        display: grid;
+        grid-template-columns: repeat(var(--grid-column), 1fr);
+        column-gap: var(--grid-gap);
+        align-items: center;
+        align-content: center;
+        padding: 6rem 0px;
+
+        &-icon {
+            display: none;
+        }
+
+        &-title {
+            grid-column: 1/11;
+            width: 100%;
+        }
+
+        &-sub {
+            width: 100%;
+            grid-column: 12/-1;
+        }
+
+        .line-top {
+            position: absolute;
+            top: 0;
+        }
+
+        .line-bot {
+            position: absolute;
+            bottom: 0;
+        }
+    }
 }
