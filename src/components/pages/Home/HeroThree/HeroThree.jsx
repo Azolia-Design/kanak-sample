@@ -4,7 +4,7 @@ import useWindowSize from "@hooks/useWindowSize";
 import { suspend } from 'suspend-react'
 import { animate, scroll } from "motion"
 import { Fork } from './Fork.jsx';
-import { Environment, ContactShadows, AdaptiveDpr} from "@react-three/drei";
+import { Environment, ContactShadows, useProgress, Loader, AdaptiveDpr} from "@react-three/drei";
 import { animated, useTransition } from '@react-spring/three'
 import { useProductIndex } from '@contexts/StoreGlobal';
 import { GetModel } from "@components/common/GetModel.jsx";
@@ -15,6 +15,11 @@ const warehouse = import('/envMap/warehouse.hdr?url').then((module) => module.de
 function CustomMaterial({...props}) {
     return (<meshStandardMaterial color={props.color} roughness={props.roughness}/>)
 }
+
+// function Loader() {
+//     const { active, progress, errors, item, loaded, total } = useProgress()
+//     return <Html center>{progress} % loaded</Html>
+// }
 
 function Model({ opacity, item, ...styles }) {
     return (
@@ -227,9 +232,11 @@ function HomeHeroThree({...props}) {
                             <Content width={width} height={height} list={props.list}/>
                             <AdaptiveDpr pixelated />
                         </Canvas>
+                        <Loader/>
                     </div>
                 </div>
             </div>
+            
         )
     }
 }
