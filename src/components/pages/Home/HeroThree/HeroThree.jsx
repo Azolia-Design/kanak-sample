@@ -5,8 +5,8 @@ import { suspend } from 'suspend-react'
 import { animate, scroll } from "motion"
 import { Fork } from './Fork.jsx';
 import { Environment, ContactShadows, useProgress, AdaptiveDpr} from "@react-three/drei";
-import { animated, useTransition } from '@react-spring/three'
-import { useProductIndex } from '@contexts/StoreGlobal';
+import { animated, useTransition } from '@react-spring/three';
+import { useProductIndex, progressPercent } from '@contexts/StoreGlobal';
 import { GetModel } from "@components/common/GetModel.jsx";
 import * as ut from '@/js/utils.js'
 import './HeroThree.scss';
@@ -16,41 +16,32 @@ function CustomMaterial({...props}) {
     return (<meshStandardMaterial color={props.color} roughness={props.roughness}/>)
 }
 
-function Loader() {
-    const { active, progress, errors, item, loaded, total } = useProgress()
-    console.log(progress + ' / ' + total)
-}
-
 function Model({ opacity, item, ...styles }) {
     return (
         <animated.group {...styles}>
-            <animated.mesh
-                material-color="white"
-                material-opacity={opacity}>
-                    <Suspense>
-                        {item.uid == 'bowls' ? (
-                            <GetModel file='/glb/58-bowl-clean-transformed.glb' scale={[.36,.36,.36]}/>
-                        ) : item.uid == 'trays' ? (
-                            <GetModel file='/glb/fp_01-clean-transformed.glb' rotation={[0, Math.PI * -.5, 0]}/>
-                        ) : item.uid == 'plates-platters' ? (
-                            <GetModel file='/glb/plates-80-transformed.glb' scale={[.9,.9,.9]} position={[0,.01,0]}/>
-                        ) : item.uid == 'soup-containers' ? (
-                            <GetModel file='/glb/41-ramen-clean-transformed.glb' scale={[.68,.68,.68]} position={[0,-.015,0]}/>
-                        ) : item.uid == 'produce' ? (
-                            <GetModel file='/glb/48-monte-tray-clean-transformed.glb' scale={[1.2,1.2,1.2]}/>
-                        ) : item.uid == 'kutlery' ? (
-                            <GetModel file='/glb/22-wooden-fork-clean-transformed.glb'/>
-                        ) : item.uid == 'kups' ? (
-                            <GetModel file='/glb/kup-5-transformed.glb' scale={[.76,.76,.76]} position={[0,-.02,0]}/>
-                        ) : item.uid == 'klamshells' ? (
-                            <GetModel file='/glb/klamshell-79-transformed.glb' scale={[.8,.8,.8]} position={[0,-.01,0]}/>
-                        ) : item.uid == 'carry-out-bags' ? (
-                            <GetModel file='/glb/62-freebirds-clean-transformed.glb' scale={[.8,.8,.8]} position={[0,-.01,0]}/>
-                        ) : (
-                            <GetModel file='/glb/m_box-clean-transformed.glb' scale={[.8,.8,.8]} position={[0,.01,0]}
-                            />
-                        )}
-                    </Suspense>
+            <animated.mesh>
+                {item.uid == 'bowls' ? (
+                    <GetModel file='/glb/58-bowl-clean-transformed.glb' scale={[.36,.36,.36]}/>
+                ) : item.uid == 'trays' ? (
+                    <GetModel file='/glb/fp_01-clean-transformed.glb' rotation={[0, Math.PI * -.5, 0]}/>
+                ) : item.uid == 'plates-platters' ? (
+                    <GetModel file='/glb/plates-80-transformed.glb' scale={[.9,.9,.9]} position={[0,.01,0]}/>
+                ) : item.uid == 'soup-containers' ? (
+                    <GetModel file='/glb/41-ramen-clean-transformed.glb' scale={[.68,.68,.68]} position={[0,-.015,0]}/>
+                ) : item.uid == 'produce' ? (
+                    <GetModel file='/glb/48-monte-tray-clean-transformed.glb' scale={[1.2,1.2,1.2]}/>
+                ) : item.uid == 'kutlery' ? (
+                    <GetModel file='/glb/22-wooden-fork-clean-transformed.glb'/>
+                ) : item.uid == 'kups' ? (
+                    <GetModel file='/glb/kup-5-transformed.glb' scale={[.76,.76,.76]} position={[0,-.02,0]}/>
+                ) : item.uid == 'klamshells' ? (
+                    <GetModel file='/glb/klamshell-79-transformed.glb' scale={[.8,.8,.8]} position={[0,-.01,0]}/>
+                ) : item.uid == 'carry-out-bags' ? (
+                    <GetModel file='/glb/62-freebirds-clean-transformed.glb' scale={[.8,.8,.8]} position={[0,-.01,0]}/>
+                ) : (
+                    <GetModel file='/glb/m_box-clean-transformed.glb' scale={[.8,.8,.8]} position={[0,.01,0]}
+                    />
+                )}
                 <meshBasicMaterial transparent />
             </animated.mesh>
         </animated.group>
@@ -219,6 +210,11 @@ function Content({...props}) {
 function HomeHeroThree({...props}) {
     const { width, height } = useWindowSize();
     const threeRef = useRef();
+    function Loader() {
+        const { active, progress, errors, item, loaded, total } = useProgress()
+        console.log(progress)
+        progressPercent.set(progress); 
+    }
     if (width == 0) {
         return;
     } else {
@@ -229,14 +225,14 @@ function HomeHeroThree({...props}) {
                 <div className="home-hero-three-stick">
                     <div className="home-hero-three-stick-inner">
                         <Canvas camera={{ fov: fov, near: 0.1, far: 10000, position: [0, 0, perspective], aspect: width / height }} shadows>
-                            <Content width={width} height={height} list={props.list}/>
-                            <AdaptiveDpr pixelated />
+                            <Suspense fallback={<Loader/>}>
+                                <Content width={width} height={height} list={props.list}/>
+                                <AdaptiveDpr pixelated />
+                            </Suspense>
                         </Canvas>
-                        <Loader/>
                     </div>
                 </div>
-            </div>
-            
+            </div>   
         )
     }
 }

@@ -1,5 +1,6 @@
 ---
 import Layout from "@/layouts/Layout.astro";
+import GlobLoader from "@components/globals/GlobLoader/GlobLoader";
 import Hero from "@pages/Home/Hero/Hero.astro";
 import Product from "@pages/Home/Product/Product.astro";
 import Industry from "@pages/Home/Industry/Industry.astro";
@@ -16,6 +17,7 @@ const { data } = await getPage("home");
 ---
 
 <Layout title="Homepage" footer_cta={data.cta_title} footer_bg={data.cta_bg}>
+	<GlobLoader client:load/>
 	<div class="home-hero-three-wrap">
 		<Hero title={data.hero_title[0].text} sub_title={data.hero_sub_tilte} />
 		<HeroThree product_kategory_list={data.product_kategory_list} />
