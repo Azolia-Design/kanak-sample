@@ -3,6 +3,8 @@ import Layout from "@/layouts/Layout.astro";
 import Hero from "@pages/KustomPakaging/Hero/Hero.astro";
 import Innovation from "@pages/KustomPakaging/Innovation/Innovation.astro";
 import Solution from "@pages/KustomPakaging/Solution/Solution.astro";
+import Benefit from "@pages/KustomPakaging/Benefit/Benefit.astro";
+import Process from "@pages/KustomPakaging/Process/Process.astro";
 import CaseStudies from "@pages/KustomPakaging/CaseStudies/Casestudies.astro";
 import Client from "@pages/KustomPakaging/Client/Client.astro";
 
@@ -32,6 +34,12 @@ const { data, uid } = await getPage("kustompackaging_page");
         title={data.solution_title[0].text}
         sub={data.solution_sub}
         list={data.solution_list}
+    />
+    <Benefit title={data.benefit_title} list={data.benefit_list} />
+    <Process
+        title={data.process_title}
+        sub={data.process_sub}
+        list={data.process_list}
     />
     <CaseStudies
         label={data.kase_studies_label}

@@ -1,6 +1,6 @@
 ---
 import Image from "astro/components/Image.astro";
-import PrivateCaseStudies from "./Casestudies";
+import KustomPackagingCaseStudies from "./Casestudies";
 import { getAllByType } from "@/prismic";
 import ArrowUpRight from "@/components/globals/IcArrow/ArrowUpRight";
 import { isEmpty } from "@/components/utils/text";
@@ -8,7 +8,7 @@ import { isEmpty } from "@/components/utils/text";
 const listCaseStudy = await getAllByType("case_study");
 ---
 
-<PrivateCaseStudies
+<KustomPackagingCaseStudies
     {...Astro.props}
     list={listCaseStudy}
     client:visible={{ rootMargin: "100% 0px 100% 0px" }}
@@ -18,17 +18,17 @@ const listCaseStudy = await getAllByType("case_study");
             listCaseStudy.map((item, idx) => (
                 <a
                     href={`/kase-studies/${item.uid}`}
-                    class="keen-slider__slide private-kasestu-main-item bg-light"
+                    class="keen-slider__slide kuspack-kasestu-main-item bg-light"
                     data-cursor="drag"
                 >
-                    <div class="txt txt-20 txt-bold private-kasestu-main-item-label">
+                    <div class="txt txt-20 txt-bold kuspack-kasestu-main-item-label">
                         {item.data.category}
                     </div>
-                    <h3 class="heading h4 txt-black txt-up private-kasestu-main-item-title">
+                    <h3 class="heading h4 txt-black txt-up kuspack-kasestu-main-item-title">
                         {item.data.title[0].text}
                     </h3>
-                    <div class="private-kasestu-main-item-bot">
-                        <div class="private-kasestu-main-item-bot-img">
+                    <div class="kuspack-kasestu-main-item-bot">
+                        <div class="kuspack-kasestu-main-item-bot-img">
                             {!isEmpty(item.data.images[0]) && (
                                 <Image
                                     src={item.data.images[0]?.image_item.url}
@@ -45,7 +45,7 @@ const listCaseStudy = await getAllByType("case_study");
                                 />
                             )}
                         </div>
-                        <div class="txt txt-18 txt-bold private-kasestu-main-item-bot-readmore">
+                        <div class="txt txt-18 txt-bold kuspack-kasestu-main-item-bot-readmore">
                             <span>Read more</span>
                             <div class="ic ic-16">
                                 <ArrowUpRight />
@@ -62,6 +62,4 @@ const listCaseStudy = await getAllByType("case_study");
             ))
         }
     </Fragment>
-</PrivateCaseStudies>
-
-<!-- <CaseStudiesItem data={item} lastItem={`${(idx == allItem.length - 1) ? 'lastItem' : ''}`} key={idx} /> -->
+</KustomPackagingCaseStudies>

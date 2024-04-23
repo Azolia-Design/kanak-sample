@@ -20,6 +20,7 @@
 
         @include md {
             grid-column: 1/6;
+            margin-right: -.2rem;
         }
 
         @include sm {
@@ -44,14 +45,16 @@
 
     &-label {
         margin-bottom: 2rem;
+        opacity: .8;
 
         @include md {
             @include text(h5);
+            margin-bottom: 1rem;
         }
 
-        @include md {
+        @include sm {
             @include text(h6);
-            margin-bottom: 1.6rem;
+            margin-bottom: .8rem;
         }
     }
 
@@ -60,17 +63,26 @@
 
         @include md {
             @include text(h1);
+            margin-bottom: 1rem;
         }
 
         @include sm {
             @include text(h2);
-            margin-bottom: 4rem;
+            margin-bottom: 2rem;
         }
     }
 
     &-sub {
         max-width: 69rem;
         opacity: .6;
+
+        @include md {
+            @include text(16);
+        }
+
+        @include sm {
+            margin-bottom: 6rem;
+        }
     }
 
     &-main {

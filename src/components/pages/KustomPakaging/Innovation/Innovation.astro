@@ -8,4 +8,11 @@ import { convertHighlight } from "@/components/utils/text";
     client:visible={{ rootMargin: "100% 0px 100% 0px" }}
 >
     <Fragment set:html={convertHighlight(Astro.props.title)} slot="newTitle" />
+    <Fragment
+        set:html={Astro.props.sub
+            .split(/(\b\w+-\b)/)
+            .filter((part) => part !== "-")
+            .map((word) => `<span>${word}</span>`)}
+        slot="newSub"
+    />
 </KustomPackagingInnovation>

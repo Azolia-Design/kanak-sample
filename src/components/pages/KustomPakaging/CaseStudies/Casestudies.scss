@@ -1,17 +1,17 @@
 @use '@styles/colors' as *;
 @use '@styles/mixins' as *;
 
-.private-kasestu {
+.kuspack-kasestu {
     padding-bottom: 16rem;
     overflow: hidden;
 
     @include md {
-        padding-top: 6rem;
+        padding-top: 2rem;
         padding-bottom: 6rem;
     }
 
     @include sm {
-        padding-top: 6rem;
+        padding-top: unset;
         padding-bottom: 6rem;
     }
 
@@ -30,8 +30,8 @@
         max-width: 100rem;
 
         @include md {
-            grid-column: 1/8;
-            @include text(h1)
+            grid-column: 1/7;
+            margin-right: calc(var(--grid-gap) * -1);
         }
 
         @include sm {
@@ -48,9 +48,9 @@
         align-items: start;
 
         @include md {
-            grid-column: 7/-1;
+            grid-column: 8/-1;
             margin-top: .8rem;
-            margin-left: -.65rem;
+            margin-left: calc(var(--grid-gap) * -1);
         }
 
         @include sm {

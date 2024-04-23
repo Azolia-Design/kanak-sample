@@ -2,7 +2,7 @@
 import { getByUID } from "@/prismic.js";
 import { Image } from "astro:assets";
 import map from "@assets/usa-map.svg";
-import KustomerClient from "./Client";
+import KustomPackagingClients from "./Client";
 
 const { title, sub_title, client_list } = Astro.props;
 
@@ -26,7 +26,7 @@ const list = await Promise.all(
 );
 ---
 
-<KustomerClient
+<KustomPackagingClients
     subTitle={sub_title}
     list={list}
     client:visible={{ rootMargin: "100% 0px 100% 0px" }}
@@ -36,7 +36,7 @@ const list = await Promise.all(
     <Fragment slot="listLogo">
         {
             list.map((item, idx) => (
-                <div class="kustomer-client-item kustomer-client-box">
+                <div class="kuspack-client-item kuspack-client-box">
                     <Image
                         src={item.data.client_logo.url}
                         alt="McDonald"
@@ -47,4 +47,4 @@ const list = await Promise.all(
             ))
         }
     </Fragment>
-</KustomerClient>
+</KustomPackagingClients>

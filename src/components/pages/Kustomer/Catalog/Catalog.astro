@@ -7,28 +7,33 @@ import arrIcon from "@assets/arr-right.svg?raw";
 import "./Catalog.scss";
 import { getByUID } from "@/prismic";
 
-const { title, describe, label, groupData } = Astro.props;
+const { title, describe, label, currPage, groupData } = Astro.props;
 
 /** (💡)  - Transform list id product group in each group to the list product data */
 let listGroup = await Promise.all(
 	groupData.map(async (group: any) => ({
-			...group,
-			list: await Promise.all(
-				group.list.map(async ({ item }) => await getByUID("product_group", item.uid))
-			)
-		})
-	)
-)
+		...group,
+		list: await Promise.all(
+			group.list.map(
+				async ({ item }) => await getByUID("product_group", item.uid),
+			),
+		),
+	})),
+);
 
 /** (💡)  - Get all item in list group and call product feature */
 let listItem = await Promise.all(
 	listGroup
 		.reduce((arr, curr) => arr.concat(curr.list), [])
 		.map(async (category: any) => {
-			let { data } = await getByUID("product", category.data.product_list.find((el:any) => el.is_featured).product.uid)
-			return { ...category, product_feature: data }
-		})
-)
+			let { data } = await getByUID(
+				"product",
+				category.data.product_list.find((el: any) => el.is_featured)
+					.product.uid,
+			);
+			return { ...category, product_feature: data };
+		}),
+);
 ---
 
 <section class="kustomer-cata">
@@ -42,25 +47,31 @@ let listItem = await Promise.all(
 		</KustomerCatalogTitle>
 		<div class="kustomer-cata-main">
 			<div class="kustomer-cata-main-content-wrap">
-				{listGroup.map((group, idx) => (
-					<KustomerCatalogGroup
-						key={idx}
-						data={group}
-						listItem={listItem}
-						client:visible={{ rootMargin: "100% 0px 100% 0px" }}
+				{
+					listGroup.map((group, idx) => (
+						<KustomerCatalogGroup
+							key={idx}
+							data={group}
+							currPage={currPage}
+							listItem={listItem}
+							client:visible={{ rootMargin: "100% 0px 100% 0px" }}
 						>
-						<KustomerCatalogThree
-							slot="card"
-							isMobile={true}
-							listItem={listItem.filter(item1 => group.list.some(item2 => item1.id === item2.id))}
-							client:idle
-							client:media="(max-width: 767px)"
-						>
-							<Fragment set:html={arrIcon} slot="arrIcon" />
-						</KustomerCatalogThree>
-					</KustomerCatalogGroup>
-
-				))}
+							<KustomerCatalogThree
+								slot="card"
+								isMobile={true}
+								listItem={listItem.filter((item1) =>
+									group.list.some(
+										(item2) => item1.id === item2.id,
+									),
+								)}
+								client:media="(max-width: 767px)"
+								client:idle
+							>
+								<Fragment set:html={arrIcon} slot="arrIcon" />
+							</KustomerCatalogThree>
+						</KustomerCatalogGroup>
+					))
+				}
 			</div>
 			<KustomerCatalogThree
 				listItem={listItem}
