@@ -2,7 +2,7 @@
 .kareer-hero {
     &-title {
         padding-top: 22rem;
-        padding-bottom: 13rem;
+        padding-bottom: 10rem;
         grid-column: 1/-1;
         max-width: 99rem;
         margin: 0 auto;
@@ -16,7 +16,6 @@
             width: 100%;
             padding-top: 16rem;
             padding-bottom: 4rem;
-            text-align: start;
             @include text(h1);
         }
     }

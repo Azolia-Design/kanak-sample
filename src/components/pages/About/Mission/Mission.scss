@@ -1,0 +1,75 @@
+@use '@styles/mixins' as *;
+@use '@styles/colors' as *;
+
+.abt-miss {
+    background-color: var(--cl-bg-dark);
+    color: var(--cl-txt-light);
+    position: relative;
+    .line {
+        background-color: var(--cl-txt-light);
+        opacity: .3;
+        width: auto;
+        position: absolute;
+        top: 0;
+        left: 6rem;
+        right: 6rem;
+        @include md {
+            left: 4rem;
+            right: 4rem;
+        }
+        @include sm {
+            left: 2rem;
+            right: 2rem;
+        }
+    }
+    &-label {
+        grid-column: 1/5;
+        padding-block: 13.5rem 22.5rem;
+        @include md {
+            padding-block: 8rem;
+            @include text(h5)
+        }
+        @include sm {
+            padding-block: 8rem 0;
+            grid-column: 1/-1;
+            margin-bottom: 4rem;
+        }
+    }
+    &-title-wrap {
+        padding-block: 13.5rem 22.5rem;
+        grid-column: 5/17;
+        display: flex;
+        align-items: start;
+        @include md {
+            padding-block: 8rem;
+            grid-column: 5/13;
+        }
+        @include sm {
+            padding-block: 0 8rem;
+            grid-column: 1/-1;
+            @include text(h3);
+        }
+    }
+    &-quote-ic {
+        margin-right: 4.8rem;
+        @include md {
+            margin-left: -1rem;
+            margin-right: 2.6rem;
+            @include text(h0);
+        }
+        @include sm {
+            margin-left: 0;
+            margin-right: 1.8rem;
+            @include text(h3);
+        }
+    }
+    &-title {
+        max-width: 106rem;
+        @include md {
+            @include text(h1)
+        }
+        @include sm {
+            @include text(h3)
+        }
+    }
+}

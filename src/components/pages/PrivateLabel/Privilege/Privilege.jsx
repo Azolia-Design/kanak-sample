@@ -28,10 +28,10 @@ function PrivatePrivilege({ ...props }) {
         Items.forEach((el, idx) => {
             const itemSequence = []
             if (window.innerWidth > 767) {
-                animate(el, { opacity: 0, scale: .3, rotate: 60 }, { duration: 0 })
+                animate(el, { opacity: 0, scale: .9 }, { duration: 0 })
 
                 itemSequence.push(
-                    [el, { opacity: 1, scale: 1, rotate: 0 }, { duration: .8, at: idx * .08 }]
+                    [el, { opacity: 1, scale: 1 }, { duration: .6, at: idx * .1 }]
                 )
             } else {
                 animate(el, { opacity: 0, transform: "translateY(2rem)" }, { duration: 0 })

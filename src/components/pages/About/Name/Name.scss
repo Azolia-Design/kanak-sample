@@ -1,0 +1,71 @@
+@use '@styles/mixins' as *;
+@use '@styles/colors' as *;
+
+.abt-name {
+    &-content-wrap {
+        width: 100%;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+    }
+    &-title {
+        // position: sticky;
+        // top: calc((100vh - var(--lh-h0) * 2) /2);
+        margin-block: 34rem 23rem; //margin-block: calc(34rem + 10rem) 23rem;
+        margin-inline: auto;
+        max-width: 88.9rem;
+        text-align: center;
+        @include md {
+            margin-block: 20rem 4rem;
+            max-width: 63rem;
+        }
+        @include sm {
+            margin-block: 12rem 4rem;
+            @include text(h1);
+        }
+    }
+    &-img-wrap {
+        margin-top: -23rem;
+        height: 100vh;
+        margin-inline: calc(var(--container-padding) * -1);
+        @include md {
+            margin-top: 0;
+            height: auto;
+        }
+    }
+    &-img-inner {
+        width: 100%;
+        height: 100%;
+        transform-origin: center bottom;
+        transform: scale(.22);
+        overflow: hidden;
+        @include sm {
+            transform: scale(.42);
+        }
+    }
+    &-main {
+        padding-block: 24rem 27rem;
+        background-color: var(--cl-bg-dark);
+        color: var(--cl-txt-light);
+        @include md {
+            padding-block: 13rem;
+        }
+        @include sm {
+            padding-block: 8rem;
+        }
+        &-title {
+            grid-column: 3/15;
+            text-align: center;
+            max-width: 120rem;
+            margin-inline: auto;
+            @include md {
+                grid-column: 1/-1;
+                max-width: 63rem;
+                @include text(h3);
+            }
+            @include sm {
+                @include text(h4);
+            }
+        }
+    }
+}

@@ -26,15 +26,16 @@ function KareersCta(props) {
     return (
         <section className="kareer-cta">
             <div className="container grid">
-                <h2 className="heading h0 txt-up txt-black kareer-cta-title">
-                    Discover Hip Openings Tailored for You
-                </h2>
+                <h2 className="heading h0 txt-up txt-black kareer-cta-title">{props.title}</h2>
                 <div className="kareer-cta-sub-wrap">
-                    <p className="txt txt-20 txt-med kareer-cta-sub">
-                        We are dedicated to fostering a dynamic and inclusive workplace where talent thrives, ideas flourish, and careers are built. If you are passionate about kanak and are seeking a rewarding and challenging career, consider becoming a part of our vibrant team.
-                    </p>
+                    <p className="txt txt-18 txt-med kareer-cta-sub">{props.sub}</p>
                     <div className="kareer-cta-btn-wrap">
-                        <a href="#" className="btn btn-lg" data-cursor="txtLink" data-cursor-txtlink="child">
+                        <a
+                            href="https://www.google.com/search?q=kanak+naturals+careers&oq=kanak+&gs_lcrp=EgZjaHJvbWUqCAgAEEUYJxg7MggIABBFGCcYOzIGCAEQRRg5MgYIAhBFGDwyBggDEEUYPDIGCAQQRRhBMgYIBRBFGDwyBggGEEUYQTIGCAcQRRhBqAIAsAIB&sourceid=chrome&ie=UTF-8&ibp=htl;jobs&sa=X&sqi=2&ved=2ahUKEwjCrfWX-LaFAxXvNzQIHeYHCWUQkd0GegQIIhAB#fpstate=tldetail&htivrt=jobs&htiq=kanak+naturals+careers&htidocid=PcwDE1pa05HS_rjBAAAAAA%3D%3D&sxsrf=ACQVn0-wvmRnZIx6Iz40JuT6jnkivua85g:1712727781109"
+                            className="btn btn-lg"
+                            target='_blank'
+                            data-cursor="txtLink"
+                            data-cursor-txtlink="child">
                             <div className="txt txt-18 txt-up txt-med" data-cursor-txtlink-child>Views open positions</div>
                         </a>
                     </div>

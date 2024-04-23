@@ -21,8 +21,8 @@ function KareersHero({ ...props }) {
     return (
         <section className="kareer-hero">
             <div className="container grid">
-                <h1 className="heading h0 txt-up txt-black kareer-hero-title">
-                    We are seeking some explosive factors
+                <h1 className="heading txt-180 txt-up txt-black kareer-hero-title">
+                    {props.title}
                 </h1>
             </div>
             <div className="kareer-hero-bg bg-light">

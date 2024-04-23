@@ -1,0 +1,9 @@
+---
+import { Image } from "astro:assets";
+import AboutName from "./Name";
+import AbtNameImg from "@assets/abt-name.jpg";
+---
+
+<AboutName {...Astro.props} client:visible={{ rootMargin: "100% 0px 100% 0px" }}>
+  <Image src={AbtNameImg} class="img-fill" alt="" slot="nameImg"/>
+</AboutName>

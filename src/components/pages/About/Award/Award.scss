@@ -1,0 +1,177 @@
+@use '@styles/mixins' as *;
+@use '@styles/colors' as *;
+
+.abt-award {
+    padding-block: 18.8rem 0;
+    @include md {
+        padding-block: 8rem 4rem;
+    }
+    @include sm {
+        overflow: hidden;
+    }
+    &-title-wrap {
+        grid-column: 6/15;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        margin-bottom: 8rem;
+        @include md {
+            grid-column: 4/-1;
+            margin-bottom: 6.4rem;
+        }
+        @include sm {
+            grid-column: 1/-1;
+        }
+    }
+    &-label {
+        margin-bottom: 2rem;
+        @include md {
+            @include text(h5);
+            margin-bottom: 1.2rem;
+        }
+    }
+    &-title {
+        @include md {
+            @include text(h1);
+        }
+    }
+    &-grp {
+        grid-column: 1/-1;
+        &-head {
+            display: flex;
+            padding-block: 2.4rem;
+            align-items: center;
+            justify-content: start;
+            column-gap: 1.6rem;
+            position: relative;
+            @include md {
+                padding-block: 1.6rem;
+            }
+            .dot {
+                width: 2rem;
+                height: 2rem;
+                background-color: var(--cl-txt);
+                border-radius: 50%;
+                @include md {
+                    width: 1.6rem;
+                    height: 1.6rem;
+                }
+            }
+            &-title {
+                @include md {
+                    @include text(h5);
+                }
+            }
+            .line {
+                position: absolute;
+                left: 0;
+                bottom: 0;
+            }
+        }
+        &-body {
+            &.top {
+                @include sm {
+                    margin-bottom: 2rem;
+                }
+            }
+        }
+    }
+    &-item {
+        display: flex;
+        flex-direction: row-reverse;
+        @include md {
+            padding-block: 4rem;
+            flex-direction: row;
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            column-gap: var(--grid-gap);
+            position: relative;
+        }
+        @include sm {
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            row-gap: 4rem;
+        }
+        &-img-wrap {
+            width: 15rem;
+            height: 12rem;
+            margin-left: 2.4rem;
+            flex: none;
+            @include md {
+                width: 12rem;
+                margin-left: 0;
+                grid-column: 1/4;
+            }
+        }
+        &-content {
+            display: flex;
+            flex-direction: column;
+            row-gap: 4rem;
+            align-items: start;
+            @include md {
+                grid-column: 4/-1;
+                row-gap: 3.2rem;
+            }
+            &-title {
+                @include md {
+                    @include text(h3);
+                }
+            }
+            &-link {
+                display: flex;
+                align-items: center;
+                column-gap: .8rem;
+            }
+        }
+        @include md {
+            .line {
+                position: absolute;
+                width: 100%;
+                height: .2rem;
+                left: 0;
+                bottom: 0;
+            }
+        }
+    }
+    @media only screen and (min-width: 991px) {
+        .abt-award-grp-body {
+            &.top {
+                .abt-award-item {
+                    display: grid;
+                    grid-template-columns: repeat(16, 1fr);
+                    column-gap: var(--grid-gap);
+                    padding-block: 4rem;
+                    margin-bottom: 8rem;
+                    &-img-wrap {
+                        grid-column: 1/6;
+                        width: 18rem;
+                        margin-left: 0;
+                    }
+                    &-content {
+                        grid-column: 6/-1;
+                    }
+                }
+            }
+            &.bot {
+                display: grid;
+                grid-template-columns: repeat(2,1fr); 
+                .abt-award-item {
+                    padding-block: 7.2rem 9.6rem;
+                    &:nth-child(1) {
+                        padding-right: 6.7rem;
+                        position: relative;
+                        .line-ver {
+                            position: absolute;
+                            top: 0;
+                            right: 0;
+                        }
+                    }
+                    &:nth-child(2) {
+                        padding-left: 6.7rem;
+                    }
+                }               
+            }
+        }
+    }
+}

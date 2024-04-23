@@ -18,3 +18,5 @@ function useProductIndex() {
 export { useProductIndex };
 
 export const brandIndex = atom(0);
+
+export const progressPercent = atom(0);

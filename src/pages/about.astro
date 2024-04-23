@@ -1,0 +1,25 @@
+---
+import Layout from "@/layouts/Layout.astro";
+
+import Hero from "@pages/About/Hero/Hero.astro";
+import Name from "@pages/About/Name/Name.astro";
+import Mission from "@pages/About/Mission/Mission.astro";
+import Why from "@pages/About/Why/Why.astro";
+import Commit from "@pages/About/Commit/Commit.astro";
+import Join from "@pages/About/Join/Join.astro";
+import Award from "@pages/About/Award/Award.astro";
+import abtBg from "@assets/abt-ft-bg.jpg";
+import { getPage } from "@/prismic.js";
+const { data } = await getPage("fullfilment_page");
+---
+
+<Layout title="Know Us" footer_cta={'Join our mission for a greener future'}
+    footer_bg={data.cta_background}>
+    <Hero />
+    <Name />
+    <Mission />
+    <Why />
+    <Commit />
+    <Join />
+    <Award />
+</Layout>
