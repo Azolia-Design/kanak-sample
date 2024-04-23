@@ -19,28 +19,26 @@ let newList = kustomerList.map((el, idx) => ({
 }));
 
 const pages = [
-    { name: "Kustomers", link: "/kustomers", type: "dropdown", sub_menu: [...newList] },
+    { name: "Kustomers", type: "dropdown", sub_menu: [...newList] },
     { name: "Katalog", link: "/katalog", type: "" },
     {
         name: "Solutions",
-        link: "/solutions",
         type: "dropdown",
         sub_menu: [
-            { name: "Private label", url: "/" },
-            { name: "Custom packaging", url: "/" },
+            { name: "Private label", url: "/private-label" },
+            { name: "Custom packaging", url: "/kustom-packaging-solutions" },
         ],
     },
     { name: "Fulfillment", link: "/fulfillment", type: "" },
     {
         name: "Resources",
-        link: "/resources",
         type: "dropdown",
         sub_menu: [
             { name: "Insights", url: "/insights" },
             { name: "Kase Studies", url: "/kase-studies" },
         ],
     },
-    { name: "Know us", link: "/", type: "" },
+    { name: "Know us", link: "/about", type: "" },
 ];
 const bodyFlagIc = await getImage({ src: bodyFlag, format: "svg" });
 const pathname = new URL(Astro.request.url).pathname;

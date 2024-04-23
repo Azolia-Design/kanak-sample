@@ -181,20 +181,20 @@ function HeaderGlobal(props) {
                                             <a
                                                 href={page.link}
                                                 data-dropdown-idx={idx}
-                                                className="header-menu-item-link txt-link"
+                                                className={cn("header-menu-item-link txt-link", { "on-dropdown": idx === dropdownIdx })}
                                                 onClick={(e) => {
                                                     if (page.type != 'dropdown') return;
                                                     menuOnClick(e, idx);
                                                 }}>
                                                 <span className="txt txt-14 txt-up txt-semi">{page.name}</span>
+                                                {page.type == 'dropdown' && (
+                                                    <div className={cn("ic ic-14 header-menu-item-ic", { "active" : idx === dropdownIdx })}>
+                                                        <svg width="100%" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M2.59246 3.5L5.99935 6.89947L9.40624 3.5L10.4528 4.54656L5.99935 9.00001L1.5459 4.54656L2.59246 3.5Z" fill="currentColor"/>
+                                                        </svg>
+                                                    </div>
+                                                )}
                                             </a>
-                                            {page.type == 'dropdown' && (
-                                                <div className={cn("ic ic-14 header-menu-item-ic", { "active" : idx === dropdownIdx })}>
-                                                    <svg width="100%" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M2.59246 3.5L5.99935 6.89947L9.40624 3.5L10.4528 4.54656L5.99935 9.00001L1.5459 4.54656L2.59246 3.5Z" fill="currentColor"/>
-                                                    </svg>
-                                                </div>
-                                            )}
                                         </div>
                                         {idx !== props.pages.length - 1 && (
                                             <span className="txt txt-14 txt-semi txt-div">/</span>
