@@ -1,0 +1,118 @@
+@use '@styles/mixins' as *;
+@use '@styles/colors' as *;
+
+.abt-why {
+    &-title-wrap {
+        grid-column: 1/10;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        position: relative;
+        margin-right: -1rem;
+        padding-block: 13.5rem 10rem;
+        @include md {
+            grid-column: 1/-1;
+            padding-block: 8rem;
+            max-width: 49.7rem;
+        }
+        @include sm {
+            padding-block: 8rem 4rem;
+        }
+        .line-ver {
+            position: absolute;
+            background-color: var(--cl-txt);
+            top: 0;
+            right: 0;
+            @include md {
+                display: none;
+            }
+        }
+    }
+    &-label {
+        margin-bottom: 2rem;
+        @include md {
+            @include text(h5);
+            margin-bottom: 1.2rem;
+        }
+        @include sm {
+            @include text(h5);
+        }
+    }
+    &-title {
+        margin-bottom: 4rem;
+        max-width: 89.8rem;
+        @include md {
+            @include text(h1);
+            margin-bottom: 0;
+        }
+        @include sm {
+            @include text(h2);
+        }
+    }
+    &-link {
+        display: flex;
+        align-items: center;
+        column-gap: .8rem;
+        .ic {
+            overflow: hidden;
+        }
+        &.mod-dk {
+            @include md {
+                display: none;
+            }
+        }
+        &.mod-tb {
+            display: none;
+            margin-top: 1.2rem;
+            @include md {
+                display: flex;
+            }
+            @include sm {
+                @include text(16);
+            }
+        }
+    }
+    &-content-wrap {
+        grid-column: 11/17;
+        display: flex;
+        flex-direction: column;
+        padding-block: 13.5rem 10rem;
+        @include md {
+            grid-column: 1/-1;
+            padding-block: 0 8rem;
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            column-gap: var(--grid-gap);
+        }
+        @include sm {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+    &-img-wrap {
+        margin-bottom: 4rem;
+        @include md {
+            margin-bottom: 0;
+            grid-column: 1/5;
+        }
+        @include sm {
+            margin-bottom: 4rem;
+        }
+
+    }
+    &-body-wrap {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        row-gap: 2.4rem;
+        @include md {
+            grid-column: 6/-1;
+            row-gap: 2rem;
+        }
+    }
+    &-body {
+        @include md {
+            @include text(16);
+        }
+    }
+}

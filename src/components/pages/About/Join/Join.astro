@@ -1,0 +1,13 @@
+--- 
+import { Image } from "astro:assets";
+import AboutJoin from './Join';
+import joinImg1 from '@assets/abt-join-1.jpg';
+import joinImg2 from '@assets/abt-join-2.jpg';
+import joinImg3 from '@assets/abt-join-3.jpg';
+---
+
+<AboutJoin {...Astro.props} client:visible={{ rootMargin: "100% 0px 100% 0px" }}>
+    <Image src={joinImg1} alt="" slot="joinImg1" class="img img-h" />
+    <Image src={joinImg2} alt="" slot="joinImg2" class="img img-h" />
+    <Image src={joinImg3} alt="" slot="joinImg3" class="img img-h" />
+</AboutJoin>
