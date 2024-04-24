@@ -6,16 +6,16 @@ import cn from 'clsx';
 
 function HomeProduct(props) {
     const { index, setIndex } = useProductIndex();
-
+    const onChangeIndex = (direction) => setIndex({ value: index.value + direction, direction })
     useEffect(() => {
-        setIndex(0);
+        setIndex({ direction: -1, value: 0 });
         scroll(({y}) => {
             if (document.querySelectorAll('.home-prod-cards-inner').length >= 1) {
                 if (y.progress >= (window.innerWidth < 767 ? .76 : .9)) {
                     document.querySelector('.home-prod-cards-inner').classList.add('active')
                 }
                 else {
-                    setIndex(0);
+                    setIndex({ direction: -1, value: 0 });
                     document.querySelector('.home-prod-cards-inner').classList.remove('active')
                 }
             }
@@ -34,15 +34,15 @@ function HomeProduct(props) {
                         </div>
                         <div className="home-prod-cards-nav">
                             <button
-                                className={cn('home-prod-cards-nav-item prev', { 'disable': index === 0 })}
-                                onClick={() => setIndex(index - 1)}>
+                                className={cn('home-prod-cards-nav-item prev', { 'disable': index.value === 0 })}
+                                onClick={() => onChangeIndex(-1)}>
                                 <div className="ic ic-40">
                                     {props.arrIcon}
                                 </div>
                             </button>
                             <button
-                                className={cn('home-prod-cards-nav-item next', { 'disable': index == props.list.length - 1 })}
-                                onClick={() => setIndex(index + 1)}>
+                                className={cn('home-prod-cards-nav-item next', { 'disable': index.value == props.list.length - 1 })}
+                                onClick={() => onChangeIndex(1)}>
                                 <div className="ic ic-40">
                                     {props.arrIcon}
                                 </div>
@@ -57,7 +57,7 @@ function HomeProduct(props) {
                             {props.list.map((item, idx) => (
                                 <div
                                     key={idx}
-                                    className={cn('heading h5 txt-up txt-black home-prod-cards-bottom-txt', { 'active': idx === index })}>
+                                    className={cn('heading h5 txt-up txt-black home-prod-cards-bottom-txt', { 'active': index.value === idx })}>
                                     {item.data.name}
                                 </div>
                             ))}
@@ -66,7 +66,7 @@ function HomeProduct(props) {
                             {props.itemList.map((item, idx) => (
                                 <div
                                     key={idx}
-                                    className={cn('home-prod-cards-qr', { 'active': idx === index })}>
+                                    className={cn('home-prod-cards-qr', { 'active': index.value === idx })}>
                                     <img src={item.data.qr.url} alt="" className="ic ic-80" />
                                 </div>
                             ))}
@@ -77,7 +77,7 @@ function HomeProduct(props) {
                     {props.list.map((_, idx) => (
                         <button
                             key={idx}
-                            className={cn('home-prod-cards-pagination-dot', { 'active': idx === index })}>
+                            className={cn('home-prod-cards-pagination-dot', { 'active': index.value === idx })}>
                             <span></span>
                         </button>
                     ))}

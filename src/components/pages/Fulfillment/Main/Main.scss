@@ -8,7 +8,6 @@
     &-img {
         overflow: hidden;
         height: 70rem;
-
         @include md {
             height: 42.5rem;
         }
@@ -174,15 +173,15 @@
             }
 
             @media (hover: hover) {
-                &:hover {
-                    .fulfill-main-content-item-head {
-                        color: var(--cl-orange);
-                    }
+                // &:hover {
+                //     .fulfill-main-content-item-head {
+                //         color: var(--cl-orange);
+                //     }
 
-                    .dot {
-                        opacity: 1;
-                    }
-                }
+                //     .dot {
+                //         opacity: 1;
+                //     }
+                // }
             }
         }
     }
@@ -205,11 +204,14 @@
 
         &-sticky {
             position: sticky;
-            top: calc(50vh - 33.8rem);
+            top: 8rem;
             display: grid;
-            align-items: center;
             grid-template-columns: 1fr;
             overflow: hidden;
+            align-items: center;
+            align-content: stretch;
+            height: 79.8rem;
+            max-height: calc(100vh - 16rem);
 
             @include md {
                 top: calc(50vh - 18.55rem);
@@ -220,7 +222,7 @@
             grid-column: 1/2;
             grid-row: 1/2;
             width: 100%;
-            aspect-ratio: 0.8671679198;
+            height: 100%;
             opacity: 0;
             transform: scale(1.1);
             transition: opacity 0.4s ease-in-out, transform .4s ease-out;

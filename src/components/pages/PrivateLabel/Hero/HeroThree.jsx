@@ -12,7 +12,7 @@ function Content(props) {
     const [scaleOffset, setScaleOffset] = useState(1);
     const [degraded, degrade] = useState(false);
 
-    useFrame(({ clock }, delta) => {
+    useFrame(({ clock }) => {
         if (!product.current) return;
         product.current.rotation.x += (0 - product.current.rotation.x + Math.cos(clock.getElapsedTime() / 2) * Math.PI * .02) * .08
         product.current.rotation.y += (0 - product.current.rotation.y + Math.cos(clock.getElapsedTime() / 2) * Math.PI * .02) * .08
@@ -23,15 +23,18 @@ function Content(props) {
         } else if (window.innerWidth > 767) {
             setScaleOffset(1.3)
         } else {
-            setScaleOffset(1.5)
+            setScaleOffset(2.2)
         }
     }, []);
     return (
         <>
             <group
-                position={[(window.innerWidth > 991 ? .16 : .55) / scaleOffset, (window.innerWidth > 991 ? -.12 : -.15) / scaleOffset, 0]}
+                position={[
+                    (window.innerWidth > 991 ? .16 : window.innerWidth > 767 ? .55 : -.15) / scaleOffset,
+                    (window.innerWidth > 991 ? -.12 : window.innerWidth > 767 ? -.15 : -.25) / scaleOffset,
+                    0]}
                 scale={[6 / scaleOffset, 6 / scaleOffset, 6 / scaleOffset]}
-                rotation={[Math.PI * -.08, Math.PI * -.25, Math.PI * -.3]}
+                rotation={[Math.PI * -.08, Math.PI * -.22, Math.PI * -.25]}
             >
                 <group
                     rotation={[0, Math.PI * .48, 0]}>
@@ -44,9 +47,11 @@ function Content(props) {
                 </group>
             </group>
             <spotLight intensity={1} angle={.1} penumbra={1} position={[10, 10, -5]} castShadow />
-            <ContactShadows opacity={(window.innerWidth > 991 ? .2 : .12)}
+            <ContactShadows
+                opacity={window.innerWidth > 991 ? .2 : window.innerWidth > 767 ? .12 : .25}
                 scale={[5 / scaleOffset, 10 / scaleOffset, 2 / scaleOffset]}
-                position={[0, -1 / scaleOffset, 0]}  blur={2} far={1.2} />
+                position={[0, -1 / scaleOffset, (window.innerWidth > 767 ? 0 : -.2) / scaleOffset]}
+                blur={window.innerWidth > 767 ? 1.2 : 5} far={1.2} />
             <Environment files={suspend(warehouse)} frames={degraded ? 1 : Infinity} resolution={256}/>
         </>
     )
