@@ -40,12 +40,16 @@ const { data, uid } = await getPage("privatelabel_page");
         list={data.collection_list}
     />
     <Privilege
-        data={data}
         title={data.privilege_title}
         sub={data.privilege_sub}
         list={data.privilege_list}
     />
-    <Distribution />
+    <Distribution
+        title={data.distribution_title}
+        sub={data.distribution_sub}
+        btn={data.distribution_btn}
+        list={data.distribution_list}
+    />
     <CaseStudies
         label={data.kase_studies_label}
         title={data.kase_studies_title}

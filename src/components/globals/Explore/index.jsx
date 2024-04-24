@@ -50,14 +50,14 @@ function GlobalExplore({ ...props }) {
             <div className="container grid">
                 <h2 className="heading h3 txt-black txt-up global-explore-title">Explore More</h2>
                 <div className="global-explore-list">
-                    {props.list.map(({ data }, idx) => (
-                        <a href="#" className="global-explore-list-item" key={idx} data-cursor="ext">
+                    {props.list.map((item, idx) => (
+                        <a href={`/${item.link}`} className="global-explore-list-item" key={idx} data-cursor="ext">
                             <div className="global-explore-list-item-img">
                                 <div className="global-explore-list-item-img-inner">
-                                    <img src={data.thumbnail.url} alt={data.thumbnail.alt} width={data.thumbnail.dimensions.width} className="img img-fill" />
+                                    <img src={item.data.thumbnail.url} alt={item.data.thumbnail.alt} width={item.data.thumbnail.dimensions.width} className="img img-fill" />
                                 </div>
                             </div>
-                            <h1 className="heading h2 txt-black txt-up global-explore-list-item-title">{data.name[0].text}</h1>
+                            <h1 className="heading h2 txt-black txt-up global-explore-list-item-title">{item.data.name[0].text}</h1>
                             <div className="line global-explore-list-item-line"></div>
                         </a>
                     ))}
