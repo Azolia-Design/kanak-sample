@@ -24,6 +24,7 @@ const {
 	title,
 	data_page,
 	hideNav = false,
+	hideLoader = true,
 	footer_cta,
 	footer_bg,
 	explore_data,
@@ -38,7 +39,7 @@ const {
 	>
 		{!hideNav && <Header />}
 		<Cursor />
-		<GlobLoader/>
+		{!hideLoader && <GlobLoader/>}
 		<div class="main on-load">
 			<slot />
 		</div>
