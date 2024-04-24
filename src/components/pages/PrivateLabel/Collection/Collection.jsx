@@ -116,7 +116,7 @@ function PrivateCollection(props) {
             <div className="container">
                 <div className="private-collection-grid">
                     <h3 className="heading h0 txt-black txt-up private-collection-title">
-                        THE SUSTAINABLES® COLLECTION
+                        {props.title[0].text}
                     </h3>
                     <div className="private-collection-img">
                         <div className="private-collection-img-inner bg-light">
@@ -124,7 +124,7 @@ function PrivateCollection(props) {
                         </div>
                     </div>
                     <a href="#" className="btn private-collection-btn tablet">
-                        <h5 className="heading h5 txt-black txt-up private-collection-btn-title">See Sustainables® products</h5>
+                        <h5 className="heading h5 txt-black txt-up private-collection-btn-title">{props.btn}</h5>
                     </a>
                     <div className={`keen-slider private-collection-list`} ref={sliderRef}>
                         <a href="#" className="btn private-collection-btn">
@@ -135,13 +135,13 @@ function PrivateCollection(props) {
                                         <path d="M12 5H35V28" stroke="currentColor" strokeWidth="4" strokeMiterlimit="10" strokeLinecap="square" />
                                     </svg></div>
                             </div>
-                            <h5 className="heading h5 txt-black txt-up private-collection-btn-title">See Sustainables® products</h5>
+                            <h5 className="heading h5 txt-black txt-up private-collection-btn-title">{props.btn}</h5>
                             <div className="line line-top"></div>
                             <div className="line line-ver line-right"></div>
                             <div className="line line-bot"></div>
                             <div className="line line-ver line-left"></div>
                         </a>
-                        {props.list.map((item, idx) => (
+                        {props.listItem.map((item, idx) => (
                             <BenefitItem key={idx} {...item} />
                         ))}
                     </div>

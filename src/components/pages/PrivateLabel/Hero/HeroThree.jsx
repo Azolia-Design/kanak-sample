@@ -52,7 +52,7 @@ function Content(props) {
                 scale={[5 / scaleOffset, 10 / scaleOffset, 2 / scaleOffset]}
                 position={[0, -1 / scaleOffset, (window.innerWidth > 767 ? 0 : -.2) / scaleOffset]}
                 blur={window.innerWidth > 767 ? 1.2 : 5} far={1.2} />
-            <Environment files={suspend(warehouse)} frames={degraded ? 1 : Infinity} resolution={256}/>
+            <Environment files={suspend(warehouse)} frames={degraded ? 1 : Infinity} resolution={256} />
         </>
     )
 }
@@ -68,7 +68,7 @@ function PrivateHeroThree(props) {
         return (
             <div className="private-hero-three" ref={threeRef}>
                 <Canvas camera={{ fov: fov, near: 0.1, far: 10000, position: [0, 0, perspective], aspect: width / height }} shadows>
-                    <Content width={width} height={height} list={props.list}/>
+                    <Content width={width} height={height} list={props.list} />
                     <AdaptiveDpr pixelated />
                 </Canvas>
             </div>

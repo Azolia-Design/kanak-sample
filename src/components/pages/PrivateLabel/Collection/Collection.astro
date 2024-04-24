@@ -1,13 +1,11 @@
 ---
 import Image from "astro/components/Image.astro";
 import PrivateCollection from "./Collection";
-import img from "@assets/private-cls-1.jpg";
 import { getByUID } from "@/prismic";
 
-let data = await getByUID("industry", "retail");
-
+const { list, image } = Astro.props;
 let listItem = await Promise.all(
-    data.data.benefit_list
+    list
         .reduce((acc, curr) => acc.concat(curr.item.uid), [])
         .map(async (uid: any) => {
             let item = await getByUID("benefit", uid);
@@ -18,8 +16,15 @@ let listItem = await Promise.all(
 
 <PrivateCollection
     {...Astro.props}
-    list={listItem}
+    listItem={listItem}
     client:visible={{ rootMargin: "100% 0px 100% 0px" }}
 >
-    <Image src={img} alt="" slot="img" class="img img-fill" />
+    <Image
+        src={image.url}
+        alt=""
+        width={image.dimensions.width}
+        height={image.dimensions.height}
+        slot="img"
+        class="img img-fill"
+    />
 </PrivateCollection>
