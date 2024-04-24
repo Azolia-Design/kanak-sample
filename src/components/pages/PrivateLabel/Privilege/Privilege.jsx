@@ -47,6 +47,11 @@ function PrivatePrivilege({ ...props }) {
             }, { margin: "-10% 0px -10% 0px" })
         })
     }, [])
+    const data = [
+        { title: 'Free Customization', subtitle: "Emboss it, print it, make it yours. And no, we're not charging extra for the cool factor." },
+        { title: 'Margins as Sweet as Pie', subtitle: " Our products don’t just look good; they make your bottom line look even better, boosting profitability one plate at a time." },
+        { title: 'Stable Prices in Unstable Times', subtitle: " Inflating prices? Not on our watch. We're all about price stability, so you can sleep a little sounder." }
+    ]
     return (
         <section className='private-privilege bg-dark'>
             <div className="container grid">
@@ -55,13 +60,13 @@ function PrivatePrivilege({ ...props }) {
                     <div className="txt txt-18 txt-med private-privilege-sub"> We're not just selling plates and bowls; we're offering a partnership where your brand gets the VIP treatment it deserves.</div>
                 </div>
                 <div className="private-privilege-main">
-                    {[...Array(3)].map((el, idx) => (
+                    {data.map((el, idx) => (
                         <div className="private-privilege-item-wrap" key={idx}>
                             <div className="private-privilege-item" style={{ '--idx': 2 - idx }}>
                                 <div className="private-privilege-item-inner">
-                                    <h3 className="heading h5 txt-black txt-up private-privilege-item-title">Free Customization</h3>
+                                    <h3 className="heading h5 txt-black txt-up private-privilege-item-title">{el.title}</h3>
                                     <div className="private-privilege-item-sub-wrap">
-                                        <div className="txt txt-18 txt-med private-privilege-item-sub"> Emboss it, print it, make it yours. And no, we're not charging extra for the cool factor.</div>
+                                        <div className="txt txt-18 txt-med private-privilege-item-sub">{el.subtitle}</div>
                                     </div>
                                 </div>
                             </div>

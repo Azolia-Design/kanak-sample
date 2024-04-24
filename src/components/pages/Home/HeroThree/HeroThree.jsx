@@ -24,23 +24,25 @@ function Model({ opacity, item, ...styles }) {
                 material-opacity={opacity}>
                     <Suspense>
                         {item.uid == 'bowls' ? (
-                            <GetModel file='/glb/58-bowl-clean-transformed.glb' scale={[.36,.36,.36]}/>
+                            <GetModel file='/glb/64-oval-bowl-clean-transformed.glb' scale={[1.2,1.2,1.2]} rotation={[0, Math.PI * -.5, 0]}/>
                         ) : item.uid == 'trays' ? (
-                            <GetModel file='/glb/fp_01-clean-transformed.glb' rotation={[0, Math.PI * -.5, 0]}/>
+                            <GetModel file='/glb/KA10054-clean-transformed.glb' scale={[.8,.8,.8]} position={[0, .02, 0]} />
                         ) : item.uid == 'plates-platters' ? (
-                            <GetModel file='/glb/plates-80-transformed.glb' scale={[.9,.9,.9]} position={[0,.01,0]}/>
+                                <GetModel file='/glb/3-elegant-compartments-plates-clean-transformed.glb' rotation={[Math.PI * -.5, 0, 0]} scale={[2, 2, 2]} position={[0, 0.015, 0]} />
                         ) : item.uid == 'soup-containers' ? (
                             <GetModel file='/glb/41-ramen-clean-transformed.glb' scale={[.68,.68,.68]} position={[0,-.015,0]}/>
                         ) : item.uid == 'produce' ? (
                             <GetModel file='/glb/48-monte-tray-clean-transformed.glb' scale={[1.2,1.2,1.2]}/>
                         ) : item.uid == 'kutlery' ? (
-                            <GetModel file='/glb/22-wooden-fork-clean-transformed.glb'/>
+                            <Fork material={<CustomMaterial color='#F9833A' roughness={.2} />} />
                         ) : item.uid == 'kups' ? (
                             <GetModel file='/glb/kup-5-transformed.glb' scale={[.76,.76,.76]} position={[0,-.02,0]}/>
                         ) : item.uid == 'klamshells' ? (
                             <GetModel file='/glb/klamshell-79-transformed.glb' scale={[.8,.8,.8]} position={[0,-.01,0]}/>
                         ) : item.uid == 'carry-out-bags' ? (
                             <GetModel file='/glb/62-freebirds-clean-transformed.glb' scale={[.8,.8,.8]} position={[0,-.01,0]}/>
+                        ) : item.uid == 'food-storage' ? (
+                            <GetModel file='/glb/BA-CFH-700-salad-box-clean-transformed.glb' scale={[.8,.8,.8]} position={[0,-.01,0]}/>
                         ) : (
                             <GetModel file='/glb/m_box-clean-transformed.glb' scale={[.8,.8,.8]} position={[0,.01,0]}
                             />
@@ -49,6 +51,9 @@ function Model({ opacity, item, ...styles }) {
                 <meshBasicMaterial transparent />
             </animated.mesh>
         </animated.group>
+
+            // <GetModel file='/glb/BA-CFH-700-salad-box-clean-transformed.glb' scale={[.8,.8,.8]} position={[0,-.01,0]}/>
+
     )
 }
 function Content({...props}) {
@@ -62,41 +67,45 @@ function Content({...props}) {
     const [scaleOffset, setScaleOffset] = useState(1);
     const [degraded, degrade] = useState(false)
     const clock = useThree(state => state.clock);
-
-    let isLock = false;
-    let currentRotation = 0;
+    const [isLock, setIsLock] = useState(false);
+    const [currentRotation, setCurrentRotation] = useState(0);
+    useEffect(() => {
+        console.log(props.list.map((item) => item.uid))
+        // square-sealable-tray-clean-transformed
+    }, []);
 
     useFrame((state, delta) => {
         if (!products.current) return;
         if (isLock) {
-            products.current.rotation.x += (0 - products.current.rotation.x) * .08
-            currentRotation += .006;
+            setCurrentRotation(currentRotation + .006 * index.direction);
             if (currentRotation >= Math.PI * 2) {
-                currentRotation = 0;
+                setCurrentRotation(0);
             }
             products.current.rotation.y = currentRotation;
         } else {
             products.current.rotation.x += (0 - products.current.rotation.x + Math.cos(clock.elapsedTime / 2) * Math.PI * .02) * .08
             products.current.rotation.y += (0 - products.current.rotation.y + Math.cos(clock.elapsedTime / 2) * Math.PI * .02) * .08
         }
+        // console.log(isLock)
         if (!fork.current) return;
         fork.current.rotation.x = Math.cos(clock.elapsedTime / 2) * Math.PI * .02 * -1
         fork.current.rotation.y = Math.sin(clock.elapsedTime / 2) * Math.PI * .04 * -1
     })
 
-    const transition = useTransition(index, {
-        from: { scale: [0, 0, 0], opacity: 0 },
-        enter: { scale: [1, 1, 1], opacity: 1 },
-        leave: { scale: [0, 0, 0], opacity: 0 },
-        config: () => (n) => n === "opacity" && { friction: 60 },
+    const transition = useTransition(index.value, {
+        from: { rotation: [0, -Math.PI * index.direction, 0], scale: [0, 0, 0], opacity: 0 },
+        enter: { rotation: [0, 0, 0], scale: [1, 1, 1], opacity: 1 },
+        leave: { rotation: [0, Math.PI * index.direction, 0], scale: [0, 0, 0], opacity: 0 },
+        config: () => (n) => n === "opacity" && { friction: 60 }
     })
 
     useEffect(() => {
-        scroll(({y}) => {
+        scroll(({ y }) => {
             if (y.progress >= .9) {
-                isLock = true;
+                setIsLock(true);
             } else {
-                isLock = false;
+                setIsLock(false);
+                setCurrentRotation(0);
             }
             if (contactShadow) {
                 contactShadow.current.position.y = animThreeVal(-3 / scaleOffset, -.4 / scaleOffset, y.progress)
@@ -126,7 +135,7 @@ function Content({...props}) {
         scroll(({y}) => {
             if (!productsWrap.current) return;
             if (y.progress >= 0 && y.progress < 1) {
-                productsWrap.current.position.set(animThreeVal(1.2 / scaleOffset, -.3 / scaleOffset, y.progress), animThreeVal(-.65 / scaleOffset, 0 / scaleOffset, y.progress), 0)
+                productsWrap.current.position.set(animThreeVal(1.6 / scaleOffset, -.3 / scaleOffset, y.progress), animThreeVal(-.65 / scaleOffset, 0 / scaleOffset, y.progress), 0)
                 productsWrap.current.rotation.set(animThreeValRot(.25, -1, y.progress), animThreeValRot(-.28, 0, y.progress), animThreeValRot(.165, -.05, y.progress))
             }
             if (!forkWrap.current) return;
@@ -181,12 +190,12 @@ function Content({...props}) {
         <>
             <group ref={wrap}>
                 <group ref={productsWrap} scale={[11 /scaleOffset, 11 /scaleOffset, 11 /scaleOffset]}
-                    position={[1.2 / scaleOffset, -.65 / scaleOffset, 0]}
+                    position={[1.6 / scaleOffset, -.65 / scaleOffset, 0]}
                     rotation={[Math.PI * .25, -Math.PI * .28, Math.PI * .165]}>
                     <group ref={products}>
                         {transition(({ opacity, ...style }, currentIndex) => (
                             props.list.map((item, idx) => (
-                                idx === currentIndex && item.data.file.url &&
+                                idx === currentIndex &&
                                 <Model key={idx} opacity={opacity} item={item} {...style} />
                             ))
                         ))}

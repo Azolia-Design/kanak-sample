@@ -48,8 +48,8 @@ function HomeProductList(props) {
                     <a
                         key={idx}
                         href='#'
-                        className={`home-prod-main-item${idx == index ? ' active' : ''}`}
-                        onMouseEnter={() => debounceHover(idx)}
+                        className={`home-prod-main-item${idx == index.value ? ' active' : ''}`}
+                        onMouseEnter={() => debounceHover({ ...index, value: idx,  })}
                     >
                         <h3 className="heading h6 txt-up txt-black home-prod-main-item-title">
                             {item.data.name}
