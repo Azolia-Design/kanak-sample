@@ -1,15 +1,15 @@
 import "./Sustainable.scss"
 import { isEmpty } from "@/components/utils/text";
-import GlobalPopup from './ItemDtlPopup'
 import ArrowDown from "@/components/globals/IcArrow/ArrowDown.jsx";
 import ArrowDropdown from "@/components/globals/IcArrow/ArrowDropdown.jsx";
 import { useEffect, useState, useRef, useMemo } from "react"
-import { getAllByType } from "@/prismic"
 import useOutsideAlerter from "@hooks/useOutsideAlerter";
-
 import { animate, timeline, stagger, inView } from "motion";
+import { getLenis } from '@/components/core/lenis';
+
 import cn from 'clsx';
 import SplitType from 'split-type';
+import ProductPopup from "@/components/globals/ProductPopup";
 
 
 function SustainableItem(props) {
@@ -18,7 +18,6 @@ function SustainableItem(props) {
 
     useEffect(() => {
         const item = itemRef.current
-
         const name = new SplitType(item.querySelector('.kustomer-sus-main-table-item-info-name'), { types: "lines,words", lineClass: 'split-line' })
         if (animationStarted) {
             timeline().cancel();
@@ -61,7 +60,7 @@ function SustainableItem(props) {
         })
     }, [props.filter])
     return (
-        <button className="kustomer-sus-main-table-item" data-popup="open" ref={itemRef}>
+        <button className="kustomer-sus-main-table-item" ref={itemRef} onClick={props.onClick}>
             <div className="kustomer-sus-main-table-item-img">
                 <div className="kustomer-sus-main-table-item-img-inner data-thumb">
                     <img src={props.data.thumbnail.url} alt={props.data.thumbnail.alt} width={props.data.thumbnail.dimensions.width} className="img" />
@@ -79,79 +78,6 @@ function SustainableItem(props) {
                     </div>
                 </div>
             </div>
-            <div className="hidden-data">
-                <div className="data-name">{props.data.title}</div>
-                <div className="data-carousel">
-                    {!isEmpty(props.data.carousel_imgs) && props.data.carousel_imgs.map(({ image }, idx) => (
-                        !isEmpty(image) && (
-                            <div className="keen-slider__slide" key={idx} >
-                                <img src={image.url} alt={image.alt} width={image.dimensions.width} />
-                            </div>
-                        )
-                    ))}
-                </div>
-                <div className="data-variants">
-                    {!isEmpty(props.data.variants) && props.data.variants.map((item, idx) => (
-                        <div className="txt txt-16 txt-med popup-itemdtl-table-item" key={idx}>
-                            <div className="popup-itemdtl-table-item-div desktop">
-                                <div className="popup-itemdtl-table-code">{item.sku ? item.sku : '-'}</div>
-                                <div className="popup-itemdtl-table-size">{item.size ? item.size : '-'}</div>
-                                <div className="popup-itemdtl-table-color">{item.color ? item.color : '-'}</div>
-                                <div className="popup-itemdtl-table-count">{item.pack_count ? item.pack_count : '-'}</div>
-                                <div className="popup-itemdtl-table-dtl">{item.details ? item.details : '-'}</div>
-                                <div className="popup-itemdtl-table-model">
-                                    <div className="popup-itemdtl-table-model-inner">
-                                        {!isEmpty(item.qr_code) ? (
-                                            <img src={item.qr_code.url} alt={item.qr_code.alt} width={item.qr_code.dimensions.width} />)
-                                            : '-'
-                                        }
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="popup-itemdtl-table-item-div tablet">
-                                <div className="line line-top"></div>
-                                <div className="line line-ver line-mid"></div>
-                                {idx == props.data.variants.length - 1 && (
-                                    <div className="line line-bot"></div>
-                                )}
-                                <div className="div-left">
-                                    <div className="wrap popup-itemdtl-table-code">
-                                        <div className="head">SKU</div>
-                                        {item.sku ? item.sku : '-'}
-                                    </div>
-                                    <div className="wrap popup-itemdtl-table-model">
-                                        <div className="head">3D Model</div>
-                                        <div className="popup-itemdtl-table-model-inner">
-                                            {!isEmpty(item.qr_code) ? (
-                                                <img src={item.qr_code.url} alt={item.qr_code.alt} width={item.qr_code.dimensions.width} />)
-                                                : '-'
-                                            }
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="div-right">
-                                    <div className="wrap popup-itemdtl-table-size">
-                                        <div className="head">Size</div>
-                                        <div className="body">{item.size ? item.size : '-'}</div>
-                                    </div>
-                                    <div className="wrap popup-itemdtl-table-color">
-                                        <div className="head">Color</div>
-                                        <div className="body">{item.color ? item.color : '-'}</div>
-                                    </div>
-                                    <div className="wrap popup-itemdtl-table-count">
-                                        <div className="head">Pack / Count</div>
-                                        <div className="body">{item.pack_count ? item.pack_count : '-'}</div>
-                                    </div>
-                                    <div className="wrap popup-itemdtl-table-dtl">
-                                        <div className="head">Details</div>
-                                        <div className="body">{item.details ? item.details : '-'}</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </div>
             <div className="line line-ver line-left"></div>
             <div className="line line-bot"></div>
             <div className="line line-ver line-right"></div>
@@ -160,11 +86,16 @@ function SustainableItem(props) {
 }
 
 function KustomerSustain(props) {
+    useEffect(() => {
+    console.log(props);
+    }, [])
     const allItem = props.productList
     const [filter, setFilter] = useState(0);
     const [listLength, setListLength] = useState(props.cateList[0].list.length);
     const [limit, setLimit] = useState(9999);
     const [isDropdown, setIsDropdown] = useState(false);
+    const [isOpenPopup, setIsOpenPopup] = useState(false);
+    const [detailProductData, setDetailProductData] = useState([]);
 
     const toggleRef = useRef();
     useOutsideAlerter(toggleRef, () => setIsDropdown(false))
@@ -173,11 +104,16 @@ function KustomerSustain(props) {
         let list = props.cateList[filter].list.map((uid) => allItem.filter((item) => item.uid == uid)[0]);
         setListLength(list.length);
         return (
-            list.map((item, idx) => (
-                idx < limit && <SustainableItem {...item} img={props.img} qr={props.qr} key={idx} filter={filter} />
+            list.map(({data}, idx) => (
+                idx < limit && <SustainableItem data={data} key={idx} filter={filter} onClick={() => {
+                    setIsOpenPopup(true);
+                    setDetailProductData(data);
+                    getLenis().stop();
+                }}/>
             ))
         )
     }, [filter, limit]);
+
     useEffect(() => {
         if (window.innerWidth < 768) {
             setLimit(4)
@@ -246,7 +182,6 @@ function KustomerSustain(props) {
                     </div>
                 </div>
                 <div className="kustomer-sus-main">
-                    <GlobalPopup data={filter} arrIcon={props.arrIcon} />
                     <div className="line kustomer-sus-main-line-top"></div>
                     <div className="kustomer-sus-main-cate" ref={toggleRef}>
                         <div className="bg-light kustomer-sus-main-cate-toggle">
@@ -287,6 +222,11 @@ function KustomerSustain(props) {
                         </div>
                     </div>
                 </div>
+                <ProductPopup
+                    isActive={isOpenPopup}
+                    setIsActive={setIsOpenPopup}
+                    data={detailProductData}
+                />
             </div>
         </section>
     )
