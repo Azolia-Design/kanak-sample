@@ -2,6 +2,11 @@
 import Layout from "@/layouts/Layout.astro";
 import Hero from "@pages/KustomPakaging/Hero/Hero.astro";
 import Innovation from "@pages/KustomPakaging/Innovation/Innovation.astro";
+import Solution from "@pages/KustomPakaging/Solution/Solution.astro";
+import Benefit from "@pages/KustomPakaging/Benefit/Benefit.astro";
+import Process from "@pages/KustomPakaging/Process/Process.astro";
+import CaseStudies from "@pages/KustomPakaging/CaseStudies/Casestudies.astro";
+import Client from "@pages/KustomPakaging/Client/Client.astro";
 
 import { getPage } from "@/prismic.js";
 
@@ -16,6 +21,35 @@ const { data, uid } = await getPage("kustompackaging_page");
     footer_cta={data.cta_title[0]?.text}
     footer_bg={data.cta_background}
 >
-    <Hero />
-    <Innovation />
+    <Hero title={data.hero_title} />
+    <Innovation
+        label={data.innovation_label}
+        title={data.innovation_title}
+        sub={data.innovation_sub}
+        list={data.innovation_list}
+    />
+    <Solution
+        data={data}
+        label={data.solution_label}
+        title={data.solution_title[0].text}
+        sub={data.solution_sub}
+        list={data.solution_list}
+    />
+    <Benefit title={data.benefit_title} list={data.benefit_list} />
+    <Process
+        title={data.process_title}
+        sub={data.process_sub}
+        list={data.process_list}
+    />
+    <CaseStudies
+        label={data.kase_studies_label}
+        title={data.kase_studies_title}
+        des={data.kase_studies_sub}
+        btn={data.kase_studies_btn}
+    />
+    <Client
+        title={homeData.data.client_title[0].text}
+        sub_title={homeData.data.client_sub_title[0].text}
+        client_list={homeData.data.client_list}
+    />
 </Layout>

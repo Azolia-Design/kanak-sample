@@ -1,0 +1,61 @@
+---
+import Image from "astro/components/Image.astro";
+import * as prismicH from "@prismicio/client";
+import { convertHighlight, isEmpty } from "@/components/utils/text";
+import KustomPackagingSolution from "./Process";
+import { Fragment } from "react";
+---
+
+<KustomPackagingSolution
+    {...Astro.props}
+    client:visible={{ rootMargin: "100% 0px 100% 0px" }}
+>
+    <Fragment set:html={convertHighlight(Astro.props.title)} slot="newTitle" />
+    <Fragment slot="renderList">
+        {
+            Astro.props.list.map((item, idx) => (
+                <div class="kuspack-process-item">
+                    <div class="heading h6 txt-black txt-up kuspack-process-item-count">{`Step ${idx + 1}`}</div>
+                    <h3 class="heading h3 txt-black txt-up kuspack-process-item-title">
+                        {item.item_title[0].text}
+                    </h3>
+                    <div class="txt txt-18 txt-med kuspack-process-item-sub">
+                        {item.item_subtitle[0].text}
+                    </div>
+                    <div class="kuspack-process-item-img">
+                        {!isEmpty(item.item_img) && (
+                            <Image
+                                src={item.item_img.url}
+                                alt=""
+                                width={item.item_img.dimensions.width}
+                                height={item.item_img.dimensions.height}
+                                class="img"
+                            />
+                        )}
+                    </div>
+                    <div class="line line-top" />
+                    {idx == Astro.props.list.length - 1 && (
+                        <div class="line line-bot" />
+                    )}
+                </div>
+            ))
+        }
+    </Fragment>
+    <Fragment slot="renderThumb">
+        {
+            Astro.props.list.map((item, idx) => (
+                <div class="kuspack-process-thumb-img">
+                    {!isEmpty(item.item_img) && (
+                        <Image
+                            src={item.item_img.url}
+                            alt=""
+                            width={item.item_img.dimensions.width}
+                            height={item.item_img.dimensions.height}
+                            class="img"
+                        />
+                    )}
+                </div>
+            ))
+        }
+    </Fragment>
+</KustomPackagingSolution>

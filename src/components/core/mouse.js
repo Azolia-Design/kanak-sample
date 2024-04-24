@@ -13,7 +13,7 @@ function Mouse() {
     }
     return {
         x: parseFloat(document.querySelector('html').style.getPropertyValue('--cursor-left')),
-        y: parseFloat(document.querySelector('html').style.getPropertyValue('--cursor-left'))
+        y: parseFloat(document.querySelector('html').style.getPropertyValue('--cursor-top'))
     }
 }
 

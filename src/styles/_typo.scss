@@ -337,9 +337,11 @@ $txtSizes: 10, 12, 14, 16, 18, 20, 36, 180;
     display: flex;
     align-items: center;
     justify-content: center;
+
     &-14 {
         @include size(1.4rem);
     }
+
     &-16 {
         @include size(1.6rem);
     }

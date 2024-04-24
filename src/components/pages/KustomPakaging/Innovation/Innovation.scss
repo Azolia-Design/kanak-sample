@@ -2,10 +2,271 @@
 @use '@styles/mixins' as *;
 
 .kuspack-innova {
+    padding-bottom: 16rem;
+
+    @include md {
+        padding-bottom: 6rem;
+    }
+
+    @include sm {
+        padding-top: 6rem;
+    }
+
 
     &-title-wrap {
         grid-column: 1/9;
+
+        @include md {
+            grid-column: 1/-1;
+        }
     }
 
-    &-title {}
+    &-label {
+        margin-bottom: 2rem;
+
+        @include md {
+            text-align: center;
+            max-width: 34rem;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 1rem;
+        }
+
+        @include sm {
+            @include text(16);
+            text-align: start;
+            margin-bottom: .8rem;
+        }
+    }
+
+    &-title {
+        max-width: 79.4rem;
+        margin-bottom: 10rem;
+
+        @include md {
+            text-align: center;
+            @include text(h1);
+            margin-bottom: 2rem;
+        }
+
+        @include sm {
+            text-align: start;
+            @include text(h2);
+        }
+
+        .txt-green {
+            display: inline;
+        }
+    }
+
+    &-sub {
+        grid-column: 12/-1;
+        align-self: end;
+        margin-bottom: 10rem;
+
+        @include md {
+            grid-column: 2/12;
+            max-width: 50rem;
+            text-align: center;
+            font-weight: 600;
+            @include text(16);
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 4rem;
+        }
+
+        @include sm {
+            grid-column: 1/-1;
+            text-align: start;
+            font-weight: 500;
+        }
+    }
+
+    &-main {
+        position: relative;
+        grid-column: 1/-1;
+
+        &-wrap {
+            position: relative;
+            z-index: 1;
+
+            @include md {
+                display: flex;
+            }
+
+            @include sm {
+                flex-direction: column;
+            }
+        }
+
+        &-thumb {
+            position: absolute;
+            z-index: 2;
+            top: 0;
+            left: 0;
+            @include size(100%);
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            @include md {
+                display: none;
+            }
+        }
+
+        &-line-left {
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: none;
+
+            @include md {
+                display: block;
+            }
+        }
+
+        &-line-right {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: none;
+
+            @include md {
+                display: block;
+            }
+        }
+    }
+
+    &-item {
+        position: relative;
+        display: grid;
+        grid-template-columns: repeat(var(--grid-column), 1fr);
+        column-gap: var(--grid-gap);
+        align-items: center;
+        align-content: center;
+        padding: 6rem 0px;
+
+        @include md {
+            width: calc(100% / 3);
+            display: flex;
+            flex-direction: column;
+            padding: 3rem 2.1rem;
+            flex-shrink: 0;
+        }
+
+        @include sm {
+            width: 100%;
+            padding: 3rem 2rem;
+        }
+
+        &-icon {
+            display: none;
+            @include size(4.8rem);
+
+            @include md {
+                display: flex;
+                align-self: start;
+                margin-bottom: 3rem;
+            }
+
+            @include sm {
+                @include size(6rem);
+            }
+        }
+
+        &-title {
+            grid-column: 1/11;
+            width: 100%;
+            transition: color .4s ease;
+
+            @include md {
+                @include text(h6);
+                margin-bottom: 1rem;
+            }
+
+            @include sm {
+                @include text(h5);
+            }
+        }
+
+        &-sub {
+            width: 100%;
+            grid-column: 12/-1;
+
+            @include md {
+                @include text(16);
+            }
+        }
+
+        .line-top {
+            position: absolute;
+            top: 0;
+
+            @include sm {
+                display: none;
+            }
+        }
+
+        &:first-child {
+            .line-top {
+                @include sm {
+                    display: block;
+                }
+            }
+        }
+
+        .line-left {
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: none;
+
+            @include md {
+                display: block;
+            }
+        }
+
+        .line-bot {
+            position: absolute;
+            bottom: 0;
+            display: none;
+
+            @include md {
+                display: block;
+            }
+        }
+
+        &:last-child {
+            .line-bot {
+                display: block;
+            }
+        }
+
+        @media (hover: hover) {
+            &:hover {
+                .kuspack-innova-item-title {
+                    color: var(--cl-orange);
+                }
+            }
+        }
+    }
+
+    &-thumb {
+        position: relative;
+        @include size(40rem);
+
+        &-inner {
+            position: absolute;
+            @include size(100%);
+            opacity: 0;
+            transform: scale(.8);
+            transition: all .4s ease;
+
+            &.active {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    }
 }

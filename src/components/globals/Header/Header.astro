@@ -19,14 +19,18 @@ let newList = kustomerList.map((el, idx) => ({
 }));
 
 const pages = [
-    { name: "Kustomers", type: "dropdown", sub_menu: [...newList] },
+    {
+        name: "Kustomers",
+        type: "dropdown",
+        sub_menu: [...newList],
+    },
     { name: "Katalog", link: "/katalog", type: "" },
     {
         name: "Solutions",
         type: "dropdown",
         sub_menu: [
             { name: "Private label", url: "/private-label" },
-            { name: "Custom packaging", url: "/kustom-packaging-solutions" },
+            { name: "Kustom packaging", url: "/kustom-packaging-solutions" },
         ],
     },
     { name: "Fulfillment", link: "/fulfillment", type: "" },
