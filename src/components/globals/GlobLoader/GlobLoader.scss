@@ -4,8 +4,8 @@
     background-color: var(--cl-bg);
     width: 100%;
     height: 100%;
-    transition: all 600ms ease;
-    animation-delay: 1000ms;
+    transition: all 2000ms ease;
+    overflow: hidden;
     &.done-anim {
         opacity: 0;
         pointer-events: none;
@@ -23,11 +23,31 @@
         height: .2rem;
         position: relative;
         background-color: var(--cl-txt);
-        padding-inline: 22.2rem 16.7rem;
+        padding-inline: 33.4rem 16.7rem;
         &-inner {
             width: 100%;
             height: 100%;
             position: relative;
+        }
+    }
+    &.done-anim {
+        .loader-logo {
+            transform: translateY(calc(-50vh + 4.8rem + 4.8rem - .5rem));
+        }
+        .loader-sub {
+            transform: translateY(calc(-100vh + 3.2rem + 3.2rem + 10.7rem));
+        }
+        .loader-circle-inner {
+            width: 200vw;
+            height: 200vw;
+        }
+        .loader-circle-inside {
+            width: 169vw;
+            height: 169vw;
+        }
+        .loader-count {
+            opacity: 0;
+            transform: translateY(100%);
         }
     }
     &-circle {
@@ -38,9 +58,10 @@
         align-items: center;
         justify-content: center;
         left: var(--progress);
-        transition: left 1000ms ease-in-out;
+        transition: left 1600ms ;
         z-index: 2;
         &-inner {
+            transition: all 2000ms ease;
             position: absolute;
             background-color: var(--cl-bg);
             width: 20.4rem;
@@ -52,6 +73,7 @@
             justify-content: center;
         }
         &-inside {
+            transition: all 2000ms ease;
             width: 17rem;
             height: 17rem;
             border-radius: 50%;
@@ -93,5 +115,25 @@
 
             }
         }
+    }
+    &-logo {
+        height: 4.8rem;
+        z-index: 4;
+        position: absolute;
+        bottom: 100%;
+        margin-bottom: 2.6rem;
+        left: 6rem;
+        transition: all 2000ms ease;
+    }
+    &-sub {
+        position: absolute;
+        top: calc(50vh - 3.2rem - 3rem - 3.2rem);
+        left: 6rem;
+        display: flex;
+        justify-self: start;
+        align-items: center;
+        column-gap: 0.8rem;
+        margin-top: 2rem;
+        transition: all 2000ms ease;
     }
 }

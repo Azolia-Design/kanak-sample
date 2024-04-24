@@ -212,7 +212,7 @@ function HomeHeroThree({...props}) {
     const threeRef = useRef();
     function Loader() {
         const { active, progress, errors, item, loaded, total } = useProgress()
-        console.log(progress)
+        // console.log(progress)
         progressPercent.set(progress); 
     }
     if (width == 0) {
