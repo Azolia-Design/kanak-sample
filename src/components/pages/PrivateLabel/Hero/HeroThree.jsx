@@ -46,8 +46,8 @@ function Content(props) {
             <spotLight intensity={1} angle={.1} penumbra={1} position={[10, 10, -5]} castShadow />
             <ContactShadows opacity={(window.innerWidth > 991 ? .2 : .12)}
                 scale={[5 / scaleOffset, 10 / scaleOffset, 2 / scaleOffset]}
-                position={[0, -1 / scaleOffset, 0]}  blur={2} far={1.2} />
-            <Environment files={suspend(warehouse)} frames={degraded ? 1 : Infinity} resolution={256}/>
+                position={[0, -1 / scaleOffset, 0]} blur={2} far={1.2} />
+            <Environment files={suspend(warehouse)} frames={degraded ? 1 : Infinity} resolution={256} />
         </>
     )
 }
@@ -63,7 +63,7 @@ function PrivateHeroThree(props) {
         return (
             <div className="private-hero-three" ref={threeRef}>
                 <Canvas camera={{ fov: fov, near: 0.1, far: 10000, position: [0, 0, perspective], aspect: width / height }} shadows>
-                    <Content width={width} height={height} list={props.list}/>
+                    <Content width={width} height={height} list={props.list} />
                     <AdaptiveDpr pixelated />
                 </Canvas>
             </div>

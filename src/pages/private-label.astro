@@ -33,8 +33,18 @@ const { data, uid } = await getPage("privatelabel_page");
         btn={data.commitment_btn}
         list={data.commitment_list}
     />
-    <Collection />
-    <Privilege />
+    <Collection
+        title={data.collection_title}
+        image={data.collection_image}
+        btn={data.collection_btn}
+        list={data.collection_list}
+    />
+    <Privilege
+        data={data}
+        title={data.privilege_title}
+        sub={data.privilege_sub}
+        list={data.privilege_list}
+    />
     <Distribution />
     <CaseStudies
         label={data.kase_studies_label}

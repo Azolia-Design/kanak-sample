@@ -29,16 +29,16 @@ function Content(props) {
     return (
         <>
             <group
-                position={[(window.innerWidth > 991 ? .16 : .55) / scaleOffset, (window.innerWidth > 991 ? -.12 : -.15) / scaleOffset, 0]}
-                scale={[6 / scaleOffset, 6 / scaleOffset, 6 / scaleOffset]}
-                rotation={[Math.PI * -.08, Math.PI * -.25, Math.PI * -.3]}
+                position={[(window.innerWidth > 991 ? .28 : .55) / scaleOffset, (window.innerWidth > 991 ? -.15 : -.3) / scaleOffset, 0]}
+                scale={[10.5 / scaleOffset, 10.5 / scaleOffset, 10.5 / scaleOffset]}
+                rotation={[Math.PI * -.06, Math.PI * -.26, Math.PI * -.2]}
             >
                 <group
                     rotation={[0, Math.PI * .48, 0]}>
                     <mesh
                         ref={product}>
                         <Suspense>
-                            <GetModel file='/glb/78-white-clamshells-clean-transformed.glb' position={[0, -.01, 0]} />
+                            <GetModel file='/glb/BA-CFH-700-salad-box-clean-transformed.glb' position={[0, -.02, 0]} />
                         </Suspense>
                     </mesh>
                 </group>
