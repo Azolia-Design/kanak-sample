@@ -1,0 +1,10 @@
+---
+import { Image } from "astro:assets";
+import logo from "@assets/kanak-logo.svg";
+import recycleIc from "@assets/recycle.svg";
+import GlobLoaderMain from './GlobLoader';
+---
+<GlobLoaderMain client:load>
+    <Image src={logo} alt="Kanak Logo" slot="logo" class="img-h"/>
+    <Image src={recycleIc} alt="recycle Logo" slot="recycleIc"/>
+</GlobLoaderMain>

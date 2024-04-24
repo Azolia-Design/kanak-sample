@@ -4,9 +4,9 @@ import useWindowSize from "@hooks/useWindowSize";
 import { suspend } from 'suspend-react'
 import { animate, scroll } from "motion"
 import { Fork } from './Fork.jsx';
-import { Environment, ContactShadows, AdaptiveDpr} from "@react-three/drei";
-import { animated, useTransition } from '@react-spring/three'
-import { useProductIndex } from '@contexts/StoreGlobal';
+import { Environment, ContactShadows, useProgress, AdaptiveDpr} from "@react-three/drei";
+import { animated, useTransition } from '@react-spring/three';
+import { useProductIndex, progressPercent } from '@contexts/StoreGlobal';
 import { GetModel } from "@components/common/GetModel.jsx";
 import * as ut from '@/js/utils.js'
 import './HeroThree.scss';
@@ -223,6 +223,11 @@ function Content({...props}) {
 function HomeHeroThree({...props}) {
     const { width, height } = useWindowSize();
     const threeRef = useRef();
+    function Loader() {
+        const { active, progress, errors, item, loaded, total } = useProgress()
+        // console.log(progress)
+        progressPercent.set(progress);
+    }
     if (width == 0) {
         return;
     } else {
@@ -233,8 +238,10 @@ function HomeHeroThree({...props}) {
                 <div className="home-hero-three-stick">
                     <div className="home-hero-three-stick-inner">
                         <Canvas camera={{ fov: fov, near: 0.1, far: 10000, position: [0, 0, perspective], aspect: width / height }} shadows>
-                            <Content width={width} height={height} list={props.list}/>
-                            <AdaptiveDpr pixelated />
+                            <Suspense fallback={<Loader/>}>
+                                <Content width={width} height={height} list={props.list}/>
+                                <AdaptiveDpr pixelated />
+                            </Suspense>
                         </Canvas>
                     </div>
                 </div>
