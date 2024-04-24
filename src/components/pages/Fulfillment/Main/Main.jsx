@@ -1,7 +1,8 @@
 import './Main.scss'
 import { useEffect, useState, useRef, Fragment } from 'react'
-import { animate, timeline, stagger, inView } from "motion";
+import { animate, timeline, stagger, inView, scroll } from "motion";
 import SplitType from 'split-type';
+import { getLenis } from '@/components/core/lenis';
 
 function Item({ ...props }) {
     const itemRef = useRef();
@@ -29,7 +30,7 @@ function Item({ ...props }) {
                 item.querySelectorAll('.line').forEach(item => item.removeAttribute('style'))
             })
         }, { margin: '-20% 0px -20% 0px' })
-    }, [])
+    }, []);
 
     return (
         <div className={`fulfill-main-content-item ${props.isActive ? 'active' : ''}`} onMouseEnter={props.mouseEnter} ref={itemRef}>
@@ -87,7 +88,18 @@ function FulfillMain({ ...props }) {
                 document.querySelector('.fulfill-main-thumb').removeAttribute('style')
             })
         }, { margin: "-20% 0px -20% 0px" })
+
+        let allItem = document.querySelectorAll('.fulfill-main-content-item');
+        getLenis().on('scroll', function (inst) {
+            for (let i = 0; i < allItem.length; i++) {
+                let top = allItem[i].getBoundingClientRect().top;
+                if (top > 0 && top < (window.innerHeight / 2)) {
+                    setIdxActive(i)
+                }
+            }
+        })
     }, [])
+
     return (
         <section className="fulfill-main">
             <div className="fulfill-main-img">

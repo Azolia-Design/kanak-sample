@@ -2,6 +2,7 @@
 import "@fontsource-variable/inter";
 import "@styles/global.scss";
 import { getImage } from "astro:assets";
+import GlobLoader from "@components/globals/GlobLoader/GlobLoader.astro";
 import bgTexture from "@assets/bg-texture-sm.png";
 import bgTextureDark from "@assets/bg-texture-dark-sm.png";
 import BaseHead from "@components/globals/BaseHead.astro";
@@ -23,6 +24,7 @@ const {
 	title,
 	data_page,
 	hideNav = false,
+	hideLoader = true,
 	footer_cta,
 	footer_bg,
 	explore_data,
@@ -37,6 +39,7 @@ const {
 	>
 		{!hideNav && <Header />}
 		<Cursor />
+		{!hideLoader && <GlobLoader/>}
 		<div class="main on-load">
 			<slot />
 		</div>

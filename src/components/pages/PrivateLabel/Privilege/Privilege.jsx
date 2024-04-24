@@ -47,6 +47,11 @@ function PrivatePrivilege({ ...props }) {
             }, { margin: "-10% 0px -10% 0px" })
         })
     }, [])
+    const data = [
+        { title: 'Free Customization', subtitle: "Emboss it, print it, make it yours. And no, we're not charging extra for the cool factor." },
+        { title: 'Margins as Sweet as Pie', subtitle: " Our products don’t just look good; they make your bottom line look even better, boosting profitability one plate at a time." },
+        { title: 'Stable Prices in Unstable Times', subtitle: " Inflating prices? Not on our watch. We're all about price stability, so you can sleep a little sounder." }
+    ]
     return (
         <section className='private-privilege bg-dark'>
             <div className="container grid">
