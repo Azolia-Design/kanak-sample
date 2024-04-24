@@ -223,7 +223,7 @@ function KustomerSustain(props) {
     }, [])
 
     return (
-        <section className="kustomer-sus">
+        <section className="kustomer-sus" id="kustomer-sus">
             <div className="container grid">
                 <div className="kustomer-sus-head">
                     <div className="kustomer-sus-head-img">

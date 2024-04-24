@@ -1,11 +1,14 @@
---- 
+---
 import { Image } from "astro:assets";
-import AboutCommit from './Commit';
-import abtCommitImg from '@assets/abt-commit.jpg';
+import AboutCommit from "./Commit";
+import abtCommitImg from "@assets/abt-commit.jpg";
 import icArrExt from "@assets/ext-arr-menu.svg?raw";
 ---
 
-<AboutCommit {...Astro.props} client:visible={{ rootMargin: "100% 0px 100% 0px" }}>
-    <Fragment set:html={icArrExt} slot="icArrExt"/>
-    <Image src={abtCommitImg} alt="" slot="abtCommitImg" class="img-fill"/>
+<AboutCommit
+    {...Astro.props}
+    client:visible={{ rootMargin: "100% 0px 100% 0px" }}
+>
+    <Fragment set:html={icArrExt} slot="icArrExt" />
+    <Image src={abtCommitImg} alt="" slot="abtCommitImg" class="img-fill" />
 </AboutCommit>

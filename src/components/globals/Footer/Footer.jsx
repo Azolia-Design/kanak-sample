@@ -87,9 +87,6 @@ function GlobalFooter(props) {
     const accordionClick = (index) => {
         setActiveIndex((prevIndex) => (prevIndex === index ? null : index));
     };
-    useEffect(() => {
-        console.log(props.hideLine);
-    }, [])
     return (
         <footer className="ft bg-light">
             <div className="container grid">
