@@ -1,11 +1,11 @@
 import "./Sustainable.scss"
 import { isEmpty } from "@/components/utils/text";
-import GlobalPopup from './ItemDtlPopup'
+import ProductPopup from "@/components/globals/ProductPopup";
 import ArrowDown from "@/components/globals/IcArrow/ArrowDown.jsx";
 import ArrowDropdown from "@/components/globals/IcArrow/ArrowDropdown.jsx";
 import { useEffect, useState, useRef, useMemo } from "react"
-import { getAllByType } from "@/prismic"
 import useOutsideAlerter from "@hooks/useOutsideAlerter";
+import { getLenis } from '@/components/core/lenis';
 
 import { animate, timeline, stagger, inView } from "motion";
 import cn from 'clsx';
@@ -61,7 +61,7 @@ function SustainableItem(props) {
         })
     }, [props.filter])
     return (
-        <button className="kustomer-sus-main-table-item" data-popup="open" ref={itemRef}>
+        <button className="kustomer-sus-main-table-item" ref={itemRef} onClick={props.onClick}>
             <div className="kustomer-sus-main-table-item-img">
                 <div className="kustomer-sus-main-table-item-img-inner data-thumb">
                     <img src={props.data.thumbnail.url} alt={props.data.thumbnail.alt} width={props.data.thumbnail.dimensions.width} className="img" />
@@ -165,6 +165,8 @@ function KustomerSustain(props) {
     const [listLength, setListLength] = useState(props.cateList[0].list.length);
     const [limit, setLimit] = useState(9999);
     const [isDropdown, setIsDropdown] = useState(false);
+    const [isOpenPopup, setIsOpenPopup] = useState(false);
+    const [detailProductData, setDetailProductData] = useState([]);
 
     const toggleRef = useRef();
     useOutsideAlerter(toggleRef, () => setIsDropdown(false))
@@ -173,8 +175,12 @@ function KustomerSustain(props) {
         let list = props.cateList[filter].list.map((uid) => allItem.filter((item) => item.uid == uid)[0]);
         setListLength(list.length);
         return (
-            list.map((item, idx) => (
-                idx < limit && <SustainableItem {...item} img={props.img} qr={props.qr} key={idx} filter={filter} />
+            list.map(({ data }, idx) => (
+                idx < limit && <SustainableItem data={data} key={idx} filter={filter} onClick={() => {
+                    setIsOpenPopup(true);
+                    setDetailProductData(data);
+                    getLenis().stop();
+                }} />
             ))
         )
     }, [filter, limit]);
@@ -246,7 +252,6 @@ function KustomerSustain(props) {
                     </div>
                 </div>
                 <div className="kustomer-sus-main">
-                    <GlobalPopup data={filter} arrIcon={props.arrIcon} />
                     <div className="line kustomer-sus-main-line-top"></div>
                     <div className="kustomer-sus-main-cate" ref={toggleRef}>
                         <div className="bg-light kustomer-sus-main-cate-toggle">
@@ -287,6 +292,11 @@ function KustomerSustain(props) {
                         </div>
                     </div>
                 </div>
+                <ProductPopup
+                    isActive={isOpenPopup}
+                    setIsActive={setIsOpenPopup}
+                    data={detailProductData}
+                />
             </div>
         </section>
     )

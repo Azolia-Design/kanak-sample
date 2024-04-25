@@ -13,6 +13,7 @@ function ProductPopup({ data, isActive, setIsActive }) {
 
     const isValidData = data.carousel_imgs?.reduce((arr, curr) => arr.concat(!isEmpty(curr.image) && curr.image), [])[0]
 
+
     const closePopup = () => {
         getLenis().start()
         setIsActive(false);
@@ -60,7 +61,7 @@ function ProductPopup({ data, isActive, setIsActive }) {
         document.querySelectorAll('.popup-itemdtl-table-item-inner .popup-itemdtl-table-item')?.forEach((item, idx) => {
             totalHeight += item.clientHeight + ut.parseRem(2)
         })
-        forceHeight = ut.parseRem(33) + totalHeight;
+        forceHeight = (window.innerWidth > 991 ? ut.parseRem(33) : 0) + totalHeight;
 
         if (document.querySelector('.popup-itemdtl-table')) {
             if (forceHeight > minHeight) {
@@ -69,7 +70,7 @@ function ProductPopup({ data, isActive, setIsActive }) {
                 document.querySelector('.popup-itemdtl-table').style.height = forceHeight + 'px';
             }
         }
-    }, [isActive, isValidData])
+    }, [isActive, isValidData, data])
 
     useEffect(() => {
         if (!isValidData) {
@@ -79,8 +80,12 @@ function ProductPopup({ data, isActive, setIsActive }) {
         }
     }, [isActive, isValidData]);
 
+    useEffect(() => {
+        console.log(isActive);
+    }, [isActive]);
+
     return (
-        isValidData ? (
+        isValidData ? <>
             <div className={cn('popup', { "active": isActive })}>
                 <div className="container grid">
                     <div className="popup-itemdtl" ref={ref}>
@@ -110,38 +115,38 @@ function ProductPopup({ data, isActive, setIsActive }) {
                                     </div>
                                     {data.carousel_imgs
                                         ?.reduce((arr, curr) => arr.concat(curr.image), []).length > 1 && (
-                                        <div className="popup-itemdtl-card-bottom">
-                                            <div className="popup-itemdtl-card-pagi">
-                                                {data.carousel_imgs?.map(({ image }, idx) => (
-                                                    !isEmpty(image) && (
-                                                        <button
-                                                            key={`pagin-${idx}`}
-                                                            className={cn("popup-itemdtl-card-pagi-btn", { "active": idx === currentIndex })}
-                                                            onClick={() => setCurrentIndex(idx)}
-                                                        />
-                                                    )
-                                                ))}
+                                            <div className="popup-itemdtl-card-bottom">
+                                                <div className="popup-itemdtl-card-pagi">
+                                                    {data.carousel_imgs?.map(({ image }, idx) => (
+                                                        !isEmpty(image) && (
+                                                            <button
+                                                                key={`pagin-${idx}`}
+                                                                className={cn("popup-itemdtl-card-pagi-btn", { "active": idx === currentIndex })}
+                                                                onClick={() => setCurrentIndex(idx)}
+                                                            />
+                                                        )
+                                                    ))}
+                                                </div>
+                                                <div className="popup-itemdtl-card-nav">
+                                                    <button className={cn("popup-itemdtl-card-nav-btn prev", { "disable": currentIndex === 0 })} onClick={() => setCurrentIndex(currentIndex - 1)}>
+                                                        <div className="ic ic-24">
+                                                            <svg width="100%" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M3.00002 19.9706H36.9411" stroke="currentColor" strokeWidth="4" strokeMiterlimit="10" />
+                                                                <path d="M23.7412 6.77075L36.9412 19.9707L23.7425 33.1694" stroke="currentColor" strokeWidth="4" strokeMiterlimit="10" strokeLinecap="square" />
+                                                            </svg>
+                                                        </div>
+                                                    </button>
+                                                    <button className={cn("popup-itemdtl-card-nav-btn next", { "disable": currentIndex === data.carousel_imgs?.length - 1 })} onClick={() => setCurrentIndex(currentIndex + 1)}>
+                                                        <div className="ic ic-24">
+                                                            <svg width="100%" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M3.00002 19.9706H36.9411" stroke="currentColor" strokeWidth="4" strokeMiterlimit="10" />
+                                                                <path d="M23.7412 6.77075L36.9412 19.9707L23.7425 33.1694" stroke="currentColor" strokeWidth="4" strokeMiterlimit="10" strokeLinecap="square" />
+                                                            </svg>
+                                                        </div>
+                                                    </button>
+                                                </div>
                                             </div>
-                                            <div className="popup-itemdtl-card-nav">
-                                                <button className={cn("popup-itemdtl-card-nav-btn prev", { "disable": currentIndex === 0 })} onClick={() => setCurrentIndex(currentIndex - 1)}>
-                                                    <div className="ic ic-24">
-                                                        <svg width="100%" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                            <path d="M3.00002 19.9706H36.9411" stroke="currentColor" strokeWidth="4" strokeMiterlimit="10" />
-                                                            <path d="M23.7412 6.77075L36.9412 19.9707L23.7425 33.1694" stroke="currentColor" strokeWidth="4" strokeMiterlimit="10" strokeLinecap="square" />
-                                                        </svg>
-                                                    </div>
-                                                </button>
-                                                <button className={cn("popup-itemdtl-card-nav-btn next", { "disable": currentIndex === data.carousel_imgs?.length - 1 })} onClick={() => setCurrentIndex(currentIndex + 1)}>
-                                                    <div className="ic ic-24">
-                                                        <svg width="100%" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                            <path d="M3.00002 19.9706H36.9411" stroke="currentColor" strokeWidth="4" strokeMiterlimit="10" />
-                                                            <path d="M23.7412 6.77075L36.9412 19.9707L23.7425 33.1694" stroke="currentColor" strokeWidth="4" strokeMiterlimit="10" strokeLinecap="square" />
-                                                        </svg>
-                                                    </div>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    )}
+                                        )}
                                 </div>
                                 <div className="popup-itemdtl-content">
                                     <h3 className="heading h3 txt-black txt-up popup-itemdtl-content-title">{data.title}</h3>
@@ -219,7 +224,7 @@ function ProductPopup({ data, isActive, setIsActive }) {
                     </div>
                 </div>
             </div>
-        ) : (<></>)
+        </> : <></>
     )
 }
 export default memo(ProductPopup);
