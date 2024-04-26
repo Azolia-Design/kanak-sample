@@ -1,7 +1,7 @@
 import { useGLTF } from '@react-three/drei'
+import {memo} from 'react';
 let path;
-
-export function GetModel(props) {
+function GetModel(props) {
   path = props.file
   const { nodes } = useGLTF(props.file)
   return (
@@ -14,5 +14,7 @@ export function GetModel(props) {
     </group>
   )
 }
+
+export default memo(GetModel)
 
 useGLTF.preload(path)

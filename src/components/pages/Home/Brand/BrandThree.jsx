@@ -1,10 +1,10 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { Environment, ContactShadows, AdaptiveDpr } from "@react-three/drei";
 import useWindowSize from "@hooks/useWindowSize";
 import gsap from 'gsap';
 import { suspend } from 'suspend-react'
-import { GetModel } from "../../../common/GetModel.jsx";
+import GetModel from "../../../common/GetModel.jsx";
 import { useStore } from '@nanostores/react';
 import { brandIndex } from '@contexts/StoreGlobal';
 function CustomMaterial({ ...props }) {
@@ -43,6 +43,35 @@ function Content({ ...props }) {
             }
         }
     }, [activeIndex])
+    const models = useMemo(() => (
+        props.list.map((item, idx) => {
+            if (item.data.file.url && props.top) {
+                if (idx == 0) {
+                    return (
+                        <mesh key={idx} name={item.uid} position={[.016, .02, .284]} rotation={[0, -Math.PI * .5, 0]}>
+                            <GetModel file='/glb/m_box-clean-transformed.glb' visible={props.top ? true : false}
+                                scale={[.82, .82, .82]}
+                                position={[-.03, 0, 0.01]}
+                                rotation={[Math.PI * 0, Math.PI * .6, Math.PI * .05]}
+                            />
+                        </mesh>
+                    )
+                }
+            } else {
+                if (idx == 1) {
+                    return (
+                        <mesh key={idx} name={item.uid} position={[-.05, .1, -.1]} rotation={[Math.PI * .1, -Math.PI * .5, 0]}>
+                            <GetModel file='/glb/klamshell-79-transformed.glb' visible={props.top ? false : true}
+                                scale={[.86, .86, .86]}
+                                position={[-.02, 0, 0]}
+                                rotation={[Math.PI * 0, Math.PI * -.7, Math.PI * .05]}
+                            />
+                        </mesh>
+                    )
+                }
+            }
+        })
+    ), [props.list])
     return (
         <>
             <group ref={wrap} position={[-.25, -.1, 0]} rotation={[Math.PI * .075, Math.PI * .05, 0]}>
@@ -50,33 +79,7 @@ function Content({ ...props }) {
                     <group ref={brands}
                         position={[0, 0, 0]}
                     >
-                        {props.list.map((item, idx) => {
-                            if (item.data.file.url && props.top) {
-                                if (idx == 0) {
-                                    return (
-                                        <mesh key={idx} name={item.uid} position={[.016, .02, .284]} rotation={[0, -Math.PI * .5, 0]}>
-                                            <GetModel file='/glb/m_box-clean-transformed.glb' visible={props.top ? true : false}
-                                                scale={[.82, .82, .82]}
-                                                position={[-.03, 0, 0.01]}
-                                                rotation={[Math.PI * 0, Math.PI * .6, Math.PI * .05]}
-                                            />
-                                        </mesh>
-                                    )
-                                }
-                            } else {
-                                if (idx == 1) {
-                                    return (
-                                        <mesh key={idx} name={item.uid} position={[-.05, .1, -.1]} rotation={[Math.PI * .1, -Math.PI * .5, 0]}>
-                                            <GetModel file='/glb/klamshell-79-transformed.glb' visible={props.top ? false : true}
-                                                scale={[.86, .86, .86]}
-                                                position={[-.02, 0, 0]}
-                                                rotation={[Math.PI * 0, Math.PI * -.7, Math.PI * .05]}
-                                            />
-                                        </mesh>
-                                    )
-                                }
-                            }
-                        })}
+                        {models}
                     </group>
                 </group>
             </group>

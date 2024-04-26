@@ -7,7 +7,7 @@ import { Fork } from './Fork.jsx';
 import { Environment, ContactShadows, useProgress, AdaptiveDpr} from "@react-three/drei";
 import { animated, useTransition } from '@react-spring/three';
 import { useProductIndex, progressPercent } from '@contexts/StoreGlobal';
-import { GetModel } from "@components/common/GetModel.jsx";
+import GetModel from "@components/common/GetModel.jsx";
 import * as ut from '@/js/utils.js'
 import './HeroThree.scss';
 
@@ -20,18 +20,17 @@ function Model({ opacity, item, ...styles }) {
     return (
         <animated.group {...styles}>
             <animated.mesh
-                material-color="white"
-                material-opacity={opacity}>
+                material-color="white">
                     <Suspense>
-                        {item.uid == 'bowls' ? (
-                            <GetModel file='/glb/64-oval-bowl-clean-transformed.glb' scale={[1.2,1.2,1.2]} rotation={[0, Math.PI * -.5, 0]}/>
-                        ) : item.uid == 'trays' ? (
+                        {item.uid == 'bagasse-bowls-ka3520' ? (
+                            <GetModel file='/glb/64-oval-bowl-clean-transformed.glb' scale={[.8,.8,.8]} rotation={[0, Math.PI * -.5, 0]}/>
+                        ) : item.uid == 'compartment-trays-st5515' ? (
                             <GetModel file='/glb/KA10054-clean-transformed.glb' scale={[.8,.8,.8]} position={[0, .02, 0]} />
-                        ) : item.uid == 'plates-platters' ? (
-                                <GetModel file='/glb/3-elegant-compartments-plates-clean-transformed.glb' rotation={[Math.PI * -.5, 0, 0]} scale={[2, 2, 2]} position={[0, 0.015, 0]} />
+                        ) : item.uid == 'molded-fiber-3-compartment-plates-ba5504' ? (
+                            <GetModel file='/glb/3-elegant-compartments-plates-clean-transformed.glb' rotation={[Math.PI * -.5, 0, 0]} scale={[2, 2, 2]} position={[0, 0.015, 0]} />
                         ) : item.uid == 'soup-containers' ? (
                             <GetModel file='/glb/41-ramen-clean-transformed.glb' scale={[.68,.68,.68]} position={[0,-.015,0]}/>
-                        ) : item.uid == 'produce' ? (
+                        ) : item.uid == 'produce-trays-pt8412' ? (
                             <GetModel file='/glb/48-monte-tray-clean-transformed.glb' scale={[1.2,1.2,1.2]}/>
                         ) : item.uid == 'kutlery' ? (
                             <Fork material={<CustomMaterial color='#F9833A' roughness={.2} />} />
@@ -48,12 +47,8 @@ function Model({ opacity, item, ...styles }) {
                             />
                         )}
                     </Suspense>
-                <meshBasicMaterial transparent />
             </animated.mesh>
         </animated.group>
-
-            // <GetModel file='/glb/BA-CFH-700-salad-box-clean-transformed.glb' scale={[.8,.8,.8]} position={[0,-.01,0]}/>
-
     )
 }
 function Content({...props}) {
@@ -63,25 +58,23 @@ function Content({...props}) {
     const products = useRef()
     const forkWrap = useRef()
     const fork = useRef()
-    const { index } = useProductIndex();
+    const { index, setIndex } = useProductIndex();
     const [scaleOffset, setScaleOffset] = useState(1);
     const [degraded, degrade] = useState(false)
     const clock = useThree(state => state.clock);
-    const [isLock, setIsLock] = useState(false);
-    const [currentRotation, setCurrentRotation] = useState(0);
+    let isLock = false;
     useEffect(() => {
         console.log(props.list.map((item) => item.uid))
-        // square-sealable-tray-clean-transformed
     }, []);
 
     useFrame((state, delta) => {
         if (!products.current) return;
         if (isLock) {
-            setCurrentRotation(currentRotation + .006 * index.direction);
-            if (currentRotation >= Math.PI * 2) {
-                setCurrentRotation(0);
+            if (products.current.rotation.y >= Math.PI * 2) {
+                products.current.rotation.y = 0;
+            } else {
+                products.current.rotation.y = products.current.rotation.y + .006 * index.direction;
             }
-            products.current.rotation.y = currentRotation;
         } else {
             products.current.rotation.x += (0 - products.current.rotation.x + Math.cos(clock.elapsedTime / 2) * Math.PI * .02) * .08
             products.current.rotation.y += (0 - products.current.rotation.y + Math.cos(clock.elapsedTime / 2) * Math.PI * .02) * .08
@@ -101,20 +94,27 @@ function Content({...props}) {
 
     useEffect(() => {
         scroll(({ y }) => {
-            if (y.progress >= .9) {
-                setIsLock(true);
-            } else {
-                setIsLock(false);
-                setCurrentRotation(0);
-            }
-            if (contactShadow) {
-                contactShadow.current.position.y = animThreeVal(-3 / scaleOffset, -.4 / scaleOffset, y.progress)
+            if (document.querySelectorAll('.home-prod-cards-inner').length >= 1) {
+                if (y.progress >= (window.innerWidth < 767 ? .76 : .9)) {
+                    if (isLock === false) {
+                        isLock = true;
+                    }
+                } else {
+                    if (isLock === true) {
+                        isLock = false;
+                        setIndex({ direction: -1, value: 0 });
+                        console.log('trigger set 0')
+                    }
+                }
+                if (contactShadow) {
+                    contactShadow.current.position.y = animThreeVal(-3 / scaleOffset, -.4 / scaleOffset, y.progress)
+                }
             }
         }, {
             target: document.querySelector('.home-prod-cards-inner'),
             offset: ["start end", "center center"]
         })
-    }, [index])
+    }, [])
 
     function animThreeValRot(oldVal, newVal, prog) {
         return Math.PI * (oldVal + ((-oldVal + newVal) * prog))
@@ -160,9 +160,9 @@ function Content({...props}) {
             if (y.progress >= 0 && y.progress < 1) {
                 if (!productsWrap.current) return;
                 productsWrap.current.scale.set(
-                    animThreeVal(11 / scaleOffset, 5 / scaleOffset, y.progress),
-                    animThreeVal(11 / scaleOffset, 5 / scaleOffset, y.progress),
-                    animThreeVal(11 / scaleOffset, 5 / scaleOffset, y.progress)
+                    animThreeVal(16 / scaleOffset, 5 / scaleOffset, y.progress),
+                    animThreeVal(16 / scaleOffset, 5 / scaleOffset, y.progress),
+                    animThreeVal(16 / scaleOffset, 5 / scaleOffset, y.progress)
                 )
             }
         }, {
@@ -189,7 +189,7 @@ function Content({...props}) {
     return (
         <>
             <group ref={wrap}>
-                <group ref={productsWrap} scale={[11 /scaleOffset, 11 /scaleOffset, 11 /scaleOffset]}
+                <group ref={productsWrap} scale={[16 /scaleOffset, 16 /scaleOffset, 16 /scaleOffset]}
                     position={[1.6 / scaleOffset, -.65 / scaleOffset, 0]}
                     rotation={[Math.PI * .25, -Math.PI * .28, Math.PI * .165]}>
                     <group ref={products}>
@@ -223,11 +223,6 @@ function Content({...props}) {
 function HomeHeroThree({...props}) {
     const { width, height } = useWindowSize();
     const threeRef = useRef();
-    function Loader() {
-        const { active, progress, errors, item, loaded, total } = useProgress()
-        // console.log(progress)
-        progressPercent.set(progress);
-    }
     if (width == 0) {
         return;
     } else {
@@ -238,7 +233,7 @@ function HomeHeroThree({...props}) {
                 <div className="home-hero-three-stick">
                     <div className="home-hero-three-stick-inner">
                         <Canvas camera={{ fov: fov, near: 0.1, far: 10000, position: [0, 0, perspective], aspect: width / height }} shadows>
-                            <Suspense fallback={<Loader/>}>
+                            <Suspense fallback={null}>
                                 <Content width={width} height={height} list={props.list}/>
                                 <AdaptiveDpr pixelated />
                             </Suspense>

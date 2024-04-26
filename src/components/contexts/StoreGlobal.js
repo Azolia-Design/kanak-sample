@@ -7,15 +7,29 @@ import { useStore } from '@nanostores/react';
  * @returns
  */
 
-const productIndex = atom(0);
+const productIndex = atom({
+    value: 0,
+    direction: 1,
+});
 function useProductIndex() {
     const index = useStore(productIndex);
-
+    console.log(index)
     const setIndex = (value) => productIndex.set(value);
 
     return { index, setIndex };
 }
 export { useProductIndex };
+
+const isProductLock = atom(false);
+
+function useLockProduct() {
+    const isLock = useStore(isProductLock);
+
+    const setLock = (value) => isProductLock.set(value);
+
+    return { isLock, setLock };
+}
+export { useLockProduct };
 
 export const brandIndex = atom(0);
 

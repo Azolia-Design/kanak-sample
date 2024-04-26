@@ -1,25 +1,27 @@
 import './GlobLoader.scss';
-import { useStore } from '@nanostores/react';
 import { progressPercent } from '@contexts/StoreGlobal';
 import {animate} from 'motion'
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { useProgress } from '@react-three/drei'
 function GlobLoaderMain({...props}) {
-    const percent = useStore(progressPercent);
+    const { active, progress, errors, item, loaded, total } = useProgress()
+    const [percent, setPercent] = useState(0);
 
     useEffect(() => {
-        if (percent == false) return;
-        document.querySelector('.loader').style.setProperty('--progress', `${percent}%`);
-        document.querySelector('.loader-count-top-num').innerText = percent < 10 ? `0${parseInt(percent)}` : parseInt(percent);
-        console.log(percent)
-        if (percent === 100) {
+        let currPercent = parseInt(loaded / 10 * 100);
+        setPercent(currPercent < 10 ? `0${currPercent}` : currPercent);
+
+        if (!active) {
             setTimeout(() => {
-                document.querySelector('.loader').classList.add('done-anim')    
+                document.querySelector('.loader').classList.add('done-anim')        
             }, 1600);
-            progressPercent.set(false)
+            // progressPercent.set(false)
         }
-    }, [percent])
+    }, [loaded]);
+
+
     return (
-        <div className='loader' style={{'--progress': '00'}}>
+        <div className='loader' style={{'--progress': `${percent}%`}}>
             <div className="loader-wrap">
                 <div className="loader-line">
                     <div className="loader-logo">
@@ -43,7 +45,7 @@ function GlobLoaderMain({...props}) {
                     </div>
                     <div className='loader-count'>
                         <div className="loader-count-top">
-                            <div className="heading txt-black loader-count-top-num">00</div>
+                            <div className="heading txt-black loader-count-top-num">{percent}</div>
                             <div className="heading txt-black loader-count-top-unit">%</div>
                         </div>
                         <div className="loader-count-bot">
