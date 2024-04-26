@@ -10,21 +10,36 @@ import extIcon from "@assets/ext-arr-menu.svg?raw";
 import icDropdown from "@assets/ic-arrow-down.svg?raw";
 import { getAllByType } from "@/prismic";
 import HeaderGlobal from "./Header";
+import { formatData } from "@/components/utils/text";
 const currYear = new Date().getFullYear();
 
 const kustomerList = await getAllByType("industry");
-let newList = kustomerList.map((el, idx) => ({
+let refineKustomerList = kustomerList.map((el, idx) => ({
     name: el.data.title,
     url: `/kustomers/${el.uid}`,
 }));
+const catelogList = await getAllByType("product_group");
+let refineCatelogList = catelogList
+    .filter((el, idx) => el.data.is_sustainables_ !== true)
+    .map((el, idx) => ({
+        name: el.data.name,
+        url: `/katalog?category=${formatData(el.data.name)}`,
+    }));
 
 const pages = [
     {
         name: "Kustomers",
         type: "dropdown",
-        sub_menu: [...newList],
+        sub_menu: [...refineKustomerList],
     },
-    { name: "Katalog", link: "/katalog", type: "" },
+    {
+        name: "Katalog",
+        type: "dropdown",
+        sub_menu: [
+            { name: "All Product", url: "/katalog" },
+            ...refineCatelogList,
+        ],
+    },
     {
         name: "Solutions",
         type: "dropdown",
@@ -35,15 +50,24 @@ const pages = [
         ],
     },
     { name: "Fulfillment", link: "/fulfillment", type: "" },
+    { name: "Kase Studies", link: "/kase-studies", type: "" },
+    // {
+    //     name: "Resources",
+    //     type: "dropdown",
+    //     sub_menu: [
+    //         { name: "Insights", url: "/insights" },
+    //         { name: "Kase Studies", url: "/kase-studies" },
+    //     ],
+    // },
     {
-        name: "Resources",
+        name: "Know us",
         type: "dropdown",
         sub_menu: [
-            { name: "Insights", url: "/insights" },
-            { name: "Kase Studies", url: "/kase-studies" },
+            { name: "Know us", url: "/about" },
+            { name: "Sustainability Commitment", url: "/sustainability" },
+            { name: "Pakway", url: "/pakway" },
         ],
     },
-    { name: "Know us", link: "/about", type: "" },
 ];
 const bodyFlagIc = await getImage({ src: bodyFlag, format: "svg" });
 const pathname = new URL(Astro.request.url).pathname;
@@ -54,6 +78,7 @@ const pathname = new URL(Astro.request.url).pathname;
     bodyFlag={bodyFlagIc.src}
     currYear={currYear}
     pathname={pathname}
+    check={refineCatelogList}
     client:load
 >
     <Image src={kanakLogo} alt="Kanak Logo" slot="logo" class="img-h" />

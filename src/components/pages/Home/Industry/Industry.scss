@@ -5,22 +5,28 @@
     padding-block: 20rem;
     background-color: var(--cl-bg-dark);
     color: var(--cl-txt-light);
+
     @include md {
         padding-block: 9rem;
     }
+
     @include sm {
         padding-block: 6.4rem;
     }
+
     &-title-wrap {
         position: relative;
         grid-column: 1/8;
+
         @include md {
             grid-column: 1/6;
         }
+
         @include sm {
             grid-column: span 4;
         }
     }
+
     &-title-stick {
         position: sticky;
         top: 20rem;
@@ -30,145 +36,214 @@
         flex-direction: column;
         align-items: start;
         justify-content: space-between;
+
         @include sm {
             height: auto;
             min-height: inherit;
         }
     }
+
     &-label {
         margin-bottom: 2rem;
+
         @include md {
             @include text(h5);
         }
+
         @include md {
             @include text(h6);
             margin-bottom: 1.6rem;
         }
     }
+
     &-title {
         margin-bottom: auto;
+
         @include md {
             @include text(h1);
         }
+
         @include sm {
             @include text(h2);
             margin-bottom: 4rem;
         }
     }
+
     &-cta {
         display: block;
         position: relative;
         padding: 2.8rem;
         @include size(16rem);
+
         @include md {
             @include size(9.5rem);
             padding: 1.45rem;
         }
+
         @include sm {
             margin-bottom: 4rem;
             padding: 1.2rem;
             @include size(7.4rem);
         }
+
         &-inner {
+            position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 50%;
             background-color: var(--cl-orange);
+            overflow: hidden;
             @include size(100%);
+
+            .ic {
+                --offset-pos: 200%;
+
+                &-main {
+                    opacity: 1;
+                    transform: none;
+                }
+
+                &-clone {
+                    position: absolute;
+                    opacity: 0;
+                    transform: translate(calc(var(--offset-pos) * -1), calc(var(--offset-pos)));
+                }
+            }
+
             .ic-36 {
                 @include md {
                     @include size(2.27rem);
                 }
+
                 @include sm {
                     @include size(1.55rem);
                 }
             }
         }
+
         &-outer {
             position: absolute;
             inset: 0;
             animation: rot 20s linear infinite;
         }
+
+        &:hover {
+            .ic {
+                transition: all .4s ease-out;
+
+                &-main {
+                    opacity: 0;
+                    transform: translate(calc(var(--offset-pos)), calc(var(--offset-pos) * -1));
+                }
+
+                &-clone {
+                    opacity: 1;
+                    transform: none;
+                }
+            }
+        }
+
+
         @keyframes rot {
             0% {
                 transform: rotate(0deg);
             }
+
             100% {
                 transform: rotate(-360deg);
             }
         }
     }
+
     &-main {
         grid-column: 10/17;
+
         @include md {
             grid-column: 7/13;
         }
+
         @include sm {
             grid-column: span 4;
         }
+
         &-item {
             grid-template-columns: repeat(7, 1fr);
             padding-block: 8rem;
             position: relative;
+
             @include md {
                 padding-block: 3.2rem;
                 grid-template-columns: repeat(6, 1fr);
             }
+
             @include sm {
                 grid-template-columns: repeat(4, 1fr);
             }
+
             &-ic {
                 grid-column: 1/2;
                 align-self: start;
                 justify-self: start;
                 margin-right: -1.8rem;
+
                 @include md {
                     margin-right: -.2rem;
+
                     .ic-100 {
                         @include size(5rem);
                     }
                 }
+
                 @include sm {
                     margin-right: 0;
                 }
             }
+
             &-content {
                 grid-column: 4/-1;
                 display: flex;
                 flex-direction: column;
                 align-items: start;
+
                 @include md {
                     margin-left: 2.6rem;
                     grid-column: 2/7;
                 }
+
                 @include sm {
                     grid-column: span 3;
                     margin-left: 0;
                 }
             }
+
             &-title {
                 margin-bottom: 1.6rem;
                 max-width: 28.3rem;
+
                 @include md {
                     @include text(h5);
                     max-width: 17rem;
                     margin-bottom: 1.2rem;
                 }
             }
+
             &-sub {
                 margin-bottom: 3.2rem;
                 color: rgba($cl-txt-light, .6);
+
                 @include md {
                     margin-bottom: 2rem;
                     @include text(14);
                 }
             }
+
             &-link {
                 @include md {
                     @include text(16);
                 }
             }
+
             .line {
                 width: 100%;
                 height: .2rem;
@@ -177,6 +252,7 @@
                 left: 0;
                 background-color: rgba($cl-border, .3);
                 transform-origin: left;
+
                 &-bottom {
                     top: auto;
                     bottom: 0;

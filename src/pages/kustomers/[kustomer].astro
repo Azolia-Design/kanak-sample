@@ -48,7 +48,11 @@ const listCaseStudy = await getAllByType("case_study");
         label={item.data.hero_label}
         title={convertHighlight(item.data.hero_title)}
     />
-    {item.data.hero_subtitle && <Premble title={item.data.hero_subtitle} />}
+    {
+        !isEmpty(item.data.hero_subtitle) && (
+            <Premble title={item.data.hero_subtitle} />
+        )
+    }
     <Client
         title={homeData.data.client_title[0].text}
         sub_title={homeData.data.client_sub_title[0].text}

@@ -223,9 +223,7 @@
 
     &-list {
         grid-column: 1/-1;
-    }
 
-    &-list {
         &-head {
             grid-column: 1/-1;
             display: flex;
@@ -341,6 +339,14 @@
                     margin-bottom: 1.2rem;
                     transition: color .4s ease;
                     transition-delay: .1s;
+
+                    span {
+                        display: inline !important;
+                    }
+
+                    div.split-line {
+                        display: inline !important;
+                    }
                 }
 
                 &-subtitle {

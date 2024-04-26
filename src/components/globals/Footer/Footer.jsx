@@ -155,12 +155,11 @@ function GlobalFooter(props) {
                         onClick={() => accordionClick(2)}
                         onClickTail={() => { getLenis().scrollTo(0) }}
                     >
-                        <MenuItem>Our story</MenuItem>
-                        <MenuItem>Awards and Endorsements</MenuItem>
-                        <MenuItem>Sustainability</MenuItem>
-                        <MenuItem>Logistics Capabilities</MenuItem>
-                        <MenuItem>Distribution Network</MenuItem>
-                        <MenuItem link="/insights">Resources</MenuItem>
+                        <MenuItem link="/about">Know Us</MenuItem>
+                        <MenuItem link="/pakway">Pakway</MenuItem>
+                        <MenuItem link="/sustainability">Sustainability Commitment</MenuItem>
+                        <MenuItem link="/fulfillment">Fulfillment</MenuItem>
+                        <MenuItem link="/kase-studies">Kase Studies</MenuItem>
                         <MenuItem link="/kareers">Kareers</MenuItem>
                     </MenuColumn>
                 </div>

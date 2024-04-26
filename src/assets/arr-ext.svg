@@ -1,4 +1,4 @@
-<svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M2 34L34 2" stroke="#DBCAB6" stroke-width="4" stroke-miterlimit="10"/>
-<path d="M9.10986 2H33.9999V26.8877" stroke="#DBCAB6" stroke-width="4" stroke-miterlimit="10" stroke-linecap="square"/>
+<svg width="100%" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M2 34L34 2" stroke="currentColor" stroke-width="4" stroke-miterlimit="10"/>
+    <path d="M9.10986 2H33.9999V26.8877" stroke="currentColor" stroke-width="4" stroke-miterlimit="10" stroke-linecap="square"/>
 </svg>

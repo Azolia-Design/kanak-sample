@@ -4,7 +4,6 @@ function IcUpRight({ ...props }) {
             <path d="M3 13.5L13 3.5" stroke="currentColor" strokeWidth="2" strokeMiterlimit="10" />
             <path d="M4.07227 3.5H13.0002V12.4271" stroke="currentColor" strokeWidth="2" strokeMiterlimit="10" strokeLinecap="square" />
         </svg>
-
     )
 }
 
