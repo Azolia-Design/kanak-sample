@@ -13,7 +13,6 @@ const productIndex = atom({
 });
 function useProductIndex() {
     const index = useStore(productIndex);
-    console.log(index)
     const setIndex = (value) => productIndex.set(value);
 
     return { index, setIndex };
