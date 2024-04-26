@@ -261,7 +261,7 @@ function HeaderGlobal(props) {
                             {props.headFlag}
                         </div>
                         <div className='txt txt-16 txt-up txt-black header-cta-body' style={{ backgroundImage: `url('${props.bodyFlag}')` }}>
-                            Request a quote
+                            Contact us
                         </div>
                         <div className="header-cta-tail">
                             {props.tailFlag}

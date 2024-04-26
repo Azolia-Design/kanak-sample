@@ -5,6 +5,7 @@ import Image from "astro/components/Image.astro";
 import imgPlate from "@assets/kustomer-plate.png";
 import KustomerAwardThree from "./AwardThree";
 import KustomerAwardContent from "./AwardContent";
+import PLMA from "@/assets/kus-aw-lg.png";
 import "./Award.scss";
 ---
 
@@ -23,6 +24,7 @@ import "./Award.scss";
                 set:html={prismicH.asHTML(Astro.props.describe)}
                 slot="describe"
             />
+            <Image src={PLMA} alt="" slot="imgPLMA" class="img plma-img" />
             <Fragment set:html={Astro.props.title} slot="title" />
         </KustomerAwardContent>
     </div>

@@ -10,14 +10,16 @@ function KustomerExplore({ ...props }) {
         const title = new SplitType(".kustomer-explore-title", { types: 'lines, words', lineClass: 'split-line' })
 
         animate(title.words, { opacity: 0, transform: "translateY(100%)" }, { duration: 0 })
-
+        animate(document.querySelector('.kustomer-explore-main-line-bot'), { scaleX: 0, transformOrigin: 'left' }, { duration: 0 })
         const titleSequence = [
             [title.words, { opacity: 1, transform: "none" }, { duration: .6, delay: stagger(.04), at: "-.4" }],
+            [document.querySelector('.kustomer-explore-main-line-bot'), { scaleX: 1 }, { duration: .8, at: .2 }]
         ]
 
         inView('.kustomer-explore-title', () => {
             timeline(titleSequence).finished.then(() => {
                 title.revert()
+                document.querySelector('.kustomer-explore-main-line-bot').removeAttribute('style')
             })
         }, { margin: "-20% 0px -20% 0px" })
     }, [])
@@ -35,6 +37,7 @@ function KustomerExplore({ ...props }) {
                             img={props.listImg[idx]}
                         />
                     )}
+                    <div className="line kustomer-explore-main-line-bot"></div>
                 </div>
             </div>
         </section>

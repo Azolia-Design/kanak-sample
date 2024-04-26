@@ -4,12 +4,12 @@
 .kustomer-cata {
     --HomeProductCardHeight: 66.2rem;
 
-    padding-bottom: 28.8rem;
+    padding-bottom: 16rem;
     contain: paint;
 
     @include md {
         --HomeProductCardHeight: 41rem;
-        padding-bottom: 10rem;
+        padding-bottom: 8rem;
     }
 
     @include sm {
@@ -18,7 +18,7 @@
     }
 
     &-title-wrap {
-        grid-column: 1/12;
+        grid-column: 1/11;
 
         @include md {
             grid-column: 1/-1;
@@ -31,6 +31,7 @@
         @include md {
             @include text(h1);
             max-width: 45rem;
+            margin-bottom: 2rem;
         }
 
         @include sm {
@@ -48,17 +49,28 @@
     }
 
     &-des {
-        grid-column: 13/17;
+        grid-column: 11/17;
         align-self: end;
         margin-bottom: .9rem;
-        max-width: 29rem;
+        max-width: 48.8rem;
 
-        span {
+        span.txt-green {
             display: inline;
+            font-weight: 700;
+
+            @include md {
+                font-weight: unset;
+            }
         }
 
         @include md {
-            display: none;
+            grid-column: 1/8;
+        }
+
+        .txt {
+            @include md {
+                @include text(16);
+            }
         }
     }
 
@@ -70,7 +82,7 @@
         margin-top: 13rem;
 
         @include md {
-            margin-top: 6rem;
+            margin-top: 4rem;
         }
 
         @include sm {
@@ -88,8 +100,18 @@
                 grid-column: 1/7;
                 row-gap: 6rem;
             }
+
             @include sm {
                 row-gap: 4rem;
+            }
+
+            &.group {
+                grid-column: 1/9;
+
+                .kustomer-cata-main-content-list {
+                    grid-column: 1/-1;
+                    margin-left: unset;
+                }
             }
         }
 
@@ -101,21 +123,26 @@
             @include md {
                 grid-template-columns: repeat(7, 1fr);
             }
+
             @include sm {
                 display: flex;
                 flex-direction: column;
             }
+
             .kustomer-cata-card {
                 display: none;
+
                 @include sm {
                     display: block;
                 }
             }
+
             &:last-child {
                 .kustomer-cata-main-content-des-subtitle {
                     max-width: 38.2rem;
                 }
             }
+
             &-des {
                 grid-column: 1/5;
 
@@ -123,6 +150,7 @@
                     grid-column: 1/7;
                     margin-bottom: 4rem;
                 }
+
                 @include sm {
                     margin-bottom: 1.6rem;
                 }
@@ -227,6 +255,7 @@
         @include md {
             grid-column: 8/-1;
         }
+
         @include sm {
             display: none;
         }
@@ -247,6 +276,7 @@
                 position: relative;
                 top: 0;
             }
+
             &.active {
                 opacity: 1;
                 pointer-events: auto;
@@ -400,6 +430,7 @@
                 @include md {
                     @include text(h6);
                 }
+
                 @include sm {
                     @include text(h5);
                     white-space: nowrap;
@@ -443,20 +474,24 @@
                 grid-template-columns: 1fr;
             }
         }
+
         &-pagination {
             display: none;
             align-items: center;
             justify-content: center;
             gap: 0 .6rem;
             margin-top: 1.6rem;
+
             @include sm {
                 display: flex;
             }
+
             &-dot {
                 @include size(.7rem);
                 background-color: var(--cl-txt);
                 border-radius: 50%;
                 transition: 0.35s background-color ease-in-out;
+
                 &.active {
                     background-color: var(--cl-orange);
                 }

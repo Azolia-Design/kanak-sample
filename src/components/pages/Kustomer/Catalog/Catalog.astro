@@ -6,6 +6,7 @@ import KustomerCatalogGroup from "./CatalogGroup";
 import arrIcon from "@assets/arr-right.svg?raw";
 import "./Catalog.scss";
 import { getByUID } from "@/prismic";
+import { isEmpty } from "@/components/utils/text";
 
 const { title, describe, label, currPage, groupData } = Astro.props;
 
@@ -46,31 +47,43 @@ let listItem = await Promise.all(
 			<Fragment set:html={describe} slot="describe" />
 		</KustomerCatalogTitle>
 		<div class="kustomer-cata-main">
-			<div class="kustomer-cata-main-content-wrap">
+			<div
+				class={`kustomer-cata-main-content-wrap ${!isEmpty(listGroup[0].title) ? "group" : ""}`}
+			>
 				{
-					listGroup.map((group, idx) => (
-						<KustomerCatalogGroup
-							key={idx}
-							data={group}
-							currPage={currPage}
-							listItem={listItem}
-							client:visible={{ rootMargin: "100% 0px 100% 0px" }}
-						>
-							<KustomerCatalogThree
-								slot="card"
-								isMobile={true}
-								listItem={listItem.filter((item1) =>
-									group.list.some(
-										(item2) => item1.id === item2.id,
-									),
-								)}
-								client:media="(max-width: 767px)"
-								client:idle
-							>
-								<Fragment set:html={arrIcon} slot="arrIcon" />
-							</KustomerCatalogThree>
-						</KustomerCatalogGroup>
-					))
+					listGroup.map(
+						(group, idx) =>
+							!isEmpty(group.title) &&
+							idx == 0 && (
+								<KustomerCatalogGroup
+									key={idx}
+									data={group}
+									currPage={currPage}
+									listItem={listItem}
+									client:visible={{
+										rootMargin: "100% 0px 100% 0px",
+									}}
+								>
+									<KustomerCatalogThree
+										slot="card"
+										isMobile={true}
+										listItem={listItem.filter((item1) =>
+											group.list.some(
+												(item2) =>
+													item1.id === item2.id,
+											),
+										)}
+										client:media="(max-width: 767px)"
+										client:idle
+									>
+										<Fragment
+											set:html={arrIcon}
+											slot="arrIcon"
+										/>
+									</KustomerCatalogThree>
+								</KustomerCatalogGroup>
+							),
+					)
 				}
 			</div>
 			<KustomerCatalogThree

@@ -51,6 +51,7 @@ function KustomerAwardContent(props) {
             <div className="kustomer-award-head">
                 <div className="kustomer-award-head-img">
                     <img src={props.medal.url} alt={props.medal.alt} />
+                    {props.imgPLMA}
                 </div>
                 <div className="heading h4 txt-black txt-up kustomer-award-head-label">
                     {props.label}
