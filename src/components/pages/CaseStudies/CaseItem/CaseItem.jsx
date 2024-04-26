@@ -1,12 +1,15 @@
 import { useRef, useEffect } from "react";
 import SplitType from 'split-type';
 import { animate, timeline, stagger, inView } from "motion";
+import { cleanText } from "@/components/utils/text";
 
 function CaseItem({ ...props }) {
     const itemRef = useRef();
 
     useEffect(() => {
         if (!itemRef.current) return
+
+        cleanText(itemRef.current.querySelector('.case-list-item-title'))
         const label = new SplitType(itemRef.current.querySelector('.case-list-item-label'), { types: 'lines, words', lineClass: 'split-line' })
         const title = new SplitType(itemRef.current.querySelector('.case-list-item-title'), { types: 'lines, words', lineClass: 'split-line' })
         const readmore = new SplitType(itemRef.current.querySelector('.case-list-item-link-txt'), { types: 'lines, words', lineClass: 'split-line' })

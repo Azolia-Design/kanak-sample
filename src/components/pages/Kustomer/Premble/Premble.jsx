@@ -2,9 +2,12 @@ import "./Premble.scss"
 import { animate, timeline, stagger, inView } from "motion";
 import { useEffect } from "react";
 import SplitType from 'split-type';
+import { cleanText } from "@/components/utils/text";
+
+
 function KustomerPremble(props) {
     useEffect(() => {
-        const title = new SplitType(".kustomer-premble-title", { types: 'lines, words', lineClass: 'split-line' })
+        const title = new SplitType(".kustomer-premble-title .heading", { types: 'lines, words', lineClass: 'split-line' })
 
         animate(title.words, { opacity: 0, transform: "translateY(100%)" }, { duration: 0 })
         const sequence = [
@@ -20,7 +23,9 @@ function KustomerPremble(props) {
     return (
         <section className="kustomer-premble bg-dark">
             <div className="container grid">
-                <h3 className="heading h4 txt-black txt-up kustomer-premble-title">{props.title}</h3>
+                <div className="kustomer-premble-title">
+                    <h3 className="heading h4 txt-black txt-up">{props.title}</h3>
+                </div>
             </div>
             {props.badge}
         </section>

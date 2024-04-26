@@ -7,7 +7,7 @@ const convertHighlight = (field) => {
             .split(/(\b\w+-\b)/)
             .filter(part => part !== '-')
             .map(word => `<span class="txt-green">${word}</span>`)
-            .join(' ');
+            .join('')
     };
     // Thực hiện thay thế
     return htmlString.replace(/<span class="Highlight">(.*?)<\/span>/g, replacer);

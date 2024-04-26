@@ -38,6 +38,7 @@ function HeaderGlobal(props) {
                 }
             }
         })
+        console.log(props.check);
     }, [])
     useEffect(() => {
         if (window.innerWidth < 992) {
@@ -177,7 +178,7 @@ function HeaderGlobal(props) {
                             <div className="header-menu">
                                 {props.pages.map((page, idx) => (
                                     <Fragment key={idx}>
-                                        <div className={cn("header-menu-item", { "active" : props.pathname === page.link })}>
+                                        <div className={cn("header-menu-item", { "active": props.pathname === page.link })}>
                                             <a
                                                 href={page.link}
                                                 data-dropdown-idx={idx}
@@ -188,9 +189,9 @@ function HeaderGlobal(props) {
                                                 }}>
                                                 <span className="txt txt-14 txt-up txt-semi">{page.name}</span>
                                                 {page.type == 'dropdown' && (
-                                                    <div className={cn("ic ic-14 header-menu-item-ic", { "active" : idx === dropdownIdx })}>
+                                                    <div className={cn("ic ic-14 header-menu-item-ic", { "active": idx === dropdownIdx })}>
                                                         <svg width="100%" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                            <path d="M2.59246 3.5L5.99935 6.89947L9.40624 3.5L10.4528 4.54656L5.99935 9.00001L1.5459 4.54656L2.59246 3.5Z" fill="currentColor"/>
+                                                            <path d="M2.59246 3.5L5.99935 6.89947L9.40624 3.5L10.4528 4.54656L5.99935 9.00001L1.5459 4.54656L2.59246 3.5Z" fill="currentColor" />
                                                         </svg>
                                                     </div>
                                                 )}
@@ -238,7 +239,7 @@ function HeaderGlobal(props) {
                                         <a
                                             key={idx}
                                             href={el.url}
-                                            className={cn("header-dropdown-item", { "active" : el.url === props.pathname })}>
+                                            className={cn("header-dropdown-item", { "active": el.url === props.pathname })}>
                                             <span className="txt txt-14 txt-up txt-semi">{el.name}</span>
                                             <div className="header-dropdown-item-ic">
                                                 <div className="ic ic-16">

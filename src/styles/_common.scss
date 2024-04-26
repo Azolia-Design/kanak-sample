@@ -23,9 +23,11 @@ html {
         height: auto;
     }
 }
+
 .main {
     opacity: 1;
     transition: opacity 300ms ease;
+
     &.on-load {
         opacity: 0;
     }
@@ -156,16 +158,19 @@ button {
     position: relative;
     overflow: hidden;
     z-index: 1;
+
     &[data-cursor-txtlink] {
         .txt {
             transition: transform 400ms ease;
         }
+
         &:hover {
             .txt {
                 transform: translateX(.6rem);
-            }   
+            }
         }
     }
+
     &::before,
     &::after {
         content: '';
@@ -202,6 +207,15 @@ button {
         }
     }
 
+    &-trans {
+        &::after {
+            background-color: var(--cl-orange);
+        }
+
+        &:hover {
+            color: var(--cl-white);
+        }
+    }
 
     &-lg {
         padding: 2.8rem 2.4rem;

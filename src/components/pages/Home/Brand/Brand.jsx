@@ -93,17 +93,17 @@ function HomeBrand(props) {
                 <div className="line line-ver"></div>
                 <div className="home-brand-main">
                     <div className='home-brand-main-list keen_slider' ref={sliderRef}>
-                        {props.list.map(({ data }, idx) => (
+                        {props.list.map((item, idx) => (
                             <a
                                 key={idx}
                                 data-cursor="ext"
-                                href="#"
+                                href={`/${item.uid}`}
                                 className={`home-brand-main-item keen-slider__slide ${currentSlide == idx ? 'active' : ''}`}
                                 onMouseOver={() => { brandIndex.set(idx) }}
                             >
                                 <div className="home-brand-main-item-head">
                                     <h3 className="heading h4 txt-up txt-black home-brand-main-item-title">
-                                        {data.name[0].text}
+                                        {item.data.name[0].text}
                                     </h3>
                                     <div className='ic ic-20 home-brand-main-item-ic'>
                                         {props.arrIconDesk}
@@ -111,7 +111,7 @@ function HomeBrand(props) {
                                 </div>
                                 <div className="home-brand-main-item-body">
                                     <p className="txt txt-18 txt-med home-brand-main-item-sub">
-                                        {data.sub_title}
+                                        {item.data.sub_title}
                                     </p>
                                 </div>
                                 <div className="line"></div>

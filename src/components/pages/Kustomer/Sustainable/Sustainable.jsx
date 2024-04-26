@@ -1,5 +1,4 @@
 import "./Sustainable.scss"
-import { isEmpty } from "@/components/utils/text";
 import ArrowDown from "@/components/globals/IcArrow/ArrowDown.jsx";
 import ArrowDropdown from "@/components/globals/IcArrow/ArrowDropdown.jsx";
 import { useEffect, useState, useRef, useMemo } from "react"
@@ -74,7 +73,7 @@ function SustainableItem(props) {
                 <div className="kustomer-sus-main-table-item-info-qr">
                     <div className="line line-ver line-qr"></div>
                     <div className="kustomer-sus-main-table-item-info-qr-inner">
-                        <img src={props.data.qr.url} alt={props.data.qr.alt} width={props.data.qr.dimensions.width} />
+                        <img src={props.data.qr?.url} alt={props.data.qr?.alt} width={props.data.qr?.dimensions.width} />
                     </div>
                 </div>
             </div>
@@ -87,7 +86,7 @@ function SustainableItem(props) {
 
 function KustomerSustain(props) {
     useEffect(() => {
-    console.log(props);
+        console.log(props);
     }, [])
     const allItem = props.productList
     const [filter, setFilter] = useState(0);
@@ -104,12 +103,12 @@ function KustomerSustain(props) {
         let list = props.cateList[filter].list.map((uid) => allItem.filter((item) => item.uid == uid)[0]);
         setListLength(list.length);
         return (
-            list.map(({data}, idx) => (
+            list.map(({ data }, idx) => (
                 idx < limit && <SustainableItem data={data} key={idx} filter={filter} onClick={() => {
                     setIsOpenPopup(true);
                     setDetailProductData(data);
                     getLenis().stop();
-                }}/>
+                }} />
             ))
         )
     }, [filter, limit]);
@@ -159,7 +158,7 @@ function KustomerSustain(props) {
     }, [])
 
     return (
-        <section className="kustomer-sus">
+        <section className="kustomer-sus" id="kustomer-sus">
             <div className="container grid">
                 <div className="kustomer-sus-head">
                     <div className="kustomer-sus-head-img">
@@ -169,7 +168,7 @@ function KustomerSustain(props) {
                         {props.subtitle}
                     </span>
                     <div className="kustomer-sus-pdf">
-                        <a href="#" className="kustomer-sus-pdf-link">
+                        <a href="#" className="btn btn-trans pdf-link kustomer-sus-pdf-link">
                             <div className="kustomer-sus-pdf-link-ic">
                                 <div className="ic ic-32">
                                     {props.PDFIcon}

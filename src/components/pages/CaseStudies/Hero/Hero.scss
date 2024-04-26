@@ -3,52 +3,68 @@
 
 .case-hero {
     padding-top: 24rem;
+    margin-bottom: 6.6rem;
+
+    @include md {
+        margin-bottom: 6rem;
+    }
+
+    @include sm {
+        margin-bottom: 2rem;
+    }
+
     &-title {
         grid-column: 1/7;
         max-width: 50.5rem;
+
     }
+
     &-content {
         grid-column: 12/17;
-        &-sub {
-            margin-bottom: 3rem;
-        }
-        &-author {
-            padding-top: 2rem;
-            padding-bottom: 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            &-info {
-                display: flex;
-                align-items: center;
-                column-gap: 1.2rem;
-            }
-            &-ava {
-                width: 4.4rem;
-                height: 4.4rem;
-                overflow: hidden;
-                border-radius: 50%;
-            }
-            &-name {
-                margin-bottom: .4rem;
-            }
-            &-company {
-                height: 5rem;
-            }
-        }
+        align-self: end;
 
+        // &-author {
+        //     padding-top: 2rem;
+        //     padding-bottom: 2rem;
+        //     display: flex;
+        //     align-items: center;
+        //     justify-content: space-between;
+        //     &-info {
+        //         display: flex;
+        //         align-items: center;
+        //         column-gap: 1.2rem;
+        //     }
+        //     &-ava {
+        //         width: 4.4rem;
+        //         height: 4.4rem;
+        //         overflow: hidden;
+        //         border-radius: 50%;
+        //     }
+        //     &-name {
+        //         margin-bottom: .4rem;
+        //     }
+        //     &-company {
+        //         height: 5rem;
+        //     }
+        // }
     }
 }
 
 @include md {
     .case-hero {
         padding-top: 19.3rem;
+
         &-content {
             grid-column: 7/13;
+
+            @include md {
+                margin-right: -.6rem;
+            }
 
             &-sub {
                 @include text(16);
             }
+
             &-author {
                 padding-bottom: 3.6rem;
             }
@@ -66,8 +82,13 @@
             max-width: 30.4rem;
             @include text(h1);
         }
+
         &-content {
             grid-column: 1/-1;
+
+            @include md {
+                margin-right: unset;
+            }
 
             &-author {
                 padding-bottom: 2rem;
