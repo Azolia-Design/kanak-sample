@@ -384,6 +384,7 @@
                 margin-right: 3.2rem;
                 display: grid;
                 align-items: center;
+                height: 100%;
 
                 @include md {
                     margin-left: 1.2rem;
@@ -396,6 +397,8 @@
                 opacity: 0;
                 pointer-events: none;
                 transition: opacity .4s ease;
+                height: 100%;
+                align-content: center;
 
                 @include md {
                     @include text(h6);

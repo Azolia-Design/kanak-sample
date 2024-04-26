@@ -38,7 +38,6 @@ function HeaderGlobal(props) {
                 }
             }
         })
-        console.log(props.check);
     }, [])
     useEffect(() => {
         if (window.innerWidth < 992) {

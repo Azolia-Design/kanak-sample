@@ -85,9 +85,6 @@ function SustainableItem(props) {
 }
 
 function KustomerSustain(props) {
-    useEffect(() => {
-        console.log(props);
-    }, [])
     const allItem = props.productList
     const [filter, setFilter] = useState(0);
     const [listLength, setListLength] = useState(props.cateList[0].list.length);

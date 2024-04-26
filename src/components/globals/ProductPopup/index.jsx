@@ -80,10 +80,6 @@ function ProductPopup({ data, isActive, setIsActive }) {
         }
     }, [isActive, isValidData]);
 
-    useEffect(() => {
-        console.log(isActive);
-    }, [isActive]);
-
     return (
         isValidData ? <>
             <div className={cn('popup', { "active": isActive })}>
