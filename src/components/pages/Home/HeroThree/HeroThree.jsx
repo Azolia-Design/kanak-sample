@@ -1,5 +1,8 @@
 import { useRef, useEffect, useState, Suspense } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
+import {DoubleSide} from "three";
+import { Image } from '@react-three/drei'
+import { TextureLoader } from 'three/src/loaders/TextureLoader'
 import useWindowSize from "@hooks/useWindowSize";
 import { suspend } from 'suspend-react'
 import { animate, scroll } from "motion"
@@ -23,7 +26,7 @@ function Model({ item, ...styles }) {
                 material-color="white">
                     <Suspense>
                         {item.uid == 'bagasse-bowls-ka3520' ? (
-                            <GetModel file='/glb/64-oval-bowl-clean-transformed.glb' scale={[.8,.8,.8]} rotation={[0, Math.PI * -.5, 0]}/>
+                            <GetModel file='/glb/64-oval-bowl-clean-transformed.glb' scale={[.9,.9,.9]} rotation={[0, Math.PI * -.5, 0]}/>
                         ) : item.uid == 'compartment-trays-st5515' ? (
                             <GetModel file='/glb/KA10054-clean-transformed.glb' scale={[.8,.8,.8]} position={[0, .02, 0]} />
                         ) : item.uid == 'molded-fiber-3-compartment-plates-ba5504' ? (
@@ -36,10 +39,12 @@ function Model({ item, ...styles }) {
                             <Fork material={<CustomMaterial color='#F9833A' roughness={.2} />} />
                         ) : item.uid == 'double-wall-hot-cups-dw1204' ? (
                             <GetModel file='/glb/kup-5-transformed.glb' scale={[.76,.76,.76]} position={[0,-.02,0]}/>
+                        ) : item.uid == 'pla-straw' ? (
+                            <Image url="/image-straw.png" transparent segments={10} scale={[.2,.2]} side={DoubleSide} position={[0,.02,0]}/>
                         ) : item.uid == 'one-compartment-clamshells-ba6631' ? (
                             <GetModel file='/glb/klamshell-79-transformed.glb' scale={[.8,.8,.8]} position={[0,-.01,0]}/>
-                        ) : item.uid == 'carry-out-bags' ? (
-                            <GetModel file='/glb/62-freebirds-clean-transformed.glb' scale={[.8,.8,.8]} position={[0,-.01,0]}/>
+                        ) : item.uid == 'take-away-bags-ka355231150' ? (
+                            <Image url="/image-bag.png" transparent segments={10} scale={[.2,.2]} side={DoubleSide} position={[0,.02,0]}/>
                         ) : item.uid == 'food-storage' ? (
                             <GetModel file='/glb/BA-CFH-700-salad-box-clean-transformed.glb' scale={[.8,.8,.8]} position={[0,-.01,0]}/>
                         ) : item.uid == 'takeaway-containers' ? (
@@ -63,7 +68,7 @@ function Content({...props}) {
     const [scaleOffset, setScaleOffset] = useState(1);
     const [degraded, degrade] = useState(false)
     const clock = useThree(state => state.clock);
-    let isLock = false;
+    let [isLock, setIsLock] = useState(false);
     useEffect(() => {
         console.log(props.list.map((item) => item.uid))
     }, []);
@@ -98,11 +103,11 @@ function Content({...props}) {
             if (document.querySelectorAll('.home-prod-cards-inner').length >= 1) {
                 if (y.progress >= (window.innerWidth < 767 ? .76 : .9)) {
                     if (isLock === false) {
-                        isLock = true;
+                        setIsLock(true);
                     }
                 } else {
                     if (isLock === true) {
-                        isLock = false;
+                        setIsLock(false);
                         setIndex({ direction: -1, value: 0 });
                     }
                 }

@@ -7,15 +7,32 @@ function GlobLoaderMain({...props}) {
     const { active, progress, errors, item, loaded, total } = useProgress()
     const [percent, setPercent] = useState(0);
 
+    function handlePercentChange() {
+        activateElement(percent);
+    }
+    function activateElement(percent) {
+        const elements = document.querySelectorAll('.loader-circle-imgs-item');
+        const index = percent < 100 ? Math.floor(Math.random() * 12) : 11;
+
+        // Deactivate all elements
+        elements.forEach(element => element.classList.remove('active'));
+
+        // Activate the selected element
+        elements[index].classList.add('active');
+    }
+
+    useEffect(() => {
+        let elements = document.querySelectorAll('.loader-circle-imgs-item');
+        handlePercentChange(elements);
+    }, [percent]);
+
     useEffect(() => {
         let currPercent = parseInt(loaded / 10 * 100);
         setPercent(currPercent < 10 ? `0${currPercent}` : currPercent);
-
         if (!active) {
             setTimeout(() => {
                 document.querySelector('.loader').classList.add('done-anim')
             }, 1600);
-            // progressPercent.set(false)
         }
     }, [loaded]);
 
@@ -40,6 +57,44 @@ function GlobLoaderMain({...props}) {
                         <div className="loader-circle">
                             <div className="loader-circle-inner">
                                 <div className="loader-circle-inside"></div>
+                                <div className="loader-circle-imgs">
+                                    <div className="loader-circle-imgs-item active">
+                                        {props.load1}
+                                    </div>
+                                    <div className="loader-circle-imgs-item">
+                                        {props.load2}
+                                    </div>
+                                    <div className="loader-circle-imgs-item">
+                                        {props.load3}
+                                    </div>
+                                    <div className="loader-circle-imgs-item">
+                                        {props.load4}
+                                    </div>
+                                    <div className="loader-circle-imgs-item">
+                                        {props.load5}
+                                    </div>
+                                    <div className="loader-circle-imgs-item">
+                                        {props.load6}
+                                    </div>
+                                    <div className="loader-circle-imgs-item">
+                                        {props.load7}
+                                    </div>
+                                    <div className="loader-circle-imgs-item">
+                                        {props.load8}
+                                    </div>
+                                    <div className="loader-circle-imgs-item">
+                                        {props.load9}
+                                    </div>
+                                    <div className="loader-circle-imgs-item">
+                                        {props.load10}
+                                    </div>
+                                    <div className="loader-circle-imgs-item">
+                                        {props.load11}
+                                    </div>
+                                    <div className="loader-circle-imgs-item">
+                                        {props.load12}
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

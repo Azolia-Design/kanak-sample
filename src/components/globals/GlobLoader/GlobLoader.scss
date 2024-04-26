@@ -49,6 +49,10 @@
             opacity: 0;
             transform: translateY(100%);
         }
+        .loader-circle-imgs {
+            width: 100vw;
+            height: 100vw;
+        }
     }
     &-circle {
         width: 0;
@@ -79,10 +83,24 @@
             border-radius: 50%;
             border: .4rem solid var(--cl-txt);
         }
-        &-img {
+        &-imgs {
+            transition: all 2000ms ease;
             position: absolute;
-            inset: -10%;
-            opacity: 0;
+            width: 20.4rem;
+            height: 20.4rem;
+            display: grid;
+            border-radius: 50%;
+            overflow: hidden;
+            &-item {
+                grid-column: 1/2;
+                grid-row: 1/2;
+                opacity: 0;
+                transition: opacity 100ms ease;
+                transition-delay: 100ms;
+                &.active {
+                    opacity: 1;
+                }
+            }
         }
     }
     &-count {

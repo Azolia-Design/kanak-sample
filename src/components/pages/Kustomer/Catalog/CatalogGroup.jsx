@@ -59,8 +59,8 @@ function KustomerCatalogGroup({ ...props }) {
     return (
         <div className="kustomer-cata-main-content">
             <div className="kustomer-cata-main-content-des">
-                <h3 className="heading h4 txt-black txt-up kustomer-cata-main-content-des-title">{props.data.title[0].text}</h3>
-                <p className="txt txt-18 txt-med kustomer-cata-main-content-des-subtitle">{props.data.sub}</p>
+                <h3 className="heading h4 txt-black txt-up kustomer-cata-main-content-des-title">{props.data.title[0]?.text}</h3>
+                <p className="txt txt-18 txt-med kustomer-cata-main-content-des-subtitle">{props.data?.sub}</p>
             </div>
             {props.card}
             <div className="kustomer-cata-main-content-list">
