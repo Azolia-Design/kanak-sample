@@ -6,8 +6,8 @@ import { animate, timeline, inView } from "motion";
 import { Fork } from '@pages/Home/HeroThree/Fork.jsx';
 import { Environment, ContactShadows, AdaptiveDpr } from "@react-three/drei";
 import { useTransition, animated } from '@react-spring/three'
-import { GetModel } from "@components/common/GetModel.jsx";
-import { useProductIndex } from "@contexts/StoreGlobal.js";
+import GetModel from "@components/common/GetModel.jsx";
+import { useCatalogIndex } from "@contexts/StoreGlobal.js";
 import cn from 'clsx';
 
 const warehouse = import('/envMap/warehouse.hdr?url').then((module) => module.default)
@@ -45,6 +45,7 @@ function Content(props) {
             setScaleOffset(1.5)
         }
     }, [scaleOffset])
+
     return (
         <>
             <group ref={wrap}>
@@ -106,7 +107,7 @@ function Content(props) {
 
 function KustomerCatalogThree(props) {
     const { width, height } = useWindowSize();
-    const { index, setIndex } = useProductIndex();
+    const { index, setIndex } = useCatalogIndex();
     const [direction, setDirection] = useState(1);
     const [itemIndex, setItemIndex] = useState(0);
 

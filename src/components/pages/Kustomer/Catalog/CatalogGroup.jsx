@@ -1,4 +1,4 @@
-import { useProductIndex } from "@contexts/StoreGlobal";
+import { useCatalogIndex } from "@contexts/StoreGlobal";
 import SplitType from 'split-type';
 import { useEffect, useState } from 'react';
 import KustomerCatalogThree from "./CatalogThree";
@@ -7,7 +7,7 @@ import { animate, timeline, stagger, inView } from "motion";
 import { formatData } from "@/components/utils/text";
 
 function KustomerCatalogGroup({ ...props }) {
-    const { index, setIndex } = useProductIndex();
+    const { index, setIndex } = useCatalogIndex();
     const debounceHover = useDebounceCallback(setIndex, 200);
 
     useEffect(() => {

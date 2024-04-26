@@ -2,7 +2,7 @@ import { useRef, useEffect, useState, Suspense } from "react";
 import { Environment, ContactShadows, AdaptiveDpr } from "@react-three/drei";
 import useWindowSize from "@hooks/useWindowSize";
 import { suspend } from 'suspend-react'
-import { GetModel } from "@/components/common/GetModel";
+import GetModel from "@components/common/GetModel.jsx";
 import { Canvas, useThree } from "@react-three/fiber";
 import { normalize } from "@utils/parse";
 
