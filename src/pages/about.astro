@@ -8,18 +8,24 @@ import Why from "@pages/About/Why/Why.astro";
 import Commit from "@pages/About/Commit/Commit.astro";
 import Join from "@pages/About/Join/Join.astro";
 import Award from "@pages/About/Award/Award.astro";
-import abtBg from "@assets/abt-ft-bg.jpg";
 import { getPage } from "@/prismic.js";
-const { data } = await getPage("fullfilment_page");
+const { data } = await getPage("about_page");
 ---
 
-<Layout title="Know Us" footer_cta={'Join our mission for a greener future'}
-    footer_bg={data.cta_background}>
+<Layout
+    title="Know Us"
+    data_page="Know Us"
+    footer_cta={data.cta_title[0].text}
+    footer_bg={data.cta_background}
+>
     <Hero />
     <Name />
     <Mission />
     <Why />
     <Commit />
     <Join />
-    <Award />
+    <Award
+        endorsements_title={data.endorsements_title}
+        endorsements_list={data.endorsements_list}
+    />
 </Layout>

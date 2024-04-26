@@ -16,9 +16,9 @@ const testingQcpage = await getPage("compliance");
 const kustomPackagingPage = await getPage("kustompackaging_page");
 const privateLabelPage = await getPage("privatelabel_page");
 const exploreList = await Promise.all([
-    privateLabelPage,
-    kustomPackagingPage,
-    testingQcpage,
+    {...privateLabelPage, link: 'private-label'},
+    {...kustomPackagingPage, link: "kustom-packaging-solutions"},
+    {...testingQcpage, link: "qc-procedures"},
 ]);
 ---
 

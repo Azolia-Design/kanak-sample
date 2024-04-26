@@ -1,6 +1,6 @@
 ---
 const { label, title, industry_list } = Astro.props;
-
+import ArrowUpRight from "@/components/globals/IcArrow/ArrowUpRight";
 import { Image } from "astro:assets";
 import arrIcon from "@assets/arr-ext.svg";
 import ctaTxt from "@assets/cta-txt.svg";
@@ -47,7 +47,10 @@ const list = await Promise.all(
                             data-cursor="txtLink"
                             class="txt txt-18 txt-med txt-orange home-indus-main-item-link txt-link"
                         >
-                            Learn more
+                            <span>Learn more</span>
+                            <div class="ic ic-20">
+                                <ArrowUpRight />
+                            </div>
                         </a>
                     </div>
                     <div class="line" />

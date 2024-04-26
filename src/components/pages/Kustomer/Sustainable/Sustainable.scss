@@ -82,22 +82,16 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            border: solid .2rem var(--cl-txt);
+            border: .2rem solid currentColor;
+            background-color: transparent;
+            padding: 0;
+            color: var(--cl-txt);
             transition: all 400ms ease;
-
-            &:hover {
-                color: var(--cl-orange);
-                border-color: var(--cl-orange);
-
-                .home-prod-pdf-link-ic {
-                    border-color: var(--cl-orange);
-                }
-            }
 
             &-ic {
                 position: relative;
                 @include size(8rem);
-                border-right: solid .2rem currentColor;
+                border-right: .2rem solid currentColor;
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -260,6 +254,7 @@
                         width: 1rem;
                         height: 1rem;
                         opacity: 0;
+                        top: .6rem;
                         background-color: var(--cl-orange);
                         transition: all .4s ease;
 
@@ -353,7 +348,8 @@
                         display: flex;
                         align-items: center;
                         justify-content: center;
-                        @include size(64%, 55.26%);
+                        @include size(100%);
+                        // @include size(64%, 55.26%);
 
                         // @include md {
                         //     width: 23.3rem;
@@ -377,11 +373,12 @@
                     flex: 1;
 
                     &-name {
-                        display: inline-flex;
-                        align-items: center;
+                        display: inline-block;
+                        width: 100%;
+                        text-align: start;
+                        align-content: center;
                         padding: 2.6rem 0;
                         margin: 0 3.2rem;
-
 
                         @include md {
                             padding: 1.9rem 0;

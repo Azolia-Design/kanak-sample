@@ -2,21 +2,25 @@
 import PrivateDistribute from "./Distribution.jsx";
 import Image from "astro/components/Image.astro";
 import kareerCultItem from "@assets/kareer-cult-item.jpg";
+import * as prismicH from "@prismicio/client";
+import { convertHighlight } from "@/components/utils/text";
 ---
 
 <PrivateDistribute
     {...Astro.props}
     client:visible={{ rootMargin: "100% 0px 100% 0px" }}
 >
+    <Fragment set:html={convertHighlight(Astro.props.title)} slot="newTitle" />
     <Fragment slot="renderList">
         {
-            [...Array(3)].map((item, idx) => (
+            Astro.props.list.map((item, idx) => (
                 <div
                     class="private-distribute-main-item bg-light"
                     style={{
                         "--idx": idx + 1,
-                        "--pd-bot": 3 - idx - 1,
-                        "--mg-top": idx == 0 ? 0 : 3 - idx,
+                        "--pd-bot": Astro.props.list.length - idx - 1,
+                        "--mg-top":
+                            idx == 0 ? 0 : Astro.props.list.length - idx,
                     }}
                 >
                     <div class="private-distribute-main-item-inner">
@@ -25,23 +29,23 @@ import kareerCultItem from "@assets/kareer-cult-item.jpg";
                             <div class="private-distribute-main-item-title">
                                 <div class="private-distribute-main-item-title-dot" />
                                 <h3 class="heading h1 txt-up txt-black private-distribute-main-item-title-txt">
-                                    {/* {item.title} */}
-                                    Global Standards, Local Love
+                                    {item.item_title[0].text}
                                 </h3>
                             </div>
-                            <p class="txt txt-20 txt-med private-distribute-main-item-sub">
-                                {/* {item.sub} */}
-                                We scrutinize every inch of our products with
-                                100% inspection. Only the cream of the crop
-                                makes it through our doors.
-                            </p>
+                            <div class="txt txt-20 txt-med private-distribute-main-item-sub">
+                                <Fragment
+                                    set:html={prismicH.asHTML(
+                                        item.item_subtitle,
+                                    )}
+                                />
+                            </div>
                         </div>
                         <div class="private-distribute-main-item-img">
-                            {/* <img src={item.image.url} alt={item.image.alt} width={item.image.dimensions.width} height={item.image.dimensions.height} class='img img-h' /> */}
                             <Image
-                                src={kareerCultItem}
+                                src={item.item_image.url}
                                 alt=""
-                                slot="img"
+                                width={item.item_image.dimensions.width}
+                                height={item.item_image.dimensions.height}
                                 class="img img-h"
                             />
                         </div>

@@ -4,54 +4,73 @@
 .abt-join {
     padding-block: 19.2rem;
     color: var(--cl-txt-light);
+
     @include md {
         padding-block: 8rem;
     }
+
     @include sm {
         padding-block: 8rem 0;
     }
+
     &-title-wrap {
         grid-column: 3/15;
         display: flex;
         flex-direction: column;
         text-align: center;
         align-items: center;
+
         @include md {
             grid-column: 1/-1;
         }
     }
+
     &-label {
         margin-bottom: 2rem;
+        opacity: .8;
+
         @include md {
             @include text(h5);
             margin-bottom: 1.2rem;
         }
     }
+
     &-title {
         max-width: 108.5rem;
+
         @include md {
             @include text(h1);
         }
+
+        @include sm {
+            @include text(h2);
+        }
     }
+
     &-main {
         grid-column: 1/-1;
         margin-top: 10rem;
         position: relative;
+
         @include md {
             margin-top: 8rem;
         }
+
         &-item {
             --height-overlap: 10rem;
             --top-distance: 14rem;
+
             @include md {
                 --height-overlap: 14rem;
                 --top-distance: 6rem;
             }
+
             background-color: var(--cl-bg);
             position: sticky;
             top: calc(var(--top-distance) + var(--height-overlap) * var(--idx));
             padding-bottom: calc(var(--height-overlap) * var(--pd-bot));
             margin-top: calc(var(--height-overlap) * var(--mg-top) * -1);
+
             @include sm {
                 position: relative;
                 top: auto;
@@ -59,6 +78,7 @@
                 margin-top: 0;
                 background-color: transparent;
             }
+
             &-inner {
                 padding-top: 6rem;
                 padding-bottom: 6rem;
@@ -66,84 +86,103 @@
                 align-items: start;
                 justify-content: space-between;
                 column-gap: 4rem;
+
                 @include md {
                     column-gap: 2.8rem;
                     align-items: start;
                 }
+
                 @include sm {
                     flex-direction: column;
                     padding: 4rem 2rem 4rem 0;
                 }
             }
+
             .line {
                 position: absolute;
                 left: 0;
                 transform-origin: left;
+
                 &-top {
                     top: 0;
                 }
+
                 &-bot {
                     bottom: 0;
+
                     @include sm {
                         display: none;
                     }
                 }
             }
+
             &-title {
                 display: flex;
                 align-items: start;
                 column-gap: 4rem;
                 margin-bottom: 4.4rem;
+
                 @include md {
                     column-gap: 2.8rem;
                     margin-bottom: 2.4rem;
                 }
+
                 &-txt {
                     @include md {
                         @include text(h3);
                     }
                 }
+
                 &-dot {
                     margin-top: 2rem;
                     @include size(2.8rem);
                     border-radius: 50%;
                     flex: none;
                     background-color: var(--cl-txt-light);
+
                     @include md {
                         @include size(2rem);
                         margin-top: .9rem;
                     }
+
                     @include sm {
                         display: none;
                     }
                 }
             }
+
             &-sub {
                 margin-left: 6.8rem;
                 max-width: 64.4rem;
                 color: rgba($cl-txt-light, .6);
+
                 @include md {
                     margin-left: 4.8rem;
                     max-width: 37rem;
                     @include text(16);
                 }
+
                 @include sm {
                     margin-left: 0;
                     margin-bottom: 2.4rem;
                 }
             }
+
             &-img {
                 flex: none;
                 height: 18rem;
                 margin-top: 4rem;
                 overflow: hidden;
+
                 @include md {
                     margin-top: 0;
                 }
+
                 @include sm {
                     width: 18rem;
                     height: auto;
                 }
+
                 img {
                     @include sm {
                         object-fit: cover;

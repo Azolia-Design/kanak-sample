@@ -19,7 +19,7 @@ function Item({ data, onClick, filter }) {
     useEffect(() => {
         const item = itemRef.current
 
-        const name = new SplitType(item.querySelector('.katalog-main-list-item-info-name'), { types: "lines,words", lineClass: 'split-line' })
+        const name = new SplitType(item.querySelector('.katalog-main-list-item-info-name h4'), { types: "lines,words", lineClass: 'split-line' })
         if (animationStarted) {
             timeline().cancel();
             name.revert();
@@ -69,11 +69,13 @@ function Item({ data, onClick, filter }) {
             </div>
             <div className="katalog-main-list-item-info">
                 <div className="line line-mid"></div>
-                <h4 className="heading h6 txt-black txt-up katalog-main-list-item-info-name">{data.title}</h4>
+                <div className="katalog-main-list-item-info-name">
+                    <h4 className="heading h6 txt-black txt-up">{data.title}</h4>
+                </div>
                 <div className="katalog-main-list-item-info-qr">
                     <div className="line line-ver line-qr"></div>
                     <div className="katalog-main-list-item-info-qr-inner">
-                        <img src={data.qr?.url} alt={data.qr?.alt} width={data.qr?.dimensions.width} />
+                        <img src={data.qr?.url} alt={data.qr?.alt} width={data.qr.dimensions?.width} />
                     </div>
                 </div>
             </div>

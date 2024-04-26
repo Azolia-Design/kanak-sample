@@ -11,11 +11,11 @@ function HomeIndustry(props) {
         const label = new SplitType(q('.home-indus-label'), { types: 'lines, words', lineClass: 'split-line' })
         const title = new SplitType(q('.home-indus-title'), { types: 'lines, words', lineClass: 'split-line' })
 
-        animate(label.words, {opacity: 0, transform: 'translateY(12px)'}, {duration: 0})
-        animate(title.words, {opacity: 0, transform: 'translateY(100%)'}, {duration: 0})
+        animate(label.words, { opacity: 0, transform: 'translateY(12px)' }, { duration: 0 })
+        animate(title.words, { opacity: 0, transform: 'translateY(100%)' }, { duration: 0 })
         const sequence = [
-            [label.words, {opacity: 1, transform: 'none'}, {duration: .6, delay: stagger(.06)}],
-            [title.words, {opacity: 1, transform: 'none'}, {duration: .8, delay: stagger(.04), at: .2}],
+            [label.words, { opacity: 1, transform: 'none' }, { duration: .6, delay: stagger(.06) }],
+            [title.words, { opacity: 1, transform: 'none' }, { duration: .8, delay: stagger(.04), at: .2 }],
         ]
         inView('.home-indus-title-wrap', () => {
             timeline(sequence).finished.then(() => {
@@ -24,11 +24,11 @@ function HomeIndustry(props) {
             })
         }, { margin: "-20% 0px -20% 0px" });
 
-        animate('.home-indus-cta-inner', {opacity: 0, transform: ' scale(.9)'}, {duration: 0})
-        animate('.home-indus-cta-outer img', {opacity: 0, transform: ' scale(1.08)'}, {duration: 0})
+        animate('.home-indus-cta-inner', { opacity: 0, transform: ' scale(.9)' }, { duration: 0 })
+        animate('.home-indus-cta-outer img', { opacity: 0, transform: ' scale(1.08)' }, { duration: 0 })
         const sequenceButton = [
-            ['.home-indus-cta-inner', {opacity: 1, transform: 'none'}, {duration: .8}],
-            ['.home-indus-cta-outer img', {opacity: 1, transform: 'none'}, {duration: .8, at: .2}],
+            ['.home-indus-cta-inner', { opacity: 1, transform: 'none' }, { duration: .8 }],
+            ['.home-indus-cta-outer img', { opacity: 1, transform: 'none' }, { duration: .8, at: .2 }],
         ]
         inView('.home-indus-title-wrap', () => {
             timeline(sequenceButton).finished.then(() => {
@@ -38,24 +38,24 @@ function HomeIndustry(props) {
         }, { margin: "0px 0px -80% 0px" });
 
         const allItems = document.querySelectorAll('.home-indus-main-item')
-        allItems.forEach((el,idx) => {
+        allItems.forEach((el, idx) => {
             let itemTitle = new SplitType(el.querySelector('.home-indus-main-item-title'), { types: 'lines, chars', lineClass: 'split-line' })
             let itemSub = new SplitType(el.querySelector('.home-indus-main-item-sub'), { types: 'lines, words', lineClass: 'split-line' })
             let itemLink = new SplitType(el.querySelector('.home-indus-main-item-link'), { types: 'lines, chars', lineClass: 'split-line' })
 
-            animate(el.querySelector('.line'), {scaleX: 0}, {duration: 0})
-            animate(el.querySelector('.home-indus-main-item-ic'), {opacity: 0, transform: 'scale(.8) translateY(15%)'}, {duration: 0})
-            animate([...itemTitle.chars, ...itemSub.words, ...itemLink.chars], {opacity: 0, transform: 'translateY(100%)'}, {duration: 0});
+            animate(el.querySelector('.line'), { scaleX: 0 }, { duration: 0 })
+            animate(el.querySelector('.home-indus-main-item-ic'), { opacity: 0, transform: 'scale(.8) translateY(15%)' }, { duration: 0 })
+            animate([...itemTitle.chars, ...itemSub.words, ...itemLink.chars], { opacity: 0, transform: 'translateY(100%)' }, { duration: 0 });
             if (idx == allItems.length - 1) {
-                animate(el.querySelector('.line-bottom'), {scaleX: 0}, {duration: 0})
+                animate(el.querySelector('.line-bottom'), { scaleX: 0 }, { duration: 0 })
             }
             const sequenceItem = [
-                [el.querySelector('.line'), {scaleX: 1}, {duration: 1}],
-                [el.querySelector('.home-indus-main-item-ic'), {opacity: 1, transform: 'none'}, {duration: 1.4, at: .2}],
-                [itemTitle.chars, {opacity: 1, transform: 'none'}, {duration: .8, delay: stagger(.01), at: .2}],
-                [itemSub.words, {opacity: 1, transform: 'none'}, {duration: .8, delay: stagger(.01), at: .3}],
-                [itemLink.chars, {opacity: 1, transform: 'none'}, {duration: 1.2, delay: stagger(.005), at: .4}],
-                [idx == allItems.length - 1 && el.querySelector('.line-bottom'), {scaleX: 1}, {duration: .9, at: .3}]
+                [el.querySelector('.line'), { scaleX: 1 }, { duration: 1 }],
+                [el.querySelector('.home-indus-main-item-ic'), { opacity: 1, transform: 'none' }, { duration: 1.4, at: .2 }],
+                [itemTitle.chars, { opacity: 1, transform: 'none' }, { duration: .8, delay: stagger(.01), at: .2 }],
+                [itemSub.words, { opacity: 1, transform: 'none' }, { duration: .8, delay: stagger(.01), at: .3 }],
+                [itemLink.chars, { opacity: 1, transform: 'none' }, { duration: 1.2, delay: stagger(.005), at: .4 }],
+                [idx == allItems.length - 1 && el.querySelector('.line-bottom'), { scaleX: 1 }, { duration: .9, at: .3 }]
             ]
             inView(el, () => {
                 timeline(sequenceItem).finished.then(() => {
@@ -79,8 +79,11 @@ function HomeIndustry(props) {
                         <p className="heading h4 txt-up txt-black home-indus-label">{props.label}</p>
                         <h2 className="heading h0 txt-up txt-black home-indus-title">{props.title}</h2>
                         <div className="home-indus-cta-wrap">
-                            <a href="#" className="home-indus-cta">
-                                <div className="home-indus-cta-inner">{props.arrIcon}</div>
+                            <a href="/contact" className="arr-link home-indus-cta">
+                                <div className="home-indus-cta-inner">
+                                    <div className="ic ic-main">{props.arrIcon}</div>
+                                    <div className="ic ic-clone">{props.arrIcon}</div>
+                                </div>
                                 <div className="home-indus-cta-outer">{props.ctaTxt}</div>
                             </a>
                         </div>

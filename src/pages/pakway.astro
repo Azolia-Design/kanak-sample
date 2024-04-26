@@ -1,0 +1,22 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Hero from "@pages/Pakway/Hero/Hero.astro";
+import Mission from "@pages/Pakway/Mission/Mission.astro";
+import Partner from "@pages/Pakway/Partner/Partner.astro";
+import Join from "@pages/Pakway/Join/Join.astro";
+
+import { getPage } from "@/prismic.js";
+const { data } = await getPage("pakway_page");
+---
+
+<Layout
+    title="Pakway"
+    data_page="Pakway"
+    footer_cta={data.cta_title[0]?.text}
+    footer_bg={data.cta_background}
+>
+    <Hero />
+    <Mission />
+    <Partner />
+    <Join />
+</Layout>

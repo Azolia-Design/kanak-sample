@@ -3,10 +3,11 @@ import * as prismicH from "@prismicio/client";
 import Image from "astro/components/Image.astro";
 
 import imgPlate from "@assets/kustomer-plate.png";
-import KustomerAwardThree from './AwardThree';
-import KustomerAwardContent from './AwardContent';
-import "./Award.scss"
+import KustomerAwardThree from "./AwardThree";
+import KustomerAwardContent from "./AwardContent";
+import "./Award.scss";
 ---
+
 <section class="kustomer-award">
     <div class="container grid">
         <KustomerAwardThree qr={Astro.props.qr} client:idle>
@@ -16,8 +17,12 @@ import "./Award.scss"
             label={Astro.props.label}
             btn={Astro.props.btn}
             medal={Astro.props.medal}
-            client:visible={{ rootMargin: "100% 0px 100% 0px" }}>
-            <Fragment set:html={prismicH.asHTML(Astro.props.describe)} slot="describe" />
+            client:visible={{ rootMargin: "100% 0px 100% 0px" }}
+        >
+            <Fragment
+                set:html={prismicH.asHTML(Astro.props.describe)}
+                slot="describe"
+            />
             <Fragment set:html={Astro.props.title} slot="title" />
         </KustomerAwardContent>
     </div>

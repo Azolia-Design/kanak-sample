@@ -10,6 +10,7 @@
     @include md {
         --offset-top: 16rem;
     }
+
     @include sm {
         --offset-top: 10rem;
         // padding-top: calc(var(--offset-top));
@@ -33,9 +34,14 @@
             margin: 0;
             grid-column: 1/-1;
         }
+
         @include xs {
             max-width: 31rem;
             margin: 0 auto;
+        }
+
+        .txt-green {
+            display: inline !important;
         }
     }
 

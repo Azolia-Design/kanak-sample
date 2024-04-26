@@ -60,9 +60,11 @@
     }
 
     &-sub {
+        max-width: 49rem;
         margin-bottom: 4rem;
 
         @include md {
+            max-width: unset;
             @include text(16);
             margin-bottom: 2rem;
         }
