@@ -75,7 +75,7 @@ function SustainableItem(props) {
                 <div className="kustomer-sus-main-table-item-info-qr">
                     <div className="line line-ver line-qr"></div>
                     <div className="kustomer-sus-main-table-item-info-qr-inner">
-                        <img src={props.data.qr.url} alt={props.data.qr.alt} width={props.data.qr.dimensions.width} />
+                        <img src={props.data.qr?.url} alt={props.data.qr?.alt} width={props.data.qr?.dimensions.width} />
                     </div>
                 </div>
             </div>

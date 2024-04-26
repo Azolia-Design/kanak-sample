@@ -73,7 +73,7 @@ function Item({ data, onClick, filter }) {
                 <div className="katalog-main-list-item-info-qr">
                     <div className="line line-ver line-qr"></div>
                     <div className="katalog-main-list-item-info-qr-inner">
-                        <img src={data.qr.url} alt={data.qr.alt} width={data.qr?.dimensions.width} />
+                        <img src={data.qr?.url} alt={data.qr?.alt} width={data.qr?.dimensions.width} />
                     </div>
                 </div>
             </div>
