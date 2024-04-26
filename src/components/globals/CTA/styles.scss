@@ -150,3 +150,20 @@ html[data-page='Private Label'] {
         }
     }
 }
+
+
+html[data-page='Know Us'] {
+    .global-cta {
+        &-main {
+            max-width: 51.4rem;
+
+            @include md {
+                max-width: 26rem;
+            }
+
+            @include md {
+                max-width: unset;
+            }
+        }
+    }
+}

@@ -126,10 +126,8 @@ function KustomerHero(props) {
         const title = new SplitType('.kustomer-hero-title', { types: "lines,words", lineClass: 'split-line' })
         const subtitle = new SplitType('.kustomer-hero-subtitle', { types: "lines,words", lineClass: 'split-line' })
 
-
         animate(title.words, { opacity: 0, transform: "translateY(100%)" }, { duration: 0 })
         animate(subtitle.words, { opacity: 0, transform: "translateY(100%)" }, { duration: 0 })
-
 
         const sequence = [
             [subtitle.words, { transform: 'none', opacity: 1 }, { duration: .6, delay: stagger(.01), at: 0 }],

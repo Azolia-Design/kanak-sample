@@ -1,15 +1,11 @@
 ---
 import KustomerHero from "./Hero";
-
-// let replaceWord = title.split(",")[title.split(",").length - 1];
-// const renderWords = replaceWord
-//     .trim()
-//     .split(" ")
-//     .map((word) => `<span class="txt-green">${word}</span>`)
-//     .join(" ");
-// let newTitle = title.replace(replaceWord, renderWords);
 ---
 
-<KustomerHero page_title={Astro.props.page_title} label={Astro.props.label} client:load>
+<KustomerHero
+    page_title={Astro.props.page_title}
+    label={Astro.props.label}
+    client:load
+>
     <Fragment set:html={Astro.props.title} slot="title" />
 </KustomerHero>

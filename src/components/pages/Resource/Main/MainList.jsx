@@ -75,8 +75,13 @@ function ArticleItem({ data, idx }) {
                     {data.data.category}
                 </a>
                 <a href={`/insights/${data.uid}`} className="resource-main-list-main-item-content-wrap" data-cursor="ext">
-                    <h4 href="#" className="heading h5 txt-black txt-up resource-main-list-main-item-title">
-                        {data.data.title}
+                    <h4 href="#" className="heading h5 txt-black txt-up resource-main-list-main-item-title"
+                        dangerouslySetInnerHTML={{
+                            __html: data.data.title.split(/(\b\w+-\b)/)
+                                .filter(part => part !== '-')
+                                .map(word => `<span>${word}</span>`)
+                                .join('')
+                        }}>
                     </h4>
                     <p className="txt txt-18 txt-med resource-main-list-main-item-subtitle">
                         {data.data.sapo}

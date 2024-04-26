@@ -19,6 +19,15 @@ function useProductIndex() {
 }
 export { useProductIndex };
 
+const catalogIndex = atom(0);
+function useCatalogIndex() {
+    const index = useStore(catalogIndex);
+    const setIndex = (value) => catalogIndex.set(value);
+
+    return { index, setIndex };
+}
+export { useCatalogIndex };
+
 const isProductLock = atom(false);
 
 function useLockProduct() {

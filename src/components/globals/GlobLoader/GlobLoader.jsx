@@ -13,7 +13,7 @@ function GlobLoaderMain({...props}) {
 
         if (!active) {
             setTimeout(() => {
-                document.querySelector('.loader').classList.add('done-anim')        
+                document.querySelector('.loader').classList.add('done-anim')
             }, 1600);
             // progressPercent.set(false)
         }

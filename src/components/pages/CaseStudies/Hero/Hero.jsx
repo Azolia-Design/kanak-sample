@@ -13,30 +13,30 @@ function CaseHero({ ...props }) {
 
         animate(title.words, { opacity: 0, transform: 'translateY(100%)' }, { duration: 0 })
         animate(sub.words, { opacity: 0, transform: 'translateY(100%)' }, { duration: 0 })
-        animate('.case-hero-content .line', { scaleX: 0, transformOrigin: 'left' }, { duration: 0 })
-        animate('.case-hero-content-author-ava img', { opacity: 0, transform: 'scale(1.2)' }, { duration: 0 })
-        animate(authorName.words, { opacity: 0, transform: 'translateY(100%)' }, { duration: 0 })
-        animate(authorJob.words, { opacity: 0, transform: 'translateY(100%)' }, { duration: 0 })
-        animate('.case-hero-content-author-company', { opacity: 0, transform: 'scale(.9)' }, { duration: 0 })
+        // animate('.case-hero-content .line', { scaleX: 0, transformOrigin: 'left' }, { duration: 0 })
+        // animate('.case-hero-content-author-ava img', { opacity: 0, transform: 'scale(1.2)' }, { duration: 0 })
+        // animate(authorName.words, { opacity: 0, transform: 'translateY(100%)' }, { duration: 0 })
+        // animate(authorJob.words, { opacity: 0, transform: 'translateY(100%)' }, { duration: 0 })
+        // animate('.case-hero-content-author-company', { opacity: 0, transform: 'scale(.9)' }, { duration: 0 })
 
         const sequence = [
             [title.words, { opacity: 1, transform: 'none' }, { duration: .8, delay: stagger(.02) }],
             [sub.words, { opacity: 1, transform: 'none' }, { duration: .4, delay: stagger(.01), at: .2 }],
-            ['.case-hero-content .line', { scaleX: 1 }, { duration: .8, at: .2 }],
-            ['.case-hero-content-author-ava img', { opacity: 1, transform: 'none' }, { duration: .5, at: .4 }],
-            [authorName.words, { opacity: 1, transform: 'none' }, { duration: .4, delay: stagger(.02), at: .5 }],
-            [authorJob.words, { opacity: 1, transform: 'none' }, { duration: .4, delay: stagger(.02), at: .6 }],
-            ['.case-hero-content-author-company', { opacity: 1, transform: 'none' }, { duration: .5, at: .8 }],
+            // ['.case-hero-content .line', { scaleX: 1 }, { duration: .8, at: .2 }],
+            // ['.case-hero-content-author-ava img', { opacity: 1, transform: 'none' }, { duration: .5, at: .4 }],
+            // [authorName.words, { opacity: 1, transform: 'none' }, { duration: .4, delay: stagger(.02), at: .5 }],
+            // [authorJob.words, { opacity: 1, transform: 'none' }, { duration: .4, delay: stagger(.02), at: .6 }],
+            // ['.case-hero-content-author-company', { opacity: 1, transform: 'none' }, { duration: .5, at: .8 }],
         ]
         inView(".case-hero", () => {
             timeline(sequence).finished.then(() => {
                 title.revert()
                 sub.revert()
-                authorName.revert()
-                authorJob.revert()
-                document.querySelector('.case-hero-content .line').removeAttribute('style')
-                document.querySelector('.case-hero-content-author-ava img').removeAttribute('style')
-                document.querySelector('.case-hero-content-author-company').removeAttribute('style')
+                // authorName.revert()
+                // authorJob.revert()
+                // document.querySelector('.case-hero-content .line').removeAttribute('style')
+                // document.querySelector('.case-hero-content-author-ava img').removeAttribute('style')
+                // document.querySelector('.case-hero-content-author-company').removeAttribute('style')
             })
         }, { margin: "-10% 0px -20% 0px" })
     }, [])
@@ -51,8 +51,8 @@ function CaseHero({ ...props }) {
                     <p className="txt txt-18 txt-bold case-hero-content-sub">
                         {props.client_quote}
                     </p>
-                    <div className="line"></div>
-                    <div className="case-hero-content-author">
+                    {/* <div className="line"></div> */}
+                    {/* <div className="case-hero-content-author">
                         <div className="case-hero-content-author-info">
                             <div className="case-hero-content-author-ava">
                                 {props.authorAvatar}
@@ -69,7 +69,7 @@ function CaseHero({ ...props }) {
                         <div className="case-hero-content-author-company">
                             {props.authorCompany}
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </section>

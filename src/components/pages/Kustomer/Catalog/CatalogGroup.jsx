@@ -1,13 +1,12 @@
-import { useProductIndex } from "@contexts/StoreGlobal";
+import { useCatalogIndex } from "@contexts/StoreGlobal";
 import SplitType from 'split-type';
 import { useEffect, useState } from 'react';
-import KustomerCatalogThree from "./CatalogThree";
 import useDebounceCallback from "@hooks/useDebounce";
 import { animate, timeline, stagger, inView } from "motion";
 import { formatData } from "@/components/utils/text";
 
 function KustomerCatalogGroup({ ...props }) {
-    const { index, setIndex } = useProductIndex();
+    const { index, setIndex } = useCatalogIndex();
     const debounceHover = useDebounceCallback(setIndex, 200);
 
     useEffect(() => {
@@ -60,7 +59,6 @@ function KustomerCatalogGroup({ ...props }) {
     return (
         <div className="kustomer-cata-main-content">
             <div className="kustomer-cata-main-content-des">
-                {/* <h3 className="heading h4 txt-black txt-up kustomer-cata-main-content-des-title">{props.data.title[0].text.replace('/n', '<br/>')}</h3> */}
                 <h3 className="heading h4 txt-black txt-up kustomer-cata-main-content-des-title">{props.data.title[0].text}</h3>
                 <p className="txt txt-18 txt-med kustomer-cata-main-content-des-subtitle">{props.data.sub}</p>
             </div>

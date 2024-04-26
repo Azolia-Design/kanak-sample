@@ -57,7 +57,6 @@ function ResourceMain({ ...props }) {
         // End Hero Anim
 
         // Info Slide Anim
-
         let infoSplitList = []
 
         animate('.resource-dtl-line', { scaleX: 0, transformOrigin: "left" }, { duration: 0 })
@@ -82,7 +81,7 @@ function ResourceMain({ ...props }) {
                 [head.words, { transform: "none" }, { duration: .8, at: .4 }],
                 [content.words, { transform: "none" }, { duration: .8, at: "-.7" }],
             )
-            infoSplitList.push(head, content )
+            infoSplitList.push(head, content)
         })
 
         const allLink = document.querySelectorAll('.resource-dtl-info-stick .resource-dtl-info-item.link .resource-dtl-info-item-link');
@@ -98,11 +97,9 @@ function ResourceMain({ ...props }) {
                 allLink.forEach(item => item.removeAttribute('style'))
             })
         })
-
         // End Info Slide Anim
 
         // Sapo Anim
-
         const sapo = new SplitType('.resource-dtl-richtxt-premble-sapo', { types: 'lines, words', lineClass: 'split-line' })
 
         animate('.resource-dtl-richtxt-premble-img', { opacity: 0 }, { duration: 0 })
@@ -118,16 +115,13 @@ function ResourceMain({ ...props }) {
                 sapo.revert()
                 document.querySelector('.resource-dtl-richtxt').removeAttribute('style')
                 document.querySelector('.resource-dtl-richtxt-premble-img').removeAttribute('style')
-                // splitArray.forEach(el => el.removeAttribute('style'))
             })
         })
         // End Sapo Anim
 
         // RichText Anim
         const richTxt = document.querySelectorAll('.resource-dtl-richtxt-main *:not(astro-slot, ul, .block-img-caption)')
-
         const splitArray = []
-
         richTxt.forEach((el, idx) => {
             animate(el, { opacity: 0, transform: "translateY(30px)" }, { duration: 0 })
 
@@ -141,14 +135,6 @@ function ResourceMain({ ...props }) {
                 })
             })
         })
-        // richTxt.forEach((el, idx) => {
-        //     animate(el, { opacity: 0, transform: "translateY(30px)" }, { duration: 0 })
-
-        //     richtxtSequence.push(
-        //         [el, { opacity: 1, transform: "none" }, { duration: .6, at: .4 }]
-        //     )
-        //     splitArray.push(el)
-        // })
     }, [])
 
     function copyClipboard(e) {

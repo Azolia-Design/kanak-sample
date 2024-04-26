@@ -11,14 +11,17 @@
     height: calc((53vw * 3 * 1.5) + var(--offsetMargin));
     margin-bottom: calc(var(--offsetMargin) * -1);
     z-index: 3;
+
     @include md {
         height: calc(200vh + var(--offsetMargin));
     }
+
     @include sm {
         height: auto;
         margin-bottom: 0;
     }
-    &-arr{
+
+    &-arr {
         display: flex;
         align-items: end;
         width: 100%;
@@ -26,10 +29,11 @@
         position: relative;
         z-index: 2;
         margin-bottom: -1px;
-        
+
         &-inner {
             width: 100%;
             margin-bottom: -18%;
+
             svg {
                 display: flex;
                 align-items: center;
@@ -39,10 +43,12 @@
             }
         }
     }
+
     &-stick {
         position: sticky;
         bottom: 0;
     }
+
     &-title-wrap {
         padding-top: 32rem;
         padding-bottom: 21.5rem;
@@ -50,53 +56,66 @@
         max-width: 122.8rem;
         margin: 0 auto;
         text-align: center;
+
         @include md {
             padding-top: 12rem;
             padding-bottom: 10rem;
         }
+
         @include sm {
             padding-top: 8rem;
             padding-bottom: 6rem;
         }
+
         .txt-180 {
             @include md {
                 @include text(h0);
             }
+
             @include sm {
                 @include text(h2);
             }
         }
     }
+
     &-title {
         @include md {
             @include text(h1)
         }
+
         @include sm {
             @include text(h5);
         }
     }
+
     &-label {
         margin-bottom: 3.2rem;
     }
+
     &-main {
         overflow: hidden;
+
         .container {
             padding-top: .2rem;
         }
+
         &-wrap {
             display: flex;
             flex-wrap: nowrap;
             position: relative;
         }
+
         &-inner {
             width: 100%;
             display: flex;
             flex-wrap: nowrap;
+
             @include sm {
                 flex-wrap: initial;
                 flex-direction: column;
             }
         }
+
         .line-top {
             position: absolute;
             top: -.2rem;
@@ -104,6 +123,7 @@
             background-color: var(--cl-txt);
             width: 100%;
         }
+
         &-item {
             flex: none;
             padding-top: 5.7rem;
@@ -113,6 +133,7 @@
             position: relative;
             width: calc(48vw + 16.5rem + 8rem);
             will-change: transform;
+
             @include md {
                 padding: {
                     top: 2.7rem;
@@ -121,83 +142,115 @@
                     left: 7.2rem;
                 }
             }
+
             @include sm {
                 border-top: 0.2rem solid var(--cl-txt);
                 padding: 6rem 0;
                 width: 100%;
             }
+
             &:first-child {
                 padding-left: 0;
                 width: calc(48vw + 8rem);
+
                 @include sm {
                     width: 100%;
                 }
             }
+
             &:last-child {
                 width: calc(48vw + 16rem);
                 padding-right: 0;
+
+                .home-val-main-item-sub {
+                    max-width: 66.7rem;
+                }
+
                 @include sm {
                     width: 100%;
                 }
             }
+
             &-head {
                 display: flex;
                 align-items: start;
                 justify-content: space-between;
                 margin-bottom: 3.2rem;
+
                 @include md {
                     margin-bottom: 2.7rem;
                 }
+
                 @include md {
                     margin-bottom: 4.8rem;
                 }
             }
+
             &-num {
                 font-size: 8rem;
                 line-height: 1em;
                 color: rgba($cl-txt-light, .8);
+
                 @include md {
                     @include text(h1);
                 }
+
                 @include sm {
                     @include text(h2);
                 }
             }
+
             &-title {
                 max-width: 79rem;
                 margin-bottom: 4rem;
+
                 @include md {
                     margin-bottom: 3.2rem;
                     max-width: 37rem;
                 }
+
                 @include sm {
                     @include text(h3);
                 }
             }
+
             &-sub {
-                max-width: 80rem;
+                max-width: 79.4rem;
                 margin-bottom: 4rem;
                 color: rgba($cl-txt-light, .6);
+
                 @include md {
                     margin-bottom: 3.2rem;
                     @include text(16);
                 }
             }
+
             &-link {
+                display: inline-flex;
+                align-items: center;
+                column-gap: .8rem;
+
                 @include md {
                     @include text(16);
                 }
+
+                svg {
+                    @include size(1.6rem)
+                }
             }
+
             &-ic {
                 .ic-150 {
                     @include md {
                         @include size(10.2rem);
                     }
+
                     @include sm {
                         @include size(7.7rem);
                     }
                 }
             }
+
             .line-left {
                 position: absolute;
                 top: 0;
@@ -205,6 +258,7 @@
                 width: .2rem;
                 height: 100%;
                 background-color: var(--cl-txt);
+
                 @include sm {
                     display: none;
                 }

@@ -37,10 +37,10 @@ const productList = await Promise.all(
 ---
 
 <KustomerSustain
-    client:visible={{ rootMargin: "100% 0px 100% 0px" }}
     subtitle={Astro.props.subtitle}
     cateList={cateList}
     productList={productList}
+    client:visible={{ rootMargin: "100% 0px 100% 0px" }}
 >
     <Fragment set:html={PDFIcon} slot="PDFIcon" />
     <Fragment set:html={arrIcon} slot="arrIcon" />

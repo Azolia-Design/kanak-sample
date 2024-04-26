@@ -28,7 +28,7 @@ function KatalogHero({ ...props }) {
         <section className="katalog-hero">
             <div className="container grid">
                 <h1 className="heading h0 txt-black txt-up katalog-hero-title">{props.title}</h1>
-                <div className="txt txt-20 txt-black txt-up katalog-hero-subtitle">{props.sub}</div>
+                <div className="txt txt-20 txt-black txt-up katalog-hero-subtitle">{props.newSub}</div>
             </div>
         </section>
     )

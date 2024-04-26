@@ -42,7 +42,7 @@ function PrivateDistribute(props) {
                 [itemTitle.words, { opacity: 1, transform: 'translateY(0%)' }, { duration: .6, delay: stagger(.05), at: .2 }],
                 [itemSub.words, { opacity: 1, transform: 'none' }, { duration: .6, delay: stagger(.005), at: .2 }],
                 [el.querySelector('.private-distribute-main-item-img img'), { scale: 1, opacity: 1 }, { duration: 1.2, easing: 'ease-out', at: .3 }],
-                [el.querySelector('.line-bot') && el.querySelector('.line-bot') && el.querySelector('.line-bot'), { scaleX: 1 }, { duration: .8, at: .35 }]
+                [el.querySelector('.line-bot') && el.querySelector('.line-bot'), { scaleX: 1 }, { duration: .8, at: .35 }]
             ]
 
             inView(el, () => {
@@ -61,16 +61,12 @@ function PrivateDistribute(props) {
         <section className="private-distribute bg-light">
             <div className="line line-top"></div>
             <div className="container grid">
-                <h2 className="heading h0 txt-up txt-black private-distribute-title">
-                    Never Miss a Beat with <span className='txt-green'>Dependable Distribution</span>
-                </h2>
+                <h2 className="heading h0 txt-up txt-black private-distribute-title">{props.newTitle}</h2>
                 <div className="private-distribute-sub-wrap">
-                    <p className="txt txt-18 txt-med private-distribute-sub">
-                        We guarantee your shelves stay stocked with top-notch products, rain or shine. Dealing with supply chain hiccups? We got you covered.
-                    </p>
+                    <p className="txt txt-18 txt-med private-distribute-sub">{props.sub[0].text}</p>
                     <div className="private-distribute-btn-wrap">
                         <a href="#" className="txt-link private-distribute-btn" data-cursor="txtLink">
-                            <div className="txt txt-18 txt-bold">Learn more</div>
+                            <div className="txt txt-18 txt-bold">{props.btn}</div>
                             <div className="ic ic-16"><ArrowUpRight /></div>
                         </a>
                     </div>
