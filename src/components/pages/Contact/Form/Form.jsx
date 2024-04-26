@@ -66,7 +66,7 @@ function ContactForm(props) {
         }, 2000);
     }
     useEffect(() => {
-        console.log(formData);
+        // console.log(formData);
     }, [JSON.stringify(formData)]);
     function animOnSuccess() {
         animate('.contact-form-head-title-main .word', {opacity: 0, transform: 'translateY(-100%)'}, {duration: .8, delay: stagger(.06)})
@@ -83,7 +83,7 @@ function ContactForm(props) {
                 body.revert()
             })
         })
-        
+
     }
     useEffect(() => {
         animate('.contact-form-main > .line-ver', {scaleY: 0, transformOrigin: 'top'}, {duration: 0})
@@ -137,7 +137,7 @@ function ContactForm(props) {
                 })
             })
         })
-    }, []) 
+    }, [])
 
     return (
         <section className="contact-form">

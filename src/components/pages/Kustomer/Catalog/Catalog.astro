@@ -26,12 +26,12 @@ let listItem = await Promise.all(
 	listGroup
 		.reduce((arr, curr) => arr.concat(curr.list), [])
 		.map(async (category: any) => {
+			let feature = category.data.product_list.find((el: any) => el.is_featured);
 			let { data } = await getByUID(
 				"product",
-				category.data.product_list.find((el: any) => el.is_featured)
-					.product.uid,
+				feature.product.uid,
 			);
-			return { ...category, product_feature: data };
+			return { ...category, product_feature: ({ ...data, uid: feature.product.uid }) };
 		}),
 );
 ---

@@ -38,7 +38,6 @@ function HeaderGlobal(props) {
                 }
             }
         })
-        console.log(props.check);
     }, [])
     useEffect(() => {
         if (window.innerWidth < 992) {
@@ -234,7 +233,7 @@ function HeaderGlobal(props) {
                     if (page.type == 'dropdown') {
                         return (
                             <div className={cn("header-dropdown", { "active": idx === dropdownIdx })} key={idx} data-dropdown-idx={idx}>
-                                <div className="header-dropdown-inner bg-light">
+                                <div className={`header-dropdown-inner bg-light ${page.name}`}>
                                     {page.sub_menu.map((el, idx) => (
                                         <a
                                             key={idx}

@@ -9,6 +9,7 @@ import { useTransition, animated } from '@react-spring/three'
 import GetModel from "@components/common/GetModel.jsx";
 import { useCatalogIndex } from "@contexts/StoreGlobal.js";
 import cn from 'clsx';
+import { formatData } from "@/components/utils/text";
 
 const warehouse = import('/envMap/warehouse.hdr?url').then((module) => module.default)
 function Content(props) {
@@ -45,6 +46,9 @@ function Content(props) {
             setScaleOffset(1.5)
         }
     }, [scaleOffset])
+    useEffect(() => {
+        console.log(props.list);
+    }, []);
 
     return (
         <>
@@ -57,33 +61,35 @@ function Content(props) {
                 >
                     <group ref={products}>
                         {transition(({ opacity, ...style }, currentIndex) => (
-                            props.list.map((item, idx) => (
+                            props.list.map(({ product_feature }, idx) => (
                                 idx === currentIndex && (
                                     <animated.group key={idx} {...style}>
                                         <animated.mesh
                                             material-color="white"
                                             material-opacity={opacity}>
                                             <Suspense>
-                                                {item.uid == 'bowls' ? (
-                                                    <GetModel file='/glb/58-bowl-clean-transformed.glb' scale={[.36, .36, .36]} />
-                                                ) : item.uid == 'trays' ? (
-                                                    <GetModel file='/glb/fp_01-clean-transformed.glb' rotation={[0, Math.PI * -.5, 0]} />
-                                                ) : item.uid == 'plates-platters' ? (
-                                                    <GetModel file='/glb/plates-80-transformed.glb' scale={[.9, .9, .9]} position={[0, .01, 0]} />
-                                                ) : item.uid == 'soup-containers' ? (
-                                                    <GetModel file='/glb/41-ramen-clean-transformed.glb' scale={[.68, .68, .68]} position={[0, -.015, 0]} />
-                                                ) : item.uid == 'produce' ? (
-                                                    <GetModel file='/glb/48-monte-tray-clean-transformed.glb' scale={[1.2, 1.2, 1.2]} />
-                                                ) : item.uid == 'kutlery' ? (
+                                                {product_feature.uid == 'bagasse-bowls-ka3520' ? (
+                                                    <GetModel file='/glb/64-oval-bowl-clean-transformed.glb' scale={[.8,.8,.8]} rotation={[0, Math.PI * -.5, 0]}/>
+                                                ) : product_feature.uid == 'compartment-trays-st5515' ? (
+                                                    <GetModel file='/glb/KA10054-clean-transformed.glb' scale={[.8,.8,.8]} position={[0, .02, 0]} />
+                                                ) : product_feature.uid == 'molded-fiber-3-compartment-plates-ba5504' ? (
+                                                    <GetModel file='/glb/3-elegant-compartments-plates-clean-transformed.glb' rotation={[Math.PI * -.5, 0, 0]} scale={[2, 2, 2]} position={[0, 0.015, 0]} />
+                                                ) : product_feature.uid == 'soup-containers' ? (
+                                                    <GetModel file='/glb/41-ramen-clean-transformed.glb' scale={[.68,.68,.68]} position={[0,-.015,0]}/>
+                                                ) : product_feature.uid == 'produce-trays-pt8412' ? (
+                                                    <GetModel file='/glb/48-monte-tray-clean-transformed.glb' scale={[1.2,1.2,1.2]}/>
+                                                ) : product_feature.uid == 'pla-cutlery-ct6523' ? (
                                                     <GetModel file='/glb/22-wooden-fork-clean-transformed.glb' />
-                                                ) : item.uid == 'kups' ? (
-                                                    <GetModel file='/glb/kup-5-transformed.glb' scale={[.76, .76, .76]} position={[0, -.02, 0]} />
-                                                ) : item.uid == 'klamshells' ? (
-                                                    <GetModel file='/glb/klamshell-79-transformed.glb' scale={[.8, .8, .8]} position={[0, -.01, 0]} />
-                                                ) : item.uid == 'carry-out-bags' ? (
-                                                    <GetModel file='/glb/62-freebirds-clean-transformed.glb' scale={[.8, .8, .8]} position={[0, -.01, 0]} />
+                                                ) : product_feature.uid == 'double-wall-hot-cups-dw1204' ? (
+                                                    <GetModel file='/glb/kup-5-transformed.glb' scale={[.76,.76,.76]} position={[0,-.02,0]}/>
+                                                ) : product_feature.uid == 'klamshells' ? (
+                                                    <GetModel file='/glb/klamshell-79-transformed.glb' scale={[.8,.8,.8]} position={[0,-.01,0]}/>
+                                                ) : product_feature.uid == 'carry-out-bags' ? (
+                                                    <GetModel file='/glb/62-freebirds-clean-transformed.glb' scale={[.8,.8,.8]} position={[0,-.01,0]}/>
+                                                ) : product_feature.uid == 'pla-straw' ? (
+                                                    <GetModel file='/glb/BA-CFH-700-salad-box-clean-transformed.glb' scale={[.8,.8,.8]} position={[0,-.01,0]}/>
                                                 ) : (
-                                                    <GetModel file='/glb/m_box-clean-transformed.glb' scale={[.8, .8, .8]} position={[0, .01, 0]}
+                                                    <GetModel file='/glb/m_box-clean-transformed.glb' scale={[.8,.8,.8]} position={[0,.01,0]}
                                                     />
                                                 )}
                                             </Suspense>
@@ -174,11 +180,12 @@ function KustomerCatalogThree(props) {
                 <div className="kustomer-cata-card-bottom">
                     <div className="kustomer-cata-card-bottom-txt-wrap">
                         {props.listItem.map((el, idx) => (
-                            <div
+                            <a
                                 key={idx}
+                                href={`/katalog?kustomer=retail&category=${formatData(el.data.name)}`}
                                 className={cn("heading h5 txt-up txt-black kustomer-cata-card-bottom-txt", { "active": conditionIndexWithDevice(idx) })}>
                                 {el.data.name}
-                            </div>
+                            </a>
                         ))}
                     </div>
                     <div className="kustomer-cata-card-qr-wrap">

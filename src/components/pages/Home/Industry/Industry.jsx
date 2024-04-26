@@ -41,11 +41,13 @@ function HomeIndustry(props) {
         allItems.forEach((el, idx) => {
             let itemTitle = new SplitType(el.querySelector('.home-indus-main-item-title'), { types: 'lines, chars', lineClass: 'split-line' })
             let itemSub = new SplitType(el.querySelector('.home-indus-main-item-sub'), { types: 'lines, words', lineClass: 'split-line' })
-            let itemLink = new SplitType(el.querySelector('.home-indus-main-item-link'), { types: 'lines, chars', lineClass: 'split-line' })
+            let itemLink = new SplitType(el.querySelector('.home-indus-main-item-link span'), { types: 'lines, chars', lineClass: 'split-line' })
 
             animate(el.querySelector('.line'), { scaleX: 0 }, { duration: 0 })
             animate(el.querySelector('.home-indus-main-item-ic'), { opacity: 0, transform: 'scale(.8) translateY(15%)' }, { duration: 0 })
             animate([...itemTitle.chars, ...itemSub.words, ...itemLink.chars], { opacity: 0, transform: 'translateY(100%)' }, { duration: 0 });
+            animate(el.querySelector('.home-indus-main-item-link svg'), { opacity: 0, transform: "translate(-100%, 100%)" }, { duration: 0 })
+
             if (idx == allItems.length - 1) {
                 animate(el.querySelector('.line-bottom'), { scaleX: 0 }, { duration: 0 })
             }
@@ -55,6 +57,7 @@ function HomeIndustry(props) {
                 [itemTitle.chars, { opacity: 1, transform: 'none' }, { duration: .8, delay: stagger(.01), at: .2 }],
                 [itemSub.words, { opacity: 1, transform: 'none' }, { duration: .8, delay: stagger(.01), at: .3 }],
                 [itemLink.chars, { opacity: 1, transform: 'none' }, { duration: 1.2, delay: stagger(.005), at: .4 }],
+                [el.querySelector('.home-indus-main-item-link svg'), { opacity: 1, transform: "none" }, { duration: .8, at: "-.8" }],
                 [idx == allItems.length - 1 && el.querySelector('.line-bottom'), { scaleX: 1 }, { duration: .9, at: .3 }]
             ]
             inView(el, () => {
@@ -63,6 +66,7 @@ function HomeIndustry(props) {
                     el.querySelector('.home-indus-main-item-ic').removeAttribute('style')
                     itemTitle.revert()
                     itemSub.revert()
+                    el.querySelector('.home-indus-main-item-link svg').removeAttribute('style')
                     itemLink.revert()
                     if (idx == allItems.length - 1) {
                         el.querySelector('.line-bottom').removeAttribute('style')

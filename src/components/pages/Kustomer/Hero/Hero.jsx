@@ -3,6 +3,7 @@ import KustomerHeroThree from "./HeroThree"
 import { useState, useRef, useEffect, useMemo, useCallback } from 'react';
 import { animate, timeline, stagger, inView } from "motion";
 import SplitType from 'split-type';
+import { isEmpty } from "@/components/utils/text";
 
 function KustomerHero(props) {
     const [currentIdx, setCurrentIdx] = useState(1);
@@ -124,20 +125,25 @@ function KustomerHero(props) {
 
     useEffect(() => {
         const title = new SplitType('.kustomer-hero-title', { types: "lines,words", lineClass: 'split-line' })
-        const subtitle = new SplitType('.kustomer-hero-subtitle', { types: "lines,words", lineClass: 'split-line' })
-
         animate(title.words, { opacity: 0, transform: "translateY(100%)" }, { duration: 0 })
-        animate(subtitle.words, { opacity: 0, transform: "translateY(100%)" }, { duration: 0 })
 
         const sequence = [
-            [subtitle.words, { transform: 'none', opacity: 1 }, { duration: .6, delay: stagger(.01), at: 0 }],
             [title.words, { opacity: 1, transform: "none" }, { duration: .5, delay: stagger(.04), at: .2 }],
         ]
+
+        if (!isEmpty(props.label)) {
+            const subtitle = new SplitType('.kustomer-hero-subtitle', { types: "lines,words", lineClass: 'split-line' })
+            animate(subtitle.words, { opacity: 0, transform: "translateY(100%)" }, { duration: 0 })
+
+            sequence.push(
+                [subtitle.words, { transform: 'none', opacity: 1 }, { duration: .6, delay: stagger(.01), at: 0 }],
+            )
+        }
 
         inView('.kustomer-hero', () => {
             timeline(sequence).finished.then(() => {
                 title.revert()
-                subtitle.revert()
+                if (!isEmpty(props.label)) subtitle.revert()
             })
         })
     }, [])
