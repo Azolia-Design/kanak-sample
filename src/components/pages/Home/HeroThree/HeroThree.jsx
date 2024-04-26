@@ -85,7 +85,6 @@ function Content({...props}) {
             products.current.rotation.x += (0 - products.current.rotation.x + Math.cos(clock.elapsedTime / 2) * Math.PI * .02) * .08
             products.current.rotation.y += (0 - products.current.rotation.y + Math.cos(clock.elapsedTime / 2) * Math.PI * .02) * .08
         }
-        console.log(isLock)
         if (!fork.current) return;
         fork.current.rotation.x = Math.cos(clock.elapsedTime / 2) * Math.PI * .02 * -1
         fork.current.rotation.y = Math.sin(clock.elapsedTime / 2) * Math.PI * .04 * -1

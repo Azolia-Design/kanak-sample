@@ -69,6 +69,7 @@
             left: 52rem;
             width: 8.8rem;
             position: absolute;
+            display: none;
 
             @include md {
                 top: -1.6rem;

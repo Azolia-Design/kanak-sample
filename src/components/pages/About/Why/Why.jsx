@@ -76,7 +76,7 @@ function AboutWhy({ ...props }) {
                     <h2 className="heading h0 txt-black txt-up abt-why-title">
                         Pioneering a Sustainable Future with Every Product
                     </h2>
-                    <a href="./katalog" className="txt txt-18 txt-bold abt-why-link txt-link mod-dk" data-cursor="txtLink">
+                    <a href="/katalog" className="txt txt-18 txt-bold abt-why-link txt-link mod-dk" data-cursor="txtLink">
                         <span>View Product Katalog</span>
                         <div className="ic ic-16">
                             {props.icArrExt}

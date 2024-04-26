@@ -59,7 +59,7 @@ function ExploreItem({ ...props }) {
     return (
         <div className="kustomer-explore-main-item" ref={itemRef}>
             <div className="line kustomer-explore-main-item-line"></div>
-            <a href="" className="kustomer-explore-main-item-main bg-light" data-cursor="ext">
+            <a href={props.link_to} className="kustomer-explore-main-item-main bg-light" data-cursor="ext">
                 <div className="heading h5 txt-black txt-up kustomer-explore-main-item-main-label">{props.label[0].text}</div>
                 <h2 className="heading h1 txt-black txt-up kustomer-explore-main-item-main-title">{props.title[0].text}</h2>
                 <div className="kustomer-explore-main-item-main-link">

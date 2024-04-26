@@ -33,6 +33,7 @@ function KustomerExplore({ ...props }) {
                             label={item.data.name}
                             solutions={item.list}
                             img={props.listImg[idx]}
+                            link_to={idx === 0 ? "/private-label" : "/kustom-packaging-solutions"}
                         />
                     )}
                 </div>

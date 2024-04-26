@@ -48,8 +48,8 @@ function Content({ ...props }) {
             if (item.data.file.url && props.top) {
                 if (idx == 0) {
                     return (
-                        <mesh key={idx} name={item.uid} position={[.016, .02, .284]} rotation={[0, -Math.PI * .5, 0]}>
-                            <GetModel file='/glb/m_box-clean-transformed.glb' visible={props.top ? true : false}
+                        <mesh key={idx} name={item.uid} position={[.016, .02, .284]} scale={[.8,.8,.8]} rotation={[0, -Math.PI * .5, 0]}>
+                            <GetModel file='/glb/plates-80-transformed.glb' visible={props.top ? true : false}
                                 scale={[.82, .82, .82]}
                                 position={[-.03, 0, 0.01]}
                                 rotation={[Math.PI * 0, Math.PI * .6, Math.PI * .05]}

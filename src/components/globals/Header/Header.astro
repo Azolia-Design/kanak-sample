@@ -18,6 +18,21 @@ let refineKustomerList = kustomerList.map((el, idx) => ({
     name: el.data.title,
     url: `/kustomers/${el.uid}`,
 }));
+//Start hotfix
+function swapItems(array, item1, item2) {
+    const index1 = array.findIndex(item => item.name === item1);
+    const index2 = array.findIndex(item => item.name === item2);
+
+    if (index1 === -1 || index2 === -1) {
+        console.log('One or both items not found');
+        return array;
+    }
+
+    [array[index1], array[index2]] = [array[index2], array[index1]];
+    return array;
+}
+refineKustomerList = swapItems(refineKustomerList, 'Retail', 'Education');
+//End hotfix
 const catelogList = await getAllByType("product_group");
 let refineCatelogList = catelogList
     .filter((el, idx) => el.data.is_sustainables_ !== true)
@@ -25,7 +40,9 @@ let refineCatelogList = catelogList
         name: el.data.name,
         url: `/katalog?category=${formatData(el.data.name)}`,
     }));
-
+// Start hotfix
+refineCatelogList = refineCatelogList.reverse()
+// End hotfix
 const pages = [
     {
         name: "Kustomers",
