@@ -1,0 +1,209 @@
+@use '@styles/colors' as *;
+@use '@styles/mixins' as *;
+
+.kuspack-kasestu {
+    padding-bottom: 16rem;
+    overflow: hidden;
+
+    @include md {
+        padding-top: 2rem;
+        padding-bottom: 6rem;
+    }
+
+    @include sm {
+        padding-top: unset;
+        padding-bottom: 6rem;
+    }
+
+    &-label {
+        margin-bottom: 2rem;
+        grid-column: 1/-1;
+
+        @include md {
+            margin-bottom: 1.2rem;
+            @include text(h5);
+        }
+    }
+
+    &-title {
+        grid-column: 1/10;
+        max-width: 100rem;
+
+        @include md {
+            grid-column: 1/7;
+            margin-right: calc(var(--grid-gap) * -1);
+        }
+
+        @include sm {
+            grid-column: 1/-1;
+            @include text(h2)
+        }
+    }
+
+    &-des {
+        grid-column: 12/-1;
+        align-self: end;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+
+        @include md {
+            grid-column: 8/-1;
+            margin-top: .8rem;
+            margin-left: calc(var(--grid-gap) * -1);
+        }
+
+        @include sm {
+            grid-column: 1/-1;
+            margin-top: 2rem;
+            margin-left: unset;
+        }
+
+        &-content {
+            margin-bottom: 4rem;
+
+            @include md {
+                @include text(16);
+                margin-bottom: 3.2rem;
+            }
+
+            @include sm {
+                margin-bottom: 2.8rem;
+            }
+        }
+
+        &-link {
+            color: var(--cl-txt);
+            display: flex;
+            align-items: center;
+            column-gap: .8rem;
+
+            .ic {
+                contain: paint;
+            }
+        }
+    }
+
+    &-main {
+        grid-column: 1/-1;
+        margin-top: 10rem;
+
+        @include md {
+            margin-top: 5.7rem;
+        }
+
+        @include sm {
+            margin-top: 4rem;
+        }
+
+        &-wrapper {
+            display: flex;
+            overflow: visible !important;
+            // margin-right: calc(var(--container-padding)* -1);
+        }
+
+        &-item {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
+            padding: 6rem;
+            width: 75.4rem !important;
+            background-color: var(--cl-bg);
+
+            @include md {
+                width: calc(50% + 2.4rem) !important;
+                padding: 2.4rem;
+            }
+
+            @include sm {
+                width: 32.8rem !important;
+            }
+
+            &-label {
+                @include sm {
+                    @include text(16);
+                }
+            }
+
+            &-title {
+                margin-top: 3.2rem;
+                margin-bottom: 6rem;
+                transition: color .4s ease;
+
+                @include md {
+                    margin-top: 1.2rem;
+                }
+            }
+
+            &-bot {
+                display: flex;
+                margin-top: auto;
+                justify-content: space-between;
+                transition: color .4s ease;
+
+
+                &-img {
+                    @include size(15rem, 18.8rem);
+                    transform-origin: left bottom;
+                    transition: transform .6s ease;
+                    mix-blend-mode: multiply;
+
+                    @include md {
+                        @include size(7rem, 8.8rem);
+                    }
+                }
+
+                &-readmore {
+                    align-self: end;
+                    display: flex;
+                    align-items: center;
+                    column-gap: .8rem;
+                }
+            }
+
+            .line-top {
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+
+            .line-bot {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+            }
+
+            .line-ver {
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+
+            &:last-child {
+                margin-right: var(--container-padding);
+
+                .line-right:last-child {
+                    left: auto;
+                    right: 0;
+                }
+            }
+
+            @media (hover: hover) {
+                &:hover {
+                    .kustomer-kasestu-main-item-title {
+                        color: var(--cl-orange);
+                    }
+
+                    .kustomer-kasestu-main-item-bot {
+                        color: var(--cl-orange);
+
+                        &-img {
+                            transform: scale(1.98);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

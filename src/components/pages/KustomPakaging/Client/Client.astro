@@ -1,0 +1,50 @@
+---
+import { getByUID } from "@/prismic.js";
+import { Image } from "astro:assets";
+import map from "@assets/usa-map.svg";
+import KustomPackagingClients from "./Client";
+
+const { title, sub_title, client_list } = Astro.props;
+
+let newTitle = title.split("\n").map((i: any, idx: number) => {
+    return idx === title.split("\n").length - 1 ? i : i + "<br>";
+});
+
+let lastWord = newTitle.join(" ").split(" ")[
+    newTitle.join(" ").split(" ").length - 1
+];
+newTitle = newTitle
+    .join("")
+    .replace(lastWord, `<div class="txt-green">${lastWord}</div>`)
+    .replace("Award-", "<span>Award-</span>");
+
+const list = await Promise.all(
+    client_list.map((client: any) => {
+        let item = getByUID("client", client.item.uid);
+        return item;
+    }),
+);
+---
+
+<KustomPackagingClients
+    subTitle={sub_title}
+    list={list}
+    client:visible={{ rootMargin: "100% 0px 100% 0px" }}
+>
+    <Fragment set:html={newTitle} slot="title" />
+    <Image src={map} alt="world map" slot="imgMap" />
+    <Fragment slot="listLogo">
+        {
+            list.map((item, idx) => (
+                <div class="kuspack-client-item kuspack-client-box">
+                    <Image
+                        src={item.data.client_logo.url}
+                        alt="McDonald"
+                        width={item.data.client_logo.dimensions.width}
+                        height={item.data.client_logo.dimensions.height}
+                    />
+                </div>
+            ))
+        }
+    </Fragment>
+</KustomPackagingClients>

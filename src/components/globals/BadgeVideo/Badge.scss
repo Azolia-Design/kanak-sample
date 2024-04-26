@@ -1,4 +1,5 @@
 @use '@styles/mixins' as *;
+
 .video {
     &-badge-wrap {
         position: absolute;
@@ -7,11 +8,11 @@
         width: 100%;
         height: 100vh;
         z-index: 110;
-
         display: flex;
         justify-content: end;
         align-items: end;
         pointer-events: none;
+
         @include md {
             display: none;
             position: relative;
@@ -25,11 +26,13 @@
             align-items: center;
         }
     }
+
     @include md {
         .video-badge-wrap {
             display: flex;
         }
     }
+
     &-badge {
         will-change: transform;
         display: grid;
@@ -39,23 +42,29 @@
         pointer-events: auto;
         align-items: center;
         justify-items: center;
+        pointer-events: none;
         @include size(25rem);
-        > * {
+
+        >* {
             grid-area: 1/1/2/2;
         }
+
         @include md {
             margin-right: 0;
             margin-bottom: 0;
             @include size(17.6rem);
         }
+
         @include sm {
             @include size(16.3rem);
         }
+
         &-inside {
             @include size(18.6rem);
             border-radius: 50%;
             overflow: hidden;
             position: relative;
+
             .overlay {
                 position: absolute;
                 top: 0;
@@ -64,34 +73,41 @@
                 pointer-events: none;
                 @include size(100%);
                 transition: opacity 400ms ease;
-                background-color: rgba(0,0,0,.6);
+                background-color: rgba(0, 0, 0, .6);
                 z-index: 2;
             }
+
             & img {
                 position: relative;
                 z-index: 1;
                 transition: transform 400ms ease;
             }
+
             @include md {
                 @include size(13rem);
             }
+
             @include sm {
                 @include size(12rem);
             }
         }
+
         @keyframes rot {
             0% {
                 transform: rotate(0deg);
             }
+
             100% {
                 transform: rotate(-360deg);
             }
         }
+
         &-outside {
             width: 100%;
             height: 100%;
             animation: rot 20s linear infinite;
         }
+
         &-ic {
             display: flex;
             align-items: center;
@@ -99,6 +115,7 @@
 
             @include size(100%);
             z-index: 2;
+
             &-inner {
                 opacity: 0;
                 transform: scale(1.1);
@@ -106,13 +123,16 @@
                 width: 32%;
             }
         }
+
         &:hover {
             .video-badge-inside img {
                 transform: scale(1.1);
             }
+
             .overlay {
                 opacity: 1;
             }
+
             .video-badge-ic {
                 &-inner {
                     opacity: 1;

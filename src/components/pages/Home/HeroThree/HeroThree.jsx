@@ -16,7 +16,7 @@ function CustomMaterial({...props}) {
     return (<meshStandardMaterial color={props.color} roughness={props.roughness}/>)
 }
 
-function Model({ opacity, item, ...styles }) {
+function Model({ item, ...styles }) {
     return (
         <animated.group {...styles}>
             <animated.mesh
@@ -196,7 +196,7 @@ function Content({...props}) {
                         {transition(({ opacity, ...style }, currentIndex) => (
                             props.list.map((item, idx) => (
                                 idx === currentIndex &&
-                                <Model key={idx} opacity={opacity} item={item} {...style} />
+                                <Model key={idx} item={item} {...style} />
                             ))
                         ))}
                     </group>

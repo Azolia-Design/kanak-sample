@@ -1,0 +1,65 @@
+---
+import Image from "astro/components/Image.astro";
+import KustomPackagingCaseStudies from "./Casestudies";
+import { getAllByType } from "@/prismic";
+import ArrowUpRight from "@/components/globals/IcArrow/ArrowUpRight";
+import { isEmpty } from "@/components/utils/text";
+
+const listCaseStudy = await getAllByType("case_study");
+---
+
+<KustomPackagingCaseStudies
+    {...Astro.props}
+    list={listCaseStudy}
+    client:visible={{ rootMargin: "100% 0px 100% 0px" }}
+>
+    <Fragment slot="renderList">
+        {
+            listCaseStudy.map((item, idx) => (
+                <a
+                    href={`/kase-studies/${item.uid}`}
+                    class="keen-slider__slide kuspack-kasestu-main-item bg-light"
+                    data-cursor="drag"
+                >
+                    <div class="txt txt-20 txt-bold kuspack-kasestu-main-item-label">
+                        {item.data.category}
+                    </div>
+                    <h3 class="heading h4 txt-black txt-up kuspack-kasestu-main-item-title">
+                        {item.data.title[0].text}
+                    </h3>
+                    <div class="kuspack-kasestu-main-item-bot">
+                        <div class="kuspack-kasestu-main-item-bot-img">
+                            {!isEmpty(item.data.images[0]) && (
+                                <Image
+                                    src={item.data.images[0]?.image_item.url}
+                                    alt=""
+                                    width={
+                                        item.data.images[0]?.image_item
+                                            .dimensions.width
+                                    }
+                                    height={
+                                        item.data.images[0]?.image_item
+                                            .dimensions.height
+                                    }
+                                    class="img img-fill"
+                                />
+                            )}
+                        </div>
+                        <div class="txt txt-18 txt-bold kuspack-kasestu-main-item-bot-readmore">
+                            <span>Read more</span>
+                            <div class="ic ic-16">
+                                <ArrowUpRight />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="line line-top" />
+                    <div class="line line-bot" />
+                    <div class="line line-ver" />
+                    {idx === listCaseStudy.length - 1 && (
+                        <div class="line line-ver line-right" />
+                    )}
+                </a>
+            ))
+        }
+    </Fragment>
+</KustomPackagingCaseStudies>

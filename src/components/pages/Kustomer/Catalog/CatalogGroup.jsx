@@ -4,8 +4,9 @@ import { useEffect, useState } from 'react';
 import KustomerCatalogThree from "./CatalogThree";
 import useDebounceCallback from "@hooks/useDebounce";
 import { animate, timeline, stagger, inView } from "motion";
+import { formatData } from "@/components/utils/text";
 
-function KustomerCatalogGroup(props) {
+function KustomerCatalogGroup({ ...props }) {
     const { index, setIndex } = useProductIndex();
     const debounceHover = useDebounceCallback(setIndex, 200);
 
@@ -59,7 +60,8 @@ function KustomerCatalogGroup(props) {
     return (
         <div className="kustomer-cata-main-content">
             <div className="kustomer-cata-main-content-des">
-                <h3 className="heading h4 txt-black txt-up kustomer-cata-main-content-des-title">{props.data.title[0].text.replace('/n', '<br/>')}</h3>
+                {/* <h3 className="heading h4 txt-black txt-up kustomer-cata-main-content-des-title">{props.data.title[0].text.replace('/n', '<br/>')}</h3> */}
+                <h3 className="heading h4 txt-black txt-up kustomer-cata-main-content-des-title">{props.data.title[0].text}</h3>
                 <p className="txt txt-18 txt-med kustomer-cata-main-content-des-subtitle">{props.data.sub}</p>
             </div>
             {props.card}
@@ -67,13 +69,13 @@ function KustomerCatalogGroup(props) {
                 {props.data.list.map((item, idx) => (
                     <a
                         key={item.uid}
-                        href="#"
+                        href={`/katalog?kustomer=${formatData(props.currPage)}&category=${formatData(item.data.name)}`}
                         className={`kustomer-cata-main-content-list-item ${index == (props.listItem.findIndex(listItem => listItem.uid == item.uid)) ? "active" : ''}`}
                         onMouseEnter={() => debounceHover(props.listItem.findIndex(listItem => listItem.uid == item.uid))}
                     >
-                        <h3 className="heading h6 txt-black txt-up kustomer-cata-main-content-list-item-name">
+                        <div className="heading h6 txt-black txt-up kustomer-cata-main-content-list-item-name">
                             {item.data.name}
-                        </h3>
+                        </div>
                         <div className="txt txt-20 txt-bold kustomer-cata-main-content-list-item-count">
                             {(idx + 1).toString().padStart(2, '0')}
                         </div>

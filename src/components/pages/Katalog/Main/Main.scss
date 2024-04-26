@@ -370,7 +370,7 @@
 
         &-list {
             position: sticky;
-            top: 15rem;
+            top: 20rem;
             list-style-type: none;
             display: flex;
             flex-direction: column;
@@ -596,6 +596,8 @@
                     display: inline-flex;
                     align-items: center;
                     padding: 2.6rem 0;
+                    width: 100%;
+                    text-align: start;
                     margin: 0 3.2rem;
 
                     @include md {

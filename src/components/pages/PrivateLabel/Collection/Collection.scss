@@ -225,6 +225,7 @@
         background-color: var(--cl-orange);
         display: flex;
         flex-direction: column;
+        align-items: start;
         justify-content: space-between;
         order: 999;
         width: calc(100% + .1rem);
@@ -249,11 +250,17 @@
             @include sm {
                 grid-row: 3/4;
             }
+
+            .private-collection-btn-title {
+                width: 100%;
+                max-width: unset;
+                text-align: center;
+            }
         }
 
         &-title {
             width: 100%;
-            text-align: center;
+            max-width: 32.4rem;
 
             @include md {
                 text-transform: unset;

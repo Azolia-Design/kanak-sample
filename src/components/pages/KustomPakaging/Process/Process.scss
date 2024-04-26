@@ -1,0 +1,218 @@
+@use '@styles/colors' as *;
+@use '@styles/mixins' as *;
+
+.kuspack-process {
+    padding-bottom: 20rem;
+    contain: paint;
+
+    @include md {
+        padding-top: 2rem;
+        padding-bottom: 6rem;
+    }
+
+    @include sm {
+        padding-top: unset;
+    }
+
+    &-title {
+        grid-column: 5/13;
+        text-align: center;
+        margin-bottom: 4rem;
+        margin-left: auto;
+        margin-right: auto;
+
+        @include md {
+            grid-column: 1/-1;
+            margin-bottom: 2rem;
+        }
+
+        @include sm {
+            @include text(h2);
+            max-width: 30rem;
+            margin-bottom: 1rem;
+        }
+    }
+
+    &-sub {
+        grid-column: 4/14;
+        max-width: 82rem;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        margin-bottom: 10rem;
+
+        @include md {
+            grid-column: 3/11;
+            max-width: 44rem;
+            margin-bottom: 6rem;
+        }
+
+        @include sm {
+            grid-column: 1/-1;
+            max-width: 30rem;
+            @include text(16);
+            margin-bottom: 4rem;
+        }
+    }
+
+    &-main {
+        position: relative;
+        grid-column: 1/-1;
+    }
+
+    &-list {
+        position: relative;
+        z-index: 2;
+    }
+
+    &-thumb {
+        pointer-events: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        @include size(100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &-inner {
+            display: grid;
+            @include size(24rem, 32rem);
+        }
+
+        &-img {
+            @include size(100%);
+            grid-column: 1/2;
+            grid-row: 1/2;
+            opacity: 0;
+            transform: scale(1.1);
+            z-index: 1;
+            transition: all .4s ease;
+
+            &.active {
+                opacity: 1;
+                transform: scale(1);
+                z-index: 2;
+            }
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+
+    &-item {
+        position: relative;
+        display: grid;
+        grid-template-columns: repeat(var(--grid-column), 1fr);
+        column-gap: var(--grid-gap);
+        padding: 6rem 0px;
+
+        @include md {
+            padding: 4rem 0px;
+            grid-template-rows: auto 1fr;
+        }
+
+        @include sm {
+            display: flex;
+            flex-direction: column;
+            padding-right: 2rem;
+        }
+
+        &-count {
+            grid-column: 1/3;
+            grid-row: 1/2;
+
+            @include md {
+                @include text(16);
+                grid-column: 1/2;
+                margin-right: calc(var(--grid-gap) * -1);
+            }
+
+            @include sm {
+                margin-bottom: 2.4rem;
+            }
+        }
+
+        &-title {
+            grid-column: 3/11;
+            grid-row: 1/2;
+            transition: color .4s ease;
+
+            @include md {
+                @include text(h5);
+                grid-column: 3/10;
+                margin-left: calc(var(--grid-gap) * -1);
+                margin-right: calc(var(--grid-gap) * -1);
+                margin-bottom: 1rem;
+            }
+
+            @include sm {
+                margin-left: unset;
+                margin-right: unset;
+            }
+        }
+
+        &-sub {
+            grid-column: 12/-1;
+            grid-row: 1/2;
+
+            @include md {
+                grid-column: 3/10;
+                grid-row: 2/3;
+                margin-left: calc(var(--grid-gap) * -1);
+                margin-right: calc(var(--grid-gap) * -1);
+                @include text(16);
+            }
+
+            @include sm {
+                margin-left: unset;
+                margin-right: unset;
+                margin-bottom: 2.4rem;
+            }
+        }
+
+        &-img {
+            display: none;
+
+            @include md {
+                display: block;
+                grid-column: 11/-1;
+                grid-row: 1/3;
+                aspect-ratio: 0.7441860465;
+                overflow: hidden;
+                margin-left: calc(var(--grid-gap) * -1);
+            }
+
+            @include sm {
+                margin-left: unset;
+                width: 12.8rem;
+            }
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+
+        .line-top {
+            position: absolute;
+            top: -.1rem;
+        }
+
+        .line-bot {
+            position: absolute;
+            bottom: -.1rem;
+        }
+
+        &.active {
+            .kuspack-process-item-title {
+                color: var(--cl-orange);
+            }
+        }
+    }
+}
