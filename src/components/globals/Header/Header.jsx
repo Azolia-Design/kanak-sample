@@ -20,19 +20,19 @@ function HeaderGlobal(props) {
         getLenis().on('scroll', function (inst) {
             if (inst.direction == 1) {
                 if (inst.scroll >= document.querySelector('.header').clientHeight) {
-                    setIsHide(true);
+                    //setIsHide(true);
                     if (document.querySelector('.casedtl-slide-stick-line')) {
                         document.querySelector('.casedtl-slide-stick-line').classList.add('hidden')
                     }
                     setDropdownIdx(-1);
                 } else {
-                    setIsHide(false);
+                    //setIsHide(false);
                     if (document.querySelector('.casedtl-slide-stick-line')) {
                         document.querySelector('.casedtl-slide-stick-line').classList.remove('hidden')
                     }
                 }
             } else if (inst.direction == -1) {
-                setIsHide(false);
+                //setIsHide(false);
                 if (document.querySelector('.casedtl-slide-stick-line')) {
                     document.querySelector('.casedtl-slide-stick-line').classList.remove('hidden')
                 }

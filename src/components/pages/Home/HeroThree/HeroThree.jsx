@@ -32,19 +32,20 @@ function Model({ item, ...styles }) {
                             <GetModel file='/glb/41-ramen-clean-transformed.glb' scale={[.68,.68,.68]} position={[0,-.015,0]}/>
                         ) : item.uid == 'produce-trays-pt8412' ? (
                             <GetModel file='/glb/48-monte-tray-clean-transformed.glb' scale={[1.2,1.2,1.2]}/>
-                        ) : item.uid == 'kutlery' ? (
+                        ) : item.uid == 'pla-cutlery-ct6523' ? (
                             <Fork material={<CustomMaterial color='#F9833A' roughness={.2} />} />
-                        ) : item.uid == 'kups' ? (
+                        ) : item.uid == 'double-wall-hot-cups-dw1204' ? (
                             <GetModel file='/glb/kup-5-transformed.glb' scale={[.76,.76,.76]} position={[0,-.02,0]}/>
-                        ) : item.uid == 'klamshells' ? (
+                        ) : item.uid == 'one-compartment-clamshells-ba6631' ? (
                             <GetModel file='/glb/klamshell-79-transformed.glb' scale={[.8,.8,.8]} position={[0,-.01,0]}/>
                         ) : item.uid == 'carry-out-bags' ? (
                             <GetModel file='/glb/62-freebirds-clean-transformed.glb' scale={[.8,.8,.8]} position={[0,-.01,0]}/>
                         ) : item.uid == 'food-storage' ? (
                             <GetModel file='/glb/BA-CFH-700-salad-box-clean-transformed.glb' scale={[.8,.8,.8]} position={[0,-.01,0]}/>
+                        ) : item.uid == 'takeaway-containers' ? (
+                            <GetModel file='/glb/cfh-900-saladbox-lid-clearn-transformed.glb' scale={[.8,.8,.8]} position={[0,-.01,0]}/>
                         ) : (
-                            <GetModel file='/glb/m_box-clean-transformed.glb' scale={[.8,.8,.8]} position={[0,.01,0]}
-                            />
+                            <GetModel file='/glb/m_box-clean-transformed.glb' scale={[.8,.8,.8]} position={[0,.01,0]}/>
                         )}
                     </Suspense>
             </animated.mesh>
@@ -79,7 +80,7 @@ function Content({...props}) {
             products.current.rotation.x += (0 - products.current.rotation.x + Math.cos(clock.elapsedTime / 2) * Math.PI * .02) * .08
             products.current.rotation.y += (0 - products.current.rotation.y + Math.cos(clock.elapsedTime / 2) * Math.PI * .02) * .08
         }
-        // console.log(isLock)
+        console.log(isLock)
         if (!fork.current) return;
         fork.current.rotation.x = Math.cos(clock.elapsedTime / 2) * Math.PI * .02 * -1
         fork.current.rotation.y = Math.sin(clock.elapsedTime / 2) * Math.PI * .04 * -1
@@ -103,7 +104,6 @@ function Content({...props}) {
                     if (isLock === true) {
                         isLock = false;
                         setIndex({ direction: -1, value: 0 });
-                        console.log('trigger set 0')
                     }
                 }
                 if (contactShadow) {

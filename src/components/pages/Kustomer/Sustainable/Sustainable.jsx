@@ -165,7 +165,7 @@ function KustomerSustain(props) {
                         {props.subtitle}
                     </span>
                     <div className="kustomer-sus-pdf">
-                        <a href="#" className="btn btn-trans pdf-link kustomer-sus-pdf-link">
+                        <a href="/Kanak_Sales_Sheet_01.pdf" className="btn btn-trans pdf-link kustomer-sus-pdf-link">
                             <div className="kustomer-sus-pdf-link-ic">
                                 <div className="ic ic-32">
                                     {props.PDFIcon}

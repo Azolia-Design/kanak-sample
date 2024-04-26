@@ -40,6 +40,11 @@ function Categories({ data, originCategory, filter, setFilter }) {
             setCurrentCategory(filter.category)
         }
     }, [list])
+    useEffect(() => {
+        if (window.innerWidth > 767) {
+            document.querySelector('.katalog-main-cate-list').removeAttribute('data-lenis-prevent')
+        }
+    },[])
 
     return (
         <div className="katalog-main-cate">
