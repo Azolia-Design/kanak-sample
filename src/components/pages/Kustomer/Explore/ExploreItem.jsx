@@ -1,6 +1,5 @@
 import "keen-slider/keen-slider.min.css"
 import { useKeenSlider } from 'keen-slider/react'
-import ExploreInner from "./ExploreInner";
 import ArrowUpRight from "@/components/globals/IcArrow/ArrowUpRight.jsx";
 import { useEffect, useRef } from "react"
 import { animate, timeline, stagger, inView } from "motion";
