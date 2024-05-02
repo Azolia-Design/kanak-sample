@@ -71,7 +71,7 @@ function AboutJoin({ ...props }) {
                         Join our movement
                     </div>
                     <h2 className="heading h0 txt-black txt-up abt-join-title">
-                        Our pledge For a <span className="txt-green">greener</span> <span className="txt-green">future</span>
+                        A Commitment To A <span className="txt-green">greener</span> <span className="txt-green">future</span>
                     </h2>
                 </div>
                 <div className="abt-join-main">

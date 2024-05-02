@@ -1,12 +1,17 @@
 ---
-import { getPage, getAllByType } from "@/prismic.js";
+import { getByUID } from "@/prismic.js";
 import KustomerService from "./Service";
 
-const listService = await getAllByType("service");
-
-const newList = listService.filter((item) =>
-    Astro.props.listItems.includes(item.uid),
+const newList = await Promise.all(
+    Astro.props.listItems.map(async (item: any) => {
+        let targetItem = await getByUID("service", item);
+        return targetItem;
+    }),
 );
 ---
 
-<KustomerService {...Astro.props} list={newList} client:visible={{ rootMargin: "100% 0px 100% 0px" }} />
+<KustomerService
+    {...Astro.props}
+    list={newList}
+    client:visible={{ rootMargin: "100% 0px 100% 0px" }}
+/>

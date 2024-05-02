@@ -36,9 +36,10 @@
     }
 
     &-title {
-        max-width: 108.5rem;
+        max-width: 115.8rem;
 
         @include md {
+            max-width: 51.8rem;
             @include text(h1);
         }
 

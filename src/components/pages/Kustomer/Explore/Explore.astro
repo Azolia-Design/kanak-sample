@@ -1,30 +1,53 @@
 ---
-import Image from "astro/components/Image.astro";
-import { getAllByType, getByUID } from "@/prismic";
-import KustomerExplore from "./Explore";
-const solutions = await getAllByType("solution");
-const listItem = await Promise.all(
-    Astro.props.listGroup
-        .reduce((acc, curr) => acc.concat(curr.item.uid), [])
-        .map(async (uid: any) => {
-            const item = await getByUID("brand", uid);
-            const solution = await item.data.list.map((list: any) => {
-                return solutions.filter((item) => item.uid == list.item.uid);
-            });
+import "./Explore.scss";
 
-            return { ...item, list: solution };
-        }),
-);
+import Image from "astro/components/Image.astro";
+import { getByUID } from "@/prismic";
+import KustomerExplore from "./Explore";
+import ExploreItem from "./ExploreItem";
+
 const listImage = await Promise.all(
     Astro.props.listGroup.reduce((acc, curr) => acc.concat(curr.image), []),
+);
+
+const listItems = await Promise.all(
+    Astro.props.listItems.map(async (data: any) => {
+        // Use Promise.all to await all inner asynchronous operations
+        const items = await Promise.all(
+            data.list.map(async (uid: any) => {
+                const item = await getByUID("solution", uid);
+                return item;
+            }),
+        );
+        return { ...data, list: items };
+    }),
 );
 ---
 
 <KustomerExplore
     {...Astro.props}
     listImg={listImage}
-    groupItems={listItem}
     client:visible={{ rootMargin: "100% 0px 100% 0px" }}
 >
+    <Fragment slot="renderList">
+        {
+            listItems.map((item, idx) => (
+                <ExploreItem
+                    key={item.uid}
+                    {...item}
+                    client:visible={{ rootMargin: "100% 0px 100% 0px" }}
+                >
+                    <Image
+                        src={item.img.url}
+                        alt=""
+                        width={item.img.dimensions?.width}
+                        height={item.img.dimensions?.height}
+                        class="img img-fill"
+                        slot="img"
+                    />
+                </ExploreItem>
+            ))
+        }
+    </Fragment>
     <Fragment set:html={Astro.props.title} slot="title" />
 </KustomerExplore>

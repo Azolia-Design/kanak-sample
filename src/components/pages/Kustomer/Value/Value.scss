@@ -37,6 +37,7 @@
 
     &-title {
         grid-column: 1/10;
+        margin-right: -2rem;
 
         span {
             display: inline;
@@ -57,6 +58,8 @@
     &-subtitle {
         grid-column: 12/-1;
         align-self: end;
+        justify-self: end;
+        max-width: 48.9rem;
         opacity: .6;
 
         @include md {

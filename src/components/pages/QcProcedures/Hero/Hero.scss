@@ -29,7 +29,7 @@
 
     &-sub {
         grid-column: 5/13;
-        max-width: 66rem;
+        max-width: 65.8rem;
         text-align: center;
         margin-left: auto;
         margin-right: auto;
@@ -44,7 +44,6 @@
 
         @include sm {
             @include text(16);
-            text-align: start;
             margin-bottom: 4rem;
         }
     }
