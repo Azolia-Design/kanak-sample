@@ -5,11 +5,17 @@
 .kustomer-explore {
     contain: paint;
     padding-bottom: 12rem;
+    @include md {
+        padding-bottom: 8rem;
+    }
+    @include sm {
+        padding-bottom: 0;
+    }
 
     &-title {
-        grid-column: 3/15;
+        grid-column: 2/16;
         text-align: center;
-        max-width: 114rem;
+        max-width: 118rem;
         margin: auto;
         margin-bottom: 10rem;
 
@@ -39,7 +45,11 @@
             padding-bottom: 6rem;
         }
 
-        &-line-bot {}
+        &-line-bot {
+            @include sm {
+                display: none;
+            }
+        }
 
         &-item {
             --fr-width: 4rem;
@@ -51,6 +61,10 @@
 
             @include sm {
                 grid-template-columns: 1fr;
+            }
+            @include sm {
+                display: flex;
+                flex-direction: column;
             }
 
             &:last-child {
@@ -198,6 +212,10 @@
                     margin-left: 0;
                     height: fit-content;
                     flex-direction: unset;
+                    &.keen-slider:not([data-keen-slider-disabled]) {
+                        overflow: visible;
+                    }
+                    
                 }
 
                 .line-ver {
@@ -288,11 +306,7 @@
                             }
 
                             .line-right {
-                                display: block;
-                                position: absolute;
-                                top: 0;
-                                left: auto;
-                                right: 0;
+                                display: none;
                             }
                         }
 

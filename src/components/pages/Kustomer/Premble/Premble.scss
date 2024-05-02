@@ -22,6 +22,9 @@
         max-width: 104.3rem;
         margin: auto;
         color: var(--cl-txt-light);
+        p {
+            display: inline;
+        }
 
         @include md {
             grid-column: 3/11;
@@ -36,7 +39,7 @@
         }
 
         @include xs {
-            max-width: 31rem;
+            max-width: none;
             margin: 0 auto;
         }
 
