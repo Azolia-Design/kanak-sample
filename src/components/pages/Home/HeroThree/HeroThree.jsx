@@ -68,15 +68,14 @@ function Content({...props}) {
     const [scaleOffset, setScaleOffset] = useState(1);
     const [degraded, degrade] = useState(false)
     const clock = useThree(state => state.clock);
-    let [isLock, setIsLock] = useState(false);
     useEffect(() => {
         console.log(props.list.map((item) => item.uid))
     }, []);
 
     useFrame((state, delta) => {
         if (!products.current) return;
-        if (isLock) {
-            if (products.current.rotation.y >= Math.PI * 2) {
+        if (index.direction !== 0 ) {
+            if (Math.abs(products.current.rotation.y) >= Math.PI * 2) {
                 products.current.rotation.y = 0;
             } else {
                 products.current.rotation.y = products.current.rotation.y + .006 * index.direction;
@@ -98,20 +97,25 @@ function Content({...props}) {
     })
 
     useEffect(() => {
+        let isLock = false;
         scroll(({ y }) => {
-            if (document.querySelectorAll('.home-prod-cards-inner').length >= 1) {
-                if (y.progress >= (window.innerWidth < 767 ? .76 : .9)) {
-                    if (isLock === false) {
-                        setIsLock(true);
+            if (y.progress >= 0 && y.progress < 1) {
+                if (document.querySelectorAll('.home-prod-cards-inner').length >= 1) {
+                    if (y.progress >= (window.innerWidth < 767 ? .76 : .9)) {
+                        if (isLock == false) {
+                            isLock = true;
+                            setIndex({ direction: -1, value: 0 });
+                        }
+                    } else {
+                        if (isLock == true) {
+                            isLock = false;
+                            setIndex({ direction: 0, value: 0 });
+                        }
+                        
                     }
-                } else {
-                    if (isLock === true) {
-                        setIsLock(false);
-                        setIndex({ direction: -1, value: 0 });
+                    if (contactShadow) {
+                        contactShadow.current.position.y = animThreeVal(-3 / scaleOffset, -.4 / scaleOffset, y.progress)
                     }
-                }
-                if (contactShadow) {
-                    contactShadow.current.position.y = animThreeVal(-3 / scaleOffset, -.4 / scaleOffset, y.progress)
                 }
             }
         }, {

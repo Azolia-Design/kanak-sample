@@ -256,6 +256,10 @@
             display: block;
         }
 
+        .ic {
+            flex: none;
+        }
+
         &.isHide {
             opacity: 0;
             transform: translateY(-20%);
