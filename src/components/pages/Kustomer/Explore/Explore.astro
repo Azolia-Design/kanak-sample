@@ -33,7 +33,11 @@ console.log(listItems);
     <Fragment slot="renderList">
         {
             listItems.map((item, idx) => (
-                <ExploreItem key={item.uid} {...item}>
+                <ExploreItem
+                    key={item.uid}
+                    {...item}
+                    client:visible={{ rootMargin: "100% 0px 100% 0px" }}
+                >
                     <Image
                         src={item.img.url}
                         alt=""
