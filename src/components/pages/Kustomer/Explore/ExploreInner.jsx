@@ -7,7 +7,6 @@ function ExploreInner({ ...props }) {
 
     useEffect(() => {
         const item = itemRef.current
-
         const title = new SplitType(item.querySelector(".kustomer-explore-main-item-list-inner-title"), { types: 'lines, words', lineClass: 'split-line' })
         const des = new SplitType(item.querySelector(".kustomer-explore-main-item-list-inner-des"), { types: 'lines, words', lineClass: 'split-line' })
 

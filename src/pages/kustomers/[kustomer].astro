@@ -105,8 +105,28 @@ const listCaseStudy = await getAllByType("case_study");
     {
         !isEmpty(item.data.explore_title) && (
             <Explore
-                listGroup={item.data.explore_list}
                 title={convertHighlight(item.data.explore_title)}
+                listGroup={item.data.explore_list}
+                listItems={[
+                    {
+                        uid: "private-label",
+                        label: item.data.explore_private_label_label,
+                        title: item.data.explore_private_label_title,
+                        img: item.data.explore_private_label_image,
+                        list: item.data.explore_private_label_list.map(
+                            (el) => el.item.uid,
+                        ),
+                    },
+                    {
+                        uid: "kustom-packaging-solutions",
+                        label: item.data.explore_kustomer_packaging_label,
+                        title: item.data.explore_kustomer_packaging_title,
+                        img: item.data.explore_kustomer_packaging_image,
+                        list: item.data.explore_kustomer_packaging_list.map(
+                            (el) => el.item.uid,
+                        ),
+                    },
+                ]}
             />
         )
     }

@@ -81,11 +81,15 @@
         max-width: 106rem;
 
         @include md {
-            @include text(h1)
+            @include text(h3)
         }
 
         @include sm {
-            @include text(h3)
+            @include text(h4)
+        }
+
+        .txt-green {
+            display: inline;
         }
     }
 }

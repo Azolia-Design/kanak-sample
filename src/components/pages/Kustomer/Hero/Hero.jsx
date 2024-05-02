@@ -27,7 +27,7 @@ function KustomerHero(props) {
                 rotation: [0, Math.PI * -.065, Math.PI * .03]
             },
         ],
-        "Food Service": [
+        "Foodservice": [
             {
                 url: '/glb/64-oval-bowl-clean-transformed.glb',
                 scale: [.85, .85, .85],
@@ -130,9 +130,9 @@ function KustomerHero(props) {
         const sequence = [
             [title.words, { opacity: 1, transform: "none" }, { duration: .5, delay: stagger(.04), at: .2 }],
         ]
-
+        let subtitle
         if (!isEmpty(props.label)) {
-            const subtitle = new SplitType('.kustomer-hero-subtitle', { types: "lines,words", lineClass: 'split-line' })
+            subtitle = new SplitType('.kustomer-hero-subtitle', { types: "lines,words", lineClass: 'split-line' })
             animate(subtitle.words, { opacity: 0, transform: "translateY(100%)" }, { duration: 0 })
 
             sequence.push(
