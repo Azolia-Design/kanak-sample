@@ -31,8 +31,7 @@
         max-width: 100rem;
 
         @include md {
-            grid-column: 1/8;
-            @include text(h1)
+            grid-column: 1/7;
         }
 
         @include sm {
@@ -49,9 +48,9 @@
         align-items: start;
 
         @include md {
-            grid-column: 7/-1;
+            grid-column: 8/-1;
             margin-top: .8rem;
-            margin-left: -.65rem;
+            margin-left: calc(var(--grid-gap)*-1);
         }
 
         @include sm {
@@ -92,6 +91,7 @@
         @include md {
             margin-top: 5.7rem;
         }
+
         @include sm {
             margin-top: 4rem;
         }

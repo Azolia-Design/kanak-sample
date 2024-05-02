@@ -4,16 +4,19 @@
 .kustomer-cata {
     --HomeProductCardHeight: 66.2rem;
 
+    padding-top: 19rem;
     padding-bottom: 16rem;
     contain: paint;
 
     @include md {
         --HomeProductCardHeight: 41rem;
+        padding-top: 10rem;
         padding-bottom: 8rem;
     }
 
     @include sm {
         --HomeProductCardHeight: 42rem;
+        padding-top: 6rem;
         padding-bottom: 6rem;
     }
 
@@ -67,6 +70,10 @@
             grid-column: 1/8;
         }
 
+        @include sm {
+            grid-column: 1/-1;
+        }
+
         .txt {
             @include md {
                 @include text(16);
@@ -107,6 +114,12 @@
 
             &.group {
                 grid-column: 1/9;
+
+                @include md {}
+
+                .kustomer-cata-main-content-des {
+                    display: none;
+                }
 
                 .kustomer-cata-main-content-list {
                     grid-column: 1/-1;

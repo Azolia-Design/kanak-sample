@@ -2,15 +2,11 @@
 @use '@styles/colors' as *;
 
 .pak-join {
-    padding-block: 19.2rem 10rem;
+    padding-top: 19.2rem;
     color: var(--cl-txt-light);
 
     @include md {
-        padding-block: 8rem;
-    }
-
-    @include sm {
-        padding-block: 8rem 0;
+        padding-top: 8rem;
     }
 
     &-title-wrap {

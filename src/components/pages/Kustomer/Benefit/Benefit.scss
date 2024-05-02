@@ -3,16 +3,7 @@
 
 
 .kustomer-benefit {
-    padding-bottom: 19rem;
     contain: paint;
-
-    @include md {
-        padding-bottom: 10rem;
-    }
-
-    @include sm {
-        padding-bottom: 6rem;
-    }
 
     &-grid {
         display: grid;

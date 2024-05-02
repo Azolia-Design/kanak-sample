@@ -7,6 +7,7 @@ import useOutsideAlerter from '@hooks/useOutsideAlerter';
 
 import { animate, timeline, stagger, inView } from "motion";
 import SplitType from 'split-type';
+import { formatData } from '@/components/utils/text';
 
 function HeaderGlobal(props) {
     const dropdownRef = useRef();
@@ -133,15 +134,20 @@ function HeaderGlobal(props) {
             const navMain = document.querySelector('.nav-main')
         }
     }
-    function menuOnClick(e, idx) {
+    function menuOnClick(e, idx, islLastItem) {
         e.preventDefault()
-
         if (window.innerWidth > 991) {
             let dropdownEl = document.querySelector(`.header-dropdown[data-dropdown-idx="${idx}"]`)
             setDropdownIdx(idx);
             setIsHide(false);
             dropdownEl.style.top = `${document.querySelector('.header-main').getBoundingClientRect().height}px`
-            dropdownEl.style.left = `${e.target.getBoundingClientRect().left - parseRem(20)}px`
+
+            if (!islLastItem) {
+                dropdownEl.style.left = `${e.target.getBoundingClientRect().left - parseRem(20)}px`
+            } else {
+                dropdownEl.style.left = `${e.target.getBoundingClientRect().left + e.target.clientWidth - dropdownEl.clientWidth}px`
+
+            }
         } else {
             let slideEl = document.querySelector(`.nav-main-item-dropdown[data-dropdown-idx="${idx}"]`)
 
@@ -185,7 +191,7 @@ function HeaderGlobal(props) {
                                                 className={cn("header-menu-item-link txt-link", { "on-dropdown": idx === dropdownIdx })}
                                                 onClick={(e) => {
                                                     if (page.type != 'dropdown') return;
-                                                    menuOnClick(e, idx);
+                                                    menuOnClick(e, idx, idx === props.pages.length - 1);
                                                 }}>
                                                 <span className="txt txt-14 txt-up txt-semi">{page.name}</span>
                                                 {page.type == 'dropdown' && (
@@ -212,9 +218,9 @@ function HeaderGlobal(props) {
                         </div>
                         <div className="txt txt-10 txt-med header-sub-txt">
                             <span className="txt-semi header-sub-label">
-                                Sustainable Lifecycle:
+                                Our mission:
                             </span>
-                            From plant to product to compost and back again, Kanak is all about coming full circle.
+                            To kraft responsibly-sourced packaging and products that not only prioritize quality, functionality, and affordability but also champion a profound commitment to enhancing the health and beauty of our planet.
                         </div>
                     </div>
                     <div className={`header-toggle ${navOpen ? 'active' : ''}`}>
@@ -234,7 +240,7 @@ function HeaderGlobal(props) {
                     if (page.type == 'dropdown') {
                         return (
                             <div className={cn("header-dropdown", { "active": idx === dropdownIdx })} key={idx} data-dropdown-idx={idx}>
-                                <div className={`header-dropdown-inner bg-light ${page.name}`}>
+                                <div className={`header-dropdown-inner bg-light ${formatData(page.name)}`}>
                                     {page.sub_menu.map((el, idx) => (
                                         <a
                                             key={idx}

@@ -208,8 +208,11 @@ button {
     }
 
     &-trans {
+        background-color: unset;
+        color: var(--cl-txt);
+
         &::after {
-            background-color: var(--cl-orange);
+            // background-color: var(--cl-orange);
         }
 
         &:hover {

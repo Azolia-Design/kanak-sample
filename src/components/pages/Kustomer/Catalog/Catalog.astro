@@ -48,16 +48,16 @@ let listItem = await Promise.all(
 		</KustomerCatalogTitle>
 		<div class="kustomer-cata-main">
 			<div
-				class={`kustomer-cata-main-content-wrap ${!isEmpty(listGroup[0].title) ? "group" : ""}`}
+				class={`kustomer-cata-main-content-wrap ${isEmpty(listGroup[1].list) ? "group" : ""}`}
 			>
 				{
 					listGroup.map(
 						(group, idx) =>
-							!isEmpty(group.title) &&
-							idx == 0 && (
+							!isEmpty(group.list) && (
 								<KustomerCatalogGroup
 									key={idx}
 									data={group}
+									isSingle={isEmpty(listGroup[1].list)}
 									currPage={currPage}
 									listItem={listItem}
 									client:visible={{

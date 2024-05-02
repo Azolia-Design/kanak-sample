@@ -31,7 +31,7 @@ function ComplianceHero({ ...props }) {
         <section className='complian-hero'>
             <div className="container grid">
                 <h1 className="heading h0 txt-black txt-up complian-hero-title">{props.title[0].text}</h1>
-                <div className="txt txt-20 txt-med complian-hero-sub">{props.sub}</div>
+                <div className="txt txt-18 txt-med complian-hero-sub">{props.sub}</div>
             </div>
             <div className="complian-hero-img">
                 <div className="line"></div>
