@@ -27,6 +27,13 @@
     font-display: swap;
 }
 
+@font-face {
+    font-family: 'Kanak';
+    src: url('/fonts/Kanak.woff') format('woff');
+    font-weight: 400;
+    font-display: swap;
+}
+
 html {
     // font-size: 0.6944444444vw;
     font-size: calc(0.5787037037vw * 1);
@@ -169,6 +176,9 @@ $txtSizes: 10, 12, 14, 16, 18, 20, 36, 180;
         font-weight: 700;
     }
 
+    &-kanak {
+        font-family: 'Kanak';
+    }
     &-black {
         font-weight: 900;
     }

@@ -16,7 +16,7 @@ const list = await Promise.all(
         return group
     })
 )
-let standardList = list.filter(el => !el.data.is_sustainables)
+let standardList = list.filter(el => !el.data.is_sustainables_)
 let featuredItemList = await Promise.all(
     standardList.map((product_group: any) => {
         let featuredItem = getByUID('product', product_group.data.product_list.filter((el: any) => el.is_featured)[0].product.uid)

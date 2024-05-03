@@ -83,10 +83,20 @@ function HomeIndustry(props) {
                         <p className="heading h4 txt-up txt-black home-indus-label">{props.label}</p>
                         <h2 className="heading h0 txt-up txt-black home-indus-title">{props.title}</h2>
                         <div className="home-indus-cta-wrap">
-                            <a href="/contact" className="arr-link home-indus-cta">
+                            <a href="/contact" className="arr-link home-indus-cta" data-cursor="hide">
                                 <div className="home-indus-cta-inner">
-                                    <div className="ic ic-main">{props.arrIcon}</div>
-                                    <div className="ic ic-clone">{props.arrIcon}</div>
+                                    <div className="ic ic-40 ic-main">
+                                        <svg width="100%" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M5 35L35 5" stroke="currentColor" stroke-width="4" stroke-miterlimit="10"/>
+                                            <path d="M12 5H35V28" stroke="currentColor" stroke-width="4" stroke-miterlimit="10" stroke-linecap="square"/>
+                                        </svg>
+                                    </div>
+                                    <div className="ic ic-40 ic-clone">
+                                        <svg width="100%" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M5 35L35 5" stroke="currentColor" stroke-width="4" stroke-miterlimit="10"/>
+                                            <path d="M12 5H35V28" stroke="currentColor" stroke-width="4" stroke-miterlimit="10" stroke-linecap="square"/>
+                                        </svg>
+                                    </div>
                                 </div>
                                 <div className="home-indus-cta-outer">{props.ctaTxt}</div>
                             </a>

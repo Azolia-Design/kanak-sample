@@ -3,58 +3,53 @@ import { Image } from "astro:assets";
 import { getImage } from "astro:assets";
 import kanakLogo from "@assets/kanak-logo.svg";
 import recycleIc from "@assets/recycle.svg";
-import headFlag from "@assets/head-flag.svg";
+import headFlag from "@assets/head-flag-2.svg";
 import bodyFlag from "@assets/body-flag.svg";
-import tailFlag from "@assets/tail-flag.svg";
+import tailFlag from "@assets/tail-flag-2.svg";
 import extIcon from "@assets/ext-arr-menu.svg?raw";
 import icDropdown from "@assets/ic-arrow-down.svg?raw";
-import { getAllByType } from "@/prismic";
+import { getByUID, getPage } from "@/prismic";
 import HeaderGlobal from "./Header";
 import { formatData } from "@/components/utils/text";
 const currYear = new Date().getFullYear();
 
-const kustomerList = await getAllByType("industry");
-let refineKustomerList = kustomerList.map((el, idx) => ({
+const homeData = await getPage("home")
+const homeKustomerList = await Promise.all(
+    homeData.data.industry_list.map((industry: any) => {
+        let item = getByUID("industry", industry.item.uid);
+        return item;
+    }),
+);
+const kustomerList = homeKustomerList.map((el, idx) => ({
     name: el.data.title,
     url: `/kustomers/${el.uid}`,
 }));
-//Start hotfix
-function swapItems(array, item1, item2) {
-    const index1 = array.findIndex(item => item.name === item1);
-    const index2 = array.findIndex(item => item.name === item2);
+const homeKatalogList = await Promise.all(
+    homeData.data.product_kategory_list.map((industry: any) => {
+        let item = getByUID("product_group", industry.item.uid);
+        return item;
+    }),
+);
 
-    if (index1 === -1 || index2 === -1) {
-        console.log('One or both items not found');
-        return array;
-    }
-
-    [array[index1], array[index2]] = [array[index2], array[index1]];
-    return array;
-}
-refineKustomerList = swapItems(refineKustomerList, 'Retail', 'Education');
-//End hotfix
-const catelogList = await getAllByType("product_group");
-let refineCatelogList = catelogList
+let katalogList = homeKatalogList
     .filter((el, idx) => el.data.is_sustainables_ !== true)
     .map((el, idx) => ({
         name: el.data.name,
         url: `/katalog?category=${formatData(el.data.name)}`,
     }));
-// Start hotfix
-refineCatelogList = refineCatelogList.reverse()
-// End hotfix
+
 const pages = [
     {
         name: "Kustomers",
         type: "dropdown",
-        sub_menu: [...refineKustomerList],
+        sub_menu: [...kustomerList],
     },
     {
         name: "Katalog",
         type: "dropdown",
         sub_menu: [
             { name: "All Product", url: "/katalog" },
-            ...refineCatelogList,
+            ...katalogList,
         ],
     },
     {
@@ -95,7 +90,7 @@ const pathname = new URL(Astro.request.url).pathname;
     bodyFlag={bodyFlagIc.src}
     currYear={currYear}
     pathname={pathname}
-    check={refineCatelogList}
+    check={katalogList}
     client:load
 >
     <Image src={kanakLogo} alt="Kanak Logo" slot="logo" class="img-h" />

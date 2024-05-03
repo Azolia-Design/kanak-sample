@@ -45,6 +45,7 @@
 
     &-label {
         margin-bottom: 2rem;
+        color: rgba($cl-txt-light, .8);
 
         @include md {
             @include text(h5);
@@ -100,7 +101,7 @@
                 --offset-pos: 200%;
 
                 &-main {
-                    img {
+                    svg {
                         opacity: 1;
                         transform: none;
                     }
@@ -109,7 +110,7 @@
                 &-clone {
                     position: absolute;
 
-                    img {
+                    svg {
                         // opacity: 0;
                         transform: translate(calc(var(--offset-pos) * -1), calc(var(--offset-pos)));
                     }
@@ -137,20 +138,20 @@
             .ic {
                 overflow: hidden;
 
-                img {
+                svg {
                     transition: all .5s ease-in-out;
                     transition-delay: .2s;
                 }
 
                 &-main {
-                    img {
+                    svg {
                         opacity: 0;
                         transform: translate(calc(var(--offset-pos)), calc(var(--offset-pos) * -1));
                     }
                 }
 
                 &-clone {
-                    img {
+                    svg {
                         opacity: 1;
                         transform: none;
                     }

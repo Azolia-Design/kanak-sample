@@ -9,7 +9,7 @@ import { useStore } from '@nanostores/react';
 
 const productIndex = atom({
     value: 0,
-    direction: 1,
+    direction: 0,
 });
 function useProductIndex() {
     const index = useStore(productIndex);

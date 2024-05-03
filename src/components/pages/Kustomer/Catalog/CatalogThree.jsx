@@ -1,5 +1,7 @@
 import { useRef, useEffect, useState, Suspense } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
+import { Image } from '@react-three/drei'
+import {DoubleSide} from "three";
 import useWindowSize from "@hooks/useWindowSize";
 import { suspend } from 'suspend-react'
 import { animate, timeline, inView } from "motion";
@@ -12,6 +14,9 @@ import cn from 'clsx';
 import { formatData } from "@/components/utils/text";
 
 const warehouse = import('/envMap/warehouse.hdr?url').then((module) => module.default)
+function CustomMaterial({...props}) {
+    return (<meshStandardMaterial color={props.color} roughness={props.roughness}/>)
+}
 function Content(props) {
     const wrap = useRef()
     const contactShadow = useRef(null)
@@ -65,35 +70,36 @@ function Content(props) {
                                 idx === currentIndex && (
                                     <animated.group key={idx} {...style}>
                                         <animated.mesh
-                                            material-color="white"
-                                            material-opacity={opacity}>
+                                            material-color="white">
                                             <Suspense>
-                                                {product_feature.uid == 'bagasse-bowls-ka3520' ? (
-                                                    <GetModel file='/glb/64-oval-bowl-clean-transformed.glb' scale={[.8,.8,.8]} rotation={[0, Math.PI * -.5, 0]}/>
+                                                {product_feature.uid == 'molded-fiber-bowls-ml-ba0400' ? (
+                                                    <GetModel file='/glb/64-oval-bowl-clean-transformed.glb' scale={[.9,.9,.9]} rotation={[0, Math.PI * -.5, 0]}/>
                                                 ) : product_feature.uid == 'compartment-trays-st5515' ? (
                                                     <GetModel file='/glb/KA10054-clean-transformed.glb' scale={[.8,.8,.8]} position={[0, .02, 0]} />
                                                 ) : product_feature.uid == 'molded-fiber-3-compartment-plates-ba5504' ? (
                                                     <GetModel file='/glb/3-elegant-compartments-plates-clean-transformed.glb' rotation={[Math.PI * -.5, 0, 0]} scale={[2, 2, 2]} position={[0, 0.015, 0]} />
-                                                ) : product_feature.uid == 'soup-containers' ? (
+                                                ) : product_feature.uid == 'soup-bowls-dc0825' ? (
                                                     <GetModel file='/glb/41-ramen-clean-transformed.glb' scale={[.68,.68,.68]} position={[0,-.015,0]}/>
                                                 ) : product_feature.uid == 'produce-trays-pt8412' ? (
                                                     <GetModel file='/glb/48-monte-tray-clean-transformed.glb' scale={[1.2,1.2,1.2]}/>
                                                 ) : product_feature.uid == 'pla-cutlery-ct6523' ? (
-                                                    <GetModel file='/glb/22-wooden-fork-clean-transformed.glb' />
+                                                    <Fork material={<CustomMaterial color='#F9833A' roughness={.2} />} />
                                                 ) : product_feature.uid == 'double-wall-hot-cups-dw1204' ? (
                                                     <GetModel file='/glb/kup-5-transformed.glb' scale={[.76,.76,.76]} position={[0,-.02,0]}/>
-                                                ) : product_feature.uid == 'klamshells' ? (
-                                                    <GetModel file='/glb/klamshell-79-transformed.glb' scale={[.8,.8,.8]} position={[0,-.01,0]}/>
-                                                ) : product_feature.uid == 'carry-out-bags' ? (
-                                                    <GetModel file='/glb/62-freebirds-clean-transformed.glb' scale={[.8,.8,.8]} position={[0,-.01,0]}/>
                                                 ) : product_feature.uid == 'pla-straw' ? (
+                                                    <Image url="/image-straw.png" transparent segments={10} scale={[.2,.2]} side={DoubleSide} position={[0,.02,0]}/>
+                                                ) : product_feature.uid == 'one-compartment-clamshells-ba6631' ? (
+                                                    <GetModel file='/glb/klamshell-79-transformed.glb' scale={[.8,.8,.8]} position={[0,-.01,0]}/>
+                                                ) : product_feature.uid == 'take-away-bags-ka355231150' ? (
+                                                    <Image url="/image-bag.png" transparent segments={10} scale={[.2,.2]} side={DoubleSide} position={[0,.02,0]}/>
+                                                ) : product_feature.uid == 'take-away-trays-ka99co' ? (
                                                     <GetModel file='/glb/BA-CFH-700-salad-box-clean-transformed.glb' scale={[.8,.8,.8]} position={[0,-.01,0]}/>
+                                                ) : product_feature.uid == 'takeaway-containers' ? (
+                                                    <GetModel file='/glb/cfh-900-saladbox-lid-clearn-transformed.glb' scale={[.8,.8,.8]} position={[0,-.01,0]}/>
                                                 ) : (
-                                                    <GetModel file='/glb/m_box-clean-transformed.glb' scale={[.8,.8,.8]} position={[0,.01,0]}
-                                                    />
+                                                    <GetModel file='/glb/m_box-clean-transformed.glb' scale={[.8,.8,.8]} position={[0,.01,0]}/>
                                                 )}
                                             </Suspense>
-                                            <meshBasicMaterial transparent />
                                         </animated.mesh>
                                     </animated.group>
                                 )

@@ -50,7 +50,7 @@ function GlobLoaderMain({...props}) {
                         </div>
                         <div className="txt txt-10 txt-med header-sub-txt">
                             <span className="txt-semi header-sub-label">Sustainable Lifecycle:</span>
-                            From plant to product to compost and back again, Kanak is all about coming full circle.
+                            To kraft responsibly-sourced packaging and products that not only prioritize quality, functionality, and affordability but also champion a profound commitment to enhancing the health and beauty of our planet.
                         </div>
                     </div>
                     <div className="loader-line-inner">

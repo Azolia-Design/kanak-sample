@@ -24,7 +24,7 @@ const list = await Promise.all(
 ---
 
 <HomeBrand list={list} client:visible={{ rootMargin: "100% 0px 100% 0px" }}>
-    <HomeBrandThree list={list} slot="brandThree" client:idle />
+    <HomeBrandThree list={list} slot="brandThree" client:load />
     <Fragment set:html={newTitle} slot="title" />
     <Image src={arrIconDesk} alt="" slot="arrIconDesk" />
     <Image src={arrIconMob} alt="" slot="arrIconMob" />

@@ -155,7 +155,7 @@ function KustomerSustain(props) {
     }, [])
 
     return (
-        <section className="kustomer-sus" id="kustomer-sus">
+        <section className={`kustomer-sus ${isOpenPopup ? 'active' : ''}`} id="Sustainable">
             <div className="container grid">
                 <div className="kustomer-sus-head">
                     <div className="kustomer-sus-head-img">
@@ -165,8 +165,8 @@ function KustomerSustain(props) {
                         {props.subtitle}
                     </span>
                     <div className="kustomer-sus-pdf">
-                        <a href="/Kanak_Sales_Sheet_01.pdf" className="pdf-link kustomer-sus-pdf-link">
-                            <div className="kustomer-sus-pdf-link-ic">
+                        <a href="/Kanak_Sales_Sheet_01.pdf" className="btn-outline pdf-link kustomer-sus-pdf-link" data-cursor="hide">
+                            <div className="btn-outline-ic kustomer-sus-pdf-link-ic">
                                 <div className="ic ic-32">
                                     {props.PDFIcon}
                                 </div>
