@@ -22,6 +22,7 @@ const OpBgTextureDark = await getImage({
 });
 const {
 	title,
+	meta_desc,
 	data_page,
 	hideNav = false,
 	hideLoader = true,
@@ -32,7 +33,7 @@ const {
 ---
 
 <html lang="en" data-page={data_page ? data_page : ""}>
-	<BaseHead title={title} />
+	<BaseHead title={title} meta={meta_desc ? meta_desc : ''}/>
 
 	<body
 		style={`--bg-txt: url(${OpBgTexture.src}); --bg-txt-dark: url(${OpBgTextureDark.src});`}
