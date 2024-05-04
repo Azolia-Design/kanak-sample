@@ -22,7 +22,7 @@ const dataLoadingBreakdown = [
 function GlobLoaderMain({ ...props }) {
     const loaderRef = useRef();
     const ROOT_DURATION = 3;
-    const [counter, setCounter] = useState(0);
+    const [counter, setCounter] = useState('00');
 
     // function handlePercentChange() {
     //     activateElement(percent);
@@ -62,7 +62,7 @@ function GlobLoaderMain({ ...props }) {
                 .to('.loader-circle', { left: `${value}%`, duration: duration, ease: 'linear' })
                 .to(counter, {
                     value: value, duration: duration, ease: 'none', onUpdate: () => {
-                        setCounter(Math.round(counter.value))
+                        setCounter(Math.round(counter.value) < 10 ? `0${Math.round(counter.value)}`: Math.round(counter.value))
                 }}, '<=0');
         }
 

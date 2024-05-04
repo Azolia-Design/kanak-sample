@@ -95,17 +95,8 @@ function ContactForm(props) {
             setIcon('success')
             setIsSubmitted(true)
             animOnSuccess()
-            
-            // form.reset()
         })
-        // Demo interaction
         setIcon('load')
-        // setTimeout(() => {
-        //     setIcon('success')
-        //     setIsSubmitted(true)
-        //     animOnSuccess()
-        //     //form.reset()
-        // }, 2000);
     }
     useEffect(() => {
         // console.log(formData);

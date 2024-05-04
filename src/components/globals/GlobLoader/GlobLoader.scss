@@ -1,3 +1,4 @@
+@use '@styles/mixins' as *;
 .loader {
     position: fixed;
     z-index: 99999;
@@ -24,6 +25,12 @@
         position: relative;
         background-color: var(--cl-txt);
         padding-inline: 33.4rem 16.7rem;
+        @include md {
+            padding-inline: 25rem 13rem;
+        }
+        @include sm {
+            padding-inline: 14rem 7.5rem;
+        }
         &-inner {
             width: 100%;
             height: 100%;
@@ -75,6 +82,14 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            @include md {
+                width: 13.7rem;
+                height: 13.7rem;
+            }
+            @include sm {
+                width: 8.6rem;
+                height: 8.6rem;
+            }
         }
         &-inside {
             transition: all 1600ms ease;
@@ -82,6 +97,15 @@
             height: 17rem;
             border-radius: 50%;
             border: .4rem solid var(--cl-txt);
+            @include md {
+                width: 11.6rem;
+                height: 11.6rem;
+            }
+            @include sm {
+                border-width: .3rem;
+                width: 7.2rem;
+                height: 7.2rem;
+            }
         }
         &-imgs {
             transition: all 1600ms ease;
@@ -91,6 +115,14 @@
             display: grid;
             border-radius: 50%;
             overflow: hidden;
+            @include md {
+                width: 13.7rem;
+                height: 13.7rem;
+            }
+            @include sm {
+                width: 8.6rem;
+                height: 8.6rem;
+            }
             &-item {
                 grid-column: 1/2;
                 grid-row: 1/2;
@@ -113,6 +145,12 @@
         flex-direction: column;
         color: var(--cl-txt);
         transition: all 600ms ease;
+        @include md {
+            right: 4rem;
+        }
+        @include sm {
+            right: 1.6rem;
+        }
         &.done-anim {
             opacity: 0;
             transform: translateY(100%);
@@ -123,19 +161,27 @@
             &-num {
                 font-size: 4rem;
                 line-height: 1em;
+                @include sm {
+                    font-size: 2.4rem;
+                }
             }
             &-unit {
                 font-size: 1.6rem;
                 line-height: 1em;
                 margin-top: .5rem;
                 margin-left: .4rem;
+                @include sm {
+                    font-size: 1rem;
+                }
             }
         }
         &-bot {
             &-txt {
                 font-size: 1.6rem;
                 line-height: 1em;
-
+                @include sm {
+                    font-size: 1.2rem;
+                }
             }
         }
     }
@@ -147,6 +193,16 @@
         margin-bottom: 2.6rem;
         left: 6rem;
         transition: all 1600ms ease;
+        @include md {
+            height: 4rem;
+            margin-bottom: 3.2rem;
+            left: 4rem;
+        }
+        @include sm {
+            height: 3.2rem;
+            margin-bottom: 3rem;
+            left: 1.6rem;
+        }
     }
     &-sub {
         position: absolute;
@@ -158,5 +214,11 @@
         column-gap: 0.8rem;
         margin-top: 2rem;
         transition: all 1600ms ease;
+        @include md {
+            left: 4rem;
+        }
+        @include sm {
+            left: 1.6rem;
+        }
     }
 }
