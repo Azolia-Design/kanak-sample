@@ -107,10 +107,29 @@ html[data-page='Fulfillment'] {
     }
 }
 
-html[data-page='Kustomer'] {
+html[data-page='Retail'],
+html[data-page='Food Processing'] {
     .global-cta {
         &-main {
             max-width: 52.3rem;
+
+            @include md {
+                grid-column: 1/5;
+                margin-right: calc(var(--grid-gap)* -1);
+            }
+
+            @include sm {
+                grid-column: 1/-1;
+                margin-right: unset;
+            }
+        }
+    }
+}
+
+html[data-page='Education'] {
+    .global-cta {
+        &-main {
+            max-width: 63.6rem;
 
             @include md {
                 grid-column: 1/5;

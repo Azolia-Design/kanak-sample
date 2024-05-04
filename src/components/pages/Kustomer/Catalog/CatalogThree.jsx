@@ -78,13 +78,13 @@ function Content(props) {
                                                     <GetModel file='/glb/KA10054-clean-transformed.glb' scale={[.8,.8,.8]} position={[0, .02, 0]} />
                                                 ) : product_feature.uid == 'molded-fiber-3-compartment-plates-ba5504' ? (
                                                     <GetModel file='/glb/3-elegant-compartments-plates-clean-transformed.glb' rotation={[Math.PI * -.5, 0, 0]} scale={[2, 2, 2]} position={[0, 0.015, 0]} />
-                                                ) : product_feature.uid == 'soup-bowls-dc0825' ? (
+                                                ) : product_feature.uid == 'burrito-bowls-ka1065' ? (
                                                     <GetModel file='/glb/41-ramen-clean-transformed.glb' scale={[.68,.68,.68]} position={[0,-.015,0]}/>
                                                 ) : product_feature.uid == 'produce-trays-pt8412' ? (
                                                     <GetModel file='/glb/48-monte-tray-clean-transformed.glb' scale={[1.2,1.2,1.2]}/>
                                                 ) : product_feature.uid == 'pla-cutlery-ct6523' ? (
                                                     <Fork material={<CustomMaterial color='#F9833A' roughness={.2} />} />
-                                                ) : product_feature.uid == 'double-wall-hot-cups-dw1204' ? (
+                                                ) : product_feature.uid == 'custom-double-wall-hot-cups-dw1204' ? (
                                                     <GetModel file='/glb/kup-5-transformed.glb' scale={[.76,.76,.76]} position={[0,-.02,0]}/>
                                                 ) : product_feature.uid == 'pla-straw' ? (
                                                     <Image url="/image-straw.png" transparent segments={10} scale={[.2,.2]} side={DoubleSide} position={[0,.02,0]}/>

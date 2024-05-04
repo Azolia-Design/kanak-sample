@@ -222,6 +222,7 @@
         display: flex;
         flex-direction: column;
         height: fit-content;
+        align-items: start;
 
         @include md {
             grid-column: 7/-1;
@@ -251,24 +252,22 @@
         }
 
         &-link {
-            &-inner {
-                display: flex;
-                column-gap: .8rem;
-                align-items: center;
-                transition: color .4s ease;
+            display: flex;
+            column-gap: .8rem;
+            align-items: center;
+            transition: color .4s ease;
 
-                svg {
-                    @include size(1.6rem);
-                }
+            svg {
+                @include size(1.6rem);
+            }
 
-                @include sm {
-                    @include text(18);
-                }
+            @include sm {
+                @include text(18);
+            }
 
-                @media (hover: hover) {
-                    &:hover {
-                        color: var(--cl-orange);
-                    }
+            @media (hover: hover) {
+                &:hover {
+                    color: var(--cl-orange);
                 }
             }
         }
