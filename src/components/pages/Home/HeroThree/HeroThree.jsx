@@ -24,7 +24,7 @@ function Model({ item, ...styles }) {
             <animated.mesh
                 material-color="white">
                     <Suspense>
-                        {item.uid == 'molded-fiber-bowls-ml-ba0400' ? (
+                        {item.uid == 'burrito-bowls-ka1065' ? (
                             <GetModel file='/glb/64-oval-bowl-clean-transformed.glb' scale={[.9,.9,.9]} rotation={[0, Math.PI * -.5, 0]}/>
                         ) : item.uid == 'compartment-trays-st5515' ? (
                             <GetModel file='/glb/KA10054-clean-transformed.glb' scale={[.8,.8,.8]} position={[0, .02, 0]} />

@@ -87,14 +87,14 @@ function HomeIndustry(props) {
                                 <div className="home-indus-cta-inner">
                                     <div className="ic ic-40 ic-main">
                                         <svg width="100%" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M5 35L35 5" stroke="currentColor" stroke-width="4" stroke-miterlimit="10"/>
-                                            <path d="M12 5H35V28" stroke="currentColor" stroke-width="4" stroke-miterlimit="10" stroke-linecap="square"/>
+                                            <path d="M5 35L35 5" stroke="currentColor" strokeWidth="4" strokeMiterlimit="10"/>
+                                            <path d="M12 5H35V28" stroke="currentColor" strokeWidth="4" strokeMiterlimit="10" strokeLinecap="square"/>
                                         </svg>
                                     </div>
                                     <div className="ic ic-40 ic-clone">
                                         <svg width="100%" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M5 35L35 5" stroke="currentColor" stroke-width="4" stroke-miterlimit="10"/>
-                                            <path d="M12 5H35V28" stroke="currentColor" stroke-width="4" stroke-miterlimit="10" stroke-linecap="square"/>
+                                            <path d="M5 35L35 5" stroke="currentColor" strokeWidth="4" strokeMiterlimit="10"/>
+                                            <path d="M12 5H35V28" stroke="currentColor" strokeWidth="4" strokeMiterlimit="10" strokeLinecap="square"/>
                                         </svg>
                                     </div>
                                 </div>
