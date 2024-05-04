@@ -13,7 +13,6 @@ import HeroThree from "@pages/Home/HeroThree/HeroThree.astro";
 
 import { getPage } from "@/prismic.js";
 const { data } = await getPage("home");
-console.log(data)
 ---
 
 <Layout title={data.page_title} meta_desc={data.meta_desc} footer_cta={data.cta_title} footer_bg={data.cta_bg} hideLoader={false}>

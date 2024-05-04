@@ -20,23 +20,22 @@ const dataLoadingBreakdown = [
 ]
 
 function GlobLoaderMain({ ...props }) {
-    const { active, progress, errors, item, loaded, total } = useProgress()
-    const [percent, setPercent] = useState(0);
     const loaderRef = useRef();
-    const [counter, setCounter] = useState(0);
+    const ROOT_DURATION = 3;
+    const [counter, setCounter] = useState('00');
 
-    function handlePercentChange() {
-        activateElement(percent);
-    }
-    function activateElement(percent) {
-        const elements = document.querySelectorAll('.loader-circle-imgs-item');
+    // function handlePercentChange() {
+    //     activateElement(percent);
+    // }
+    // function activateElement(percent) {
+    //     const elements = document.querySelectorAll('.loader-circle-imgs-item');
 
-        // Deactivate all elements
-        // elements.forEach(element => element.classList.remove('active'));
+    //     // Deactivate all elements
+    //     // elements.forEach(element => element.classList.remove('active'));
 
-        // Activate the selected element
-        // elements[index].classList.add('active');
-    }
+    //     // Activate the selected element
+    //     // elements[index].classList.add('active');
+    // }
 
     const calculateDistance = (arr) => {
         let result = [];
@@ -46,24 +45,14 @@ function GlobLoaderMain({ ...props }) {
         return result;
     }
 
-
-    // const loadingTo = (dataLoading, idx) => {
-    //     let data = dataLoading[idx];
-    //     if (data) {
-    //         timeline(animate('.loader-circle', { 'left': `${data.width}%` }, { duration: data.distance / 100, delay: (dataLoading[idx - 1].progression) / 100 })).finished.then(() => {
-    //             console.log("don")
-    //             loadingTo(dataLoading, idx + 1);
-    //         })
-    //     }
-    // }
-
     useEffect(() => {
         const counter = { value: 0 };
-        const ROOT_DURATION = 2.5;
+
         const ROOT_DELAY = 0.1;
         const loadingProgress = gsap.timeline({
             onComplete: () => {
                 loadingProgress.clear();
+                document.querySelector('.loader').classList.add('done-anim')
                 // onFinishIntro();
             }
         });
@@ -73,7 +62,7 @@ function GlobLoaderMain({ ...props }) {
                 .to('.loader-circle', { left: `${value}%`, duration: duration, ease: 'linear' })
                 .to(counter, {
                     value: value, duration: duration, ease: 'none', onUpdate: () => {
-                        setCounter(Math.round(counter.value))
+                        setCounter(Math.round(counter.value) < 10 ? `0${Math.round(counter.value)}`: Math.round(counter.value))
                 }}, '<=0');
         }
 
@@ -88,26 +77,17 @@ function GlobLoaderMain({ ...props }) {
         loadingProgress.duration(ROOT_DURATION);
         loadingProgress.delay(ROOT_DELAY);
 
-        document.querySelectorAll(".loader-circle-imgs-item").forEach((item, idx) => {
+        const allImgs = document.querySelectorAll(".loader-circle-imgs-item");
+        allImgs.forEach((item, idx) => {
             animate(item,
-                { opacity: [0, 1, 0] },
-                { duration: 1, delay: .5 * idx + .2, easing: [0.87, 0, 0.13, 1] }
+                { opacity: idx == allImgs.length - 1 ? [0, 1, 1] : idx == 0 ? [1, 1, 0] : [0, 1, 0]},
+                { duration: (ROOT_DURATION / allImgs.length) + .2, delay: idx * ((ROOT_DURATION / allImgs.length)), easing: 'ease-in-out' }
             )
         })
     }, []);
 
-    useEffect(() => {
-        let currPercent = parseInt(loaded / 10 * 100);
-        setPercent(currPercent < 10 ? `0${currPercent}` : currPercent);
-        if (!active) {
-            setTimeout(() => {
-                document.querySelector('.loader').classList.add('done-anim')
-            }, 2500);
-        }
-    }, [loaded]);
-
     return (
-        <div className='loader' ref={loaderRef} style={{'--progress': `${percent}%`}}>
+        <div className='loader' ref={loaderRef}>
             <div className="loader-wrap">
                 <div className="loader-line">
                     <div className="loader-logo">
@@ -127,11 +107,12 @@ function GlobLoaderMain({ ...props }) {
                             <div className="loader-circle-inner">
                                 <div className="loader-circle-inside"></div>
                                 <div className="loader-circle-imgs">
-                                    {[...Array(11)].map((item, idx) => (
+                                    {[...Array(12)].map((item, idx) => (
                                         <div
                                             key={idx}
                                             className='loader-circle-imgs-item'>
-                                            {props[`load${idx+1}`]}
+                                            {props[`load${idx + 1}`]}
+                                            {idx + 1}
                                         </div>
                                     ))}
                                 </div>
