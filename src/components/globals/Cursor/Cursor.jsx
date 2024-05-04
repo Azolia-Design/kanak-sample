@@ -61,8 +61,14 @@ function CursorMain({ ...props }) {
                             targetEl = document.querySelector('[data-cursor]:hover')
                         }
                         speed = .1
-                        targetX = targetEl.getBoundingClientRect().left - parseRem(8) - document.querySelector('.cursor-main-inner-dot').getBoundingClientRect().width / 2;;
-                        targetY = targetEl.getBoundingClientRect().top + targetEl.getBoundingClientRect().height / 2;
+                        if (targetEl.hasAttribute('data-cursor-txtlink-top')) {
+                            console.log('top')
+                            targetX = targetEl.getBoundingClientRect().left + targetEl.getBoundingClientRect().width / 2;
+                            targetY = targetEl.getBoundingClientRect().top + parseRem(4) - document.querySelector('.cursor-main-inner-dot').getBoundingClientRect().width / 2;
+                        } else {
+                            targetX = targetEl.getBoundingClientRect().left - parseRem(8) - document.querySelector('.cursor-main-inner-dot').getBoundingClientRect().width / 2;
+                            targetY = targetEl.getBoundingClientRect().top + targetEl.getBoundingClientRect().height / 2;
+                        }
                         break;
                     default:
                         break;

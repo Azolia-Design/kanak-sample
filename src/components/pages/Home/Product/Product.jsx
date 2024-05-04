@@ -84,8 +84,8 @@ function HomeProduct(props) {
                 </div>
             </div>
             <div className="home-prod-pdf">
-                <a href="/contact" className="home-prod-pdf-link">
-                    <div className="home-prod-pdf-link-ic">
+                <a href="/contact" className="btn-outline home-prod-pdf-link" data-cursor="hide">
+                    <div className="btn-outline-ic home-prod-pdf-link-ic">
                         <div className="ic ic-32">
                             {props.PDFIcon}
                         </div>

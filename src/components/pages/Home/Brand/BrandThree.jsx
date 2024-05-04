@@ -50,7 +50,7 @@ function Content({ ...props }) {
                     return (
                         <mesh key={idx} name={item.uid} position={[.016, .02, .284]} scale={[.8,.8,.8]} rotation={[0, -Math.PI * .5, 0]}>
                             <GetModel file='/glb/plates-80-transformed.glb' visible={props.top ? true : false}
-                                scale={[.82, .82, .82]}
+                                scale={[.86, .86, .86]}
                                 position={[-.03, 0, 0.01]}
                                 rotation={[Math.PI * 0, Math.PI * .6, Math.PI * .05]}
                             />
@@ -61,8 +61,8 @@ function Content({ ...props }) {
                 if (idx == 1) {
                     return (
                         <mesh key={idx} name={item.uid} position={[-.05, .1, -.1]} rotation={[Math.PI * .1, -Math.PI * .5, 0]}>
-                            <GetModel file='/glb/klamshell-79-transformed.glb' visible={props.top ? false : true}
-                                scale={[.86, .86, .86]}
+                            <GetModel file='/glb/klamshell-77-transformed.glb' visible={props.top ? false : true}
+                                scale={[.76, .76, .76]}
                                 position={[-.02, 0, 0]}
                                 rotation={[Math.PI * 0, Math.PI * -.7, Math.PI * .05]}
                             />

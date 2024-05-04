@@ -35,16 +35,19 @@ await Promise.all(
 		.map(async (data: any) => {
 			await Promise.all(
 				data.list.map(async (el: any) => {
-					await getByUID("product", el.product.uid).then((item) => {
-						productList.push({
-							...item,
-							category: data.name,
+					if (el.product.uid) {
+						await getByUID("product", el.product.uid).then((item) => {
+							productList.push({
+								...item,
+								category: data.name,
+							});
 						});
-					});
+					}
 				}),
 			);
 		}),
 );
+
 ---
 
 <KatalogMain

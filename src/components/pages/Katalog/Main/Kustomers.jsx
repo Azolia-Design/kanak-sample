@@ -16,7 +16,6 @@ function Kustomer({ isActive, children, onClick }) {
     )
 }
 
-
 function Kustomers({ list, filter, setFilter }) {
     const ref = useRef();
     const [isDropdown, setIsDropdown] = useState(false);

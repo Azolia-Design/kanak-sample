@@ -127,7 +127,7 @@ function PrivateCollection(props) {
                         <h5 className="heading h5 txt-black txt-up private-collection-btn-title">{props.btn}</h5>
                     </a>
                     <div className={`keen-slider private-collection-list`} ref={sliderRef}>
-                        <a href="#" className="btn private-collection-btn">
+                        <a href="/kustomers/retail#Sustainable" className="btn private-collection-btn">
                             <div className="private-collection-btn-ic">
                                 <div className="ic ic-40">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 40 40" fill="none">

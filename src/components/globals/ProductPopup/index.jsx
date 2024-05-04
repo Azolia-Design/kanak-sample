@@ -65,9 +65,9 @@ function ProductPopup({ data, isActive, setIsActive }) {
 
         if (document.querySelector('.popup-itemdtl-table')) {
             if (forceHeight > minHeight) {
-                document.querySelector('.popup-itemdtl-table').style.height = minHeight + 'px';
+                document.querySelector('.popup-itemdtl-table').style.height = minHeight + 1 + 'px';
             } else {
-                document.querySelector('.popup-itemdtl-table').style.height = forceHeight + 'px';
+                document.querySelector('.popup-itemdtl-table').style.height = forceHeight + 1 + 'px';
             }
         }
     }, [isActive, isValidData, data])

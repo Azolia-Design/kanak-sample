@@ -256,6 +256,10 @@
             display: block;
         }
 
+        .ic {
+            flex: none;
+        }
+
         &.isHide {
             opacity: 0;
             transform: translateY(-20%);
@@ -272,31 +276,62 @@
         flex-direction: column;
         margin-right: -0.1rem;
         transition: transform 400ms ease;
-
+        transform: translateY(-.6rem);
+        &:hover {
+            transform: none;
+            .header-cta-head, .header-cta-tail, .header-cta-body-bg {
+                filter: grayscale(1) brightness(.3);
+            }
+            .header-cta-body-txt {
+                transform: translateY(.6rem);
+            }
+        }
         &-head {
             position: relative;
             z-index: 2;
+            transition: all 400ms ease;
         }
 
         &-tail {
             position: relative;
             z-index: 2;
+            transition: all 400ms ease;
         }
 
         &-body {
             position: relative;
             z-index: 3;
             margin: -1px 0;
-            background-repeat: repeat-y;
-            background-position: top left;
-            background-size: 100% auto;
-            width: 100%;
             writing-mode: vertical-rl;
-            display: flex;
             align-items: center;
             justify-content: center;
-            padding: 1.3rem 0 1.6rem;
             color: var(--cl-white);
+            display: grid;
+            &-bg {
+                grid-column: 1/2;
+                grid-row: 1/2;
+                background-repeat: repeat-y;
+                background-position: top left;
+                background-size: 100% auto;
+                width: 100%;
+                z-index: 1;
+                position: relative;
+                transition: all 400ms ease;
+            }
+            &-txt {
+                grid-column: 1/2;
+                grid-row: 1/2;
+                z-index: 2;
+                position: relative;
+                padding: 1.3rem 0 1.6rem;
+                transition: all 400ms ease;
+                .txt-kanak {
+                    vertical-align: text-bottom;
+                    margin-right: -.2rem;
+                    display: inline-block;
+                    font-weight: 400;
+                }
+            }
         }
 
         @include md {

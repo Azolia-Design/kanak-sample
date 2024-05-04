@@ -185,11 +185,11 @@ button {
     }
 
     &::before {
-        background-color: #96410D;
+        background-color: var(--cl-orange-dark);
     }
 
     &::after {
-        background-color: #181818;
+        background-color: var(--cl-bg-dark);
     }
 
     @media (hover: hover) {
@@ -230,6 +230,54 @@ button {
 
     &-wide {
         width: 100%;
+    }
+}
+.btn-outline {
+    position: relative;
+    overflow: hidden;
+    &::before,
+    &::after {
+        content: '';
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        bottom: 100%;
+        top: 0;
+        left: -100%;
+        z-index: -1;
+        @include transition(transform 0.3s cubic-bezier(0.75, 0, 0.125, 1));
+    }
+
+    &::before {
+        background-color: var(--cl-orange-dark);
+    }
+
+    &::after {
+        background-color: var(--cl-orange);
+    }
+    &-ic {
+        height: 7.2rem;
+        margin: -.1rem 0;
+    }
+    @media (hover: hover) {
+        @include md-up {
+            &:hover {
+                color: var(--cl-white);
+                border-color: var(--cl-orange);
+                &::before,
+                &::after {
+                    @include transform(translate3d(100%, 0, 0));
+                }
+    
+                &::after {
+                    transition-duration: .38s;
+                    @include transition-delay(0.08s);
+                }
+                .btn-outline-ic {
+                    border-color: var(--cl-bg);
+                }
+            }
+        }
     }
 }
 

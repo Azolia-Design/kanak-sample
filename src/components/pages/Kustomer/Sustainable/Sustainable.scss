@@ -87,10 +87,6 @@
             padding: 0;
             color: var(--cl-txt);
             transition: all 400ms ease;
-            &:hover {
-                color: var(--cl-orange);
-                border-color: var(--cl-orange);
-            }
 
             &-ic {
                 position: relative;

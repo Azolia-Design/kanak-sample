@@ -261,12 +261,15 @@ function HeaderGlobal(props) {
             </div>
             <div className={cn("header header-div-sub", { "on-hide": isHide })}>
                 <div className="container grid">
-                    <a href="/contact" className="header-cta" data-cursor="hide">
+                    <a href="/contact" className="header-cta" data-cursor="txtLink" data-cursor-txtlink="child">
                         <div className="header-cta-head">
                             {props.headFlag}
                         </div>
-                        <div className='txt txt-16 txt-up txt-black header-cta-body' style={{ backgroundImage: `url('${props.bodyFlag}')` }}>
-                            Kontact us
+                        <div className='header-cta-body'>
+                            <div className="txt txt-16 txt-up txt-med header-cta-body-txt" data-cursor-txtlink-child data-cursor-txtlink-top>
+                                <span className="txt-kanak">K</span>ontact us
+                            </div>
+                            <div className="header-cta-body-bg" style={{ backgroundImage: `url('${props.bodyFlag}')` }}></div>
                         </div>
                         <div className="header-cta-tail">
                             {props.tailFlag}
@@ -293,7 +296,7 @@ function HeaderGlobal(props) {
                                     <a href="https://maps.app.goo.gl/YxM91MZmzBCW5F1C6" target='_blank' className="heading h6 txt-black txt-up nav-info-item-content">321 Hovan Drive, Fort Wayne, IN 46825, US</a>
                                 </div>
                                 <a href="/contact" className="btn btn-lg btn-wide nav-info-btn">
-                                    <div className="heading txt-16 txt-black txt-up">Request a quote</div>
+                                    <div className="heading txt-16 txt-black txt-up">Kontact us</div>
                                 </a>
                             </div>
                             <div className="txt txt-16 txt-semi nav-info-footer">⁠©⁠ {props.currYear} KANAK NATURALS </div>
