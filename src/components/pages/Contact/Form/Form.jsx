@@ -12,71 +12,115 @@ function ContactForm(props) {
     const [isPending, startTransition] = useTransition();
     const [isSubmitted, setIsSubmitted] = useState()
     const [formData, setFormData] = useState({
-        firstName: "",
-        lastName: "",
+        firstname: "",
+        lastname: "",
         email: "",
         phone: "",
         company: "",
         industry: "",
         message: "",
     });
+    
     const [icon, setIcon] = useState('submit');
     const debounceForm = useDebounceCallback(setFormData, 200);
 
+    function mapFormToObject(ele) {
+        console.log('ele: ' + ele)
+        return ([...new FormData(ele).entries()].reduce(
+            (prev, cur) => {
+                const name = cur[0];
+                const val = cur[1];
+                return { ...prev, [name]: val };
+            },
+            {}
+        ));
+    }
+    function transformDataToObjectArray(data) {
+        let fields = [];
+        for (let key in data) {
+            if (data.hasOwnProperty(key)) {
+                fields.push({
+                    name: key,
+                    value: data[key]
+                });
+            }
+        }
+        return fields;
+    }
     const onSubmit = (e) => {
         e.preventDefault();
         let src = window.location.search
         console.log(src)
-        // startTransition(async () => {
-        //     const response = await fetch("fake/api", {
-        //         method: "POST",
-        //         body: JSON.stringify({
-        //             data: formData,
-        //             subject: "Kanak Kanak",
-        //         }),
-        //     })
-
-        //     if (!response.ok) {
-        //         switch (response.status) {
-        //         case 409:
-        //             console.log("You are already subscribed to our newsletter.")
-        //             break
-        //         case 422:
-        //             console.log("Invalid input.")
-        //             break
-        //         case 429:
-        //             console.log("The daily email limit has been reached.")
-        //             break
-        //         case 500:
-        //             console.log("Something went wrong. Please try again later.")
-        //             break
-        //         default:
-        //             console.log("Something went wrong. Please try again later.")
-        //         }
-        //         return
-        //     }
-        //     setIsSubmitted(true)
-        //     form.reset()
-        // })
-        // Demo interaction
-        setIcon('load')
-        setTimeout(() => {
+        let portalId = '44370442';
+        let formId = 'df61385f-407b-46c3-9488-02be9f60f1d5';
+        const dataSend = {
+            fields: transformDataToObjectArray(mapFormToObject(e.target)),
+            context: {
+                pageUri: window.location.href,
+                pageName: 'Contact page',
+            },
+        }
+        startTransition(async () => {
+            const response = await fetch(`https://api.hsforms.com/submissions/v3/integration/submit/${portalId}/${formId}`, {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                    'Access-Control-Allow-Origin': '*',
+                },
+                body: JSON.stringify(dataSend),
+            })
+            console.log(JSON.stringify(dataSend))
+            console.log(response)
+            if (!response.ok) {
+                switch (response.status) {
+                case 409:
+                    console.log("You are already subscribed to our newsletter.")
+                    break
+                case 422:
+                    console.log("Invalid input.")
+                    break
+                case 429:
+                    console.log("The daily email limit has been reached.")
+                    break
+                case 500:
+                    console.log("Something went wrong. Please try again later.")
+                    break
+                default:
+                    console.log("Something went wrong. Please try again later.")
+                }
+                return
+            }
             setIcon('success')
             setIsSubmitted(true)
             animOnSuccess()
-            //form.reset()
-        }, 2000);
+            
+            // form.reset()
+        })
+        // Demo interaction
+        setIcon('load')
+        // setTimeout(() => {
+        //     setIcon('success')
+        //     setIsSubmitted(true)
+        //     animOnSuccess()
+        //     //form.reset()
+        // }, 2000);
     }
     useEffect(() => {
         // console.log(formData);
     }, [JSON.stringify(formData)]);
     function animOnSuccess() {
         animate('.contact-form-head-title-main .word', {opacity: 0, transform: 'translateY(-100%)'}, {duration: .8, delay: stagger(.06)})
-        animate('.contact-form-head-sub .word', {opacity: 0, transform: 'translateY(-100%)'}, {duration: .6, delay: stagger(.04), at: .1})
         const title = new SplitType('.contact-form-head-title-suc', {types: 'lines,words', lineClass: 'split-line'})
         const body = new SplitType('.contact-form-success-body', {types: 'lines,words', lineClass: 'split-line'})
 
-        animate([...title.words, ...body.words], {opacity: 0, transform: 'translateY(100%)'}, {duration: 0})
+        animate([...title.words, ...body.words], {opacity: 0, transform: 'translateY(100%)'}, {duration: 0}).finished.then(() => {
+            setTimeout(() => {
+                if (window.location.search.includes('download')) {
+                    window.location.href = '/Kanak_Catalog_Print_spreads.pdf'
+                }
+            }, 1000);
+        })
         requestAnimationFrame(() => {
             animate(title.words , {opacity: 1, transform: 'none'}, {duration: .8, delay: stagger(.06), at: 0}).finished.then(() => {
                 title.revert()
@@ -90,9 +134,11 @@ function ContactForm(props) {
     useEffect(() => {
         let src = window.location.search
         if (src.includes('request')) {
-            console.log('request')
             document.querySelector('.input-src').value = 'Request a Quote'
+        } else if (src.includes('download')) {
+            document.querySelector('.input-src').value = 'Download Catalog'
         }
+        // /Kanak_Catalog_Print_spreads.pdf
         console.log(document.querySelector('.input-src').value)
         animate('.contact-form-main > .line-ver', {scaleY: 0, transformOrigin: 'top'}, {duration: 0})
         const title = new SplitType('.contact-form-head-title-main', {types: 'lines,words', lineClass: 'split-line'})
@@ -195,8 +241,9 @@ function ContactForm(props) {
                                 <FormItem className='contact-form-field' onFocus={() => setIcon('avatar')}onBlur={() => setIcon('submit')}>
                                     <Input
                                         placeholder=" "
-                                        defaultValue={formData.firstName}
-                                        onChange={(e) => debounceForm({ ...formData, firstName: e.target.value })}
+                                        defaultValue={formData.firstname}
+                                        name="firstname"
+                                        onChange={(e) => debounceForm({ ...formData, firstname: e.target.value })}
                                     />
                                     <FormLabel>First Name</FormLabel>
                                 </FormItem>
@@ -205,8 +252,9 @@ function ContactForm(props) {
                                 <FormItem className='contact-form-field' onFocus={() => setIcon('avatar')}onBlur={() => setIcon('submit')}>
                                     <Input
                                         placeholder=" "
-                                        defaultValue={formData.lastName}
-                                        onChange={(e) => debounceForm({ ...formData, lastName: e.target.value })}
+                                        defaultValue={formData.lastname}
+                                        name="lastname"
+                                        onChange={(e) => debounceForm({ ...formData, lastname: e.target.value })}
                                     />
                                     <FormLabel>Last Name</FormLabel>
                                 </FormItem>
@@ -217,6 +265,7 @@ function ContactForm(props) {
                                         type="email"
                                         placeholder=" "
                                         defaultValue={formData.email}
+                                        name="email"
                                         onChange={(e) => debounceForm({ ...formData, email: e.target.value })}
                                     />
                                     <FormLabel>Email Address</FormLabel>
@@ -228,6 +277,7 @@ function ContactForm(props) {
                                         type="tel"
                                         placeholder=" "
                                         defaultValue={formData.phone}
+                                        name="phone"
                                         onChange={(e) => debounceForm({ ...formData, phone: e.target.value })}
                                     />
                                     <FormLabel>Phone number</FormLabel>
@@ -238,6 +288,7 @@ function ContactForm(props) {
                                     <Input
                                         placeholder=" "
                                         defaultValue={formData.company}
+                                        name="company"
                                         onChange={(e) => debounceForm({ ...formData, company: e.target.value })}
                                     />
                                     <FormLabel>Company</FormLabel>
@@ -248,6 +299,7 @@ function ContactForm(props) {
                                     <Select
                                         value={formData.industry}
                                         onChange={(val) => debounceForm({ ...formData, industry: val })}
+                                        name="industry"
                                         options={props.list?.map((item) => item.data.title)}
                                     />
                                     <FormLabel>Industry</FormLabel>
@@ -259,6 +311,7 @@ function ContactForm(props) {
                                         placeholder=" "
                                         rows="6"
                                         defaultValue={formData.message}
+                                        name="message"
                                         onChange={(e) => debounceForm({ ...formData, message: e.target.value })}
                                     />
                                     <FormLabel>How can I help you?</FormLabel>
@@ -276,7 +329,7 @@ function ContactForm(props) {
                         </form>
                         <div className={`contact-form-success ${isSubmitted ? 'active' : ''}`}>
                             <div className="heading h4 txt-black txt-up contact-form-success-body">
-                                <div>Thanks {formData.firstName} {formData.lastName},</div>
+                                <div>Thanks {formData.firstname} {formData.lastname},</div>
                                 <div>Your message has been sent. we will check it and respond to you as soon as possible. <br/>Hope to work with you in the future.</div>
                                 <div className='h6 contact-form-success-body-regard'>Regards,</div>
                                 <div>Kanak naturals team</div>
