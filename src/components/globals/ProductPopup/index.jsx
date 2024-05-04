@@ -50,26 +50,26 @@ function ProductPopup({ data, isActive, setIsActive }) {
 
     useEffect(() => {
         if (!isValidData) return;
-        let totalHeight = 0
-        let forceHeight = 0
-        let minHeight = 0
-        if (window.innerWidth > 991) {
-            minHeight = window.innerHeight - ut.parseRem(400) - ut.parseRem(112.8) - document.querySelector('.popup-itemdtl-content-title')?.clientHeight;
-        } else if (window.innerWidth > 767) {
-            minHeight = window.innerHeight - ut.parseRem(80) - ut.parseRem(190) - document.querySelector('.popup-itemdtl-content-title')?.clientHeight;
-        }
-        document.querySelectorAll('.popup-itemdtl-table-item-inner .popup-itemdtl-table-item')?.forEach((item, idx) => {
-            totalHeight += item.clientHeight + ut.parseRem(2)
-        })
-        forceHeight = (window.innerWidth > 991 ? ut.parseRem(33) : 0) + totalHeight;
+        // let totalHeight = 0
+        // let forceHeight = 0
+        // let minHeight = 0
+        // if (window.innerWidth > 991) {
+        //     minHeight = window.innerHeight - ut.parseRem(400) - ut.parseRem(112.8) - document.querySelector('.popup-itemdtl-content-title')?.clientHeight;
+        // } else if (window.innerWidth > 767) {
+        //     minHeight = window.innerHeight - ut.parseRem(80) - ut.parseRem(190) - document.querySelector('.popup-itemdtl-content-title')?.clientHeight;
+        // }
+        // document.querySelectorAll('.popup-itemdtl-table-item-inner .popup-itemdtl-table-item')?.forEach((item, idx) => {
+        //     totalHeight += item.clientHeight + ut.parseRem(2)
+        // })
+        // forceHeight = (window.innerWidth > 991 ? ut.parseRem(33) : 0) + totalHeight;
 
-        if (document.querySelector('.popup-itemdtl-table')) {
-            if (forceHeight > minHeight) {
-                document.querySelector('.popup-itemdtl-table').style.height = minHeight + 1 + 'px';
-            } else {
-                document.querySelector('.popup-itemdtl-table').style.height = forceHeight + 1 + 'px';
-            }
-        }
+        // if (document.querySelector('.popup-itemdtl-table')) {
+        //     if (forceHeight > minHeight) {
+        //         document.querySelector('.popup-itemdtl-table').style.height = minHeight + 1 + 'px';
+        //     } else {
+        //         document.querySelector('.popup-itemdtl-table').style.height = forceHeight + 1 + 'px';
+        //     }
+        // }
     }, [isActive, isValidData, data])
 
     useEffect(() => {
@@ -83,7 +83,7 @@ function ProductPopup({ data, isActive, setIsActive }) {
     return (
         isValidData ? <>
             <div className={cn('popup', { "active": isActive })}>
-                <div className="container grid">
+                <div className="container">
                     <div className="popup-itemdtl" ref={ref}>
                         <button className="popup-itemdtl-btn" onClick={closePopup}>
                             <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 40 40" fill="none" className="ic ic-40">
@@ -155,7 +155,7 @@ function ProductPopup({ data, isActive, setIsActive }) {
                                             <div className="popup-itemdtl-table-dtl">Details</div>
                                             <div className="popup-itemdtl-table-model">3D Model</div>
                                         </div>
-                                        <div className="popup-itemdtl-table-item-wrap" data-lenis-prevent="#">
+                                        <div className="popup-itemdtl-table-item-wrap" data-lenis-prevent>
                                             <div className="popup-itemdtl-table-item-inner">
                                                 {data.variants?.map((item, idx) => (
                                                     <div className="txt txt-16 txt-med popup-itemdtl-table-item" key={idx}>

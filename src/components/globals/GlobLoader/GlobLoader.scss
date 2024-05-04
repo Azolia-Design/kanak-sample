@@ -62,7 +62,7 @@
         align-items: center;
         justify-content: center;
         left: var(--progress);
-        transition: left 1600ms ;
+        transition: left .45s ease-out;
         z-index: 2;
         &-inner {
             transition: all 2000ms ease;
@@ -84,7 +84,7 @@
             border: .4rem solid var(--cl-txt);
         }
         &-imgs {
-            transition: all 2000ms ease;
+            transition: all .3s ease;
             position: absolute;
             width: 20.4rem;
             height: 20.4rem;

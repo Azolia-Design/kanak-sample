@@ -2,17 +2,23 @@
 @use '@styles/colors' as *;
 
 .popup {
-    position: fixed;
-    top: 0;
-    left: 0;
-    @include size(100vw, 100vh);
-    background: rgba(0, 0, 0, 0.90);
+    background-color: rgba(0, 0, 0, .9);
+    bottom: 0;
     display: flex;
+    justify-content: center;
     align-items: center;
+    height: 100vh;
+    left: 0;
+    max-height: 100vh;
     opacity: 0;
-    z-index: 999;
+    padding: 6.5vh 0;
     pointer-events: none;
-    transition: opacity .4s ease;
+    position: fixed;
+    right: 0;
+    top: 0;
+    transition: opacity .35s ease-out;
+    width: 100%;
+    z-index: 100;
 
     @include sm {
         height: 100dvh;
@@ -24,12 +30,10 @@
         pointer-events: auto;
     }
 
-    .container.grid {
-        @include sm {
-            height: 100%;
-            max-height: 100%;
-
-        }
+    .container {
+        display: flex;
+        align-items: center;
+        height: 100%;
     }
 
     &-itemdtl {
@@ -39,6 +43,9 @@
         grid-column: 2/16;
         background-color: var(--cl-bg);
         opacity: 1;
+        height: 100%;
+        width: 140.4rem;
+        margin: 0 auto;
 
         @include md {
             grid-column: 1/-1;
@@ -60,8 +67,13 @@
                 display: grid;
                 grid-template-columns: repeat(14, 1fr);
                 column-gap: var(--grid-gap);
-                padding: 7.9rem 0;
-                max-height: calc(100vh - var(--padding-2side)*2);
+                height: 100%;
+                @media (max-height: 650px) {
+                    padding: 10dvh 0;
+                }
+                @media (min-height: 650px) {
+                    padding: 7.9rem 0;
+                }
 
                 @include md {
                     padding: 5rem 0;
@@ -92,6 +104,9 @@
                 margin-bottom: 4rem;
             }
         }
+        &-wrap {
+            height: 100%;
+        }
 
         &-btn {
             position: absolute;
@@ -99,6 +114,22 @@
             top: 3rem;
             right: 3rem;
             transition: color .4s ease;
+            @media (max-height: 650px) {
+                top: 5vh;
+                right: 5vh;
+            }
+            @media (min-height: 650px) {
+                top: 3rem;
+                right: 3rem;
+            }
+            svg {
+                @media (max-height: 650px) {
+                    @include size(8vh);
+                }
+                @media (min-height: 650px) {
+                    @include size(4rem);
+                }
+            }
 
             @include md {
                 top: 1rem;
@@ -119,13 +150,12 @@
         }
 
         &-card {
-            grid-column: 2/6;
-            border: .2rem solid var(--cl-txt);
+            grid-column: 2 / 6;
             margin-left: calc(var(--grid-gap)* -1);
             align-self: center;
-            height: 100%;
-            height: fit-content;
             display: flex;
+            height: 100%;
+            overflow: hidden;
             flex-direction: column;
 
             @include md {
@@ -149,6 +179,9 @@
                 max-height: 46.9rem;
                 flex: 1;
                 cursor: grab;
+                overflow: hidden;
+                border: 0.2rem solid var(--cl-txt);
+                align-content: center;
 
                 // @include md {
                 //     aspect-ratio: 0.7894736842;
@@ -196,8 +229,9 @@
 
             &-bottom {
                 display: flex;
-                border-top: .2rem solid var(--cl-txt);
                 justify-content: space-between;
+                border: 0.2rem solid var(--cl-txt);
+                border-top: none;
             }
 
             &-pagi {
@@ -257,6 +291,7 @@
             display: flex;
             flex-direction: column;
             height: 100%;
+            overflow: hidden;
 
             @include md {
                 grid-column: 6/12;
@@ -273,9 +308,15 @@
 
             &-title {
                 max-width: 69.4rem;
-                margin-top: 4.2rem;
-                margin-bottom: 4rem;
-
+                @media (max-height: 650px) {
+                    margin-top: 0;
+                    margin-bottom: 2rem;
+                    font-size: max(min(3.2rem, 1em), 8vh);
+                }
+                @media (min-height: 650px) {
+                    margin-top: 4.2rem;
+                    margin-bottom: 4rem;
+                }
                 @include md {
                     max-width: none;
                     margin-top: unset;
@@ -291,10 +332,10 @@
         &-table {
             display: flex;
             flex-direction: column;
-            // flex: 1;
-            height: 100%;
+            flex: 1;
+            overflow: hidden;
+            // height: 100%;
             border-bottom: .2rem solid var(--cl-txt);
-
 
             @include md {
                 border-top: .2rem solid var(--cl-txt);
@@ -311,7 +352,7 @@
             &-item-div {
                 display: grid;
                 max-width: 100%;
-                grid-template-columns: 13.1% 9.5% 11.6% 16% 34% 1fr;
+                grid-template-columns: 13.1% 9.5% 11.6% 16% 32.5% 1fr;
                 column-gap: 1rem;
                 border-bottom: .2rem solid var(--cl-txt);
             }
@@ -325,7 +366,7 @@
             }
 
             &-item-wrap {
-                flex: 1 1 auto;
+                flex: 1;
                 overflow-y: auto;
                 @include custom-scroll(.5rem, transparent, var(--cl-orange));
 
