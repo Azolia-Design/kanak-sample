@@ -7,6 +7,7 @@ import Select from './Select';
 import useDebounceCallback from '@hooks/useDebounce';
 import SplitType from 'split-type'
 import { animate, inView, stagger, timeline } from 'motion';
+import { getLenis } from '@/components/core/lenis';
 
 function ContactForm(props) {
     const [isPending, startTransition] = useTransition();
@@ -115,11 +116,12 @@ function ContactForm(props) {
         const body = new SplitType('.contact-form-success-body', {types: 'lines,words', lineClass: 'split-line'})
 
         animate([...title.words, ...body.words], {opacity: 0, transform: 'translateY(100%)'}, {duration: 0}).finished.then(() => {
+            getLenis().scrollTo(0)
             setTimeout(() => {
                 if (window.location.search.includes('download')) {
                     window.location.href = '/Kanak_Catalog_Print_spreads.pdf'
                 }
-            }, 1000);
+            }, 600);
         })
         requestAnimationFrame(() => {
             animate(title.words , {opacity: 1, transform: 'none'}, {duration: .8, delay: stagger(.06), at: 0}).finished.then(() => {
