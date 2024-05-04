@@ -25,6 +25,8 @@ function ContactForm(props) {
 
     const onSubmit = (e) => {
         e.preventDefault();
+        let src = window.location.search
+        console.log(src)
         // startTransition(async () => {
         //     const response = await fetch("fake/api", {
         //         method: "POST",
@@ -86,11 +88,16 @@ function ContactForm(props) {
 
     }
     useEffect(() => {
+        let src = window.location.search
+        if (src.includes('request')) {
+            console.log('request')
+            document.querySelector('.input-src').value = 'Request a Quote'
+        }
+        console.log(document.querySelector('.input-src').value)
         animate('.contact-form-main > .line-ver', {scaleY: 0, transformOrigin: 'top'}, {duration: 0})
         const title = new SplitType('.contact-form-head-title-main', {types: 'lines,words', lineClass: 'split-line'})
-        const sub = new SplitType('.contact-form-head-sub', {types: 'lines,words', lineClass: 'split-line'})
         const submit = new SplitType('.contact-form-submit .heading', {types: 'lines,words', lineClass: 'split-line'})
-        animate([...title.words, ...sub.words, ...submit.words], {opacity: 0, transform: 'translateY(100%)'}, {duration: 0})
+        animate([...title.words, ...submit.words], {opacity: 0, transform: 'translateY(100%)'}, {duration: 0})
         animate('.contact-form-line, .contact-form-head .line', {scaleX: 0, transformOrigin: 'left'}, {duration: 0})
         animate('.contact-form-ic.active img, .contact-form-submit img', {opacity: 0, scale: .8}, {duration: 0})
         const allItems = document.querySelectorAll('.contact-form-field')
@@ -98,7 +105,6 @@ function ContactForm(props) {
             ['.contact-form-line', {scaleX: 1}, {duration: 1}],
             ['.contact-form-main > .line-ver', {scaleY: 1}, {duration: 1, at: .1}],
             [title.words , {opacity: 1, transform: 'none'}, {duration: .8, delay: stagger(.06), at: .2}],
-            [sub.words , {opacity: 1, transform: 'none'}, {duration: .6, delay: stagger(.04), at: .3}],
             ['.contact-form-head .line', {scaleX: 1}, {duration: .8, at: .1}],
             ['.contact-form-ic.active img', {opacity: 1, scale: 1}, {duration: 1, at: .1}],
             [submit.words, {opacity: 1, transform: 'none'}, {duration: .8, at: ((allItems.length - 1) * .1) + .3}],
@@ -122,7 +128,6 @@ function ContactForm(props) {
         inView('.contact-form', () => {
             timeline(sequence).finished.then(() => {
                 // title.revert()
-                // sub.revert()
                 submit.revert()
                     document.querySelector('.contact-form-main > .line-ver').removeAttribute('style')
                     document.querySelector('.contact-form-line').removeAttribute('style')
@@ -177,7 +182,7 @@ function ContactForm(props) {
                     <div className={`contact-form-head ${isSubmitted ? 'submitted' : ''}`}>
                         <div className='contact-form-head-wrap contact-form-head-wrap-main'>
                             <h3 className="heading h3 txt-black txt-up contact-form-head-title contact-form-head-title-main">{props.title}</h3>
-                            <p className="heading h6 txt-black txt-up contact-form-head-sub">{props.sub_title}</p>
+                            <p className="heading h6 txt-black txt-up contact-form-head-sub">{props.sub_title && props.sub_title}</p>
                         </div>
                         <div className='contact-form-head-wrap contact-form-head-wrap-sub'>
                             <div className="heading h3 txt-up txt-black contact-form-head-title contact-form-head-title-suc">Successfully sent!</div>
@@ -259,6 +264,7 @@ function ContactForm(props) {
                                     <FormLabel>How can I help you?</FormLabel>
                                 </FormItem>
                             </FormField>
+                            <input type="text" name='source' hidden className='input-hidden input-src'/>
                             <button
                                 type="submit"
                                 disabled={isPending}

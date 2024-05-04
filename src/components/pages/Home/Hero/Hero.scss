@@ -91,8 +91,12 @@
             justify-content: center;
             border-top: none;
             border-left: none;
+            transition: color 400ms ease;
             @include md {
                 padding: 1.2rem;
+            }
+            &:hover {
+                color: var(--cl-orange);
             }
         }
     }

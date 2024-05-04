@@ -198,7 +198,7 @@ function KatalogMain({ allItem, ...props }) {
                         <div className="katalog-main-filter-list">
                             <Kustomers list={props.kustomerList} filter={filter} setFilter={setFilter} />
                             <div className="katalog-main-filter-list-pdf-wrap">
-                                <a href="/contact" className="btn katalog-main-filter-list-pdf" data-cursor="txtLink" data-cursor-txtlink="child">
+                                <a href="/Kanak_Catalog_Print_spreads.pdf" className="btn katalog-main-filter-list-pdf" data-cursor="txtLink" data-cursor-txtlink="child">
                                     <div className="line line-ver line-left"></div>
                                     <div className="txt txt-20 txt-med katalog-main-filter-list-pdf-txt" data-cursor-txtlink-child>Download Catalog</div>
                                 </a>

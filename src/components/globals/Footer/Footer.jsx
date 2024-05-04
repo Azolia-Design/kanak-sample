@@ -56,7 +56,7 @@ const MenuColumn = ({ title, children, tail, tail_link, isOpen, onClick, onClick
             <div className="ft-tail">
                 <div className="line line-top"></div>
                 {tail_link ? (
-                    <a href={tail_link} className="txt txt-12 txt-bold txt-up ft-right-tail-link txt-link">
+                    <a href={tail_link} target='_blank' className="txt txt-12 txt-bold txt-up ft-right-tail-link txt-link">
                         {tail}
                     </a>
                 ) : (
@@ -125,8 +125,8 @@ function GlobalFooter(props) {
                 <div className="ft-right">
                     <MenuColumn
                         title="Products & Services"
-                        tail_link="/terms-and-conditions"
-                        tail="Terms & Conditions"
+                        tail_link="https://app.termly.io/document/terms-of-service/89061706-a2a2-4217-a4aa-a53ba72a4334"
+                        tail="Terms of Use"
                         isOpen={activeIndex === 0}
                         onClick={() => accordionClick(0)}
                     >
@@ -137,7 +137,7 @@ function GlobalFooter(props) {
                     </MenuColumn>
                     <MenuColumn
                         title="Kustomers"
-                        tail_link="/privacy-policy"
+                        tail_link="https://app.termly.io/document/privacy-policy/319e0d22-20e7-449c-a002-bf22aa177cb8"
                         tail="Privacy Policy"
                         isOpen={activeIndex === 1}
                         onClick={() => accordionClick(1)}
@@ -165,9 +165,9 @@ function GlobalFooter(props) {
                 </div>
                 <div className='ft-copyright-mb'>
                     <div className="txt txt-12 txt-bold ft-copyright-mb-wrap">
-                        <a href="/terms-and-conditions" className="txt-link ft-copyright-mb-link">TERMS & CONDITIONS</a>
+                        <a href="https://app.termly.io/document/terms-of-service/89061706-a2a2-4217-a4aa-a53ba72a4334" target='_blank' className="txt-link ft-copyright-mb-link">TERMS of use</a>
                         <span className="ft-copyright-mb-div">-</span>
-                        <a href="/privacy-policy" className="txt-link ft-copyright-mb-link">PRIVACY POLICY</a>
+                        <a href="https://app.termly.io/document/privacy-policy/319e0d22-20e7-449c-a002-bf22aa177cb8" target='_blank' className="txt-link ft-copyright-mb-link">PRIVACY POLICY</a>
                     </div>
                     <CopyRight>{props.currYear}</CopyRight>
                 </div>

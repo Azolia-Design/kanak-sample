@@ -39,7 +39,7 @@ function GlobalCTA(props) {
                     </div>
                     <div className="global-cta-main-tail">
                         <div className="line"></div>
-                        <a href="/contact" className="btn btn-lg btn-wide global-cta-main-tail-btn" data-cursor="txtLink" data-cursor-txtlink="child">
+                        <a href="/contact?src=request" className="btn btn-lg btn-wide global-cta-main-tail-btn" data-cursor="txtLink" data-cursor-txtlink="child">
                             <div className="txt txt-18 txt-med txt-up" data-cursor-txtlink-child>
                                 Request a quote
                             </div>

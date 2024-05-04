@@ -27,7 +27,6 @@ export async function getStaticPaths() {
 
 const { kustomer } = Astro.params;
 const { item } = Astro.props;
-console.log(item)
 const homeData = await getPage("home");
 
 const serviceItem = [];

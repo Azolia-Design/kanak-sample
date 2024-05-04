@@ -48,11 +48,11 @@ function HomeHero(props) {
                             <div className="txt txt-18 txt-med txt-up" data-cursor-txtlink-child=''><span className="txt-kanak">K</span>ontact us</div>
                         </a>
                     </div>
-                    <button onClick={() => scrollDown()} className="home-hero-sub-cta-wrap" data-cursor="txtLink" data-cursor-txtlink="child">
-                        <div className="txt txt-18 txt-med" data-cursor-txtlink-child>
+                    <div className="home-hero-sub-cta-wrap">
+                        <button onClick={() => scrollDown()} className="txt txt-18 txt-med txt-link" data-cursor="txtLink">
                             Scroll <span className="hide-dk">Down</span><span className="hide-mb">to Explore</span>
-                        </div>
-                    </button>
+                        </button>
+                    </div>
                 </div>
                 {props.badgeMb}
             </div>
