@@ -5,7 +5,7 @@ import icArrExt from "@assets/ext-arr-menu.svg?raw";
 import abtWhyImg from "@assets/abt-why.jpg";
 ---
 
-<AboutWhy {...Astro.props} client:visible={{ rootMargin: "100% 0px 100% 0px" }}>
+<AboutWhy {...Astro.props} client:visible={{ rootMargin: "200% 0px 200% 0px" }}>
   <Fragment set:html={icArrExt} slot="icArrExt"/>
   <Image src={abtWhyImg} alt="" slot="whyImg" class="img-fill"/>
 </AboutWhy>

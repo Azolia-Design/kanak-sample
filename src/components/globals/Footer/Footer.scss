@@ -314,8 +314,9 @@
 
             @include sm {
                 display: flex;
-                column-gap: 1.2rem;
+                column-gap: 2rem;
                 justify-content: center;
+                padding-block: 2rem;
             }
         }
 

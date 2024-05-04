@@ -15,7 +15,7 @@ import icSuccess from "@assets/contact-form-success.svg";
 import icArrowUpRight from "@assets/arrow-up-right.svg"
 const industryList = await getAllByType('industry')
 ---
-<ContactForm list={industryList} {...Astro.props} client:visible={{rootMargin: "100% 0px 100% 0px"}}>
+<ContactForm list={industryList} {...Astro.props} client:visible={{rootMargin: "200% 0px 200% 0px"}}>
     <Image src={icAvatar} alt="" slot="icAvatar"/>
     <Image src={icEmail} alt="" slot="icEmail"/>
     <Image src={icSubmit} alt="" slot="icSubmit"/>

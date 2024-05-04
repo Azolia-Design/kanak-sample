@@ -80,7 +80,7 @@ function HomeCompare(props) {
                     itemSubTitle.revert();
                     itemSub.revert();
                 })
-            }, { margin: "-20% -15% -20% -15%" })
+            }, { margin: "-5% -15% -5% -15%" })
         })
     }, [loaded])
 

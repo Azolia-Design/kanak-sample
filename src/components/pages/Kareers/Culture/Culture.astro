@@ -4,7 +4,7 @@ import KareerCulture from './Culture.jsx'
 import kareerCultItem from '@assets/kareer-cult-item.jpg';
 import { convertHighlight } from '@/components/utils/text';
 ---
-<KareerCulture {...Astro.props} client:visible={{rootMargin: "100% 0px 100% 0px"}}>
+<KareerCulture {...Astro.props} client:visible={{rootMargin: "200% 0px 200% 0px"}}>
     <Fragment set:html={convertHighlight(Astro.props.title)} slot="title" />
     <Image src={kareerCultItem} alt='' slot='itemImg' class='img img-h'/>
 </KareerCulture>

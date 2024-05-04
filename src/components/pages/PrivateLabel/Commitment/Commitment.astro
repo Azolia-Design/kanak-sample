@@ -6,7 +6,7 @@ import { convertHighlight } from "@/components/utils/text";
 
 <PrivateCommitment
     {...Astro.props}
-    client:visible={{ rootMargin: "100% 0px 100% 0px" }}
+    client:visible={{ rootMargin: "200% 0px 200% 0px" }}
 >
     <Fragment set:html={convertHighlight(Astro.props.title)} slot="newTitle" />
     <Fragment slot="renderList">

@@ -21,7 +21,7 @@ const list = await Promise.all(
     })
 )
 ---
-<HomeClient subTitle={sub_title} list={list} client:visible={{rootMargin: "100% 0px 100% 0px"}}>
+<HomeClient subTitle={sub_title} list={list} client:visible={{rootMargin: "200% 0px 200% 0px"}}>
     <Fragment set:html={newTitle} slot="title"/>
     <Image src={quality} class="home-client-title-quality" alt="quality" width={quality.width / 2} slot="imgQuality"/>
     <Image src={map} alt="world map" slot="imgMap"/>
