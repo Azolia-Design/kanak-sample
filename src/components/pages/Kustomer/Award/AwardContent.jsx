@@ -64,12 +64,10 @@ function KustomerAwardContent(props) {
                 <div className="txt txt-18 txt-med kustomer-award-content-des">
                     {props.describe}
                 </div>
-                <div className="kustomer-award-content-link">
-                    <a href="#" className="kustomer-award-content-link-inner" data-cursor="txtLink">
+                <a href="#" className="kustomer-award-content-link txt-link" data-cursor="txtLink">
                         <div className="txt txt-18 txt-bold">{props.btn}</div>
                         <ArrowUpRight />
                     </a>
-                </div>
             </div>
         </>
     )

@@ -43,7 +43,7 @@ function KustomerHero(props) {
                 rotation: [0, Math.PI * .5, 0]
             },
         ],
-        "Food Processors": [
+        "Food Processing": [
             {
                 url: '/glb/58-bowl-clean-transformed.glb',
                 scale: [.35, .35, .35],

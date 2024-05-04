@@ -1,4 +1,4 @@
-import { memo, useRef, useEffect, useState } from "react";
+import { memo, useRef, useEffect, useState, useMemo } from "react";
 import cn from 'clsx';
 import * as ut from '@/js/utils.js';
 import "./styles.scss"
@@ -12,7 +12,6 @@ function ProductPopup({ data, isActive, setIsActive }) {
     const [currentIndex, setCurrentIndex] = useState(0);
 
     const isValidData = data.carousel_imgs?.reduce((arr, curr) => arr.concat(!isEmpty(curr.image) && curr.image), [])[0]
-
 
     const closePopup = () => {
         getLenis().start()
@@ -48,29 +47,38 @@ function ProductPopup({ data, isActive, setIsActive }) {
         }, { once: true });
     };
 
-    useEffect(() => {
-        if (!isValidData) return;
-        // let totalHeight = 0
-        // let forceHeight = 0
-        // let minHeight = 0
-        // if (window.innerWidth > 991) {
-        //     minHeight = window.innerHeight - ut.parseRem(400) - ut.parseRem(112.8) - document.querySelector('.popup-itemdtl-content-title')?.clientHeight;
-        // } else if (window.innerWidth > 767) {
-        //     minHeight = window.innerHeight - ut.parseRem(80) - ut.parseRem(190) - document.querySelector('.popup-itemdtl-content-title')?.clientHeight;
-        // }
-        // document.querySelectorAll('.popup-itemdtl-table-item-inner .popup-itemdtl-table-item')?.forEach((item, idx) => {
-        //     totalHeight += item.clientHeight + ut.parseRem(2)
-        // })
-        // forceHeight = (window.innerWidth > 991 ? ut.parseRem(33) : 0) + totalHeight;
+    const renderDots = useMemo(() => {
+        let totalPages = data.carousel_imgs?.length;
+        const dots = [];
 
-        // if (document.querySelector('.popup-itemdtl-table')) {
-        //     if (forceHeight > minHeight) {
-        //         document.querySelector('.popup-itemdtl-table').style.height = minHeight + 1 + 'px';
-        //     } else {
-        //         document.querySelector('.popup-itemdtl-table').style.height = forceHeight + 1 + 'px';
-        //     }
-        // }
-    }, [isActive, isValidData, data])
+        for (let i = 0; i <= totalPages - 1; i++) {
+            if (i <= currentIndex + 3 && i >= currentIndex - 3) {
+                let dotClass = '';
+                if (i === currentIndex) {
+                    dotClass = 'active';
+                } else if (i == currentIndex - 2 || i == currentIndex + 2) {
+                    dotClass = 'medium';
+                } else if (i == currentIndex - 3 || i == currentIndex + 3) {
+                    dotClass = 'small';
+                }
+                else {
+                    dotClass = '';
+                }
+
+                dots.push(
+                    <button
+                    key={`pagin-${i}`}
+                    className={cn("popup-itemdtl-card-pagi-btn", dotClass)}
+                    onClick={() => setCurrentIndex(i)}
+                />
+            );
+            } else if ((i === currentIndex + 4 && currentIndex < totalPages - 4) || (i === currentIndex - 4 && currentIndex > 5)) {
+                // dots.push(<span key="ellipsis">...</span>);
+            }
+        }
+        return dots;
+    }, [currentIndex, data])
+
 
     useEffect(() => {
         if (!isValidData) {
@@ -113,15 +121,7 @@ function ProductPopup({ data, isActive, setIsActive }) {
                                         ?.reduce((arr, curr) => arr.concat(curr.image), []).length > 1 && (
                                             <div className="popup-itemdtl-card-bottom">
                                                 <div className="popup-itemdtl-card-pagi">
-                                                    {data.carousel_imgs?.map(({ image }, idx) => (
-                                                        !isEmpty(image) && (
-                                                            <button
-                                                                key={`pagin-${idx}`}
-                                                                className={cn("popup-itemdtl-card-pagi-btn", { "active": idx === currentIndex })}
-                                                                onClick={() => setCurrentIndex(idx)}
-                                                            />
-                                                        )
-                                                    ))}
+                                                    {renderDots}
                                                 </div>
                                                 <div className="popup-itemdtl-card-nav">
                                                     <button className={cn("popup-itemdtl-card-nav-btn prev", { "disable": currentIndex === 0 })} onClick={() => setCurrentIndex(currentIndex - 1)}>

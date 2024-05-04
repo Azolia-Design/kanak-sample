@@ -163,6 +163,7 @@
                 grid-column: 2/6;
                 margin-left: calc(-1 * var(--grid-gap) - .8rem);
                 margin-right: 2.5rem;
+                height: auto;
             }
 
             @include sm {
@@ -240,11 +241,13 @@
                 align-items: center;
                 justify-content: center;
                 column-gap: .6rem;
+                transition: all 0.4s ease-in-out;
 
                 &-btn {
                     @include size(.7rem);
                     background-color: var(--cl-txt);
                     border-radius: 100vmax;
+                    transition: transform 0.45s ease-in-out;
 
                     @include md {
                         @include size(.7rem);
@@ -252,6 +255,12 @@
 
                     &.active {
                         background-color: var(--cl-orange);
+                    }
+                    &.medium {
+                        transform: scale(.7142)
+                    }
+                    &.small {
+                        transform: scale(.4285)
                     }
                 }
             }
