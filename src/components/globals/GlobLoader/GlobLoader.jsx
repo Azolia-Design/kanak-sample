@@ -1,30 +1,100 @@
 import './GlobLoader.scss';
 import { progressPercent } from '@contexts/StoreGlobal';
-import {animate} from 'motion'
-import { useEffect, useState } from 'react';
+import {animate, inView, timeline, stagger} from 'motion'
+import { useEffect, useRef, useState } from 'react';
 import { useProgress } from '@react-three/drei'
-function GlobLoaderMain({...props}) {
+import gsap from 'gsap';
+
+const dataLoadingBreakdown = [
+    { progression: 0, width: 0 },
+    { progression: 20, width: 10 },
+    { progression: 25, width: 24 },
+    { progression: 43, width: 41 },
+    { progression: 56, width: 50 },
+    { progression: 66, width: 52 },
+    // { progression: 71, width: 60 },
+    { progression: 75, width: 76 },
+    { progression: 85, width: 80 },
+    { progression: 95, width: 99 },
+    { progression: 100, width: 100 }
+]
+
+function GlobLoaderMain({ ...props }) {
     const { active, progress, errors, item, loaded, total } = useProgress()
     const [percent, setPercent] = useState(0);
+    const loaderRef = useRef();
+    const [counter, setCounter] = useState(0);
 
     function handlePercentChange() {
         activateElement(percent);
     }
     function activateElement(percent) {
         const elements = document.querySelectorAll('.loader-circle-imgs-item');
-        const index = percent < 100 ? Math.floor(Math.random() * 12) : 11;
 
         // Deactivate all elements
-        elements.forEach(element => element.classList.remove('active'));
+        // elements.forEach(element => element.classList.remove('active'));
 
         // Activate the selected element
-        elements[index].classList.add('active');
+        // elements[index].classList.add('active');
     }
 
+    const calculateDistance = (arr) => {
+        let result = [];
+        for (let i = 0; i < arr.length - 1; i++) {
+            result.push(Math.abs(arr[i] - arr[i + 1]));
+        }
+        return result;
+    }
+
+
+    // const loadingTo = (dataLoading, idx) => {
+    //     let data = dataLoading[idx];
+    //     if (data) {
+    //         timeline(animate('.loader-circle', { 'left': `${data.width}%` }, { duration: data.distance / 100, delay: (dataLoading[idx - 1].progression) / 100 })).finished.then(() => {
+    //             console.log("don")
+    //             loadingTo(dataLoading, idx + 1);
+    //         })
+    //     }
+    // }
+
     useEffect(() => {
-        let elements = document.querySelectorAll('.loader-circle-imgs-item');
-        handlePercentChange(elements);
-    }, [percent]);
+        const counter = { value: 0 };
+        const ROOT_DURATION = 2.5;
+        const ROOT_DELAY = 0.1;
+        const loadingProgress = gsap.timeline({
+            onComplete: () => {
+                loadingProgress.clear();
+                // onFinishIntro();
+            }
+        });
+
+        const loadingTo = (timeline, value, duration) => {
+            timeline
+                .to('.loader-circle', { left: `${value}%`, duration: duration, ease: 'linear' })
+                .to(counter, {
+                    value: value, duration: duration, ease: 'none', onUpdate: () => {
+                        setCounter(Math.round(counter.value))
+                }}, '<=0');
+        }
+
+        const distanceArr = calculateDistance(dataLoadingBreakdown.map((item) => item.progression));
+        const dataLoading = dataLoadingBreakdown.map((obj, index) => ({...obj, distance: distanceArr[index - 1] || 0}))
+
+        loadingProgress
+            .set('.loader-circle', { left: '0%' }, 1.3)
+            .set(counter, { value: 0 }, 1)
+            dataLoading.map(({ width, distance }) => loadingTo(loadingProgress, width, distance))
+
+        loadingProgress.duration(ROOT_DURATION);
+        loadingProgress.delay(ROOT_DELAY);
+
+        document.querySelectorAll(".loader-circle-imgs-item").forEach((item, idx) => {
+            animate(item,
+                { opacity: [0, 1, 0] },
+                { duration: 1, delay: .5 * idx + .2, easing: [0.87, 0, 0.13, 1] }
+            )
+        })
+    }, []);
 
     useEffect(() => {
         let currPercent = parseInt(loaded / 10 * 100);
@@ -32,13 +102,12 @@ function GlobLoaderMain({...props}) {
         if (!active) {
             setTimeout(() => {
                 document.querySelector('.loader').classList.add('done-anim')
-            }, 1600);
+            }, 2500);
         }
     }, [loaded]);
 
-
     return (
-        <div className='loader' style={{'--progress': `${percent}%`}}>
+        <div className='loader' ref={loaderRef} style={{'--progress': `${percent}%`}}>
             <div className="loader-wrap">
                 <div className="loader-line">
                     <div className="loader-logo">
@@ -58,49 +127,20 @@ function GlobLoaderMain({...props}) {
                             <div className="loader-circle-inner">
                                 <div className="loader-circle-inside"></div>
                                 <div className="loader-circle-imgs">
-                                    <div className="loader-circle-imgs-item active">
-                                        {props.load1}
-                                    </div>
-                                    <div className="loader-circle-imgs-item">
-                                        {props.load2}
-                                    </div>
-                                    <div className="loader-circle-imgs-item">
-                                        {props.load3}
-                                    </div>
-                                    <div className="loader-circle-imgs-item">
-                                        {props.load4}
-                                    </div>
-                                    <div className="loader-circle-imgs-item">
-                                        {props.load5}
-                                    </div>
-                                    <div className="loader-circle-imgs-item">
-                                        {props.load6}
-                                    </div>
-                                    <div className="loader-circle-imgs-item">
-                                        {props.load7}
-                                    </div>
-                                    <div className="loader-circle-imgs-item">
-                                        {props.load8}
-                                    </div>
-                                    <div className="loader-circle-imgs-item">
-                                        {props.load9}
-                                    </div>
-                                    <div className="loader-circle-imgs-item">
-                                        {props.load10}
-                                    </div>
-                                    <div className="loader-circle-imgs-item">
-                                        {props.load11}
-                                    </div>
-                                    <div className="loader-circle-imgs-item">
-                                        {props.load12}
-                                    </div>
+                                    {[...Array(11)].map((item, idx) => (
+                                        <div
+                                            key={idx}
+                                            className='loader-circle-imgs-item'>
+                                            {props[`load${idx+1}`]}
+                                        </div>
+                                    ))}
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div className='loader-count'>
                         <div className="loader-count-top">
-                            <div className="heading txt-black loader-count-top-num">{percent}</div>
+                            <div className="heading txt-black loader-count-top-num">{counter}</div>
                             <div className="heading txt-black loader-count-top-unit">%</div>
                         </div>
                         <div className="loader-count-bot">

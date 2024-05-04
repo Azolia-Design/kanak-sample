@@ -19,12 +19,11 @@ function Item({ data, onClick, filter }) {
     useEffect(() => {
         const item = itemRef.current
 
-        const name = new SplitType(item.querySelector('.katalog-main-list-item-info-name h4'), { types: "lines,words", lineClass: 'split-line' })
         if (animationStarted) {
             timeline().cancel();
-            name.revert();
             item.querySelectorAll('.line').forEach(item => item.removeAttribute('style'));
             item.querySelector('.katalog-main-list-item-img').removeAttribute('style');
+            item.querySelector('.katalog-main-list-item-info-name h4').removeAttribute('style');
             item.querySelector('.katalog-main-list-item-img-inner').removeAttribute('style');
         }
 
@@ -33,7 +32,7 @@ function Item({ data, onClick, filter }) {
         animate(item.querySelector('.line-right'), { scaleY: 0, transformOrigin: "top" }, { duration: 0 })
         animate(item.querySelector('.line-mid'), { scaleX: 0, transformOrigin: "left" }, { duration: 0 })
         animate(item.querySelector('.line-qr'), { scaleY: 0, transformOrigin: "top" }, { duration: 0 })
-        animate(name.words, { opacity: 0, transform: "translateY(100%)" }, { duration: 0 })
+        animate(item.querySelector('.katalog-main-list-item-info-name h4'), { opacity: 0, transform: "translateY(1rem)" }, { duration: 0 })
         animate(item.querySelector('.katalog-main-list-item-info-qr-inner'), { opacity: 0, scale: .9 }, { duration: 0 })
         animate(item.querySelector('.katalog-main-list-item-img'), { opacity: 0, scale: .9 }, { duration: 0 })
 
@@ -44,7 +43,7 @@ function Item({ data, onClick, filter }) {
             [item.querySelector('.line-bot'), { scaleX: 1 }, { duration: .45, at: .5 }],
             [item.querySelector('.line-right'), { scaleY: 1 }, { duration: .5, at: .6 }],
             [item.querySelector('.line-qr'), { scaleY: 1 }, { duration: .4, at: .6 }],
-            [name.words, { opacity: 1, transform: "none" }, { duration: .4, delay: stagger(.02), at: .5 }],
+            [item.querySelector('.katalog-main-list-item-info-name h4'), { opacity: 1, transform: "translate(0)" }, { duration: .4, at: .5 }],
             [item.querySelector('.katalog-main-list-item-info-qr-inner'), { opacity: 1, scale: 1 }, { duration: .6, at: .45 }],
         ]
 
@@ -52,9 +51,9 @@ function Item({ data, onClick, filter }) {
             timeline(sequence).finished.then(() => {
                 setAnimationStarted(false);
                 setTimeout(() => {
-                    name.revert();
                     item.querySelectorAll('.line').forEach(item => item.removeAttribute('style'));
                     item.querySelector('.katalog-main-list-item-img').removeAttribute('style');
+                    item.querySelector('.katalog-main-list-item-info-name h4').removeAttribute('style');
                     item.querySelector('.katalog-main-list-item-info-qr-inner').removeAttribute('style');
                 }, 1000)
             })
