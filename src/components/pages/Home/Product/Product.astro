@@ -26,8 +26,8 @@ let featuredItemList = await Promise.all(
 ---
 <section class="home-prod">
     <div class="container grid">
-        <HomeProductTitle prod_sub_title={Astro.props.prod_sub_title} client:visible={{rootMargin: "100% 0px 100% 0px"}}/>
-        <HomeProductList list={standardList} client:media="(min-width: 767px)" client:visible={{rootMargin: "100% 0px 100% 0px"}}/>
+        <HomeProductTitle prod_sub_title={Astro.props.prod_sub_title} client:visible={{rootMargin: "200% 0px 200% 0px"}}/>
+        <HomeProductList list={standardList} client:media="(min-width: 767px)" client:visible={{rootMargin: "200% 0px 200% 0px"}}/>
 
         <HomeProduct list={standardList} itemList={featuredItemList} client:load>
             <Fragment set:html={arrIcon} slot='arrIcon'/>

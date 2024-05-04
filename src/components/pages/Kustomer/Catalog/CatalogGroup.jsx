@@ -41,7 +41,7 @@ function KustomerCatalogGroup({ ...props }) {
                 sequence.push(
                     [listItem.querySelector('.line'), { scaleX: 1 }, { duration: .8, at: .3 + delayItem * idx }],
                     [title.words, { opacity: 1, transform: "none" }, { duration: .6, delay: stagger(.015), at: "<" }],
-                    [listItem.querySelector('.kustomer-cata-main-content-list-item-count'), { opacity: .4, transform: "none" }, { duration: .6, at: .5 + delayItem * idx }],
+                    [listItem.querySelector('.kustomer-cata-main-content-list-item-count'), { opacity: 1, transform: "none" }, { duration: .6, at: .5 + delayItem * idx }],
                 )
                 if (idx == el.querySelectorAll('.kustomer-cata-main-content-list-item').length - 1) {
                     animate(listItem.querySelector('.line-bot'), { transformOrigin: 'left', scaleX: 0 }, { duration: 0 })
@@ -83,12 +83,21 @@ function KustomerCatalogGroup({ ...props }) {
                         href={`/katalog?kustomer=${formatData(props.currPage)}&category=${formatData(item.data.name)}`}
                         className={`kustomer-cata-main-content-list-item ${index == (props.listItem.findIndex(listItem => listItem.uid == item.uid)) ? "active" : ''}`}
                         onMouseEnter={() => debounceHover(props.listItem.findIndex(listItem => listItem.uid == item.uid))}
+                        data-cursor="txtLink"
                     >
                         <div className="heading h6 txt-black txt-up kustomer-cata-main-content-list-item-name">
                             {item.data.name}
                         </div>
                         <div className="txt txt-20 txt-bold kustomer-cata-main-content-list-item-count">
-                            {(idx + 1).toString().padStart(2, '0')}
+                            <div className="kustomer-cata-main-content-list-item-count-txt">
+                                {(idx + 1).toString().padStart(2, '0')}
+                            </div>
+                            <div className="ic ic-24 ic-main">
+                                <svg width="100%"viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M3 13.5L13 3.5" stroke="currentColor" strokeWidth="2" strokeMiterlimit="10"/>
+                                    <path d="M4.07227 3.5H13.0002V12.4271" stroke="currentColor" strokeWidth="2" strokeMiterlimit="10" strokeLinecap="square"/>
+                                </svg>
+                            </div>
                         </div>
                         <div className="line">
                             <div className="line-inner"></div>

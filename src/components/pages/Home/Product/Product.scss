@@ -70,7 +70,9 @@
                 }
 
                 &:not(.disable):hover {
-                    color: var(--cl-orange)
+                    .ic {
+                        color: var(--cl-orange)
+                    }
                 }
 
                 &:not(.disable):active {

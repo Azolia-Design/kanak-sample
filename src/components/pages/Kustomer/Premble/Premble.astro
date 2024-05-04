@@ -4,7 +4,7 @@ import KustomerPremble from "./Premble";
 import VideoBadge from "@components/globals/BadgeVideo/Badge.astro";
 ---
 
-<KustomerPremble client:visible={{ rootMargin: "100% 0px 100% 0px" }}>
+<KustomerPremble client:visible={{ rootMargin: "200% 0px 200% 0px" }}>
     <VideoBadge slot="badge" />
     <Fragment set:html={convertHighlight(Astro.props.title)} slot="title" />
 </KustomerPremble>

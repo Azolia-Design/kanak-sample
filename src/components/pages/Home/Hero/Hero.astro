@@ -4,9 +4,9 @@ import HomeHero from './Hero';
 import HomeHeroAbout from './HeroAbout';
 import VideoBadge from "@components/globals/BadgeVideo/Badge.astro";
 ---
-<HomeHero {...Astro.props} client:visible={{rootMargin: "100% 0px 100% 0px"}}>
+<HomeHero {...Astro.props} client:visible={{rootMargin: "200% 0px 200% 0px"}}>
     <VideoBadge slot="badgeMb"/>
 </HomeHero>
 <VideoBadge />
-<HomeHeroAbout {...Astro.props} client:visible={{rootMargin: "100% 0px 100% 0px"}}/>
+<HomeHeroAbout {...Astro.props} client:visible={{rootMargin: "200% 0px 200% 0px"}}/>
 

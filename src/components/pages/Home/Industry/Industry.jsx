@@ -72,7 +72,7 @@ function HomeIndustry(props) {
                         el.querySelector('.line-bottom').removeAttribute('style')
                     }
                 })
-            }, { margin: "-30% 0px -30% 0px" });
+            }, { margin: "0% 0px 0% 0px" });
         });
     }, [])
     return (

@@ -27,7 +27,7 @@ const listItems = await Promise.all(
 <KustomerExplore
     {...Astro.props}
     listImg={listImage}
-    client:visible={{ rootMargin: "100% 0px 100% 0px" }}
+    client:visible={{ rootMargin: "200% 0px 200% 0px" }}
 >
     <Fragment slot="renderList">
         {
@@ -35,7 +35,7 @@ const listItems = await Promise.all(
                 <ExploreItem
                     key={item.uid}
                     {...item}
-                    client:visible={{ rootMargin: "100% 0px 100% 0px" }}
+                    client:visible={{ rootMargin: "200% 0px 200% 0px" }}
                 >
                     <Image
                         src={item.img.url}

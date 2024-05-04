@@ -23,7 +23,24 @@
                 @include transition(color 400ms ease);
             }
             &-label {
-                color: rgba($cl-txt, .3);
+                color: rgba($cl-txt, .4);
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                &-txt {
+                    transition: opacity 400ms ease;
+                }
+                .ic-main {
+                    color: var(--cl-orange);
+                    position: absolute;
+                    overflow: hidden;
+                    svg {
+                        opacity: 0;
+                        transform: translate(-100%, 100%);
+                        transition: all 400ms ease;
+                    }
+                }
             }
             &.active, &:hover {
                 .home-prod-main-item-title {
@@ -31,6 +48,19 @@
                 }
                 .line-inner {
                     transform: scaleX(1);
+                }
+            }
+            &:hover {
+                .home-prod-main-item-label {
+                    &-txt {
+                        opacity: 0;
+                    }
+                    .ic-main {
+                        svg {
+                            opacity: 1;
+                            transform: translate(0, 0);
+                        }
+                    }
                 }
             }
             .line {

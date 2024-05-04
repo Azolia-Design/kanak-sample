@@ -2,6 +2,7 @@ import './Hero.scss'
 import { useEffect } from 'react';
 import { timeline, stagger } from "motion"
 import SplitType from 'split-type';
+import { getLenis } from '@/components/core/lenis';
 
 function HomeHero(props) {
     useEffect(() => {
@@ -24,6 +25,11 @@ function HomeHero(props) {
             document.querySelector('.video-badge').removeAttribute('style')
         })
     }, [])
+    
+    function scrollDown() {
+        getLenis().scrollTo(window.innerHeight)
+        // console.log(getLenis)
+    }
 
     return (
         <section className="home-hero">
@@ -42,11 +48,11 @@ function HomeHero(props) {
                             <div className="txt txt-18 txt-med txt-up" data-cursor-txtlink-child=''><span className="txt-kanak">K</span>ontact us</div>
                         </a>
                     </div>
-                    <div className="home-hero-sub-cta-wrap">
-                        <div className="txt txt-18 txt-med">
+                    <button onClick={() => scrollDown()} className="home-hero-sub-cta-wrap" data-cursor="txtLink" data-cursor-txtlink="child">
+                        <div className="txt txt-18 txt-med" data-cursor-txtlink-child>
                             Scroll <span className="hide-dk">Down</span><span className="hide-mb">to Explore</span>
                         </div>
-                    </div>
+                    </button>
                 </div>
                 {props.badgeMb}
             </div>
