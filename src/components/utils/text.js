@@ -8,7 +8,7 @@ const convertHighlight = (field) => {
         return p1
             .split(/(\b\w+-\b)/)
             .filter(part => part !== '-')
-            .map(word => `<span class="txt-green">${word}</span>`)
+            .map((word, idx) => `<span class="txt-green">${word}</span>`)
             .join('')
     };
     // Thực hiện thay thế

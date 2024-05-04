@@ -239,21 +239,23 @@
             }
 
             @media (hover: hover) {
-                &:hover {
-                    z-index: 2;
-
-                    .kustomer-commit-main-item {
-                        &-title {
-                            color: var(--cl-orange);
+                @include md-up {
+                    &:hover {
+                        z-index: 2;
+    
+                        .kustomer-commit-main-item {
+                            &-title {
+                                color: var(--cl-orange);
+                            }
+    
+                            &-bg {
+                                opacity: 1;
+                            }
                         }
-
-                        &-bg {
-                            opacity: 1;
+    
+                        .line {
+                            width: 100%;
                         }
-                    }
-
-                    .line {
-                        width: 100%;
                     }
                 }
             }
