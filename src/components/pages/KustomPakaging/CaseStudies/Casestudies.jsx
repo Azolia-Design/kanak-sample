@@ -1,7 +1,7 @@
 import "./Casestudies.scss";
 import { useKeenSlider } from 'keen-slider/react'
 import "keen-slider/keen-slider.min.css"
-import ArrowUpRight from "@/components/globals/IcArrow/ArrowUpRight"
+import ArrowUpRight from "@components/globals/IcArrow/ArrowUpRight"
 import { useEffect, useState } from 'react';
 import { animate, timeline, stagger, inView } from "motion";
 import SplitType from 'split-type';

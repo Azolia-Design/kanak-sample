@@ -1,4 +1,4 @@
-import { initLenis, getLenis } from "@/components/core/lenis"
+import { initLenis, getLenis } from "@components/core/lenis"
 
 const main = () =>  {
     if (!getLenis()) {

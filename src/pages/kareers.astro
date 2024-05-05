@@ -1,10 +1,10 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Hero from "@/components/pages/Kareers/Hero/Hero.astro";
-import Culture from "@/components/pages/Kareers/Culture/Culture.astro";
-import Gallery from "@/components/pages/Kareers/Gallery/Gallery.astro";
-import Perk from "@/components/pages/Kareers/Perk/Perk.astro";
-import Cta from "@/components/pages/Kareers/Cta/Cta.astro";
+import Hero from "@pages/Kareers/Hero/Hero.astro";
+import Culture from "@pages/Kareers/Culture/Culture.astro";
+import Gallery from "@pages/Kareers/Gallery/Gallery.astro";
+import Perk from "@pages/Kareers/Perk/Perk.astro";
+import Cta from "@pages/Kareers/Cta/Cta.astro";
 import { getPage } from "@/prismic.js";
 const { data } = await getPage("kareers");
 ---

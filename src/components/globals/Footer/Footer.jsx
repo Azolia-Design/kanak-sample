@@ -2,7 +2,7 @@ import gsap from 'gsap';
 import { useEffect, useState, useRef } from 'react';
 import './Footer.scss';
 import useDevice from '@hooks/useDevice';
-import { getLenis } from '@/components/core/lenis';
+import { getLenis } from '@components/core/lenis';
 
 const ContactItem = ({ label, content, link = "#", target }) => {
     return (

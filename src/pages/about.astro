@@ -10,10 +10,12 @@ import Join from "@pages/About/Join/Join.astro";
 import Award from "@pages/About/Award/Award.astro";
 import { getPage } from "@/prismic.js";
 const { data } = await getPage("about_page");
+console.log()
 ---
 
 <Layout
     title="Know Us"
+    meta_desc={data.meta_desc[0].text}
     data_page="Know Us"
     footer_cta={data.cta_title[0].text}
     footer_bg={data.cta_background}

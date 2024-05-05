@@ -7,7 +7,7 @@ import Select from './Select';
 import useDebounceCallback from '@hooks/useDebounce';
 import SplitType from 'split-type'
 import { animate, inView, stagger, timeline } from 'motion';
-import { getLenis } from '@/components/core/lenis';
+import { getLenis } from '@components/core/lenis';
 
 function ContactForm(props) {
     const [isPending, startTransition] = useTransition();
@@ -21,7 +21,7 @@ function ContactForm(props) {
         industry: "",
         message: "",
     });
-    
+
     const [icon, setIcon] = useState('submit');
     const debounceForm = useDebounceCallback(setFormData, 200);
 

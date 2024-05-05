@@ -1,7 +1,7 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import PolicyHero from "@pages/Policy/Hero/PolicyHero.astro";
-import PolicyMain from "@/components/pages/Policy/Body/Policy.astro";
+import PolicyMain from "@pages/Policy/Body/Policy.astro";
 import policyData from "@pages/Policy/Data/policy-data";
 
 export function getStaticPaths() {
@@ -14,7 +14,7 @@ export function getStaticPaths() {
 }
 
 const { policy } = Astro.params;
-const { item } = Astro.props;      
+const { item } = Astro.props;
 ---
 
 <Layout title={item.title}>

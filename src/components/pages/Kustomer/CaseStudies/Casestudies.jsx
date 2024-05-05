@@ -1,6 +1,6 @@
 import "./Casestudies.scss";
 import CaseStudiesMain from "./CasestudiesMain";
-import ArrowUpRight from "@/components/globals/IcArrow/ArrowUpRight"
+import ArrowUpRight from "@components/globals/IcArrow/ArrowUpRight"
 import { useEffect } from 'react';
 import { animate, timeline, stagger, inView } from "motion";
 import SplitType from 'split-type';

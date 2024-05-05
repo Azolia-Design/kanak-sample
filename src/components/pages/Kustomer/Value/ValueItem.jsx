@@ -1,4 +1,4 @@
-import ArrowUpRight from "@/components/globals/IcArrow/ArrowUpRight"
+import ArrowUpRight from "@components/globals/IcArrow/ArrowUpRight"
 
 function KustomerValueItem({ ...props }) {
     return (

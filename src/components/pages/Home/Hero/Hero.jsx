@@ -2,7 +2,7 @@ import './Hero.scss'
 import { useEffect } from 'react';
 import { timeline, stagger } from "motion"
 import SplitType from 'split-type';
-import { getLenis } from '@/components/core/lenis';
+import { getLenis } from '@components/core/lenis';
 
 function HomeHero(props) {
     useEffect(() => {
@@ -25,7 +25,7 @@ function HomeHero(props) {
             document.querySelector('.video-badge').removeAttribute('style')
         })
     }, [])
-    
+
     function scrollDown() {
         getLenis().scrollTo(window.innerHeight)
         // console.log(getLenis)

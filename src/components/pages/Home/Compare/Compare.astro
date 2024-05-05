@@ -4,7 +4,7 @@ const { title, compare_list } = Astro.props;
 import HomeCompare from './Compare';
 import { Image } from 'astro:assets';
 import { getByUID } from '@/prismic.js';
-import compareGood from '@/assets/comp-good-2.svg';
+import compareGood from '@assets/comp-good-2.svg';
 import compareBad from '@assets/comp-bad-2.svg';
 
 const list = await Promise.all(

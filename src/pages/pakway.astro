@@ -11,6 +11,7 @@ const { data } = await getPage("pakway_page");
 
 <Layout
     title="Pakway"
+    meta_desc={data.meta_desc[0].text}
     data_page="Pakway"
     footer_cta={data.cta_title[0]?.text}
     footer_bg={data.cta_background}

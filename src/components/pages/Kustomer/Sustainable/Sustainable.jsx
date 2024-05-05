@@ -1,14 +1,14 @@
 import "./Sustainable.scss"
-import ArrowDown from "@/components/globals/IcArrow/ArrowDown.jsx";
-import ArrowDropdown from "@/components/globals/IcArrow/ArrowDropdown.jsx";
+import ArrowDown from "@components/globals/IcArrow/ArrowDown.jsx";
+import ArrowDropdown from "@components/globals/IcArrow/ArrowDropdown.jsx";
 import { useEffect, useState, useRef, useMemo } from "react"
 import useOutsideAlerter from "@hooks/useOutsideAlerter";
 import { animate, timeline, stagger, inView } from "motion";
-import { getLenis } from '@/components/core/lenis';
+import { getLenis } from '@components/core/lenis';
 
 import cn from 'clsx';
 import SplitType from 'split-type';
-import ProductPopup from "@/components/globals/ProductPopup";
+import ProductPopup from "@components/globals/ProductPopup";
 
 
 function SustainableItem(props) {

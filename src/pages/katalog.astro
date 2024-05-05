@@ -10,7 +10,7 @@ const title = await data.title[0].text;
 const subtitle = await data.subtitle[0].text;
 ---
 
-<Layout title="Katalog">
+<Layout title="Katalog" meta_desc={data.meta_desc[0].text}>
     <Hero title={title} sub={subtitle} />
     <Main data={data} />
 </Layout>

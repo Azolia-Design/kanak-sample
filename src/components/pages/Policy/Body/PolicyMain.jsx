@@ -1,7 +1,7 @@
 import './PolicyMain.scss'
 import { useEffect, useState } from 'react';
 import * as ut from "@/js/utils"
-import { getLenis } from '@/components/core/lenis';
+import { getLenis } from '@components/core/lenis';
 
 
 import SplitType from 'split-type';

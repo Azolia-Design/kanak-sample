@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-import ArrowUpRight from "@/components/globals/IcArrow/ArrowUpRight";
+import ArrowUpRight from "@components/globals/IcArrow/ArrowUpRight";
 import { animate, timeline, stagger, inView } from "motion";
 import SplitType from 'split-type';
 function KustomerAwardContent(props) {

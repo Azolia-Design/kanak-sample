@@ -2,7 +2,7 @@ import './Main.scss'
 import { useEffect, useState, useRef, Fragment } from 'react'
 import { animate, timeline, stagger, inView, scroll } from "motion";
 import SplitType from 'split-type';
-import { getLenis } from '@/components/core/lenis';
+import { getLenis } from '@components/core/lenis';
 
 function Item({ ...props }) {
     const itemRef = useRef();

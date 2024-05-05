@@ -10,7 +10,7 @@ import extIcon from "@assets/ext-arr-menu.svg?raw";
 import icDropdown from "@assets/ic-arrow-down.svg?raw";
 import { getByUID, getPage } from "@/prismic";
 import HeaderGlobal from "./Header";
-import { formatData } from "@/components/utils/text";
+import { formatData } from "@utils/text";
 const currYear = new Date().getFullYear();
 
 const homeData = await getPage("home")

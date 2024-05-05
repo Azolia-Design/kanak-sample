@@ -3,7 +3,7 @@ import SplitType from 'split-type';
 import { useEffect, useState } from 'react';
 import useDebounceCallback from "@hooks/useDebounce";
 import { animate, timeline, stagger, inView } from "motion";
-import { formatData } from "@/components/utils/text";
+import { formatData } from "@utils/text";
 
 function KustomerCatalogGroup({ ...props }) {
     const { index, setIndex } = useCatalogIndex();

@@ -2,7 +2,7 @@ import './Hero.scss';
 import { useEffect, useRef } from 'react';
 import { animate, timeline, stagger, inView } from "motion";
 import SplitType from 'split-type';
-import useSelector from '@/components/hooks/useSelector';
+import useSelector from '@hooks/useSelector';
 
 function PakwayHero({ ...props }) {
     const sectionRef = useRef();

@@ -3,7 +3,7 @@ import { useKeenSlider } from 'keen-slider/react'
 import "keen-slider/keen-slider.min.css"
 import { parseRem } from '@/js/utils';
 import { animate, timeline, stagger, inView } from "motion";
-import { isEmpty } from '@/components/utils/text';
+import { isEmpty } from '@utils/text';
 
 function CasedtlSlide({ ...props }) {
     const [loaded, setLoaded] = useState(false);

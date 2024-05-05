@@ -1,10 +1,10 @@
 import './Award.scss';
-import { getLenis } from '@/components/core/lenis';
+import { getLenis } from '@components/core/lenis';
 import { useEffect, useState, useRef } from "react";
 import { animate, inView, scroll, stagger, timeline } from "motion";
 import SplitType from "split-type";
-import useSelector from "@/components/hooks/useSelector";
-import LetterPopup from '@components/globals/LetterPopup'
+import useSelector from "@hooks/useSelector";
+import LetterPopup from '@pages/About/Award/LetterPopup'
 
 function AboutAward({ ...props }) {
     const sectionRef = useRef();

@@ -1,7 +1,7 @@
 import { useRef, useEffect } from "react";
 import SplitType from 'split-type';
 import { animate, timeline, stagger, inView } from "motion";
-import { cleanText } from "@/components/utils/text";
+import { cleanText } from "@utils/text";
 
 function CaseItem({ ...props }) {
     const itemRef = useRef();
