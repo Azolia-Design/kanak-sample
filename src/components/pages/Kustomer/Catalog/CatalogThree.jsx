@@ -72,13 +72,13 @@ function Content(props) {
                                         <animated.mesh
                                             material-color="white">
                                             <Suspense>
-                                                {product_feature.uid == 'molded-fiber-bowls-ml-ba0400' ? (
+                                                {product_feature.uid == 'burrito-bowls-ka1065' ? (
                                                     <GetModel file='/glb/64-oval-bowl-clean-transformed.glb' scale={[.9,.9,.9]} rotation={[0, Math.PI * -.5, 0]}/>
                                                 ) : product_feature.uid == 'compartment-trays-st5515' ? (
                                                     <GetModel file='/glb/KA10054-clean-transformed.glb' scale={[.8,.8,.8]} position={[0, .02, 0]} />
                                                 ) : product_feature.uid == 'molded-fiber-3-compartment-plates-ba5504' ? (
                                                     <GetModel file='/glb/3-elegant-compartments-plates-clean-transformed.glb' rotation={[Math.PI * -.5, 0, 0]} scale={[2, 2, 2]} position={[0, 0.015, 0]} />
-                                                ) : product_feature.uid == 'burrito-bowls-ka1065' ? (
+                                                ) : product_feature.uid == 'soup-bowls-dc0825' ? (
                                                     <GetModel file='/glb/41-ramen-clean-transformed.glb' scale={[.68,.68,.68]} position={[0,-.015,0]}/>
                                                 ) : product_feature.uid == 'produce-trays-pt8412' ? (
                                                     <GetModel file='/glb/48-monte-tray-clean-transformed.glb' scale={[1.2,1.2,1.2]}/>

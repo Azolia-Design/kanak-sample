@@ -64,7 +64,7 @@ function KustomerAwardContent(props) {
                 <div className="txt txt-18 txt-med kustomer-award-content-des">
                     {props.describe}
                 </div>
-                <a href="#" className="kustomer-award-content-link txt-link" data-cursor="txtLink">
+                <a href="/katalog?category=plates--platters" className="kustomer-award-content-link txt-link" data-cursor="txtLink">
                         <div className="txt txt-18 txt-bold">{props.btn}</div>
                         <ArrowUpRight />
                     </a>

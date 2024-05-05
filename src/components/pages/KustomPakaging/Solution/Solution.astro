@@ -1,6 +1,7 @@
 ---
 const { label, title, sub, list } = Astro.props;
 import { Image } from "astro:assets";
+import ArrowUpRight from "@/components/globals/IcArrow/ArrowUpRight";
 import { getByUID } from "@/prismic.js";
 import KustomPackagingSolution from "./Solution";
 
@@ -43,7 +44,10 @@ const listItem = await Promise.all(
                             data-cursor="txtLink"
                             class="txt txt-18 txt-med txt-orange kuspack-solution-main-item-link txt-link"
                         >
-                            Learn more
+                            <span>Learn more</span>
+                            <div class="ic ic-16">
+                                <ArrowUpRight />
+                            </div>
                         </a>
                     </div>
                     <div class="line" />

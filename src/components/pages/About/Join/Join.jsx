@@ -105,7 +105,7 @@ function AboutJoin({ ...props }) {
                                     </h3>
                                 </div>
                                 <p className="txt txt-20 txt-med abt-join-main-item-sub">
-                                    We believe every choice counts, every action matters, and every product you pick is a step forward, paving the path towards a sustainable, thriving planet.
+                                    Choosing Kanak for your packaging needs directly supports the fight against plastic pollution. Our operations help reduce the massive influx of plastic waste—approximately 400 million metric tons annually—by enhancing recycling and reducing oceanic and landfill waste. With new distribution centers enhancing our delivery efficiency, every Kanak product you choose contributes to a more sustainable planet and a healthier global economy.
                                 </p>
                             </div>
                             <div className="abt-join-main-item-img">
@@ -124,7 +124,7 @@ function AboutJoin({ ...props }) {
                                     </h3>
                                 </div>
                                 <p className="txt txt-20 txt-med abt-join-main-item-sub">
-                                    By rallying behind bamboo and sugarcane, we're not just creating products; we're setting the precedent for a future where sustainability isn't an option—it's the norm.
+                                    We lead with renewable materials like rPET, bamboo and sugarcane, superior sustainable solutions that define our 'Kommittment' to making responsibly sourced products the norm. Addressing both ecological and economic impacts, Kanak Naturals combats the $19 billion annual cost of plastic pollution by investing in advanced recycling technologies and minimizing our use of virgin plastics, promoting comprehensive sustainability.
                                 </p>
                             </div>
                             <div className="abt-join-main-item-img">

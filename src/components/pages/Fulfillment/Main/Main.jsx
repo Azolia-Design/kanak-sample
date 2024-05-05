@@ -102,7 +102,7 @@ function FulfillMain({ ...props }) {
 
     return (
         <section className="fulfill-main">
-            <div className="fulfill-main-img">
+            <div className="fulfill-main-img bg-light">
                 <div className="line"></div>
                 <div className="fulfill-main-img-inner">
                     {props.heroBg}

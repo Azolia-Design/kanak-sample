@@ -192,7 +192,7 @@ function HeaderGlobal(props) {
                                                     if (page.type != 'dropdown') return;
                                                     menuOnClick(e, idx, idx === props.pages.length - 1);
                                                 }}>
-                                                <span className="txt txt-14 txt-up txt-semi">{page.name}</span>
+                                                <span className="txt txt-14 txt-up txt-semi" dangerouslySetInnerHTML={{ __html: page.name.replaceAll('[','<span class="txt-kanak">').replaceAll(']','</span>') }}></span>
                                                 {page.type == 'dropdown' && (
                                                     <div className={cn("ic ic-14 header-menu-item-ic", { "active": idx === dropdownIdx })}>
                                                         <svg width="100%" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">

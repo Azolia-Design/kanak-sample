@@ -8,6 +8,7 @@
     &-img {
         overflow: hidden;
         height: 70rem;
+        background-color: var(--cl-bg);
         @include md {
             height: 42.5rem;
         }

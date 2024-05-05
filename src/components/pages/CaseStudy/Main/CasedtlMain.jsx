@@ -35,7 +35,7 @@ function CasedtlMain(props) {
                 document.querySelector('.casedtl-bread .line').removeAttribute('style')
                 document.querySelectorAll('casedtl-bread-div').forEach(el => el.removeAttribute('style'))
             })
-        }, { margin: "-10% 0px 10% 0px" })
+        }, { margin: "-0% 0px 0% 0px" })
 
         // End BreadCrum Animation
 
@@ -104,7 +104,7 @@ function CasedtlMain(props) {
                 </div>
                 <div className="casedtl-bread-link-wrap">
                     <a href="/kase-studies" className="txt txt-20 txt-bold casedtl-bread-link">
-                        Kase studies
+                        Kase Studies
                     </a>
                     <div className="txt txt-14 txt-semi casedtl-bread-div">/</div>
                 </div>
