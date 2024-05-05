@@ -11,7 +11,7 @@ import { useTransition, animated } from '@react-spring/three'
 import GetModel from "@components/common/GetModel.jsx";
 import { useCatalogIndex } from "@contexts/StoreGlobal.js";
 import cn from 'clsx';
-import { formatData } from "@/components/utils/text";
+import { formatData } from "@utils/text";
 
 const warehouse = import('/envMap/warehouse.hdr?url').then((module) => module.default)
 function CustomMaterial({...props}) {

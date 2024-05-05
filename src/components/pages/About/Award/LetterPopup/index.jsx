@@ -1,6 +1,6 @@
 import './style.scss'
-import { getLenis } from '@/components/core/lenis';
-import { isEmpty } from '@/components/utils/text';
+import { getLenis } from '@components/core/lenis';
+import { isEmpty } from '@utils/text';
 import { useEffect } from 'react';
 
 function LetterPopup({ isActive, setIsActive, data, ...props }) {
@@ -10,7 +10,7 @@ function LetterPopup({ isActive, setIsActive, data, ...props }) {
     }
     return (
         <div className={`popup ${isActive ? "active" : ""}`}>
-            <div className="container grid">
+            <div className="container">
                 <div className="popup-letter">
                     <button className="popup-letter-btn" onClick={closePopup}>
                         <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 40 40" fill="none" className="ic ic-40">

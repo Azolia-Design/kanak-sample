@@ -24,37 +24,34 @@
         pointer-events: auto;
     }
 
-    .container.grid {
+    .container {
         @include sm {
             height: 100%;
             max-height: 100%;
-
         }
     }
 
     &-letter {
-        --padding-block: 9.4rem;
         position: relative;
-        display: grid;
-        grid-template-columns: repeat(8, 1fr);
-        column-gap: var(--grid-gap);
-        grid-column: 5/13;
+        max-height: 87vh;
         background-color: var(--cl-bg);
-        max-height: calc(100vh - 15rem * 2);
         padding-top: var(--padding-block);
         padding-bottom: var(--padding-block);
+        width: 79.4rem;
+        padding: max(8vh, 9.4rem);
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
 
         @include md {
-            --padding-block: 12.6rem;
-            --padding-inline: 8.4rem;
-            grid-column: 1/-1;
             display: flex;
             max-height: calc(100vh - 4rem * 2);
-            padding-left: var(--padding-inline);
-            padding-right: var(--padding-inline);
+            width: 100%;
+            padding: max(8vh, 6.4rem);
         }
 
         @include sm {
+            height: 100%;
             padding: 0;
             align-items: center;
             justify-content: center;

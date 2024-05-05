@@ -1,4 +1,4 @@
-import { Mouse } from "@/components/core/mouse";
+import { Mouse } from "@components/core/mouse";
 import { parseRem } from "@/js/utils";
 import { useEffect, useState } from "react";
 import { animate, timeline, stagger, inView } from "motion";

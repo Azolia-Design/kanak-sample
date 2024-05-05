@@ -2,7 +2,7 @@ import { memo, useRef, useEffect, useState, useMemo } from "react";
 import cn from 'clsx';
 import * as ut from '@/js/utils.js';
 import "./styles.scss"
-import { getLenis } from '@/components/core/lenis';
+import { getLenis } from '@components/core/lenis';
 import useOutsideAlerter from "@hooks/useOutsideAlerter";
 import { isEmpty } from "@utils/text";
 

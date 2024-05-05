@@ -1,10 +1,10 @@
-import { Mouse } from "@/components/core/mouse";
+import { Mouse } from "@components/core/mouse";
 import { parseRem } from "@/js/utils";
 import { useEffect, useState } from "react";
 import { animate, timeline, stagger, inView } from "motion";
 import SplitType from 'split-type';
 import "./Innovation.scss";
-import { convertHighlight } from "@/components/utils/text";
+import { convertHighlight } from "@utils/text";
 
 
 function KustomPackagingInnovation({ ...props }) {

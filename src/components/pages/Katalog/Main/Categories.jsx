@@ -3,7 +3,7 @@ import cn from 'clsx';
 import { formatData } from '@utils/text';
 import { updateQueryParam } from '@utils/parse';
 import useOutsideAlerter from '@hooks/useOutsideAlerter';
-import ArrowDropdown from "@/components/globals/IcArrow/ArrowDropdown.jsx";
+import ArrowDropdown from "@components/globals/IcArrow/ArrowDropdown.jsx";
 
 function Category({ children, isActive, onClick }) {
     return (

@@ -5,7 +5,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { useGSAP } from '@gsap/react';
 import { useProductIndex } from '@contexts/StoreGlobal';
-import GetModel from "@/components/common/GetModel";
+import GetModel from "@components/common/GetModel";
 import { animate, scroll } from "motion";
 function CustomMaterial({...props}) {
     return (

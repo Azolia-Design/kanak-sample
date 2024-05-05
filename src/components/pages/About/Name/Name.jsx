@@ -2,7 +2,7 @@ import './Name.scss';
 import { useEffect, useRef } from 'react';
 import { animate, timeline, stagger, inView, scroll } from "motion";
 import SplitType from 'split-type';
-import useSelector from '@/components/hooks/useSelector';
+import useSelector from '@hooks/useSelector';
 import { transform } from 'framer-motion';
 
 function AboutName({ ...props }) {

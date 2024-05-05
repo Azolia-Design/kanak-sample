@@ -2,7 +2,7 @@ import './Partner.scss';
 import { useRef, useEffect } from "react";
 import { animate, timeline, stagger, inView, scroll } from "motion";
 import SplitType from 'split-type';
-import useSelector from '@/components/hooks/useSelector';
+import useSelector from '@hooks/useSelector';
 
 function PakwayPartner({ ...props }) {
     const sectionRef = useRef();

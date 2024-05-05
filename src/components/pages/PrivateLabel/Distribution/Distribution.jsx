@@ -1,5 +1,5 @@
 import './Distribution.scss'
-import ArrowUpRight from '@/components/globals/IcArrow/ArrowUpRight';
+import ArrowUpRight from '@components/globals/IcArrow/ArrowUpRight';
 import { useEffect } from 'react';
 import SplitType from 'split-type';
 import { stagger, inView, animate, timeline } from "motion";

@@ -3,7 +3,7 @@ import { useKeenSlider } from 'keen-slider/react'
 import "keen-slider/keen-slider.min.css"
 import { useEffect, useRef, useState } from 'react';
 import { brandIndex } from '@contexts/StoreGlobal';
-import useSelector from '@/components/hooks/useSelector';
+import useSelector from '@hooks/useSelector';
 import { animate, timeline, stagger, inView } from "motion";
 import SplitType from 'split-type';
 import { parseRem } from '@/js/utils';

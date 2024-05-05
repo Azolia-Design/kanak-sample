@@ -1,16 +1,16 @@
 import "./Main.scss"
-import ArrowDropdown from "@/components/globals/IcArrow/ArrowDropdown.jsx";
-import ArrowDown from "@/components/globals/IcArrow/ArrowDown.jsx";
-import { formatData, isEmpty } from "@/components/utils/text";
+import ArrowDropdown from "@components/globals/IcArrow/ArrowDropdown.jsx";
+import ArrowDown from "@components/globals/IcArrow/ArrowDown.jsx";
+import { formatData, isEmpty } from "@utils/text";
 import useOutsideAlerter from "@hooks/useOutsideAlerter";
 import { useState, useEffect, useRef, useMemo } from "react";
-import { getLenis } from '@/components/core/lenis';
+import { getLenis } from '@components/core/lenis';
 
 import { animate, timeline, stagger, inView } from "motion";
 import SplitType from 'split-type';
 import Kustomers from "./Kustomers";
 import Categories from './Categories'
-import ProductPopup from "@/components/globals/ProductPopup";
+import ProductPopup from "@components/globals/ProductPopup";
 
 function Item({ data, onClick, filter }) {
     const itemRef = useRef();

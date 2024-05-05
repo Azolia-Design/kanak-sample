@@ -2,7 +2,7 @@ import "./Premble.scss"
 import { animate, timeline, stagger, inView } from "motion";
 import { useEffect } from "react";
 import SplitType from 'split-type';
-import { cleanText } from "@/components/utils/text";
+import { cleanText } from "@utils/text";
 
 
 function KustomerPremble(props) {

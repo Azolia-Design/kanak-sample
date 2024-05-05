@@ -2,12 +2,12 @@ import './Header.scss'
 import cn from 'clsx';
 import { Fragment, useEffect, useRef, useState } from 'react';
 import { parseRem } from '@/js/utils';
-import { getLenis } from '@/components/core/lenis';
+import { getLenis } from '@components/core/lenis';
 import useOutsideAlerter from '@hooks/useOutsideAlerter';
 
 import { animate, timeline, stagger, inView } from "motion";
 import SplitType from 'split-type';
-import { formatData } from '@/components/utils/text';
+import { formatData } from '@utils/text';
 
 function HeaderGlobal(props) {
     const dropdownRef = useRef();

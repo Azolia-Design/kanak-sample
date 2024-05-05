@@ -3,7 +3,7 @@ import { animate, timeline, stagger, inView, scroll } from "motion"
 import * as ut from '@/js/utils.js';
 import SplitType from 'split-type';
 import { useEffect, useRef } from 'react';
-import { cleanText } from '@/components/utils/text';
+import { cleanText } from '@utils/text';
 
 function KustomerValue(props) {
     const ref = useRef();

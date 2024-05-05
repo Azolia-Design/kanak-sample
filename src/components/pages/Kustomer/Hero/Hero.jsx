@@ -3,7 +3,7 @@ import KustomerHeroThree from "./HeroThree"
 import { useState, useRef, useEffect, useMemo, useCallback } from 'react';
 import { animate, timeline, stagger, inView } from "motion";
 import SplitType from 'split-type';
-import { isEmpty } from "@/components/utils/text";
+import { isEmpty } from "@utils/text";
 
 function KustomerHero(props) {
     const [currentIdx, setCurrentIdx] = useState(1);
