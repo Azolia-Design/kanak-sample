@@ -43,7 +43,7 @@ function AboutMission({ ...props }) {
                         “
                     </div>
                     <h2 className="heading h1 txt-black txt-up abt-miss-title">
-                        To kraft responsibly-sourced packaging and products that not only <span className='txt-green'>prioritize quality, functionality, and affordability</span> but also <span className='txt-green'>champion a profound commitment</span> to enhancing the health and beauty of our planet.
+                        To kraft responsibly-sourced packaging and products that not only <span className='txt-green'>prioritize quality, functionality, and affordability</span> but also champion a profound commitment to enhancing the <span className='txt-green'>health and beauty of our planet.</span>
                     </h2>
                 </div>
             </div>

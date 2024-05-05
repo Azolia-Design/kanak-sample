@@ -93,7 +93,7 @@ function AboutWhy({ ...props }) {
                             Fed up with the "eco" rhetoric?
                         </p>
                         <p className="txt txt-18 txt-med abt-why-body">
-                            Buckle up! Kanak Naturals cuts through the noise, pioneering change with every fiber of bamboo and cane. Real solutions, not just promises, shape our arsenal of products that scream quality and purpose.
+                        Buckle up!  Kanak Naturals cuts through the environmental rhetoric by pioneering impactful solutions with every fiber of bamboo and sugarcane. Our products are not merely sustainable; they are superior in quality, functionality, and purpose. We don't just promise; we prove—with products that make a real difference.
                         </p>
                         <p className="txt txt-18 txt-med abt-why-body">
                             And guess what? They do make a difference!

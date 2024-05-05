@@ -76,14 +76,14 @@ function PakwayPartner({ ...props }) {
                 <div className="pak-partner-sub-wrap">
                     <div className="pak-partner-sub-rictxt">
                         <p className="txt txt-18 txt-med pak-partner-sub">
-                            The partnership between Pakway and Kanak Naturals marks a significant step towards enhancing our capabilities in producing responsibly sourced packaging solutions.
+                        The partnership between Pakway and Kanak Naturals enhances our ability to produce eco-friendly packaging that contributes positively to the environment. Together, we leverage Pakway's expertise in rPET technology and Kanak's innovative sustainable material use, driving our shared vision of reducing plastic waste. 
                         </p>
                         <p className="txt txt-18 txt-med pak-partner-sub">
-                            Together, we leverage Pakway's expertise in rPET technology with Kanak's innovative approach to sustainable material use, driving forward our shared vision of reducing plastic waste and promoting a circular economy.
+                        Each year, less than 0.5% of the plastic produced enters the oceans, yet this amounts to over 1 million metric tons. Our collaborative efforts aim to significantly decrease this figure by promoting a circular economy where plastic reuse is prioritized.
                         </p>
                     </div>
                     <a href="#" className="txt txt-18 txt-bold txt-link pak-partner-link hidden" data-cursor="txtLink">
-                        <span>Our Sustainability Commitment</span>
+                        <span>Our Sustainability Kommitment</span>
                         <div className="ic ic-16">
                             {props.icArrExt}
                         </div>

@@ -67,18 +67,23 @@ function PakwayJoin({ ...props }) {
     const data = [
         {
             title: "Reducing Ocean Plastics",
-            sub: "By sourcing ocean-bound plastics for production, we directly combat the growing issue of marine pollution,  turning potential ocean waste into valuable packaging materials.",
+            sub: "By repurposing plastics destined for the ocean, we tackle the pressing issue of marine pollution head-on, converting potential waste into valuable packaging materials. This effort is critical as the world sees only 9% of plastic waste recycled, with the rest ending up in landfills or incinerated, underscoring our commitment to boosting recycling and re-use initiatives globally.",
             image: props.joinImg2
         },
         {
             title: "Advancing Recycling Technology",
-            sub: "We invest in the latest recycling technologies to enhance the quality and efficiency of converting discarded plastics into premium rPET materials, setting new standards in the recycling industry.",
+            sub: "We invest in state-of-the-art recycling technologies to improve the conversion of discarded plastics into premium rPET materials, establishing new benchmarks in the industry and showcasing our BRC-certified dedication to quality.",
             image: props.joinImg3
         },
         {
             title: "Empowering Global Communities",
-            sub: "Collaborating with coastal communities to gather ocean-bound plastics not only helps clean up our oceans but also supports local economies, creating sustainable job opportunities and fostering community development.",
+            sub: "We invest in state-of-the-art recycling technologies to improve the conversion of discarded plastics into premium rPET materials, establishing new benchmarks in the industry and showcasing our BRC-certified dedication to quality.",
             image: props.joinImg1
+        },
+        {
+            title: "Economic Impact",
+            sub: "The financial drain of plastic pollution on the global economy is staggering, with an estimated annual cost of up to $19 billion USD due to effects on fisheries, aquaculture, tourism, and cleanup efforts. Highlighting the financial benefits of improved plastic management is crucial in our communications.",
+            image: props.joinImg4
         }
     ]
 

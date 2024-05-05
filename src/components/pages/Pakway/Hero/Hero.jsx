@@ -34,10 +34,10 @@ function PakwayHero({ ...props }) {
                 </h1>
                 <div className="pak-hero-sub-wrap">
                     <p className="txt txt-18 txt-med pak-hero-sub">
-                        Pakway, a UK-based company recently acquired by Kanak Naturals, leads the packaging industry with its specialized production of rPET food packaging. This partnership focuses on repurposing ocean-bound plastics into high-quality, responsibly sourced products, meeting global sustainability demands.
+                    Pakway, a leader in the UK packaging industry and a recent acquisition by Kanak Naturals, specializes in the production of rPET food packaging. This dynamic partnership is dedicated to repurposing ocean-bound plastics into high-quality, responsibly sourced products, addressing global sustainability demands. 
                     </p>
                     <p className="txt txt-18 txt-med pak-hero-sub">
-                        By innovating recycling processes, Pakway ensures each package not only contributes to a cleaner planet but also exemplifies significant environmental stewardship. Together, we're transforming waste into valuable resources, making a tangible impact—one package at a time.
+                    Annually, the world generates around <span className="txt-bold">400 million metric tons of plastic waste</span>, with a significant portion ending up in our oceans. Pakway's initiatives are vital, as they focus on converting these at-risk plastics into valuable packaging solutions.
                     </p>
                 </div>
                 <div className="pak-hero-img-wrap bg-light">

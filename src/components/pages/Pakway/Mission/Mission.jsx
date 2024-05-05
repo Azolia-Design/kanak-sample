@@ -62,7 +62,7 @@ function PakMission({ ...props }) {
             <div className="pak-miss-main bg-dark">
                 <div className="container grid">
                     <h3 className="heading h2 txt-black txt-up pak-miss-main-title">
-                        We recognize the essential role of packaging in functionality and environmental impact. Pakway utilizes rPET materials to convert at-risk plastics into high-quality, food-safe packaging, reducing environmental footprints and redefining the possibilities of recycled materials in the consumer market.
+                        We recognize the essential role of packaging in functionality and environmental impact. Pakway utilizes advanced rPET materials to transform at-risk plastics into high-quality, food-safe packaging, significantly reducing environmental footprints and pushing the boundaries of recycled materials in the consumer market.
                     </h3>
                 </div>
             </div>
