@@ -82,7 +82,7 @@ function AboutCommit({ ...props }) {
                             Kanak Naturals is more than a brand - it's a testament to inclusivity and progression.
                         </p>
                     </div>
-                    <a href="#" className="txt txt-18 txt-bold txt-link abt-commit-link" data-cursor="txtLink">
+                    <a href="#" className="txt txt-18 txt-bold txt-link abt-commit-link hidden" data-cursor="txtLink">
                         <span>Read more</span>
                         <div className="ic ic-16">
                             {props.icArrExt}

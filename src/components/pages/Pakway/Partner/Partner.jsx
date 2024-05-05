@@ -82,7 +82,7 @@ function PakwayPartner({ ...props }) {
                             Together, we leverage Pakway's expertise in rPET technology with Kanak's innovative approach to sustainable material use, driving forward our shared vision of reducing plastic waste and promoting a circular economy.
                         </p>
                     </div>
-                    <a href="#" className="txt txt-18 txt-bold txt-link pak-partner-link" data-cursor="txtLink">
+                    <a href="#" className="txt txt-18 txt-bold txt-link pak-partner-link hidden" data-cursor="txtLink">
                         <span>Our Sustainability Commitment</span>
                         <div className="ic ic-16">
                             {props.icArrExt}

@@ -129,7 +129,8 @@ html[data-page='Food Processing'] {
 html[data-page='Education'] {
     .global-cta {
         &-main {
-            max-width: 63.6rem;
+            max-width: 66.6rem;
+            grid-column: 1/8;
 
             @include md {
                 grid-column: 1/5;

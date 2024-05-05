@@ -38,6 +38,8 @@ const title = Astro.props.title;
                             key={idx}
                             sub_title={item.data.sub_title}
                             label={item.data.label}
+                            link={idx == 0 ? '/fulfillment' : '#'}
+                            isHidden={idx == 1}
                         >
                             <Fragment
                                 set:html={item.data.title[0].text.replaceAll(

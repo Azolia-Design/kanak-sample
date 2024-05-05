@@ -8,22 +8,22 @@ function KustomPackagingSolution(props) {
     const sectionRef = useRef();
     const q = useSelector(sectionRef);
     useEffect(() => {
-        const label = new SplitType(q('.kuspack-solution-label'), { types: 'lines, words', lineClass: 'split-line' })
+        // const label = new SplitType(q('.kuspack-solution-label'), { types: 'lines, words', lineClass: 'split-line' })
         const title = new SplitType(q('.kuspack-solution-title'), { types: 'lines, words', lineClass: 'split-line' })
         const sub = new SplitType(q('.kuspack-solution-sub'), { types: 'lines, words', lineClass: 'split-line' })
 
-        animate(label.words, { opacity: 0, transform: 'translateY(12px)' }, { duration: 0 })
+        // animate(label.words, { opacity: 0, transform: 'translateY(12px)' }, { duration: 0 })
         animate(title.words, { opacity: 0, transform: 'translateY(100%)' }, { duration: 0 })
         animate(sub.words, { opacity: 0, transform: 'translateY(100%)' }, { duration: 0 })
 
         const sequence = [
-            [label.words, { opacity: 1, transform: 'none' }, { duration: .6, delay: stagger(.1), at: 0 }],
+            // [label.words, { opacity: 1, transform: 'none' }, { duration: .6, delay: stagger(.1), at: 0 }],
             [title.words, { opacity: 1, transform: 'none' }, { duration: .8, delay: stagger(.04), at: .2 }],
             [sub.words, { opacity: 1, transform: 'none' }, { duration: .6, delay: stagger(.005), at: .4 }],
         ]
         inView('.kuspack-solution-title-wrap', () => {
             timeline(sequence).finished.then(() => {
-                label.revert()
+                // label.revert()
                 title.revert()
                 sub.revert()
             })
@@ -33,11 +33,12 @@ function KustomPackagingSolution(props) {
         allItems.forEach((el, idx) => {
             let itemTitle = new SplitType(el.querySelector('.kuspack-solution-main-item-title'), { types: 'lines, chars', lineClass: 'split-line' })
             let itemSub = new SplitType(el.querySelector('.kuspack-solution-main-item-sub'), { types: 'lines, words', lineClass: 'split-line' })
-            let itemLink = new SplitType(el.querySelector('.kuspack-solution-main-item-link'), { types: 'lines, chars', lineClass: 'split-line' })
+            let itemLink = new SplitType(el.querySelector('.kuspack-solution-main-item-link span'), { types: 'lines, chars', lineClass: 'split-line' })
 
             animate(el.querySelector('.line'), { scaleX: 0 }, { duration: 0 })
             animate(el.querySelector('.kuspack-solution-main-item-ic'), { opacity: 0, transform: 'scale(.8) translateY(15%)' }, { duration: 0 })
             animate([...itemTitle.chars, ...itemSub.words, ...itemLink.chars], { opacity: 0, transform: 'translateY(100%)' }, { duration: 0 });
+            animate(el.querySelector('.kuspack-solution-main-item-link svg'), { opacity: 0, transform: "translate(-100%, 100%)" }, { duration: 0 })
             if (idx == allItems.length - 1) {
                 animate(el.querySelector('.line-bottom'), { scaleX: 0 }, { duration: 0 })
             }
@@ -47,12 +48,14 @@ function KustomPackagingSolution(props) {
                 [itemTitle.chars, { opacity: 1, transform: 'none' }, { duration: .8, delay: stagger(.01), at: .2 }],
                 [itemSub.words, { opacity: 1, transform: 'none' }, { duration: .8, delay: stagger(.01), at: .3 }],
                 [itemLink.chars, { opacity: 1, transform: 'none' }, { duration: 1.2, delay: stagger(.005), at: .4 }],
+                [el.querySelector('.kuspack-solution-main-item-link svg'), { opacity: 1, transform: "none" }, { duration: .8, at: "-.8" }],
                 [idx == allItems.length - 1 && el.querySelector('.line-bottom'), { scaleX: 1 }, { duration: .9, at: .3 }]
             ]
             inView(el, () => {
                 timeline(sequenceItem).finished.then(() => {
                     el.querySelector('.line').removeAttribute('style')
                     el.querySelector('.kuspack-solution-main-item-ic').removeAttribute('style')
+                    el.querySelector('.kuspack-solution-main-item-link svg').removeAttribute('style')
                     itemTitle.revert()
                     itemSub.revert()
                     itemLink.revert()
@@ -60,7 +63,7 @@ function KustomPackagingSolution(props) {
                         el.querySelector('.line-bottom').removeAttribute('style')
                     }
                 })
-            }, { margin: "-30% 0px -30% 0px" });
+            }, { margin: "0% 0px 0% 0px" });
         });
     }, [])
     return (
@@ -68,7 +71,7 @@ function KustomPackagingSolution(props) {
             <div className="container grid">
                 <div className="kuspack-solution-title-wrap">
                     <div className="kuspack-solution-title-stick">
-                        <p className="heading h4 txt-up txt-black kuspack-solution-label">{props.label}</p>
+                        <p className="heading h4 txt-up txt-black kuspack-solution-label">{props.label ? props.label : ''}</p>
                         <h2 className="heading h0 txt-up txt-black kuspack-solution-title">{props.title}</h2>
                         <div className="txt txt-18 txt-med kuspack-solution-sub">{props.sub}</div>
                     </div>

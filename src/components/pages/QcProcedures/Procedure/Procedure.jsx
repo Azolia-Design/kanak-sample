@@ -76,7 +76,7 @@ function ComplianceProcedure({ ...props }) {
                 <h1 className="heading h0 txt-black txt-up complian-proce-title">{props.title[0].text}</h1>
                 <div className="complian-proce-sub-wrap">
                     <p className="txt txt-18 txt-med complian-proce-sub">{props.newDes}</p>
-                    <a href="/contact" className='txt txt-18 txt-bold complian-proce-link' data-cursor="txtLink" >
+                    <a href="/contact?src=request" className='txt txt-18 txt-bold complian-proce-link' data-cursor="txtLink" >
                         <div className="complian-proce-link-txt">{props.btn}</div>
                         <div className="ic ic-16"><ArrowUpRight /></div>
                     </a>
