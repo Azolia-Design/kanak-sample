@@ -151,15 +151,16 @@
             contain: paint;
 
             &-inner {
-                min-width: 21.4rem;
-                background-color: var(--cl-bg);
                 display: flex;
                 flex-direction: column;
-                border: solid .2rem var(--cl-txt);
-                border-top: none;
                 transform: translateY(-2rem);
                 opacity: 0;
                 transition: all 400ms ease;
+                display: grid;
+                max-height: 34.2rem;
+                grid-template-rows: repeat(auto-fill, minmax(5.6rem, 1fr));
+                grid-auto-columns: 21.4rem;
+                grid-auto-flow: column;
 
                 // &.Katalog {
                 //     display: grid;
@@ -183,14 +184,19 @@
             &-item {
                 width: 100%;
                 padding: 2rem;
-                border-bottom: solid .2rem var(--cl-txt);
                 display: flex;
                 align-items: center;
-                column-gap: 1.6rem;
                 justify-content: space-between;
                 color: var(--cl-txt);
                 transition: color 400ms ease;
                 cursor: pointer;
+                border: solid .2rem var(--cl-txt);
+                margin-top: -.2rem;
+                margin-right: -.2rem;
+                background-color: var(--cl-bg);
+                &:nth-child(n + 7) {
+                    border-left: none;
+                }
 
                 &-ic {
                     contain: paint;
@@ -211,10 +217,6 @@
                         transform: translate(0, 0);
                         opacity: 1;
                     }
-                }
-
-                &:last-child {
-                    border-bottom: none;
                 }
             }
         }

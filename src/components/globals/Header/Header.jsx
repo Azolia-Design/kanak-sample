@@ -18,24 +18,38 @@ function HeaderGlobal(props) {
 
     useOutsideAlerter(dropdownRef, () => setDropdownIdx(-1));
     useEffect(() => {
+        let missionStartHidden = document.querySelector('.header').clientHeight - document.querySelector('.header-sub').clientHeight - 40
+        console.log(document.querySelector('.header').clientHeight)
+        console.log(document.querySelector('.header-sub').clientHeight)
         getLenis().on('scroll', function (inst) {
             if (inst.direction == 1) {
-                if (inst.scroll >= document.querySelector('.header').clientHeight) {
-                    //setIsHide(true);
+                if (inst.scroll >= missionStartHidden) {
+                    // setIsHide(true);
+                    setIsSubHide(true);
                     if (document.querySelector('.casedtl-slide-stick-line')) {
                         document.querySelector('.casedtl-slide-stick-line').classList.add('hidden')
                     }
                     setDropdownIdx(-1);
                 } else {
-                    //setIsHide(false);
+                    // setIsHide(false);
+                    setIsSubHide(false);
                     if (document.querySelector('.casedtl-slide-stick-line')) {
                         document.querySelector('.casedtl-slide-stick-line').classList.remove('hidden')
                     }
                 }
             } else if (inst.direction == -1) {
-                //setIsHide(false);
-                if (document.querySelector('.casedtl-slide-stick-line')) {
-                    document.querySelector('.casedtl-slide-stick-line').classList.remove('hidden')
+                if (inst.scroll >= missionStartHidden) {
+                    setIsSubHide(true);
+                    // setIsHide(false);
+                    if (document.querySelector('.casedtl-slide-stick-line')) {
+                        document.querySelector('.casedtl-slide-stick-line').classList.remove('hidden')
+                    }
+                } else {
+                    // setIsHide(true);
+                    setIsSubHide(false);
+                    if (document.querySelector('.casedtl-slide-stick-line')) {
+                        document.querySelector('.casedtl-slide-stick-line').classList.add('hidden')
+                    }
                 }
             }
         })
@@ -46,7 +60,7 @@ function HeaderGlobal(props) {
                 getLenis().stop()
                 navAnim.open()
 
-                if (window.innerWidth < 768) {
+                if (window.innerWidth < 991) {
                     setIsSubHide(true)
                 }
 
@@ -138,7 +152,7 @@ function HeaderGlobal(props) {
         if (window.innerWidth > 991) {
             let dropdownEl = document.querySelector(`.header-dropdown[data-dropdown-idx="${idx}"]`)
             setDropdownIdx(idx);
-            setIsHide(false);
+            // setIsHide(false);
             dropdownEl.style.top = `${document.querySelector('.header-main').getBoundingClientRect().height}px`
 
             if (!islLastItem) {
@@ -173,7 +187,7 @@ function HeaderGlobal(props) {
 
     return (
         <>
-            <header className={cn("header header-div-main", { "on-open": dropdownIdx >= 0, "on-hide": isHide })}>
+            <header className={cn("header header-div-main", { "on-hide": isHide })}>
                 <div className="container grid">
                     <div className="header-main">
                         <div className="header-main-inner">
@@ -239,12 +253,12 @@ function HeaderGlobal(props) {
                     if (page.type == 'dropdown') {
                         return (
                             <div className={cn("header-dropdown", { "active": idx === dropdownIdx })} key={idx} data-dropdown-idx={idx}>
-                                <div className={`header-dropdown-inner bg-light ${formatData(page.name)}`}>
+                                <div className={`header-dropdown-inner ${formatData(page.name)}`}>
                                     {page.sub_menu.map((el, idx) => (
                                         <a
                                             key={idx}
                                             href={el.url}
-                                            className={cn("header-dropdown-item", { "active": el.url === props.pathname })}>
+                                            className={cn("header-dropdown-item bg-light", { "active": el.url === props.pathname })}>
                                             <span className="txt txt-14 txt-up txt-semi">{el.name}</span>
                                             <div className="header-dropdown-item-ic">
                                                 <div className="ic ic-16">
@@ -306,7 +320,7 @@ function HeaderGlobal(props) {
                                 {props.pages.map((page, idx) => (
                                     <div href='#' className="nav-main-item" key={idx}>
                                         <a href={page.type == 'dropdown' ? '#' : page.link} data-dropdown-idx={idx} onClick={page.type == 'dropdown' ? (e) => { menuOnClick(e, idx) } : null} className="nav-main-item-head">
-                                            <span className="heading h3 txt-black txt-up nav-main-item-head-txt">{page.name}</span>
+                                            <span className="heading h3 txt-black txt-up nav-main-item-head-txt" dangerouslySetInnerHTML={{ __html: page.name.replaceAll('[','<span class="txt-kanak">').replaceAll(']','</span>') }}></span>
                                             {page.type == "dropdown" && (
                                                 <div className="nav-main-item-head-ic">
                                                     <div className="ic">
