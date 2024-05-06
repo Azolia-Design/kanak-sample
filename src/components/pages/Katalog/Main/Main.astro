@@ -4,7 +4,6 @@ import KatalogMain from "./Main";
 
 const { list_category: list } = Astro.props.data;
 
-const kustomers = await getAllByType("industry");
 const homeData = await getPage("home")
 const homeKustomerList = await Promise.all(
     homeData.data.industry_list.map((industry: any) => {
@@ -12,7 +11,14 @@ const homeKustomerList = await Promise.all(
         return item;
     }),
 );
-const kustomerList = homeKustomerList.map(({ data }) => data.title);
+const kustomerList = homeKustomerList.map(({ data, uid }) => (
+	{
+		title: data.title,
+		uid: uid,
+	}
+
+));
+console.log(homeKustomerList)
 
 let listUidCate = [];
 await list

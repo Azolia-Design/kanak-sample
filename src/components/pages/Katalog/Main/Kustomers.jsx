@@ -53,15 +53,15 @@ function Kustomers({ list, filter, setFilter }) {
                         All
                     </Kustomer>
                     {list.map((kustomer) =>
-                        <Kustomer key={useId()} isActive={filter.kustomer === kustomer} onClick={() => {
-                            setFilter?.({ category: 'All', kustomer })
+                        <Kustomer key={useId()} isActive={filter.kustomer === kustomer.uid} onClick={() => {
+                            setFilter?.({ category: 'All', kustomer: kustomer.uid })
                             setIsDropdown(false);
                             window.history.replaceState(null, null, updateQueryParam([
-                                { key: 'kustomer', value: formatData(kustomer) },
+                                { key: 'kustomer', value: kustomer.uid },
                                 { key: 'category', value: '' }
                             ]));
                         }}>
-                            {kustomer}
+                            {kustomer.title}
                         </Kustomer>
                     )}
                 </div>

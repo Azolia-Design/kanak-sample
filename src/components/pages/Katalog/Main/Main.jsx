@@ -95,7 +95,7 @@ function KatalogMain({ allItem, ...props }) {
     useMemo(() => {
         if (filter.kustomer == 'All') setCurrentList(allItem);
         else {
-            let listByKustomer = allItem.filter((item) => item.data.tag_grp.some((target) => target.tags.uid == formatData(filter.kustomer)));
+            let listByKustomer = allItem.filter((item) => item.data.tag_grp.some((target) => target.tags.uid == filter.kustomer));
             setCurrentList(listByKustomer);
         }
     }, [filter.kustomer])
@@ -185,9 +185,10 @@ function KatalogMain({ allItem, ...props }) {
             setFilter((filter) => ({ ...filter, category: props.cateList.find(item => formatData(item) === searchParam.get("category")) }))
         };
         if (searchParam.has("kustomer")) {
-            setFilter((filter) => ({ ...filter, kustomer: props.kustomerList.find(item => formatData(item) === searchParam.get("kustomer")) }))
+            setFilter((filter) => ({ ...filter, kustomer: props.kustomerList.find(item => item.uid === searchParam.get("kustomer")).uid }))
         }
     }, [])
+
     return (
         <section className={`katalog-main ${isOpenPopup ? 'active' : ''}`}>
             <div className="container grid">
