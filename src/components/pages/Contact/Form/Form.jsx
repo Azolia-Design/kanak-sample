@@ -52,8 +52,8 @@ function ContactForm(props) {
         e.preventDefault();
         let src = window.location.search
         console.log(src)
-        let portalId = '44370442';
-        let formId = 'df61385f-407b-46c3-9488-02be9f60f1d5';
+        let portalId = '46076884';
+        let formId = '37def219-542e-4aab-a3f4-d90ccc332f02';
         const dataSend = {
             fields: transformDataToObjectArray(mapFormToObject(e.target)),
             context: {
