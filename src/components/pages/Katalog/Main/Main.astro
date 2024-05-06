@@ -1,11 +1,18 @@
 ---
-import { getAllByType, getByUID } from "@/prismic";
+import { getAllByType, getByUID, getPage } from "@/prismic";
 import KatalogMain from "./Main";
 
 const { list_category: list } = Astro.props.data;
 
 const kustomers = await getAllByType("industry");
-const kustomerList = kustomers.map(({ data }) => data.title);
+const homeData = await getPage("home")
+const homeKustomerList = await Promise.all(
+    homeData.data.industry_list.map((industry: any) => {
+        let item = getByUID("industry", industry.item.uid);
+        return item;
+    }),
+);
+const kustomerList = homeKustomerList.map(({ data }) => data.title);
 
 let listUidCate = [];
 await list
