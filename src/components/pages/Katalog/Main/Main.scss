@@ -555,6 +555,14 @@
                 display: none;
                 visibility: hidden;
             }
+            &:hover {
+                .katalog-main-list-item-img-inner.data-thumb {
+                    transform: scale(1.2);
+                }
+                .katalog-main-list-item-info-name {
+                    color: var(--cl-orange);
+                }
+            }
 
             &-img {
                 display: flex;
@@ -572,6 +580,7 @@
                     display: flex;
                     align-items: center;
                     justify-content: start;
+                    transition: transform .4s ease;
                     @include size(100%);
 
                     @include md {
@@ -601,6 +610,7 @@
                     width: 100%;
                     text-align: start;
                     margin: 0 3.2rem;
+                    transition: color .4s ease;
 
                     @include md {
                         padding: 1.9rem 0;
