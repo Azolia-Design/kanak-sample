@@ -54,7 +54,7 @@ function CaseCateHero({ ...props }) {
                         </div>
                         <div className="case-cate-hero-bread-link-wrap">
                             <a href="/kase-studies" className="txt txt-20 txt-bold case-cate-hero-bread-link">
-                                Kase studies
+                                Kase Studies
                             </a>
                         </div>
                     </div>
