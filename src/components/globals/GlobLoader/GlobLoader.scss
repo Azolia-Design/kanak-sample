@@ -220,5 +220,8 @@
         @include sm {
             left: 1.6rem;
         }
+        .ic {
+            flex: none;
+        }
     }
 }
