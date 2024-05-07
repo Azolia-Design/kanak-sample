@@ -2,6 +2,7 @@
 import {getAllByType} from '@/prismic.js';
 import Layout from "@/layouts/Layout.astro";
 import Main from '@pages/CaseStudy/Main/Main.astro'
+import * as prismicH from "@prismicio/client";
 
 export async function getStaticPaths() {
     const list = await getAllByType('case_study')
@@ -16,6 +17,9 @@ export async function getStaticPaths() {
 const { kaseStudy } = Astro.params;
 const { item } = Astro.props;
 ---
-<Layout title={item.data.title[0].text}>
+<Layout
+    title={item.data.title[0].text}
+    meta_desc={item.data.content.filter((item: any) => item.type === 'paragraph')[0].text}
+    >
     <Main {...item}/>
 </Layout>
