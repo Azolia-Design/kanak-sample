@@ -79,8 +79,8 @@ function KustomerHero(props) {
                 scale: [0, 0, 0]
             },
             {
-                url: '/glb/plates-80-transformed.glb',
-                scale: [.75, .75, .75],
+                url: '/glb/surgical-tray-clean-transformed.glb',
+                scale: [.45, .45, .45],
                 position: [0, 0.03, 0]
             },
         ]

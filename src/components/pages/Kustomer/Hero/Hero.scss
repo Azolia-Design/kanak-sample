@@ -32,7 +32,7 @@
     }
 
     &-title {
-        grid-column: 2/16;
+        grid-column: 1/17;
         text-align: center;
         max-width: 137.3rem;
         margin: auto;
@@ -103,4 +103,7 @@
             order: 3;
         }
     }
+}
+[data-page="Medical"] .kustomer-hero-title {
+    max-width: 136.3rem;
 }
