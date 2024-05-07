@@ -1,7 +1,6 @@
 import { useEffect } from "react"
 import { animate, timeline, stagger, inView } from "motion";
 import SplitType from 'split-type';
-import { convertHighlight } from "@utils/text";
 
 import ExploreItem from "./ExploreItem"
 

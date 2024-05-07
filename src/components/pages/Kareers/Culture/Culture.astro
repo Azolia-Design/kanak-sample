@@ -2,9 +2,12 @@
 import Image from 'astro/components/Image.astro'
 import KareerCulture from './Culture.jsx'
 import kareerCultItem from '@assets/kareer-cult-item.jpg';
-import { convertHighlight } from '@utils/text';
+import { parseLabelsRichtext } from '@utils/text';
 ---
 <KareerCulture {...Astro.props} client:visible={{rootMargin: "200% 0px 200% 0px"}}>
-    <Fragment set:html={convertHighlight(Astro.props.title)} slot="title" />
+    <Fragment set:html={parseLabelsRichtext(Astro.props.title, {
+        inputClass: 'Highlight',
+        outputClass: 'txt-green'
+    })} slot="title" />
     <Image src={kareerCultItem} alt='' slot='itemImg' class='img img-h'/>
 </KareerCulture>

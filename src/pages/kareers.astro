@@ -9,7 +9,7 @@ import { getPage } from "@/prismic.js";
 const { data } = await getPage("kareers");
 ---
 
-<Layout title="Kareers" data_page="Kareers">
+<Layout title={data.page_title} meta_desc={data.meta_desc} data_page="Kareers">
     <Hero title={data.hero_title[0].text} img={data.hero_bg} />
     <Culture title={data.culture_title} sub={data.culture_sub} list={data.culture_list} />
     <Gallery />

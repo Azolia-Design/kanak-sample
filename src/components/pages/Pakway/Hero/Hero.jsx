@@ -4,7 +4,7 @@ import { animate, timeline, stagger, inView } from "motion";
 import SplitType from 'split-type';
 import useSelector from '@hooks/useSelector';
 
-function PakwayHero({ ...props }) {
+function PakwayHero(props) {
     const sectionRef = useRef();
     const q = useSelector(sectionRef);
     useEffect(() => {
@@ -15,7 +15,7 @@ function PakwayHero({ ...props }) {
         animate('.pak-hero-img-wrap', { opacity: 0, transform: 'scale(.9)' }, { duration: 0 })
         const sequence = [
             [title.words, { opacity: 1, transform: 'none' }, { duration: .8, delay: stagger(.04) }],
-            [sub.words, { opacity: 1, transform: 'none' }, { duration: .8, delay: stagger(.01), at: .3 }],
+            [sub.words, { opacity: 1, transform: 'none' }, { duration: .5, delay: stagger(.01), at: .3 }],
             ['.pak-hero-img-wrap', { opacity: 1, transform: 'none' }, { duration: .8, at: .2 }],
         ]
         inView('.pak-hero', () => {
@@ -32,13 +32,8 @@ function PakwayHero({ ...props }) {
                 <h1 className="heading h0 txt-up txt-black pak-hero-title">
                     Pakway: Turning Waste into Worth
                 </h1>
-                <div className="pak-hero-sub-wrap">
-                    <p className="txt txt-18 txt-med pak-hero-sub">
-                    Pakway, a leader in the UK packaging industry and a recent acquisition by Kanak Naturals, specializes in the production of rPET food packaging. This dynamic partnership is dedicated to repurposing ocean-bound plastics into high-quality, responsibly sourced products, addressing global sustainability demands. 
-                    </p>
-                    <p className="txt txt-18 txt-med pak-hero-sub">
-                    Annually, the world generates around <span className="txt-bold">400 million metric tons of plastic waste</span>, with a significant portion ending up in our oceans. Pakway's initiatives are vital, as they focus on converting these at-risk plastics into valuable packaging solutions.
-                    </p>
+                <div className="txt txt-18 txt-med pak-hero-sub">
+                    {props.subtitle}
                 </div>
                 <div className="pak-hero-img-wrap bg-light">
                     {props.heroImg}

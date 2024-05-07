@@ -5,14 +5,40 @@ const convertHighlight = (field) => {
         .replace(/^<[^>]+>|<[^>]+>$/g, '')
         .replace(/<p[^>]*>|<\/p>/g, ' ')
     const replacer = (match, p1) => {
-        return p1
-            .split(/(\b\w+-\b)/)
-            .filter(part => part !== '-')
-            .map((word, idx) => `<span class="txt-green">${word}</span>`)
-            .join('')
+        let replacedString =  p1
+             .split(/\b(\w+-\w+)\b|\s+/) // Tách thành từng từ, bao gồm các từ có gạch nối
+             .filter(part => typeof part === 'string' && part.trim().length > 0) // Loại bỏ các phần tử không phải chuỗi và rỗng
+             .map(word => `<span class="txt-green">${word}</span>`) // Bọc từng từ trong thẻ <span>
+             .join(' '); // Kết hợp lại thành chuỗi
+        if (replacedString.length > 0) {
+            replacedString += ' ';
+        }
+        return replacedString;
     };
     // Thực hiện thay thế
+
     return htmlString.replace(/<span class="Highlight">(.*?)<\/span>/g, replacer);
+}
+
+const parseLabelsRichtext = (field, transformClass) => {
+    const { inputClass, outputClass } = transformClass;
+    let htmlString = prismicH.asHTML(field)
+        .replace(/^<[^>]+>|<[^>]+>$/g, '')
+        .replace(/<p[^>]*>|<\/p>/g, ' ')
+    const replacer = (match, p1) => {
+        let replacedString =  p1
+            .split(/\b(\w+-\w+)\b|\s+/)
+            .filter(part => typeof part === 'string' && part.trim().length > 0)
+            .map(word => `<span class="${outputClass}">${word}</span>`)
+            .join(' ');
+        if (replacedString.length > 0) {
+            replacedString += ' ';
+        }
+        return replacedString;
+    };
+    // Thực hiện thay thế
+    const regex = new RegExp(`<span class="${inputClass}">(.*?)<\/span>`, 'g');
+    return htmlString.replace(regex, replacer);
 }
 
 function convertDate(data) {
@@ -53,6 +79,6 @@ function isEmpty(data) {
 function formatData(data) {
     return data && data.toLowerCase().replace(/ /g, "-").replace("&", "")
 }
-export { convertHighlight, convertDate, cleanText, isEmpty, formatData }
+export { convertHighlight, parseLabelsRichtext, convertDate, cleanText, isEmpty, formatData }
 
 
