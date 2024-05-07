@@ -51,6 +51,9 @@
             width: 100%;
             height: var(--height-bg);
             contain: paint;
+            img {
+                object-position: top;
+            }
             @include md {
                 top: 0;
                 bottom: auto;

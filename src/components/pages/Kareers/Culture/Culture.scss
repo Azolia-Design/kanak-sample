@@ -63,10 +63,10 @@
         }
         &-item {
             --height-overlap: 10rem;
-            --top-distance: 14rem;
+            --top-distance: -1.99rem;
             @include md {
                 --height-overlap: 14rem;
-                --top-distance: 6rem;
+                --top-distance: -6.4rem;
             }
             background-color: var(--cl-bg);
             position: sticky;
@@ -102,6 +102,8 @@
                 transform-origin: left;
                 &-top {
                     top: 0;
+                    mix-blend-mode: hard-light;
+                    background: #3a3737;
                 }
                 &-bot {
                     bottom: 0;

@@ -10,13 +10,13 @@ const { data } = await getPage("pakway_page");
 ---
 
 <Layout
-    title="Pakway"
-    meta_desc={data.meta_desc[0].text}
+    title={data.page_title}
+    meta_desc={data.meta_desc}
     data_page="Pakway"
     footer_cta={data.cta_title[0]?.text}
     footer_bg={data.cta_background}
 >
-    <Hero />
+    <Hero data={data}/>
     <Mission />
     <Partner />
     <Join />
