@@ -43,7 +43,7 @@ function KustomerCaseStudies({ ...props }) {
                 <div className="kustomer-kasestu-des">
                     <p className="txt txt-18 txt-med kustomer-kasestu-des-content">{props.des}</p>
                     <a href="/kase-studies" className="kustomer-kasestu-des-link txt-link" data-cursor="txtLink">
-                        <div className="txt txt-18 txt-bold">View all kase studies</div>
+                        <div className="txt txt-18 txt-bold">View all Kase Studies</div>
                         <div className="ic ic-16">
                             <ArrowUpRight />
                         </div>

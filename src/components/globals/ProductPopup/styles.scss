@@ -392,6 +392,13 @@
             }
 
             &-item {
+                display: block;
+                width: 100%;
+                text-align: left;
+                transition: color .4s ease;
+                &:hover {
+                    color: var(--cl-orange);
+                }
                 &:first-child {
                     .popup-itemdtl-table-item-div {
                         @include sm {

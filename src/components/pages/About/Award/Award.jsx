@@ -92,7 +92,7 @@ function AboutAward({ ...props }) {
 
     return (
         <>
-            <section className="abt-award" ref={sectionRef}>
+            <section className="abt-award" ref={sectionRef} id='Award'>
                 <div className="container grid">
                     <div className="abt-award-title-wrap">
                         <div className="heading h4 txt-black txt-up abt-award-label">
@@ -122,7 +122,7 @@ function AboutAward({ ...props }) {
                                     <p className="txt txt-18 txt-med abt-award-item-content-sub">
                                         Our Sustainables® 9” Octi-Square Plate has clinched the <span className="txt-bold">PLMA 2022 Best Plate Award</span> in the Home & Household category, standing out among thousands with its innovative, eco-friendly design.
                                     </p>
-                                    <a href="/kustomers/retail#kustomer-sus" className="txt txt-18 txt-bold abt-award-item-content-link txt-link" data-cursor="txtLink">
+                                    <a href="/kustomers/retail#Sustainable" className="txt txt-18 txt-bold abt-award-item-content-link txt-link" data-cursor="txtLink">
                                         <span>View Sustainables® Collection</span>
                                         <div className="ic ic-16">
                                             {props.icArrExt}

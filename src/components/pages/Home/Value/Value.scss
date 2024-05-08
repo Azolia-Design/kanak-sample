@@ -229,7 +229,9 @@
                 display: inline-flex;
                 align-items: center;
                 column-gap: .8rem;
-
+                &.hidden {
+                    display: none;
+                }
                 @include md {
                     @include text(16);
                 }

@@ -49,6 +49,7 @@ function ProductPopup({ data, isActive, setIsActive }) {
 
     const renderDots = useMemo(() => {
         let totalPages = data.carousel_imgs?.length;
+        console.log(totalPages)
         const dots = [];
 
         for (let i = 0; i <= totalPages - 1; i++) {
@@ -158,7 +159,7 @@ function ProductPopup({ data, isActive, setIsActive }) {
                                         <div className="popup-itemdtl-table-item-wrap" data-lenis-prevent>
                                             <div className="popup-itemdtl-table-item-inner">
                                                 {data.variants?.map((item, idx) => (
-                                                    <div className="txt txt-16 txt-med popup-itemdtl-table-item" key={idx}>
+                                                    <button className="txt txt-16 txt-med popup-itemdtl-table-item" key={idx} onClick={() => {setCurrentIndex(idx)}}>
                                                         <div className="popup-itemdtl-table-item-div desktop">
                                                             <div className="popup-itemdtl-table-code">{item.sku ? item.sku : '-'}</div>
                                                             <div className="popup-itemdtl-table-size">{item.size ? item.size : '-'}</div>
@@ -209,7 +210,7 @@ function ProductPopup({ data, isActive, setIsActive }) {
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                    </button>
                                                 ))}
                                             </div>
                                         </div>
