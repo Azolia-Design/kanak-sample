@@ -109,65 +109,6 @@ function PakwayJoin(props) {
                             </div>
                         </div>
                     ))}
-
-                    {/* <div className="pak-join-main-item bg-dark" style={{ "--idx": 1, "--pd-bot": 2, "--mg-top": 0 }}>
-                        <div className="pak-join-main-item-inner">
-                            <div className="line line-top"></div>
-                            <div className="pak-join-main-item-content">
-                                <div className="pak-join-main-item-title">
-                                    <div className="pak-join-main-item-title-dot"></div>
-                                    <h3 className="heading h1 txt-up txt-black pak-join-main-item-title-txt">
-                                        Expertise
-                                    </h3>
-                                </div>
-                                <p className="txt txt-20 txt-med pak-join-main-item-sub">
-                                    With Kanak Naturals, you're signing up for more than sustainability. You're joining hands with a legacy championing responsibility and ingenuity for over 25 years.
-                                </p>
-                            </div>
-                            <div className="pak-join-main-item-img">
-                                {props.joinImg1}
-                            </div>
-                        </div>
-                    </div>
-                    <div className="pak-join-main-item bg-dark" style={{ "--idx": 2, "--pd-bot": 1, "--mg-top": 2 }}>
-                        <div className="pak-join-main-item-inner">
-                            <div className="line line-top"></div>
-                            <div className="pak-join-main-item-content">
-                                <div className="pak-join-main-item-title">
-                                    <div className="pak-join-main-item-title-dot"></div>
-                                    <h3 className="heading h1 txt-up txt-black pak-join-main-item-title-txt">
-                                        Impact
-                                    </h3>
-                                </div>
-                                <p className="txt txt-20 txt-med pak-join-main-item-sub">
-                                    We believe every choice counts, every action matters, and every product you pick is a step forward, paving the path towards a sustainable, thriving planet.
-                                </p>
-                            </div>
-                            <div className="pak-join-main-item-img">
-                                {props.joinImg2}
-                            </div>
-                        </div>
-                    </div>
-                    <div className="pak-join-main-item bg-dark" style={{ "--idx": 3, "--pd-bot": 0, "--mg-top": 1 }}>
-                        <div className="pak-join-main-item-inner">
-                            <div className="line line-top"></div>
-                            <div className="pak-join-main-item-content">
-                                <div className="pak-join-main-item-title">
-                                    <div className="pak-join-main-item-title-dot"></div>
-                                    <h3 className="heading h1 txt-up txt-black pak-join-main-item-title-txt">
-                                        Thought-Leadership
-                                    </h3>
-                                </div>
-                                <p className="txt txt-20 txt-med pak-join-main-item-sub">
-                                    By rallying behind bamboo and sugarcane, we're not just creating products; we're setting the precedent for a future where sustainability isn't an option—it's the norm.
-                                </p>
-                            </div>
-                            <div className="pak-join-main-item-img">
-                                {props.joinImg3}
-                            </div>
-                            <div className="line line-bot"></div>
-                        </div>
-                    </div> */}
                 </div>
             </div>
         </section>

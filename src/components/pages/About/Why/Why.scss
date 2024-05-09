@@ -123,24 +123,24 @@
         }
 
     }
-
     &-body-wrap {
         display: flex;
         flex-direction: column;
         align-items: start;
         row-gap: 2.4rem;
-
         @include md {
+            @include text(16);
             grid-column: 6/-1;
             row-gap: 2rem;
         }
-
         @include sm {
-            row-gap: 2.4rem
+            row-gap: 2.4rem;
         }
     }
-
     &-body {
+        p:not(:last-child) {
+            margin-bottom: 2.4rem;
+        }
         @include md {
             @include text(16);
         }

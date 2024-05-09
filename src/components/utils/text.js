@@ -3,7 +3,8 @@ import * as prismicH from "@prismicio/client";
 const convertHighlight = (field) => {
     let htmlString = prismicH.asHTML(field)
         .replace(/^<[^>]+>|<[^>]+>$/g, '')
-        .replace(/<p[^>]*>|<\/p>/g, ' ')
+        // .replace(/<p[^>]*>|<\/p>/g, ' ')
+        
     const replacer = (match, p1) => {
         let replacedString =  p1
              .split(/\b(\w+-\w+)\b|\s+/) // Tách thành từng từ, bao gồm các từ có gạch nối
@@ -15,7 +16,6 @@ const convertHighlight = (field) => {
         }
         return replacedString;
     };
-    // Thực hiện thay thế
 
     return htmlString.replace(/<span class="Highlight">(.*?)<\/span>/g, replacer);
 }
@@ -24,7 +24,8 @@ const parseLabelsRichtext = (field, transformClass) => {
     const { inputLabel, outputClass } = transformClass;
     let htmlString = prismicH.asHTML(field)
         .replace(/^<[^>]+>|<[^>]+>$/g, '')
-        .replace(/<p[^>]*>|<\/p>/g, ' ')
+        // .replace(/<p[^>]*>|<\/p>/g, ' ')
+        
     const replacer = (match, p1) => {
         let replacedString =  p1
             .split(/\b(\w+-\w+)\b|\s+/)
@@ -36,7 +37,7 @@ const parseLabelsRichtext = (field, transformClass) => {
         }
         return replacedString;
     };
-    // Thực hiện thay thế
+
     const regex = new RegExp(`<span class="${inputLabel}">(.*?)<\/span>`, 'g');
     return htmlString.replace(regex, replacer);
 }

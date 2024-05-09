@@ -1,9 +1,18 @@
 ---
 import { Image } from "astro:assets";
 import AboutName from "./Name";
-import AbtNameImg from "@assets/abt-name.jpg";
+const { data } = Astro.props;
 ---
 
-<AboutName {...Astro.props} client:visible={{ rootMargin: "200% 0px 200% 0px" }}>
-  <Image src={AbtNameImg} class="img-fill" alt="" slot="nameImg"/>
+<AboutName 
+  title={data.intro_title[0].text}
+  subtitle={data.intro_subtitle[0].text}
+  client:visible={{ rootMargin: "200% 0px 200% 0px" }}>
+  <Image
+    src={Astro.props.data.intro_image.url}
+    class="img-fill"
+    alt={Astro.props.data.intro_image.alt || ""}
+    width={Astro.props.data.intro_image?.dimensions.width}
+    height={Astro.props.data.intro_image?.dimensions.height}
+    slot="thumbnail" />
 </AboutName>

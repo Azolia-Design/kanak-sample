@@ -67,72 +67,43 @@ function AboutJoin({ ...props }) {
         <section className="abt-join bg-dark" ref={sectionRef}>
             <div className="container grid">
                 <div className="abt-join-title-wrap">
-                    <div className="heading h4 txt-black txt-up abt-join-label">
-                        Join our movement
-                    </div>
-                    <h2 className="heading h0 txt-black txt-up abt-join-title">
-                        A Commitment To A <span className="txt-green">greener</span> <span className="txt-green">future</span>
-                    </h2>
+                    <div className="heading h4 txt-black txt-up abt-join-label">{props.label}</div>
+                    <h2 className="heading h0 txt-black txt-up abt-join-title">{props.title}</h2>
                 </div>
                 <div className="abt-join-main">
-                    <div className="abt-join-main-item bg-dark" style={{ "--idx": 1, "--pd-bot": 2, "--mg-top": 0 }}>
-                        <div className="abt-join-main-item-inner">
-                            <div className="line line-top"></div>
-                            <div className="abt-join-main-item-content">
-                                <div className="abt-join-main-item-title">
-                                    <div className="abt-join-main-item-title-dot"></div>
-                                    <h3 className="heading h1 txt-up txt-black abt-join-main-item-title-txt">
-                                        Expertise
-                                    </h3>
+                    {props.list.map((el, idx) => (
+                        <div 
+                            key={idx} 
+                            className="abt-join-main-item bg-dark" 
+                            style={{ 
+                                "--idx": idx + 1,
+                                "--pd-bot": props.list.length - idx, 
+                                "--mg-top": idx == 0 ? 0 : props.list.length - idx
+                            }}>
+                            <div className="abt-join-main-item-inner">
+                                <div className="line line-top"></div>
+                                <div className="abt-join-main-item-content">
+                                    <div className="abt-join-main-item-title">
+                                        <div className="abt-join-main-item-title-dot"></div>
+                                        <h3 className="heading h1 txt-up txt-black abt-join-main-item-title-txt">{el.title[0].text}</h3>
+                                    </div>
+                                    <p className="txt txt-20 txt-med abt-join-main-item-sub">{el.content}</p>
                                 </div>
-                                <p className="txt txt-20 txt-med abt-join-main-item-sub">
-                                    With Kanak Naturals, you're signing up for more than sustainability. You're joining hands with a legacy championing responsibility and ingenuity for over 25 years.
-                                </p>
-                            </div>
-                            <div className="abt-join-main-item-img">
-                                {props.joinImg1}
+                                <div className="abt-join-main-item-img">
+                                    <img
+                                        src={el.icon.url}
+                                        className="img-fill"
+                                        alt={el.icon.alt || ""}
+                                        width={el.icon?.dimensions.width}
+                                        height={el.icon?.dimensions.height}
+                                    />
+                                </div>
+                                {idx == props.list.length - 1 && (
+                                    <div className="line line-bot"></div>
+                                )}
                             </div>
                         </div>
-                    </div>
-                    <div className="abt-join-main-item bg-dark" style={{ "--idx": 2, "--pd-bot": 1, "--mg-top": 2 }}>
-                        <div className="abt-join-main-item-inner">
-                            <div className="line line-top"></div>
-                            <div className="abt-join-main-item-content">
-                                <div className="abt-join-main-item-title">
-                                    <div className="abt-join-main-item-title-dot"></div>
-                                    <h3 className="heading h1 txt-up txt-black abt-join-main-item-title-txt">
-                                        Impact
-                                    </h3>
-                                </div>
-                                <p className="txt txt-20 txt-med abt-join-main-item-sub">
-                                    Choosing Kanak for your packaging needs directly supports the fight against plastic pollution. Our operations help reduce the massive influx of plastic waste—approximately 400 million metric tons annually—by enhancing recycling and reducing oceanic and landfill waste. With new distribution centers enhancing our delivery efficiency, every Kanak product you choose contributes to a more sustainable planet and a healthier global economy.
-                                </p>
-                            </div>
-                            <div className="abt-join-main-item-img">
-                                {props.joinImg2}
-                            </div>
-                        </div>
-                    </div>
-                    <div className="abt-join-main-item bg-dark" style={{ "--idx": 3, "--pd-bot": 0, "--mg-top": 1 }}>
-                        <div className="abt-join-main-item-inner">
-                            <div className="line line-top"></div>
-                            <div className="abt-join-main-item-content">
-                                <div className="abt-join-main-item-title">
-                                    <div className="abt-join-main-item-title-dot"></div>
-                                    <h3 className="heading h1 txt-up txt-black abt-join-main-item-title-txt">
-                                        Thought-Leadership
-                                    </h3>
-                                </div>
-                                <p className="txt txt-20 txt-med abt-join-main-item-sub">
-                                    We lead with renewable materials like rPET, bamboo and sugarcane, superior sustainable solutions that define our 'Kommittment' to making responsibly sourced products the norm. Addressing both ecological and economic impacts, Kanak Naturals combats the $19 billion annual cost of plastic pollution by investing in advanced recycling technologies and minimizing our use of virgin plastics, promoting comprehensive sustainability.
-                                </p>
-                            </div>
-                            <div className="abt-join-main-item-img">
-                                {props.joinImg3}
-                            </div>
-                            <div className="line line-bot"></div>
-                        </div>
-                    </div>
+                    ))}
                 </div>
             </div>
         </section>
