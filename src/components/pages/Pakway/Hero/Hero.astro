@@ -1,18 +1,23 @@
 ---
 import { Image } from "astro:assets";
 import PakwayHero from "./Hero";
-import abtHeroImg from "@assets/pak-hero2.jpg";
 import { parseLabelsRichtext } from '@utils/text';
-
 ---
-
 <PakwayHero
-  {...Astro.props}
+  title={Astro.props.data.hero_title[0].text}
   client:visible={{ rootMargin: "200% 0px 200% 0px" }}
 >
-  <Fragment set:html={parseLabelsRichtext(Astro.props.data.hero_subtitle, {
-    inputClass: 'Bold',
-    outputClass: 'txt-bold'
-  })} slot="subtitle" />
-  <Image src={abtHeroImg} class="img-fill" alt="" slot="heroImg" />
+  <Fragment
+    set:html={parseLabelsRichtext(Astro.props.data.hero_subtitle, {
+      inputLabel: 'Bold',
+      outputClass: 'txt-bold'
+    })}
+  slot="subtitle" />
+  <Image
+    src={Astro.props.data.hero_image.url}
+    class="img-fill"
+    alt={Astro.props.data.hero_image.alt || ""}
+    width={Astro.props.data.hero_image?.dimensions.width}
+    height={Astro.props.data.hero_image?.dimensions.height}
+    slot="heroImg" />
 </PakwayHero>

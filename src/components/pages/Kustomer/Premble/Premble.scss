@@ -7,6 +7,10 @@
     margin-top: calc(var(--offset-top) * -1);
     padding-top: calc(var(--offset-top) + 7rem);
 
+    @media only screen and (max-height: 960px) {
+        --offset-top: 16vh;
+    }
+
     @include md {
         --offset-top: 16rem;
     }

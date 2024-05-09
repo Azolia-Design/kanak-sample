@@ -49,7 +49,6 @@ function ProductPopup({ data, isActive, setIsActive }) {
 
     const renderDots = useMemo(() => {
         let totalPages = data.carousel_imgs?.length;
-        console.log(totalPages)
         const dots = [];
 
         for (let i = 0; i <= totalPages - 1; i++) {

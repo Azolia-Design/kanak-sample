@@ -8,13 +8,14 @@
     height: 100vh;
     contain: paint;
     padding-bottom: 5rem;
-
+    .container {
+        padding-top: clamp(16rem, 18.75vh, 50%);
+    }
     @include md {
         height: auto;
     }
 
     &-subtitle {
-        padding-top: clamp(16rem, 18.75vh, 50%);
         grid-column: 4/14;
         text-align: center;
         margin-bottom: 1.6rem;
@@ -36,6 +37,9 @@
         text-align: center;
         max-width: 137.3rem;
         margin: auto;
+        @media only screen and (max-height: 960px) {
+            font-size: 12.5vh;
+        }
 
         p {
             min-height: 11rem;
@@ -73,6 +77,10 @@
         cursor: grab;
         margin-top: 7.6rem;
 
+        @media only screen and (max-height: 615px) {
+            height: calc(100vh - 63.5vh);
+        }
+
         @include md {
             position: relative;
             height: 27.8rem;
@@ -102,6 +110,16 @@
         &-right {
             order: 3;
         }
+    }
+}
+[data-page="Retail"] .kustomer-hero-title {
+    @media only screen and (max-height: 960px) {
+        max-width: 100vh;
+    }
+}
+[data-page="Foodservice"] .kustomer-hero-title {
+    @media only screen and (max-height: 960px) {
+        max-width: 125vh;
     }
 }
 [data-page="Medical"] .kustomer-hero-title {

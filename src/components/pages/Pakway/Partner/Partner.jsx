@@ -4,7 +4,7 @@ import { animate, timeline, stagger, inView, scroll } from "motion";
 import SplitType from 'split-type';
 import useSelector from '@hooks/useSelector';
 
-function PakwayPartner({ ...props }) {
+function PakwayPartner(props) {
     const sectionRef = useRef();
     const q = useSelector(sectionRef);
 
@@ -64,19 +64,19 @@ function PakwayPartner({ ...props }) {
             <div className="container grid">
                 <div className="pak-partner-title-wrap">
                     <div className="heading h4 txt-black txt-up pak-partner-label">
-                        Pakway and Kanak Partnership
+                        {props.label}
                     </div>
                     <h2 className="heading h0 txt-up txt-black pak-partner-title">
-                        United For A <span className='txt-green'>Greener Future</span>
+                        {props.title}
                     </h2>
                 </div>
                 <div className="pak-partner-img-wrap">
-                    {props.pakImg}
+                    {props.thumbnail}
                 </div>
                 <div className="pak-partner-sub-wrap">
                     <div className="pak-partner-sub-rictxt">
                         <p className="txt txt-18 txt-med pak-partner-sub">
-                        The partnership between Pakway and Kanak Naturals enhances our ability to produce eco-friendly packaging that contributes positively to the environment. Together, we leverage Pakway's expertise in rPET technology and Kanak's innovative sustainable material use, driving our shared vision of reducing plastic waste. 
+                        The partnership between Pakway and Kanak Naturals enhances our ability to produce eco-friendly packaging that contributes positively to the environment. Together, we leverage Pakway's expertise in rPET technology and Kanak's innovative sustainable material use, driving our shared vision of reducing plastic waste.
                         </p>
                         <p className="txt txt-18 txt-med pak-partner-sub">
                         Each year, less than 0.5% of the plastic produced enters the oceans, yet this amounts to over 1 million metric tons. Our collaborative efforts aim to significantly decrease this figure by promoting a circular economy where plastic reuse is prioritized.

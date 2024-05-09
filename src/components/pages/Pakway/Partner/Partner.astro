@@ -1,14 +1,22 @@
 ---
 import { Image } from "astro:assets";
 import PakwayPartner from "./Partner";
-import pakImg from "@assets/pak-partner.jpg";
 import icArrExt from "@assets/ext-arr-menu.svg?raw";
+import { convertHighlight } from "@utils/text";
 ---
-
 <PakwayPartner
-    {...Astro.props}
+    label={Astro.props.data.partnership_label}
+    subtitle={Astro.props.data.partnership_subtitle[0].text}
     client:visible={{ rootMargin: "200% 0px 200% 0px" }}
 >
+    <Fragment set:html={convertHighlight(Astro.props.data.partnership_title)} slot="title" />
     <Fragment set:html={icArrExt} slot="icArrExt" />
-    <Image src={pakImg} alt="" slot="pakImg" class="img-fill" />
+    <Image
+        src={Astro.props.data.partnership_image.url}
+        class="img-fill"
+        alt={Astro.props.data.partnership_image.alt || ""}
+        width={Astro.props.data.partnership_image?.dimensions.width}
+        height={Astro.props.data.partnership_image?.dimensions.height}
+        slot="thumbnail"
+    />
 </PakwayPartner>

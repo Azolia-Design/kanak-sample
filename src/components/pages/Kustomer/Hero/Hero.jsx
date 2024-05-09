@@ -151,7 +151,9 @@ function KustomerHero(props) {
     return (
         <section className="kustomer-hero bg-white">
             <div className="container grid">
-                <div className="heading h6 txt-black txt-up kustomer-hero-subtitle">{props.label}</div>
+                {props.label && (
+                    <div className="heading h6 txt-black txt-up kustomer-hero-subtitle"></div>
+                )}
                 <h1 className="heading h0 txt-black txt-up kustomer-hero-title">{props.title}</h1>
             </div>
             <div className="kustomer-hero-slide" ref={trackRef} data-percentage={0} data-prev-percentage={0}>

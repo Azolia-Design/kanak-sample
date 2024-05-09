@@ -4,7 +4,7 @@ import { animate, timeline, stagger, inView, scroll } from "motion";
 import SplitType from 'split-type';
 import useSelector from '@hooks/useSelector';
 
-function PakwayJoin({ ...props }) {
+function PakwayJoin(props) {
     const sectionRef = useRef();
     const q = useSelector(sectionRef);
 
@@ -63,50 +63,22 @@ function PakwayJoin({ ...props }) {
 
     }, [])
 
-
-    const data = [
-        {
-            title: "Reducing Ocean Plastics",
-            sub: "By repurposing plastics destined for the ocean, we tackle the pressing issue of marine pollution head-on, converting potential waste into valuable packaging materials. This effort is critical as the world sees only 9% of plastic waste recycled, with the rest ending up in landfills or incinerated, underscoring our commitment to boosting recycling and re-use initiatives globally.",
-            image: props.joinImg2
-        },
-        {
-            title: "Advancing Recycling Technology",
-            sub: "We invest in state-of-the-art recycling technologies to improve the conversion of discarded plastics into premium rPET materials, establishing new benchmarks in the industry and showcasing our BRC-certified dedication to quality.",
-            image: props.joinImg3
-        },
-        {
-            title: "Empowering Global Communities",
-            sub: "We invest in state-of-the-art recycling technologies to improve the conversion of discarded plastics into premium rPET materials, establishing new benchmarks in the industry and showcasing our BRC-certified dedication to quality.",
-            image: props.joinImg1
-        },
-        {
-            title: "Economic Impact",
-            sub: "The financial drain of plastic pollution on the global economy is staggering, with an estimated annual cost of up to $19 billion USD due to effects on fisheries, aquaculture, tourism, and cleanup efforts. Highlighting the financial benefits of improved plastic management is crucial in our communications.",
-            image: props.joinImg4
-        }
-    ]
-
     return (
         <section className="pak-join bg-dark" ref={sectionRef}>
             <div className="container grid">
                 <div className="pak-join-title-wrap">
-                    <div className="heading h4 txt-black txt-up pak-join-label">
-                        Join our movement
-                    </div>
-                    <h2 className="heading h0 txt-black txt-up pak-join-title">
-                        Our kommitment <span className="txt-green">to the Planet</span>
-                    </h2>
+                    <div className="heading h4 txt-black txt-up pak-join-label">{props.label}</div>
+                    <h2 className="heading h0 txt-black txt-up pak-join-title">{props.title}</h2>
                 </div>
                 <div className="pak-join-main">
-                    {data.map((el, idx) => (
+                    {props.list.map((el, idx) => (
                         <div className="pak-join-main-item bg-dark"
                             key={idx}
                             style={
                                 {
                                     "--idx": idx + 1,
-                                    "--pd-bot": data.length - idx,
-                                    "--mg-top": idx == 0 ? 0 : data.length - idx
+                                    "--pd-bot": props.list.length - idx,
+                                    "--mg-top": idx == 0 ? 0 : props.list.length - idx
                                 }
                             }>
                             <div className="pak-join-main-item-inner">
@@ -115,17 +87,23 @@ function PakwayJoin({ ...props }) {
                                     <div className="pak-join-main-item-title">
                                         <div className="pak-join-main-item-title-dot"></div>
                                         <h3 className="heading h1 txt-up txt-black pak-join-main-item-title-txt">
-                                            {el.title}
+                                            {el.title[0].text}
                                         </h3>
                                     </div>
                                     <p className="txt txt-20 txt-med pak-join-main-item-sub">
-                                        {el.sub}
+                                        {el.subtitle}
                                     </p>
                                 </div>
                                 <div className="pak-join-main-item-img">
-                                    {el.image}
+                                    <img
+                                        src={el.icon.url}
+                                        className="img-fill"
+                                        alt={el.icon.alt || ""}
+                                        width={el.icon?.dimensions.width}
+                                        height={el.icon?.dimensions.height}
+                                    />
                                 </div>
-                                {idx == data.length - 1 && (
+                                {idx == props.list.length - 1 && (
                                     <div className="line line-bot"></div>
                                 )}
                             </div>

@@ -26,7 +26,6 @@ function ContactForm(props) {
     const debounceForm = useDebounceCallback(setFormData, 200);
 
     function mapFormToObject(ele) {
-        console.log('ele: ' + ele)
         return ([...new FormData(ele).entries()].reduce(
             (prev, cur) => {
                 const name = cur[0];
@@ -51,7 +50,6 @@ function ContactForm(props) {
     const onSubmit = (e) => {
         e.preventDefault();
         let src = window.location.search
-        console.log(src)
         let portalId = '46076884';
         let formId = '37def219-542e-4aab-a3f4-d90ccc332f02';
         const dataSend = {
@@ -71,8 +69,6 @@ function ContactForm(props) {
                 },
                 body: JSON.stringify(dataSend),
             })
-            console.log(JSON.stringify(dataSend))
-            console.log(response)
             if (!response.ok) {
                 switch (response.status) {
                 case 409:

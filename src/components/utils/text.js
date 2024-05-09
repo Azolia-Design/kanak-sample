@@ -21,7 +21,7 @@ const convertHighlight = (field) => {
 }
 
 const parseLabelsRichtext = (field, transformClass) => {
-    const { inputClass, outputClass } = transformClass;
+    const { inputLabel, outputClass } = transformClass;
     let htmlString = prismicH.asHTML(field)
         .replace(/^<[^>]+>|<[^>]+>$/g, '')
         .replace(/<p[^>]*>|<\/p>/g, ' ')
@@ -37,7 +37,7 @@ const parseLabelsRichtext = (field, transformClass) => {
         return replacedString;
     };
     // Thực hiện thay thế
-    const regex = new RegExp(`<span class="${inputClass}">(.*?)<\/span>`, 'g');
+    const regex = new RegExp(`<span class="${inputLabel}">(.*?)<\/span>`, 'g');
     return htmlString.replace(regex, replacer);
 }
 

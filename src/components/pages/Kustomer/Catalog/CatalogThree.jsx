@@ -51,9 +51,6 @@ function Content(props) {
             setScaleOffset(1.5)
         }
     }, [scaleOffset])
-    useEffect(() => {
-        console.log(props.list);
-    }, []);
 
     return (
         <>

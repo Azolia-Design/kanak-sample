@@ -154,10 +154,6 @@ function KustomerSustain(props) {
         }, { margin: '-30% 0px -30% 0px' })
     }, [])
 
-    useEffect(() => {
-        console.log(detailProductData)
-    }, [detailProductData]);
-
     return (
         <section className={`kustomer-sus ${isOpenPopup ? 'active' : ''}`} id="Sustainable">
             <div className="container grid">
