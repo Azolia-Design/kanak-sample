@@ -17,7 +17,7 @@ const { data } = await getPage("pakway_page");
     footer_bg={data.cta_background}
 >
     <Hero data={data}/>
-    <Mission />
-    <Partner />
-    <Join />
+    <Mission data={data} />
+    <Partner data={data} />
+    <Join data={data}/>
 </Layout>

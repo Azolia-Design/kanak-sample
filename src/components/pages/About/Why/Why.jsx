@@ -5,7 +5,7 @@ import SplitType from 'split-type';
 import useSelector from '@hooks/useSelector';
 import { delay, transform } from 'framer-motion';
 
-function AboutWhy({ ...props }) {
+function AboutWhy(props) {
     const sectionRef = useRef();
     const q = useSelector(sectionRef);
     useEffect(() => {
@@ -46,23 +46,19 @@ function AboutWhy({ ...props }) {
         // Anim Item
         animate(q('.abt-why-img-wrap'), { opacity: 0, scale: .9 }, { duration: 0 })
 
+        
+        const subtitle = new SplitType('.abt-why-body', { types: 'lines, words', lineClass: 'split-line' })
+        animate(subtitle.words, { opacity: 0, transform: 'translateY(100%)' }, { duration: 0 })
+
         const itemSequence = [
             [q('.abt-why-img-wrap'), { opacity: 1, scale: 1 }, { duration: .6, at: 0 }],
+            [subtitle.words, { opacity: 1, transform: 'none' }, { duration: .4, delay: stagger(.005), at: 1 }]
         ]
-        const plitTxt = []
-        document.querySelectorAll('.abt-why-body').forEach((el, idx) => {
-            const txt = new SplitType(el, { types: 'lines, words', lineClass: 'split-line' })
-            animate(txt.words, { opacity: 0, transform: 'translateY(100%)' }, { duration: 0 })
-            itemSequence.push(
-                [txt.words, { opacity: 1, transform: 'none' }, { duration: .4, delay: stagger(.005), at: .2 + idx * .1 }]
-            )
-            plitTxt.push(txt)
-        })
 
         inView(".abt-why-content-wrap", () => {
             timeline(itemSequence).finished.then(() => {
                 q('.abt-why-img-wrap').removeAttribute('style')
-                plitTxt.forEach(item => item.revert())
+                subtitle.revert();
             })
         }, { margin: "-20% 0px -20% 0px" })
     }, [])
@@ -85,19 +81,11 @@ function AboutWhy({ ...props }) {
                     <div className="line-ver"></div>
                 </div>
                 <div className="abt-why-content-wrap">
-                    <div className="abt-why-img-wrap">
-                        {props.whyImg}
-                    </div>
+                    <div className="abt-why-img-wrap">{props.thumbnail}</div>
                     <div className="abt-why-body-wrap">
-                        <p className="txt txt-18 txt-med abt-why-body">
-                            Fed up with the "eco" rhetoric?
-                        </p>
-                        <p className="txt txt-18 txt-med abt-why-body">
-                        Buckle up!  Kanak Naturals cuts through the environmental rhetoric by pioneering impactful solutions with every fiber of bamboo and sugarcane. Our products are not merely sustainable; they are superior in quality, functionality, and purpose. We don't just promise; we prove—with products that make a real difference.
-                        </p>
-                        <p className="txt txt-18 txt-med abt-why-body">
-                            And guess what? They do make a difference!
-                        </p>
+                        <div className="txt txt-18 txt-med abt-why-body">
+                            {props.subtitle}
+                        </div>
                         <a href="./katalog" className="txt txt-18 txt-bold abt-why-link txt-link mod-tb" data-cursor="txtLink">
                             <span>View Product Katalog</span>
                             <div className="ic ic-16">

@@ -35,16 +35,10 @@ function AboutMission({ ...props }) {
         <section className="abt-miss bg-dark" ref={sectionRef}>
             <div className="container grid">
                 <div className="line"></div>
-                <div className="heading h4 txt-black txt-up abt-miss-label">
-                    Our mission
-                </div>
+                <div className="heading h4 txt-black txt-up abt-miss-label">{props.label}</div>
                 <div className="abt-miss-title-wrap">
-                    <div className="heading h0 txt-black txt-up abt-miss-quote-ic">
-                        “
-                    </div>
-                    <h2 className="heading h1 txt-black txt-up abt-miss-title">
-                        To kraft responsibly-sourced packaging and products that not only <span className='txt-green'>prioritize quality, functionality, and affordability</span> but also champion a profound commitment to enhancing the <span className='txt-green'>health and beauty of our planet.</span>
-                    </h2>
+                    <div className="heading h0 txt-black txt-up abt-miss-quote-ic">“</div>
+                    <h2 className="heading h1 txt-black txt-up abt-miss-title">{props.quote}</h2>
                 </div>
             </div>
         </section>

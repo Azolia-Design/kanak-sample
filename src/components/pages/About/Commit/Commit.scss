@@ -107,26 +107,16 @@
             grid-row: 3/4;
         }
     }
-
-    &-sub {
-        @include md {
-            @include text(16);
-        }
-    }
-
+    
     &-sub-rictxt {
         margin-bottom: 4rem;
-        display: flex;
-        flex-direction: column;
-        row-gap: 2.4rem;
+        p:not(:last-child) {
+            margin-bottom: 2.4rem;
+        }
 
         @include md {
             margin-bottom: 3.2rem;
-            row-gap: 2rem;
-        }
-
-        @include sm {
-            row-gap: 2.4rem;
+            @include text(16);
         }
     }
 

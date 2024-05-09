@@ -30,7 +30,7 @@ function PakwayHero(props) {
         <section className="pak-hero" ref={sectionRef}>
             <div className="container grid">
                 <h1 className="heading h0 txt-up txt-black pak-hero-title">
-                    Pakway: Turning Waste into Worth
+                    {props.title}
                 </h1>
                 <div className="txt txt-18 txt-med pak-hero-sub">
                     {props.subtitle}

@@ -28,7 +28,6 @@ function HomeHero(props) {
 
     function scrollDown() {
         getLenis().scrollTo(window.innerHeight)
-        // console.log(getLenis)
     }
 
     return (

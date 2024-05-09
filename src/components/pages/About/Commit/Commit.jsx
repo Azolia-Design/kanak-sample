@@ -12,11 +12,13 @@ function AboutCommit({ ...props }) {
         const label = new SplitType(q('.abt-commit-label'), { types: 'lines, words', lineClass: 'split-line' })
         const title = new SplitType(q('.abt-commit-title'), { types: 'lines, words', lineClass: 'split-line' })
         const linkTxt = new SplitType(q('.abt-commit-link span'), { types: 'lines, words', lineClass: 'split-line' })
+        const subtitle = new SplitType(q('.abt-commit-sub-rictxt'), { types: 'lines, words', lineClass: 'split-line' })
 
         animate(q('.line'), { scaleX: 0, transformOrigin: "left" }, { duration: 0 })
         animate(label.words, { opacity: 0, transform: 'translateY(100%)' }, { duration: 0 })
         animate(title.words, { opacity: 0, transform: 'translateY(100%)' }, { duration: 0 })
         animate(linkTxt.words, { opacity: 0, transform: 'translateY(100%)' }, { duration: 0 })
+        animate(subtitle.words, { opacity: 0, transform: 'translateY(100%)' }, { duration: 0 })
         animate(q('.abt-commit-link svg'), { opacity: 0, transform: 'translate(-100%, 100%)' }, { duration: 0 })
 
         if (window.innerWidth > 991) {
@@ -32,24 +34,15 @@ function AboutCommit({ ...props }) {
             [q('.abt-commit-img-wrap'), { transform: "none", opacity: 1 }, { duration: .6, at: .2 }],
             [linkTxt.words, { opacity: 1, transform: 'none' }, { duration: .8, delay: stagger(.05), at: "-.4" }],
             [q('.abt-commit-link svg'), { opacity: 1, transform: 'translate(0,0)' }, { duration: .8, delay: stagger(.1), at: "-.6" }],
+            [subtitle.words, { opacity: 1, transform: 'none' }, { duration: .4, delay: stagger(.005), at: .5 }]
         ]
-        const spliTxt = []
-        document.querySelectorAll('.abt-commit-sub').forEach((el, idx) => {
-            const txt = new SplitType(el, { types: 'lines, words', lineClass: 'split-line' })
-            animate(txt.words, { opacity: 0, transform: 'translateY(100%)' }, { duration: 0 })
-
-            sequence.push(
-                [txt.words, { opacity: 1, transform: 'none' }, { duration: .4, delay: stagger(.005), at: .2 + idx * .1 }]
-            )
-            spliTxt.push(txt)
-        })
 
         inView('.abt-commit', () => {
             timeline(sequence).finished.then(() => {
                 title.revert()
                 label.revert()
+                subtitle.revert()
                 linkTxt.revert()
-                spliTxt.forEach(item => item.revert())
                 q('.abt-commit-img-wrap').removeAttribute('style')
                 q('.abt-commit-link svg').removeAttribute('style')
                 q('.line').removeAttribute('style')
@@ -63,32 +56,16 @@ function AboutCommit({ ...props }) {
             <div className="line"></div>
             <div className="container grid">
                 <div className="abt-commit-title-wrap">
-                    <div className="heading h4 txt-black txt-up abt-commit-label">
-                        DEI commitment
-                    </div>
-                    <h2 className="heading h0 txt-up txt-black abt-commit-title">
-                        Walking the Talk
-                    </h2>
+                    <div className="heading h4 txt-black txt-up abt-commit-label">{props.label}</div>
+                    <h2 className="heading h0 txt-up txt-black abt-commit-title">{props.title}</h2>
                 </div>
-                <div className="abt-commit-img-wrap">
-                    {props.abtCommitImg}
-                </div>
+                <div className="abt-commit-img-wrap">{props.thumbnail}</div>
                 <div className="abt-commit-sub-wrap">
-                    <div className="abt-commit-sub-rictxt">
-                        <p className="txt txt-18 txt-med abt-commit-sub">
-                            We don't just support diversity, equity, and inclusion; we embody it. Teaming up with giants like McDonald's, we're not just changing the narrative; we're rewriting it.
-                        </p>
-                        <p className="txt txt-18 txt-med abt-commit-sub">
-                            Kanak Naturals is more than a brand - it's a testament to inclusivity and progression.
-                        </p>
-                    </div>
+                    <div className="txt txt-18 txt-med abt-commit-sub-rictxt">{props.subtitle}</div>
                     <a href="#" className="txt txt-18 txt-bold txt-link abt-commit-link hidden" data-cursor="txtLink">
                         <span>Read more</span>
-                        <div className="ic ic-16">
-                            {props.icArrExt}
-                        </div>
+                        <div className="ic ic-16">{props.icArrExt}</div>
                     </a>
-
                 </div>
             </div>
         </section>

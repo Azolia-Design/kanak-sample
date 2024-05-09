@@ -36,6 +36,9 @@
     &-sub {
         grid-column: 1/7;
         max-width: 59rem;
+        p:not(:last-child) {
+            margin-bottom: 2.4rem;
+        }
         .txt-bold {
             display: inline;
         }

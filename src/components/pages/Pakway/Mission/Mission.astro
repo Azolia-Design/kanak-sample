@@ -1,12 +1,19 @@
 ---
 import { Image } from "astro:assets";
 import PakMission from "./Mission";
-import PakImg from "@assets/pak-miss.jpg";
 ---
 
 <PakMission
-  {...Astro.props}
+  title={Astro.props.data.mission_title[0].text}
+  subtitle={Astro.props.data.mission_subtitle[0].text}
   client:visible={{ rootMargin: "200% 0px 200% 0px" }}
 >
-  <Image src={PakImg} class="img-fill" alt="" slot="nameImg" />
+  <Image
+    src={Astro.props.data.mission_image.url}
+    class="img-fill"
+    alt={Astro.props.data.mission_image.alt || ""}
+    width={Astro.props.data.mission_image?.dimensions.width}
+    height={Astro.props.data.mission_image?.dimensions.height}
+    slot="thumbnail"
+    />
 </PakMission>

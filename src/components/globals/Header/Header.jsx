@@ -19,8 +19,6 @@ function HeaderGlobal(props) {
     useOutsideAlerter(dropdownRef, () => setDropdownIdx(-1));
     useEffect(() => {
         let missionStartHidden = document.querySelector('.header').clientHeight - document.querySelector('.header-sub').clientHeight - 40
-        console.log(document.querySelector('.header').clientHeight)
-        console.log(document.querySelector('.header-sub').clientHeight)
         getLenis().on('scroll', function (inst) {
             if (inst.direction == 1) {
                 if (inst.scroll >= missionStartHidden) {

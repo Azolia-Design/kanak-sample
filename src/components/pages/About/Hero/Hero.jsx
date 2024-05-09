@@ -29,19 +29,10 @@ function AboutHero({ ...props }) {
     return (
         <section className="abt-hero" ref={sectionRef}>
             <div className="container grid">
-                <h1 className="heading txt-180 txt-up txt-black abt-hero-title">
-                    Know us
-                </h1>
-                <div className="abt-hero-sub-wrap">
-                    <p className="txt txt-18 txt-med abt-hero-sub">
-                        Founded in 2005, Kanak embarked on a mission to harness the untapped potential of sugarcane and bamboo, crafting responsibly sourced consumer goods that do not compromise on quality or functionality.
-                    </p>
-                    <p className="txt txt-18 txt-med abt-hero-sub">
-                        Family-owned and proudly debt-free, we wave the flag for the planet over profit, crafting quality that doesn't bow down to the convenience of wastefulness.
-                    </p>
-                </div>
+                <h1 className="heading txt-180 txt-up txt-black abt-hero-title">{props.title}</h1>
+                <div className="txt txt-18 txt-med abt-hero-sub">{props.subtitle}</div>
                 <div className="abt-hero-img-wrap bg-light">
-                    {props.heroImg}
+                    {props.thumbnail}
                 </div>
             </div>
         </section>

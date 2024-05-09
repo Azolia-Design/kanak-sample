@@ -2,10 +2,22 @@
 import { Image } from "astro:assets";
 import AboutWhy from "./Why";
 import icArrExt from "@assets/ext-arr-menu.svg?raw";
-import abtWhyImg from "@assets/abt-why.jpg";
+import * as prismicH from "@prismicio/client";
+
+const { data } = Astro.props;
 ---
 
-<AboutWhy {...Astro.props} client:visible={{ rootMargin: "200% 0px 200% 0px" }}>
+<AboutWhy 
+  label={data.why_label}
+  title={data.why_title[0].text}
+  client:visible={{ rootMargin: "200% 0px 200% 0px" }}>
   <Fragment set:html={icArrExt} slot="icArrExt"/>
-  <Image src={abtWhyImg} alt="" slot="whyImg" class="img-fill"/>
+  <Fragment set:html={prismicH.asHTML(data.why_subtitle)} slot="subtitle" />
+  <Image
+    src={data.why_image.url}
+    class="img-fill"
+    alt={Astro.props.data.why_image.alt || ""}
+    width={Astro.props.data.why_image?.dimensions.width}
+    height={Astro.props.data.why_image?.dimensions.height}
+    slot="thumbnail" />
 </AboutWhy>

@@ -6,7 +6,7 @@ import SplitType from "split-type";
 import useSelector from "@hooks/useSelector";
 import LetterPopup from '@pages/About/Award/LetterPopup'
 
-function AboutAward({ ...props }) {
+function AboutAward(props) {
     const sectionRef = useRef();
     const q = useSelector(sectionRef);
     const [isOpenPopup, setIsOpenPopup] = useState(false);
@@ -95,12 +95,8 @@ function AboutAward({ ...props }) {
             <section className="abt-award" ref={sectionRef} id='Award'>
                 <div className="container grid">
                     <div className="abt-award-title-wrap">
-                        <div className="heading h4 txt-black txt-up abt-award-label">
-                            Awards & Endorsements
-                        </div>
-                        <h2 className="heading h0 txt-black txt-up abt-award-title">
-                            Celebrating Impact Over <span className="txt-green">Accolades</span>
-                        </h2>
+                        <div className="heading h4 txt-black txt-up abt-award-label">{props.label}</div>
+                        <h2 className="heading h0 txt-black txt-up abt-award-title">{props.title}</h2>
                     </div>
                     <div className="abt-award-grp">
                         <div className="abt-award-grp-head">
@@ -111,25 +107,7 @@ function AboutAward({ ...props }) {
                             <div className="line"></div>
                         </div>
                         <div className="abt-award-grp-body top">
-                            <div className="abt-award-item">
-                                <div className="abt-award-item-img-wrap">
-                                    {props.abtAwardTop}
-                                </div>
-                                <div className="abt-award-item-content">
-                                    <h3 className="heading h2 txt-black txt-up abt-award-item-content-title">
-                                        PLMA 2022 Best Plate Award
-                                    </h3>
-                                    <p className="txt txt-18 txt-med abt-award-item-content-sub">
-                                        Our Sustainables® 9” Octi-Square Plate has clinched the <span className="txt-bold">PLMA 2022 Best Plate Award</span> in the Home & Household category, standing out among thousands with its innovative, eco-friendly design.
-                                    </p>
-                                    <a href="/kustomers/retail#Sustainable" className="txt txt-18 txt-bold abt-award-item-content-link txt-link" data-cursor="txtLink">
-                                        <span>View Sustainables® Collection</span>
-                                        <div className="ic ic-16">
-                                            {props.icArrExt}
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
+                            {props.awardList}
                         </div>
                         <div className="abt-award-grp-head">
                             <div className="dot"></div>

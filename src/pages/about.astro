@@ -19,14 +19,11 @@ const { data } = await getPage("about_page");
     footer_cta={data.cta_title[0].text}
     footer_bg={data.cta_background}
 >
-    <Hero />
-    <Name />
-    <Mission />
-    <Why />
-    <Commit />
-    <Join />
-    <Award
-        endorsements_title={data.endorsements_title}
-        endorsements_list={data.endorsements_list}
-    />
+    <Hero data={data} />
+    <Name data={data} />
+    <Mission data={data}/>
+    <Why data={data}/>
+    <Commit data={data}/>
+    <Join data={data} />
+    <Award data={data} />
 </Layout>

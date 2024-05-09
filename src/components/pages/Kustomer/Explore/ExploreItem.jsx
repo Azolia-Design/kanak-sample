@@ -78,7 +78,6 @@ function ExploreItem({ ...props }) {
                 })
             }, { margin: "-10% 0px -10% 0px" })
         })
-        console.log(props)
     }, [])
     return (
         <div className="kustomer-explore-main-item" ref={itemRef}>

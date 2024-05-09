@@ -50,11 +50,11 @@ function PakMission({ ...props }) {
             <div className="container">
                 <div className="pak-miss-content-wrap">
                     <h2 className="heading h0 txt-up txt-black pak-miss-title">
-                        Saving The Ocean - One Plastic Bottle At A Time
+                        {props.title}
                     </h2>
                     <div className="pak-miss-img-wrap">
                         <div className="pak-miss-img-inner">
-                            {props.nameImg}
+                            {props.thumbnail}
                         </div>
                     </div>
                 </div>
@@ -62,7 +62,7 @@ function PakMission({ ...props }) {
             <div className="pak-miss-main bg-dark">
                 <div className="container grid">
                     <h3 className="heading h2 txt-black txt-up pak-miss-main-title">
-                        We recognize the essential role of packaging in functionality and environmental impact. Pakway utilizes advanced rPET materials to transform at-risk plastics into high-quality, food-safe packaging, significantly reducing environmental footprints and pushing the boundaries of recycled materials in the consumer market.
+                        {props.subtitle}
                     </h3>
                 </div>
             </div>

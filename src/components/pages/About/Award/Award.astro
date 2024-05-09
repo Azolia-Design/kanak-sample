@@ -1,15 +1,52 @@
 ---
 import { Image } from "astro:assets";
 import AboutAward from './Award.jsx';
-import abtAwardTop from '@assets/about-award-top.png';
 import abtAwardBot1 from '@assets/about-award-bot-1.png';
 import abtAwardBot2 from '@assets/about-award-bot-2.png';
 import icArrExt from "@assets/ext-arr-menu.svg?raw";
-
+import { convertHighlight, parseLabelsRichtext } from "@utils/text";
+const { data } = Astro.props;
 ---
-<AboutAward {...Astro.props} client:visible={{ rootMargin: "200% 0px 200% 0px" }}>
-    <Image src={abtAwardTop} alt="" slot="abtAwardTop" class="img img-fit" />
+<AboutAward 	
+    label={data.award_label}
+    award_list={data.award_list}
+    endorsements_title={data.endorsements_title}
+    endorsements_list={data.endorsements_list}
+    client:visible={{ rootMargin: "200% 0px 200% 0px" }}>
+    <Fragment set:html={convertHighlight(data.award_title)} slot="title" />
     <Image src={abtAwardBot1} alt="" slot="abtAwardBot1" class="img img-fit" />
     <Image src={abtAwardBot2} alt="" slot="abtAwardBot2" class="img img-fit" />
     <Fragment set:html={icArrExt} slot="icArrExt"/>
+    <Fragment slot="awardList">
+        {data.award_list.map((el, idx) => (
+            <div class="abt-award-item">
+                <div class="abt-award-item-img-wrap">
+                    <Image
+                        src={el.image.url}
+                        class="img img-fit"
+                        alt={el.image.alt || ""}
+                        width={el.image?.dimensions.width}
+                        height={el.image?.dimensions.height}
+                        slot="thumbnail" />
+                </div>
+                <div class="abt-award-item-content">
+                    <h3 class="heading h2 txt-black txt-up abt-award-item-content-title">
+                        {el.title[0].text}
+                    </h3>
+                    <p class="txt txt-18 txt-med abt-award-item-content-sub">
+                        <Fragment set:html={parseLabelsRichtext(el.intro, {
+                            inputLabel: 'Bold',
+                            outputClass: 'txt-bold'
+                        })}/>
+                    </p>
+                    <a href="/kustomers/retail#Sustainable" class="txt txt-18 txt-bold abt-award-item-content-link txt-link" data-cursor="txtLink">
+                        <span>View Sustainables® Collection</span>
+                        <div class="ic ic-16">
+                            <Fragment set:html={icArrExt} />
+                        </div>
+                    </a>
+                </div>
+            </div>
+        ))}
+    </Fragment>
 </AboutAward>

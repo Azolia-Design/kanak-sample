@@ -50,20 +50,16 @@ function AboutName({ ...props }) {
             <div className="container">
                 <div className="abt-name-content-wrap">
                     <h2 className="heading h0 txt-up txt-black abt-name-title">
-                        Why the name “Kanak”?
+                        {props.title}
                     </h2>
                     <div className="abt-name-img-wrap">
-                        <div className="abt-name-img-inner">
-                            {props.nameImg}
-                        </div>
+                        <div className="abt-name-img-inner">{props.thumbnail}</div>
                     </div>
                 </div>
             </div>
             <div className="abt-name-main bg-dark">
                 <div className="container grid">
-                    <h3 className="heading h2 txt-black txt-up abt-name-main-title">
-                        Our name, Kanak—a palindrome that means "gold" in Sanskrit and a symbol of life and nutrition - reflects that life, after all, is a circle, and everything we kreate boasts a positive beginning and end-of-life story.
-                    </h3>
+                    <h3 className="heading h2 txt-black txt-up abt-name-main-title">{props.subtitle}</h3>
                 </div>
             </div>
         </section>

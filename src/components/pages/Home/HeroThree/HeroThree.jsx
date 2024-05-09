@@ -67,9 +67,6 @@ function Content({...props}) {
     const [scaleOffset, setScaleOffset] = useState(1);
     const [degraded, degrade] = useState(false)
     const clock = useThree(state => state.clock);
-    useEffect(() => {
-        console.log(props.list.map((item) => item.uid))
-    }, []);
 
     useFrame((state, delta) => {
         if (!products.current) return;
@@ -110,7 +107,7 @@ function Content({...props}) {
                             isLock = false;
                             setIndex({ direction: 0, value: 0 });
                         }
-                        
+
                     }
                     if (contactShadow) {
                         contactShadow.current.position.y = animThreeVal(-3 / scaleOffset, -.4 / scaleOffset, y.progress)

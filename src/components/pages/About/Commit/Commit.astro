@@ -1,14 +1,23 @@
 ---
 import { Image } from "astro:assets";
 import AboutCommit from "./Commit";
-import abtCommitImg from "@assets/abt-commit.jpg";
 import icArrExt from "@assets/ext-arr-menu.svg?raw";
+import * as prismicH from "@prismicio/client";
+const { data } = Astro.props;
 ---
 
 <AboutCommit
-    {...Astro.props}
+    label={data.commit_label}
+    title={data.commit_title[0].text}
     client:visible={{ rootMargin: "200% 0px 200% 0px" }}
 >
     <Fragment set:html={icArrExt} slot="icArrExt" />
-    <Image src={abtCommitImg} alt="" slot="abtCommitImg" class="img-fill" />
+    <Fragment set:html={prismicH.asHTML(data.commit_subtitle)} slot="subtitle" />
+    <Image
+        src={data.commit_image.url}
+        class="img-fill"
+        alt={Astro.props.data.commit_image.alt || ""}
+        width={Astro.props.data.commit_image?.dimensions.width}
+        height={Astro.props.data.commit_image?.dimensions.height}
+        slot="thumbnail" />
 </AboutCommit>
