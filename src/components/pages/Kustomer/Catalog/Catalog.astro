@@ -8,7 +8,7 @@ import "./Catalog.scss";
 import { getByUID } from "@/prismic";
 import { isEmpty } from "@utils/text";
 
-const { title, describe, label, currPage, groupData } = Astro.props;
+const { title, describe, label, currPage, groupData, page_title } = Astro.props;
 
 /** (💡)  - Transform list id product group in each group to the list product data */
 let listGroup = await Promise.all(
@@ -88,6 +88,7 @@ let listItem = await Promise.all(
 			</div>
 			<KustomerCatalogThree
 				listItem={listItem}
+				page_title={page_title}
 				client:media="(min-width: 768px)"
 				client:idle
 			>
