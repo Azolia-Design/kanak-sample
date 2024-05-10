@@ -13,9 +13,9 @@
     }
 
     &-title {
-        grid-column: 2/16;
+        grid-column: 1/-1;
         text-align: center;
-        max-width: 118rem;
+        max-width: none;
         margin: auto;
         margin-bottom: 10rem;
 

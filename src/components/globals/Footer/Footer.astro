@@ -5,13 +5,19 @@ import linkedIn from "@assets/ic-linkedin-ft.svg";
 import GlobalFooter from "./Footer";
 import GlobalCTA from "@components/globals/CTA";
 import GlobalExplore from "@components/globals/Explore";
-import { getAllByType, getPage } from "@/prismic.js";
+import { getAllByType, getPage, getByUID } from "@/prismic.js";
 
 import img from "@assets/ffment-thumb.jpg";
 
 const { title, bg, explore } = Astro.props;
 const currYear = new Date().getFullYear();
-const industryList = await getAllByType("industry");
+const homeData = await getPage("home")
+const industryList = await Promise.all(
+    homeData.data.industry_list.map((industry: any) => {
+        let item = getByUID("industry", industry.item.uid);
+        return item;
+    }),
+);
 const testingQcpage = await getPage("compliance");
 const kustomPackagingPage = await getPage("kustompackaging_page");
 const privateLabelPage = await getPage("privatelabel_page");
