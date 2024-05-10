@@ -8,7 +8,6 @@ import { isEmpty } from "@utils/text";
 
 function ProductPopup({ data, isActive, setIsActive }) {
     const ref = useRef();
-    const trackRef = useRef();
     const [currentIndex, setCurrentIndex] = useState(0);
 
     const isValidData = data.carousel_imgs?.reduce((arr, curr) => arr.concat(!isEmpty(curr.image) && curr.image), [])[0]
@@ -105,9 +104,6 @@ function ProductPopup({ data, isActive, setIsActive }) {
                                 <div className="popup-itemdtl-card">
                                     <div className="popup-itemdtl-card-img"
                                         onMouseDown={handleMouseDown}
-                                        data-percentage={0}
-                                        data-prev-percentage={0}
-                                        ref={trackRef}
                                     >
                                         {data.carousel_imgs?.map(({ image }, idx) => (
                                             !isEmpty(image) && (

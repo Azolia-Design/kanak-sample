@@ -1,39 +1,40 @@
 import "./Hero.scss"
 import KustomerHeroThree from "./HeroThree"
-import { useState, useRef, useEffect, useMemo, useCallback } from 'react';
+import { useState, useEffect, useMemo, useCallback } from 'react';
 import { animate, timeline, stagger, inView } from "motion";
 import SplitType from 'split-type';
 import { isEmpty } from "@utils/text";
 
 function KustomerHero(props) {
-    const [currentIdx, setCurrentIdx] = useState(1);
-    const [currentPos, setCurrentPos] = useState(0);
-    const [onDrag, setOnDrag] = useState(false);
-    const trackRef = useRef();
+    const [currentIdx, setCurrentIdx] = useState(props.page_title === 'Medical' ? 0 : 1);
     const productArr = {
         "Retail": [
-            // {
-            //     url: '/glb/plates-80-transformed.glb',
-            //     scale: [.8, .8, .8],
-            //     rotation: [0, 0, 0],
-            //     position: [0, 0.035, 0]
-            // },
+            {
+                url: '/glb/plates-80-transformed.glb',
+                scale: [.8, .8, .8],
+                position: [0, 0.035, 0]
+            },
             {
                 url: '/glb/3-elegant-compartments-plates-clean-transformed.glb',
                 scale: [1.6, 1.6, 1.6],
                 rotation: [Math.PI * -.5, 0, 0],
-                position: [0, 0.035, 0]
+                position: [0, 0.03, 0]
             },
             {
                 url: '/glb/xc-12g-bowl-clean-transformed.glb',
-                scale: [1.15, 1.15, 1.15],
+                scale: [1.15, 1.15, 1.15]
             },
             {
                 url: '/glb/1-plate-clean-transformed.glb',
                 scale: [.8, .8, .8],
-                rotation: [0, Math.PI * -.065, Math.PI * .03],
-                position: [0, 0.03, 0]
+                // rotation: [0, Math.PI * -.065, Math.PI * .03],
+                position: [0, 0.02, 0]
             },
+            {
+                url: '/glb/elegant-oval-platter-clean-transformed.glb',
+                scale: [.6, .6, .6],
+                position: [0, 0.02, 0]
+            }
         ],
         "Foodservice": [
             {
@@ -88,10 +89,6 @@ function KustomerHero(props) {
         ],
         "Medical": [
             {
-                url: '/glb/48-monte-tray-clean-transformed.glb',
-                scale: [0, 0, 0]
-            },
-            {
                 url: '/glb/surgical-tray-clean-transformed.glb',
                 scale: [.45, .45, .45],
                 position: [0, 0.03, 0]
@@ -99,42 +96,69 @@ function KustomerHero(props) {
         ]
     }
 
-    const handleOnDown = (e) => {
-        setOnDrag(true);
-        trackRef.current.dataset.mouseDownAt = e.clientX
-    }
-    const handleOnUp = (e) => {
-        let track = trackRef.current;
-        track.dataset.mouseDownAt = "0";
-        track.dataset.prevPercentage = track.dataset.percentage;
-        setOnDrag(false);
-    }
+    const handleSwipe = (direction) => {
+        const newIndex = currentIdx + direction;
+        if (newIndex >= 0 && newIndex < productArr[props.page_title]?.length) {
+            setCurrentIdx(newIndex);
+            setDirection(direction);
+        }
+    };
 
-    const handleOnMove = (e) => {
-        let track = trackRef.current;
-        if (track.dataset.mouseDownAt === "0") return;
+    const handleMouseDown = (e) => {
+        const startX = e.clientX;
+        const startY = e.clientY;
 
-        const mouseDelta = parseFloat(track.dataset.mouseDownAt) - e.clientX;
-        const maxDelta = window.innerWidth / 2;
-        const percentage = (mouseDelta / maxDelta) * -100;
-        const nextPercentageUnconstrained = parseFloat(track.dataset.prevPercentage) + percentage;
-        const nextPercentage = Math.max(Math.min(nextPercentageUnconstrained, 0), -100);
-        track.dataset.percentage = nextPercentage;
+        const handleMouseMove = (e) => {
+            const deltaX = e.clientX - startX;
+            const deltaY = e.clientY - startY;
 
-        // setCurrentPos(nextPercentage / 100 * 2 || currentIdx);
-        setCurrentIdx(-nextPercentage / 100 * 2 || currentIdx);
-    }
+            if (Math.abs(deltaX) > Math.abs(deltaY)) {
+                handleSwipe(deltaX > 0 ? -1 : 1);
+            }
+        };
 
-    useEffect(() => {
-        // trackRef.current.onmousedown = (e) => handleOnDown(e);
-        // trackRef.current.ontouchstart = (e) => handleOnDown(e.touches[0]);
+        document.addEventListener('mousemove', handleMouseMove);
+        document.addEventListener('mouseup', () => {
+            document.removeEventListener('mousemove', handleMouseMove);
+        }, { once: true });
+    };
 
-        // trackRef.current.onmouseup = (e) => handleOnUp(e);
-        // trackRef.current.ontouchend = (e) => handleOnUp(e.touches[0]);
+    // const handleOnDown = (e) => {
+    //     setOnDrag(true);
+    //     trackRef.current.dataset.mouseDownAt = e.clientX
+    // }
+    // const handleOnUp = (e) => {
+    //     let track = trackRef.current;
+    //     track.dataset.mouseDownAt = "0";
+    //     track.dataset.prevPercentage = track.dataset.percentage;
+    //     setOnDrag(false);
+    // }
 
-        // trackRef.current.onmousemove = (e) => handleOnMove(e);
-        // trackRef.current.ontouchmove = (e) => handleOnMove(e.touches[0]);
-    }, [trackRef, currentIdx]);
+    // const handleOnMove = (e) => {
+    //     let track = trackRef.current;
+    //     if (track.dataset.mouseDownAt === "0") return;
+
+    //     const mouseDelta = parseFloat(track.dataset.mouseDownAt) - e.clientX;
+    //     const maxDelta = window.innerWidth / 2;
+    //     const percentage = (mouseDelta / maxDelta) * -100;
+    //     const nextPercentageUnconstrained = parseFloat(track.dataset.prevPercentage) + percentage;
+    //     const nextPercentage = Math.max(Math.min(nextPercentageUnconstrained, 0), -100);
+    //     track.dataset.percentage = nextPercentage;
+
+    //     // setCurrentPos(nextPercentage / 100 * 2 || currentIdx);
+    //     setCurrentIdx(-nextPercentage / 100 * 2 || currentIdx);
+    // }
+
+    // useEffect(() => {
+    //     trackRef.current.onmousedown = (e) => handleOnDown(e);
+    //     trackRef.current.ontouchstart = (e) => handleOnDown(e.touches[0]);
+
+    //     trackRef.current.onmouseup = (e) => handleOnUp(e);
+    //     trackRef.current.ontouchend = (e) => handleOnUp(e.touches[0]);
+
+    //     trackRef.current.onmousemove = (e) => handleOnMove(e);
+    //     trackRef.current.ontouchmove = (e) => handleOnMove(e.touches[0]);
+    // }, [trackRef, currentIdx]);
 
     useEffect(() => {
         const title = new SplitType('.kustomer-hero-title', { types: "lines,words", lineClass: 'split-line' })
@@ -169,8 +193,8 @@ function KustomerHero(props) {
                 )}
                 <h1 className="heading h0 txt-black txt-up kustomer-hero-title">{props.title}</h1>
             </div>
-            <div className="kustomer-hero-slide" ref={trackRef} data-percentage={0} data-prev-percentage={0}>
-                <KustomerHeroThree list={productArr[props.page_title]} onDrag={onDrag} currentPos={currentPos} currentIdx={currentIdx} />
+            <div className="kustomer-hero-slide" onMouseDown={handleMouseDown}>
+                <KustomerHeroThree list={productArr[props.page_title]} currentIdx={currentIdx} />
             </div>
         </section>
     )
