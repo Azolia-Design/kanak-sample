@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import PakwayHero from "./Hero";
 import { parseLabelsRichtext } from '@utils/text';
+import brcLogo from '@assets/brc.svg';
 ---
 <PakwayHero
   title={Astro.props.data.hero_title[0].text}
@@ -20,4 +21,8 @@ import { parseLabelsRichtext } from '@utils/text';
     width={Astro.props.data.hero_image?.dimensions.width}
     height={Astro.props.data.hero_image?.dimensions.height}
     slot="heroImg" />
+  <Image
+    src={brcLogo}
+    alt="BRC logo"
+    slot="brcLogo" />
 </PakwayHero>
