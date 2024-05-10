@@ -4,6 +4,7 @@ let path;
 function GetModel(props) {
   path = props.file
   const { nodes } = useGLTF(props.file)
+  console.log("run")
   return (
     <group {...props} dispose={null}>
       {nodes.Scene.children.map((item, idx) => (
