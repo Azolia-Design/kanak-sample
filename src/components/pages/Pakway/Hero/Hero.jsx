@@ -13,9 +13,11 @@ function PakwayHero(props) {
 
         animate([...title.words, ...sub.words], { opacity: 0, transform: 'translateY(100%)' }, { duration: 0 })
         animate('.pak-hero-img-wrap', { opacity: 0, transform: 'scale(.9)' }, { duration: 0 })
+        animate('.pak-hero-brc', { opacity: 0, transform: 'translateY(40%)' }, { duration: 0 })
         const sequence = [
             [title.words, { opacity: 1, transform: 'none' }, { duration: .8, delay: stagger(.04) }],
             [sub.words, { opacity: 1, transform: 'none' }, { duration: .5, delay: stagger(.01), at: .3 }],
+            ['.pak-hero-brc', { opacity: 1, transform: 'none' }, { duration: .8, at: .5 }],
             ['.pak-hero-img-wrap', { opacity: 1, transform: 'none' }, { duration: .8, at: .2 }],
         ]
         inView('.pak-hero', () => {
@@ -23,6 +25,7 @@ function PakwayHero(props) {
                 title.revert()
                 sub.revert()
                 q('.pak-hero-img-wrap').removeAttribute('style');
+                q('.pak-hero-brc').removeAttribute('style');
             })
         }, { margin: "-20% 0px -20% 0px" });
     }, [])
