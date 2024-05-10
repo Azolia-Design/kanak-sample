@@ -10,11 +10,14 @@ function KustomerHero(props) {
     const [currentPos, setCurrentPos] = useState(0);
     const [onDrag, setOnDrag] = useState(false);
     const trackRef = useRef();
-    useEffect(() => {
-        console.log(productArr[props.page_title])
-    }, []);
     const productArr = {
         "Retail": [
+            // {
+            //     url: '/glb/plates-80-transformed.glb',
+            //     scale: [.8, .8, .8],
+            //     rotation: [0, 0, 0],
+            //     position: [0, 0.035, 0]
+            // },
             {
                 url: '/glb/3-elegant-compartments-plates-clean-transformed.glb',
                 scale: [1.6, 1.6, 1.6],

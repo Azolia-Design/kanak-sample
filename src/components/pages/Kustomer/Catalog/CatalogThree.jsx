@@ -73,7 +73,11 @@ function Content(props) {
                                             material-color="white">
                                             <Suspense>
                                                 {product_feature.uid == 'burrito-bowls-ka1065' ? (
-                                                    <GetModel file='/glb/64-oval-bowl-clean-transformed.glb' scale={[.9,.9,.9]} rotation={[0, Math.PI * -.5, 0]}/>
+                                                    props.page_title == 'Retail' ? (
+                                                        <Image url="/Natural-20oz-oct-bowl.png" transparent segments={10} scale={[.2,.2]} side={DoubleSide} position={[0,.01,0]}/>
+                                                    ) : (
+                                                        <GetModel file='/glb/64-oval-bowl-clean-transformed.glb' scale={[.9,.9,.9]} rotation={[0, Math.PI * -.5, 0]}/>
+                                                    )
                                                 ) : product_feature.uid == 'compartment-trays-st5515' ? (
                                                     <GetModel file='/glb/KA10054-clean-transformed.glb' scale={[.8,.8,.8]} position={[0, .02, 0]} />
                                                 ) : product_feature.uid == 'molded-fiber-3-compartment-plates-ba5504' ? (
@@ -179,7 +183,14 @@ function KustomerCatalogThree(props) {
                     <div className="kustomer-cata-card-middle-inner">
                         <div className="kustomer-cata-card-middle-inner-canvas">
                             <Canvas camera={{ fov: fov, near: 0.1, far: 10000, position: [0, 0, perspective], aspect: width / height }} shadows>
-                                <Content width={width} height={height} index={props.isMobile ? itemIndex : index} direction={direction} list={props.listItem} />
+                                <Content
+                                    width={width}
+                                    height={height}
+                                    index={props.isMobile ? itemIndex : index}
+                                    direction={direction}
+                                    list={props.listItem}
+                                    page_title={props.page_title}
+                                />
                                 <AdaptiveDpr pixelated />
                             </Canvas>
                         </div>

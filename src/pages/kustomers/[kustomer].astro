@@ -83,6 +83,7 @@ const listCaseStudy = await getAllByType("case_study");
     {
         !isEmpty(item.data.katalog_title) && (
             <Catalog
+                page_title={item.data.title}
                 label={item.data.katalog_label}
                 title={convertHighlight(item.data.katalog_title)}
                 describe={convertHighlight(item.data.katalog_des)}
