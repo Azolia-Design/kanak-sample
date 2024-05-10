@@ -45,7 +45,7 @@ function Model({ item, ...styles }) {
                         ) : item.uid == 'take-away-bags-ka355231150' ? (
                             <Image url="/image-bag.png" transparent segments={10} scale={[.2,.2]} side={DoubleSide} position={[0,.02,0]}/>
                         ) : item.uid == 'take-away-trays-ka99co' ? (
-                            <GetModel file='/glb/BA-CFH-700-salad-box-clean-transformed.glb' scale={[.8,.8,.8]} position={[0,-.01,0]}/>
+                            <GetModel file='/glb/BA-CFH-700-salad-box-clean-transformed.glb' scale={[.8,.8,.8]} position={[0,-.02,0]}/>
                         ) : item.uid == 'takeaway-containers' ? (
                             <GetModel file='/glb/cfh-900-saladbox-lid-clearn-transformed.glb' scale={[.8,.8,.8]} position={[0,-.01,0]}/>
                         ) : item.uid == 'sealable-trays-ka12st' ? (
