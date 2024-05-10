@@ -10,6 +10,9 @@ function KustomerHero(props) {
     const [currentPos, setCurrentPos] = useState(0);
     const [onDrag, setOnDrag] = useState(false);
     const trackRef = useRef();
+    useEffect(() => {
+        console.log(productArr[props.page_title])
+    }, []);
     const productArr = {
         "Retail": [
             {
@@ -45,32 +48,33 @@ function KustomerHero(props) {
         ],
         "Food Processing": [
             {
-                url: '/glb/58-bowl-clean-transformed.glb',
-                scale: [.35, .35, .35],
-                rotation: [0, Math.PI * .3, Math.PI * -.035]
+                url: '/glb/PT8412-monte-tray-transformed.glb',
+                // scale: [.35, .35, .35],
+                // rotation: [0, Math.PI * .3, Math.PI * -.035]
             },
             {
-                url: '/glb/banking-dish-natural-clean-transformed.glb',
-                scale: [.7, .7, .7],
+                url: '/glb/53-square-food-clean-transformed.glb'
             },
             {
-                url: '/glb/13-burger-box-clean-transformed.glb',
+                url: '/glb/48-monte-tray-clean-transformed.glb',
                 scale: [1.1, 1.1, 1.1],
                 rotation: [0, Math.PI * -.065, Math.PI * .02]
             },
         ],
         "Education": [
             {
-                url: '/glb/48-monte-tray-clean-transformed.glb',
+                url: '/glb/78-white-clamshells-clean-transformed.glb',
+                scale: [.68, .68, .68],
+                rotation: [Math.PI * .02, Math.PI * .05, Math.PI * -.025]
             },
             {
-                url: '/glb/xc-12g-bowl-clean-transformed.glb',
-                scale: [1.15, 1.15, 1.15],
+                url: '/glb/KA5516-clean-transformed.glb',
+                scale: [1.25, 1.25, 1.25],
             },
             {
-                url: '/glb/KA10054-clean-transformed.glb',
+                url: '/glb/klamshell-79-transformed.glb',
                 scale: [.75, .75, .75],
-                position: [0, 0.03, 0]
+                rotation: [Math.PI * .02, Math.PI * -.05, Math.PI * .015]
             },
         ],
         "Medical": [
@@ -152,7 +156,7 @@ function KustomerHero(props) {
         <section className="kustomer-hero bg-white">
             <div className="container grid">
                 {props.label && (
-                    <div className="heading h6 txt-black txt-up kustomer-hero-subtitle"></div>
+                    <div className="heading h6 txt-black txt-up kustomer-hero-subtitle">{props.label}</div>
                 )}
                 <h1 className="heading h0 txt-black txt-up kustomer-hero-title">{props.title}</h1>
             </div>
