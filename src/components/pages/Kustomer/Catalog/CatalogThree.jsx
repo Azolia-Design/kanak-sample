@@ -51,6 +51,9 @@ function Content(props) {
             setScaleOffset(1.5)
         }
     }, [scaleOffset])
+    useEffect(() => {
+        console.log(props.list)
+    }, []);
 
     return (
         <>
@@ -90,9 +93,11 @@ function Content(props) {
                                                 ) : product_feature.uid == 'take-away-bags-ka355231150' ? (
                                                     <Image url="/image-bag.png" transparent segments={10} scale={[.2,.2]} side={DoubleSide} position={[0,.02,0]}/>
                                                 ) : product_feature.uid == 'take-away-trays-ka99co' ? (
-                                                    <GetModel file='/glb/BA-CFH-700-salad-box-clean-transformed.glb' scale={[.8,.8,.8]} position={[0,-.01,0]}/>
+                                                    <GetModel file='/glb/BA-CFH-700-salad-box-clean-transformed.glb' scale={[.8,.8,.8]} position={[0,-.02,0]}/>
                                                 ) : product_feature.uid == 'takeaway-containers' ? (
                                                     <GetModel file='/glb/cfh-900-saladbox-lid-clearn-transformed.glb' scale={[.8,.8,.8]} position={[0,-.01,0]}/>
+                                                ) : product_feature.uid == 'sealable-trays-ka12st' ? (
+                                                    <GetModel file='/glb/53-square-food-clean-transformed.glb' scale={[.8,.8,.8]} position={[0,-.01,0]}/>
                                                 ) : (
                                                     <GetModel file='/glb/m_box-clean-transformed.glb' scale={[.8,.8,.8]} position={[0,.01,0]}/>
                                                 )}

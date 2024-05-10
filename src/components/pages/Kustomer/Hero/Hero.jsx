@@ -18,7 +18,8 @@ function KustomerHero(props) {
             {
                 url: '/glb/3-elegant-compartments-plates-clean-transformed.glb',
                 scale: [1.6, 1.6, 1.6],
-                rotation: [Math.PI * -.5, 0, 0]
+                rotation: [Math.PI * -.5, 0, 0],
+                position: [0, 0.035, 0]
             },
             {
                 url: '/glb/xc-12g-bowl-clean-transformed.glb',
@@ -27,30 +28,32 @@ function KustomerHero(props) {
             {
                 url: '/glb/1-plate-clean-transformed.glb',
                 scale: [.8, .8, .8],
-                rotation: [0, Math.PI * -.065, Math.PI * .03]
+                rotation: [0, Math.PI * -.065, Math.PI * .03],
+                position: [0, 0.03, 0]
             },
         ],
         "Foodservice": [
             {
                 url: '/glb/64-oval-bowl-clean-transformed.glb',
                 scale: [.85, .85, .85],
+                position: [0, 0.025, 0]
             },
             {
                 url: '/glb/42-ramen-grip-clean-transformed.glb',
-                scale: [.8, .8, .8],
+                scale: [.75, .75, .75],
                 rotation: [0, Math.PI * .25, 0]
             },
             {
                 url: '/glb/banking-dish-natural-clean-transformed.glb',
                 scale: [.7, .7, .7],
-                rotation: [0, Math.PI * .5, 0]
+                rotation: [Math.PI * .01, Math.PI * .5, 0],
+                position: [0, 0.025, 0]
             },
         ],
         "Food Processing": [
             {
                 url: '/glb/PT8412-monte-tray-transformed.glb',
-                // scale: [.35, .35, .35],
-                // rotation: [0, Math.PI * .3, Math.PI * -.035]
+                position: [0, 0.04, 0]
             },
             {
                 url: '/glb/53-square-food-clean-transformed.glb'
@@ -58,23 +61,26 @@ function KustomerHero(props) {
             {
                 url: '/glb/48-monte-tray-clean-transformed.glb',
                 scale: [1.1, 1.1, 1.1],
-                rotation: [0, Math.PI * -.065, Math.PI * .02]
+                rotation: [0, Math.PI * -.065, Math.PI * .02],
+                position: [0, 0.04, 0]
             },
         ],
         "Education": [
             {
                 url: '/glb/78-white-clamshells-clean-transformed.glb',
-                scale: [.68, .68, .68],
-                rotation: [Math.PI * .02, Math.PI * .05, Math.PI * -.025]
+                scale: [.7, .7, .7],
+                rotation: [Math.PI * .02, Math.PI * .07, Math.PI * -.025],
+                position: [0, 0.03, 0]
             },
             {
                 url: '/glb/KA5516-clean-transformed.glb',
-                scale: [1.25, 1.25, 1.25],
+                scale: [1.4, 1.4, 1.4],
             },
             {
                 url: '/glb/klamshell-79-transformed.glb',
-                scale: [.75, .75, .75],
-                rotation: [Math.PI * .02, Math.PI * -.05, Math.PI * .015]
+                scale: [.8, .8, .8],
+                rotation: [Math.PI * .02, Math.PI * -.05, Math.PI * .015],
+                position: [0, 0.03, 0]
             },
         ],
         "Medical": [
