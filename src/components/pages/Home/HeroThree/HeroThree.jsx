@@ -36,7 +36,7 @@ function Model({ item, ...styles }) {
                             <GetModel file='/glb/48-monte-tray-clean-transformed.glb' scale={[1.2,1.2,1.2]}/>
                         ) : item.uid == 'pla-cutlery-ct6523' ? (
                             <Fork material={<CustomMaterial color='#F9833A' roughness={.2} />} />
-                        ) : item.uid == 'double-wall-hot-cups-dw1204' ? (
+                        ) : item.uid == 'custom-double-wall-hot-cups-dw1204' ? (
                             <GetModel file='/glb/kup-5-transformed.glb' scale={[.76,.76,.76]} position={[0,-.02,0]}/>
                         ) : item.uid == 'pla-straw' ? (
                             <Image url="/image-straw.png" transparent segments={10} scale={[.2,.2]} side={DoubleSide} position={[0,.02,0]}/>
@@ -48,6 +48,8 @@ function Model({ item, ...styles }) {
                             <GetModel file='/glb/BA-CFH-700-salad-box-clean-transformed.glb' scale={[.8,.8,.8]} position={[0,-.01,0]}/>
                         ) : item.uid == 'takeaway-containers' ? (
                             <GetModel file='/glb/cfh-900-saladbox-lid-clearn-transformed.glb' scale={[.8,.8,.8]} position={[0,-.01,0]}/>
+                        ): item.uid == 'sealable-trays-ka12st' ? (
+                            <GetModel file='/glb/53-square-food-clean-transformed.glb' scale={[.8,.8,.8]} position={[0,-.01,0]}/>
                         ) : (
                             <GetModel file='/glb/m_box-clean-transformed.glb' scale={[.8,.8,.8]} position={[0,.01,0]}/>
                         )}
