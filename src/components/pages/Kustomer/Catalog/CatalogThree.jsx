@@ -93,6 +93,8 @@ function Content(props) {
                                                     <GetModel file='/glb/BA-CFH-700-salad-box-clean-transformed.glb' scale={[.8,.8,.8]} position={[0,-.01,0]}/>
                                                 ) : product_feature.uid == 'takeaway-containers' ? (
                                                     <GetModel file='/glb/cfh-900-saladbox-lid-clearn-transformed.glb' scale={[.8,.8,.8]} position={[0,-.01,0]}/>
+                                                ) : product_feature.uid == 'sealable-trays-ka12st' ? (
+                                                    <GetModel file='/glb/53-square-food-clean-transformed.glb' scale={[.8,.8,.8]} position={[0,-.01,0]}/>
                                                 ) : (
                                                     <GetModel file='/glb/m_box-clean-transformed.glb' scale={[.8,.8,.8]} position={[0,.01,0]}/>
                                                 )}
