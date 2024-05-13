@@ -153,7 +153,9 @@
                 margin-left: 6.8rem;
                 max-width: 64.4rem;
                 color: rgba($cl-txt-light, .6);
-
+                & > .txt-bold {
+                    color: rgba($cl-txt-light, .8);
+                }
                 @include md {
                     margin-left: 4.8rem;
                     max-width: 44.9rem;

@@ -133,7 +133,7 @@ function GlobalFooter(props) {
                         <MenuItem link='/katalog'>Product Katalog</MenuItem>
                         <MenuItem link='/private-label'>Private Label</MenuItem>
                         <MenuItem link='/kustom-packaging-solutions'>Kustom Packaging Solutions</MenuItem>
-                        <MenuItem link='/qc-procedures'>Testing, QC & Compliance</MenuItem>
+                        <MenuItem link='/qc-procedures'>Testing, QC & Kompliance</MenuItem>
                     </MenuColumn>
                     <MenuColumn
                         title="Kustomers"
@@ -157,7 +157,7 @@ function GlobalFooter(props) {
                     >
                         <MenuItem link="/about">Know Us</MenuItem>
                         <MenuItem link="/pakway">Pakway</MenuItem>
-                        <MenuItem link="/sustainability">Sustainability Commitment</MenuItem>
+                        <MenuItem link="/sustainability">Sustainability Kommitment</MenuItem>
                         <MenuItem link="/fulfillment">Fulfillment</MenuItem>
                         <MenuItem link="/kase-studies">Kase Studies</MenuItem>
                         <MenuItem link="/kareers">Kareers</MenuItem>

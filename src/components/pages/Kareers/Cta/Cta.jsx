@@ -31,9 +31,9 @@ function KareersCta(props) {
                     <p className="txt txt-18 txt-med kareer-cta-sub">{props.sub}</p>
                     <div className="kareer-cta-btn-wrap">
                         <a
-                            href="https://www.google.com/search?q=kanak+naturals+careers&oq=kanak+&gs_lcrp=EgZjaHJvbWUqCAgAEEUYJxg7MggIABBFGCcYOzIGCAEQRRg5MgYIAhBFGDwyBggDEEUYPDIGCAQQRRhBMgYIBRBFGDwyBggGEEUYQTIGCAcQRRhBqAIAsAIB&sourceid=chrome&ie=UTF-8&ibp=htl;jobs&sa=X&sqi=2&ved=2ahUKEwjCrfWX-LaFAxXvNzQIHeYHCWUQkd0GegQIIhAB#fpstate=tldetail&htivrt=jobs&htiq=kanak+naturals+careers&htidocid=PcwDE1pa05HS_rjBAAAAAA%3D%3D&sxsrf=ACQVn0-wvmRnZIx6Iz40JuT6jnkivua85g:1712727781109"
+                            href={props.link_list ? props.link_list.url : '#'}
                             className="btn btn-lg"
-                            target='_blank'
+                            target={props.link_list.target ? props.link_list.target : '_self'}
                             data-cursor="txtLink"
                             data-cursor-txtlink="child">
                             <div className="txt txt-18 txt-up txt-med" data-cursor-txtlink-child>Views open positions</div>

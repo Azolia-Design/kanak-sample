@@ -251,7 +251,7 @@ function HeaderGlobal(props) {
                     if (page.type == 'dropdown') {
                         return (
                             <div className={cn("header-dropdown", { "active": idx === dropdownIdx })} key={idx} data-dropdown-idx={idx}>
-                                <div className={`header-dropdown-inner ${formatData(page.name)}`}>
+                                <div className={`header-dropdown-inner ${formatData(page.name.replaceAll('[','').replaceAll(']',''))}`}>
                                     {page.sub_menu.map((el, idx) => (
                                         <a
                                             key={idx}
@@ -331,8 +331,7 @@ function HeaderGlobal(props) {
                                             <div className="nav-main-item-dropdown" data-dropdown-idx={idx} >
                                                 <div className="nav-main-item-dropdown-inner">
                                                     {page.sub_menu.map((el, elIdx) => (
-                                                        <a href={el.url} className="heading h5 txt-black txt-up nav-main-item-dropdown-item" key={elIdx}>
-                                                            {el.name}
+                                                        <a href={el.url} className="heading h5 txt-black txt-up nav-main-item-dropdown-item hello" key={elIdx} dangerouslySetInnerHTML={{ __html: el.name.replaceAll('[','<span class="txt-kanak">').replaceAll(']','</span>') }}>
                                                         </a>
                                                     ))}
                                                 </div>
