@@ -34,7 +34,7 @@ const homeKatalogList = await Promise.all(
 let katalogList = homeKatalogList
     .filter((el, idx) => el.data.is_sustainables_ !== true)
     .map((el, idx) => ({
-        name: el.data.name,
+        name: el.data.name.replaceAll('k', '[k]').replaceAll('K', '[K]'),
         url: `/katalog?category=${formatData(el.data.name)}`,
     }));
 
@@ -48,7 +48,7 @@ const pages = [
         name: "[K]atalog",
         type: "dropdown",
         sub_menu: [
-            { name: "All Product", url: "/katalog" },
+            { name: "All Products", url: "/katalog" },
             ...katalogList,
         ],
     },
@@ -57,7 +57,7 @@ const pages = [
         type: "dropdown",
         sub_menu: [
             { name: "Private label", url: "/private-label" },
-            { name: "Kustom packaging", url: "/kustom-packaging-solutions" },
+            { name: "[K]ustom pac[k]aging", url: "/kustom-packaging-solutions" },
             { name: "Testing, QC & [K]ompliance", url: "/qc-procedures" },
         ],
     },
@@ -90,7 +90,6 @@ const pathname = new URL(Astro.request.url).pathname;
     bodyFlag={bodyFlagIc.src}
     currYear={currYear}
     pathname={pathname}
-    check={katalogList}
     client:load
 >
     <Image src={kanakLogo} alt="Kanak Logo" slot="logo" class="img-h" />

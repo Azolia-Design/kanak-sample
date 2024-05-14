@@ -44,6 +44,7 @@ const listCaseStudy = await getAllByType("case_study");
     footer_bg={item.data.cta_background}
 >
     <Hero
+        uid={item.uid}
         page_title={item.data.title}
         label={item.data.hero_label}
         title={convertHighlight(item.data.hero_title)}

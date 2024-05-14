@@ -193,6 +193,7 @@
 }
 [data-page="Medical"] .kustomer-hero {
     &-title {
+        max-width: 136.3rem;
         @media screen and (min-aspect-ratio: 1.74) {
             @media only screen and (max-height: 963px) {
                 max-width: 130vh;

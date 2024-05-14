@@ -1,8 +1,10 @@
 ---
 import KustomerHero from "./Hero";
+console.log(Astro.props)
 ---
 
 <KustomerHero
+    uid={Astro.props.uid}
     page_title={Astro.props.page_title}
     label={Astro.props.label}
     client:load
