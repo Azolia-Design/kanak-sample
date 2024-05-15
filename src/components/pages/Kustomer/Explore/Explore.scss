@@ -306,15 +306,17 @@
                             }
 
                             .line-right {
-                                display: none;
+                                right: 0;
+                                left: auto;
+                                // display: none;
                             }
                         }
 
                         &:nth-child(2) {
-                            padding-left: unset;
+                            // padding-left: unset;
 
                             .line-left {
-                                display: none;
+                                // display: none;
                             }
                         }
                     }

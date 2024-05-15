@@ -83,6 +83,10 @@
         align-items: center;
         transition: color .4s ease;
 
+        
+        display: none;
+
+
         @media (hover: hover) {
             &:hover {
                 color: var(--cl-orange);

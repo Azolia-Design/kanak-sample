@@ -83,6 +83,9 @@
             @include md {
                 padding-bottom: 6rem;
             }
+            @include sm {
+                padding-bottom: unset;
+            }
         }
 
         &-item {

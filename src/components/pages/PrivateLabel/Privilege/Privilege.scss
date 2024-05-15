@@ -235,11 +235,19 @@
                 @include md {
                     opacity: 1;
                 }
+
+                @include sm {
+                    transform: unset;
+                }
             }
 
             .private-privilege-item-sub-wrap {
                 transform: scale(.999);
                 opacity: 1;
+                
+                @include sm {
+                    transform: unset;
+                }
             }
         }
     }

@@ -98,7 +98,7 @@ function GlobalFooter(props) {
                         <div className="ft-logo">
                             {props.logo}
                         </div>
-                        <a href="#" className="ft-left-body-social-item txt-bg-link hide-dk">
+                        <a href="https://www.linkedin.com/company/kanaknaturals" target='__blank' className="ft-left-body-social-item txt-bg-link hide-dk">
                             {props.imgLinkedIn}
                         </a>
                         <div className="line line-bottom"></div>
@@ -110,7 +110,7 @@ function GlobalFooter(props) {
                             <ContactItem label="Headquarters" content="321 Hovan Drive, Fort Wayne, IN 46825, US" link="https://maps.app.goo.gl/YxM91MZmzBCW5F1C6" target="_blank" />
                         </div>
                         <div className="ft-left-body-social">
-                            <a href="#" className="ft-left-body-social-item txt-bg-link hide-mb">
+                            <a href="https://www.linkedin.com/company/kanaknaturals" target='__blank' className="ft-left-body-social-item txt-bg-link hide-mb">
                                 {props.imgLinkedIn}
                             </a>
                         </div>
@@ -165,7 +165,7 @@ function GlobalFooter(props) {
                 </div>
                 <div className='ft-copyright-mb'>
                     <div className="txt txt-12 txt-bold ft-copyright-mb-wrap">
-                        <a href="https://app.termly.io/document/terms-of-service/89061706-a2a2-4217-a4aa-a53ba72a4334" target='_blank' className="txt-link txt-up ft-copyright-mb-link">TERMS of use</a>
+                        <a href="https://app.termly.io/document/terms-of-service/89061706-a2a2-4217-a4aa-a53ba72a4334" target='_blank' className="txt-link ft-copyright-mb-link">TERMS OF USE</a>
                         <span className="ft-copyright-mb-div">-</span>
                         <a href="https://app.termly.io/document/privacy-policy/319e0d22-20e7-449c-a002-bf22aa177cb8" target='_blank' className="txt-link txt-up ft-copyright-mb-link">PRIVACY POLICY</a>
                     </div>

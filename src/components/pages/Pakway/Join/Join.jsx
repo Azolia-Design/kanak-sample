@@ -90,7 +90,8 @@ function PakwayJoin(props) {
                                             {el.title[0].text}
                                         </h3>
                                     </div>
-                                    <p className="txt txt-20 txt-med pak-join-main-item-sub" dangerouslySetInnerHTML={{ __html: el.subtitle.replace('9% of plastic waste', '<span class="txt-bold">9% of plastic waste</span>') }}></p>
+                                    {/* <p className="txt txt-20 txt-med pak-join-main-item-sub" dangerouslySetInnerHTML={{ __html: el.subtitle.replace('9% of plastic waste', '<span class="txt-bold">9% of plastic waste</span>') }}></p> */}
+                                    <p className="txt txt-20 txt-med pak-join-main-item-sub">{el.subtitle}</p>
                                 </div>
                                 <div className="pak-join-main-item-img">
                                     <img
