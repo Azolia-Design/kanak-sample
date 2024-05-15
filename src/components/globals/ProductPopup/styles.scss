@@ -52,8 +52,8 @@
         }
 
         @include sm {
+            width: unset;
             height: 100%;
-            overflow: hidden;
         }
 
         &-wrap {
@@ -84,7 +84,7 @@
 
                 @include sm {
                     display: block;
-                    padding-top: 6rem;
+                    padding-top: 2rem;
                     height: 100%;
                     max-height: unset;
                     overflow-y: auto;
@@ -113,6 +113,7 @@
             top: 3rem;
             right: 3rem;
             transition: color .4s ease;
+            
             @media (max-height: 650px) {
                 top: 5vh;
                 right: 5vh;
@@ -137,7 +138,7 @@
 
             @include sm {
                 z-index: 10;
-                top: .6rem;
+                top: -4rem;
                 right: -1rem;
             }
 
