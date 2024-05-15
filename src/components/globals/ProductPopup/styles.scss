@@ -57,10 +57,12 @@
         }
 
         &-wrap {
+            height: 100%;
 
             @include sm {
+                
                 height: 100%;
-                margin-right: calc(var(--container-padding) * -1);
+                // margin-right: calc(var(--container-padding) * -1);
             }
 
             &-inner {
@@ -103,9 +105,7 @@
                 margin-bottom: 4rem;
             }
         }
-        &-wrap {
-            height: 100%;
-        }
+
 
         &-btn {
             position: absolute;
