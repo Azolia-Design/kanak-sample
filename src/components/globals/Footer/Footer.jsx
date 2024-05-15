@@ -167,7 +167,7 @@ function GlobalFooter(props) {
                     <div className="txt txt-12 txt-bold ft-copyright-mb-wrap">
                         <a href="https://app.termly.io/document/terms-of-service/89061706-a2a2-4217-a4aa-a53ba72a4334" target='_blank' className="txt-link ft-copyright-mb-link">TERMS OF USE</a>
                         <span className="ft-copyright-mb-div">-</span>
-                        <a href="https://app.termly.io/document/privacy-policy/319e0d22-20e7-449c-a002-bf22aa177cb8" target='_blank' className="txt-link ft-copyright-mb-link">PRIVACY POLICY</a>
+                        <a href="https://app.termly.io/document/privacy-policy/319e0d22-20e7-449c-a002-bf22aa177cb8" target='_blank' className="txt-link txt-up ft-copyright-mb-link">PRIVACY POLICY</a>
                     </div>
                     <CopyRight>{props.currYear}</CopyRight>
                 </div>
