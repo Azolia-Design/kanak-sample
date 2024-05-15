@@ -178,9 +178,10 @@
                 position: absolute;
                 top: 0;
                 right: 0;
-            }
-            @include sm {
-                display: none;
+
+                @include sm {
+                    display: none;
+                }
             }
         }
         &:not(:nth-child(-n+2)) {

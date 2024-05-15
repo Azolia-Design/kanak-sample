@@ -16,7 +16,7 @@ function Category({ children, isActive, onClick }) {
     )
 }
 
-function Categories({ data, originCategory, filter, setFilter }) {
+function Categories({ data, originCategory, filter, setFilter, setLimit }) {
     const ref = useRef();
     const [isDropdown, setIsDropdown] = useState(false);
     const [currentCategory, setCurrentCategory] = useState(filter.category);
@@ -46,6 +46,9 @@ function Categories({ data, originCategory, filter, setFilter }) {
         }
     },[])
 
+    useEffect(() => {
+        // console.log(data);
+    },[data])
     return (
         <div className="katalog-main-cate">
             <button
@@ -77,6 +80,7 @@ function Categories({ data, originCategory, filter, setFilter }) {
                             setFilter?.({ ...filter, category })
                             setCurrentCategory(category);
                             setIsDropdown(false);
+                            setLimit?.(4);
                             window.history.replaceState(null, null, updateQueryParam([{ key: 'category', value: formatData(category) }]));
                         }}>
                         {category}
@@ -88,38 +92,3 @@ function Categories({ data, originCategory, filter, setFilter }) {
 }
 
 export default memo(Categories);
-
-// Categories.Dropdown = ({ data, filter, setFilter }) => {
-//     const [currentCategory, setCurrentCategory] = useState(filter.category);
-//     const [isDropdown, setIsDropdown] = useState(false);
-//     const list = useMemo(() => {
-//         let currList = [...new Set(data.map((item) => item.category))];
-//         if (!currList.includes(currentCategory)) setCurrentCategory(currList[0]);
-//         return currList;
-//     }, [data, currentCategory]);
-
-//     useOutsideAlerter(ref, () => { setIsDropdown(false) })
-
-//     return (
-//         <div className={cn("katalog-main-filter-list-dropdown katalog-main-filter-list-dropdown-cate", { "active": isDropdown })}>
-//             <div className="katalog-main-filter-list-dropdown-inner" ref={ref}>
-//                 {list.map((category) =>
-//                     <button
-//                         key={category}
-//                         className={cn('katalog-main-filter-item', { "active": currentCategory === category })}
-//                         onClick={() => {
-//                             setFilter({ ...filter, category });
-//                             setCurrentCategory(category);
-//                             setIsDropdown(false);
-//                         }}>
-//                         <div className="txt txt-20 txt-bold katalog-main-filter-item-txt">
-//                             {category}
-//                         </div>
-//                         <div className="line"></div>
-//                     </button>
-//                 )}
-//             </div>
-//         </div>
-
-//     )
-// }

@@ -76,7 +76,7 @@
         right: 0;
         bottom: -10vh;
         @include sm {
-            z-index: 3;
+            // z-index: 3;
         }
         > * {
             pointer-events: none !important;

@@ -29,7 +29,7 @@ function Content(props) {
     return (
         <>
             <group
-                position={[(window.innerWidth > 991 ? .4 : .55) / scaleOffset, (window.innerWidth > 991 ? -.22 : -.3) / scaleOffset, 0]}
+                position={[(window.innerWidth > 991 ? .4 : window.innerWidth > 767 ? .55 : -.2) / scaleOffset, (window.innerWidth > 991 ? -.22 : window.innerWidth > 767 ? -3 : -1.3) / scaleOffset, 0]}
                 scale={[9.5 / scaleOffset, 9.5 / scaleOffset, 9.5 / scaleOffset]}
                 rotation={[Math.PI * -.02, Math.PI * -.25, Math.PI * -.2]}
             >
@@ -46,7 +46,7 @@ function Content(props) {
             <spotLight intensity={1} angle={.1} penumbra={1} position={[10, 10, -5]} castShadow />
             <ContactShadows opacity={(window.innerWidth > 991 ? .18 : .12)}
                 scale={[5 / scaleOffset, 10 / scaleOffset, 2 / scaleOffset]}
-                position={[.15 / scaleOffset, -.9 / scaleOffset, 0]} blur={2} far={1.2} />
+                position={[.15 / scaleOffset, (window.innerWidth > 991 ? -.9 : window.innerWidth > 767 ? -9 : -1.55) / scaleOffset, 0]} blur={2} far={1.2} />
             <Environment files={suspend(warehouse)} frames={degraded ? 1 : Infinity} resolution={256} />
         </>
     )

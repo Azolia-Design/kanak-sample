@@ -36,7 +36,7 @@ function KareersCta(props) {
                             target={props.link_list.target ? props.link_list.target : '_self'}
                             data-cursor="txtLink"
                             data-cursor-txtlink="child">
-                            <div className="txt txt-18 txt-up txt-med" data-cursor-txtlink-child>Views open positions</div>
+                            <div className="txt txt-18 txt-up txt-med" data-cursor-txtlink-child>View open positions</div>
                         </a>
                     </div>
                 </div>

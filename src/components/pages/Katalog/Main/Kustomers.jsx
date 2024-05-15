@@ -16,7 +16,7 @@ function Kustomer({ isActive, children, onClick }) {
     )
 }
 
-function Kustomers({ list, filter, setFilter }) {
+function Kustomers({ list, filter, setFilter, setLimit }) {
     const ref = useRef();
     const [isDropdown, setIsDropdown] = useState(false);
     useOutsideAlerter(ref, () => setIsDropdown(false))
@@ -45,6 +45,7 @@ function Kustomers({ list, filter, setFilter }) {
                     <Kustomer isActive={filter.kustomer === 'All'} onClick={() => {
                         setFilter?.({ category: 'All', kustomer: 'All' })
                         setIsDropdown(false);
+                        setLimit?.(4);
                         window.history.replaceState(null, null, updateQueryParam([
                             { key: 'kustomer', value: '' },
                             { key: 'category', value: '' }
@@ -56,6 +57,7 @@ function Kustomers({ list, filter, setFilter }) {
                         <Kustomer key={useId()} isActive={filter.kustomer === kustomer.uid} onClick={() => {
                             setFilter?.({ category: 'All', kustomer: kustomer.uid })
                             setIsDropdown(false);
+                            setLimit?.(4);
                             window.history.replaceState(null, null, updateQueryParam([
                                 { key: 'kustomer', value: kustomer.uid },
                                 { key: 'category', value: '' }
