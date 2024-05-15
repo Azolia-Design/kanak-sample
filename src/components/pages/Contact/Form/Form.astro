@@ -1,7 +1,7 @@
 ---
 import ContactForm from "./Form.jsx";
 import { Image } from 'astro:assets';
-import { getAllByType } from '@/prismic.js';
+import { getAllByType, getPage, getByUID } from '@/prismic.js';
 
 import icAvatar from "@assets/contact-form-avatar.svg";
 import icEmail from "@assets/contact-form-email.svg";
@@ -13,7 +13,13 @@ import icChat from "@assets/contact-form-chat.svg";
 import icLoad from "@assets/contact-form-load.svg?raw";
 import icSuccess from "@assets/contact-form-success.svg";
 import icArrowUpRight from "@assets/arrow-up-right.svg"
-const industryList = await getAllByType('industry')
+const homeData = await getPage("home")
+const industryList = await Promise.all(
+    homeData.data.industry_list.map((industry: any) => {
+        let item = getByUID("industry", industry.item.uid);
+        return item;
+    }),
+);
 ---
 <ContactForm list={industryList} {...Astro.props} client:visible={{rootMargin: "200% 0px 200% 0px"}}>
     <Image src={icAvatar} alt="" slot="icAvatar"/>

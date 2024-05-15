@@ -25,7 +25,7 @@
 
         @include sm {
             grid-column: 1/-1;
-            @include text(h0);
+            @include text(h1);
         }
     }
 
@@ -59,18 +59,36 @@
 
     &-brc {
         grid-column: 1/7;
-        width: 8rem;
-        margin-top: 5rem;
-
+        margin-top: 3.2rem;
+        display: flex;
+        align-items: center;
+        column-gap: 3.2rem;
+        align-self: start;
+        &-img {
+            width: 8rem;
+            flex: none;
+        }
+        &-txt {
+            max-width: 40rem;
+        }
         @include md {
-            margin-top: 4rem;
-            width: 6rem;
+            margin-top: 2.4rem;
+            column-gap: 2.4rem;
+            &-img {
+                width: 6rem;
+            }
+            &-txt {
+                @include text(18);
+            }
         }
 
         @include sm {
             grid-column: 1/-1;
             margin-top: 2.4rem;
-            width: 8rem;
+            column-gap: 1.6rem;
+            &-img {
+                width: 8rem;
+            }
         }
     }
 

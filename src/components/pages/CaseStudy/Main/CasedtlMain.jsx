@@ -68,7 +68,7 @@ function CasedtlMain(props) {
 
         let mainSplit = []
         let richtextSequence = []
-        document.querySelectorAll('.casedtl-content-richtext *:not(astro-slot, .holder)').forEach((item, idx) => {
+        document.querySelectorAll('.casedtl-content-richtext *:not(ul, astro-slot, .holder)').forEach((item, idx) => {
             const richTxt = new SplitType(item, { types: 'lines, words', lineClass: 'split-line' })
             animate(richTxt.words, { opacity: 0, transform: "translateY(100%)" }, { duration: 0 })
             if (item.nodeName == 'P') {
@@ -77,7 +77,7 @@ function CasedtlMain(props) {
                 )
             } else {
                 richtextSequence.push(
-                    [richTxt.words, { opacity: 1, transform: "none" }, { duration: .6, delay: stagger(.04), at: idx * .1 + .2 }]
+                    [richTxt.words, { opacity: 1, transform: "none" }, { duration: .6, delay: stagger(.008), at: idx * .1 + .2 }]
                 )
             }
             mainSplit.push(richTxt)

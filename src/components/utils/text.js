@@ -19,7 +19,24 @@ const convertHighlight = (field) => {
 
     return htmlString.replace(/<span class="Highlight">(.*?)<\/span>/g, replacer);
 }
+const hotfixConvertHighlight = (field) => {
+    let htmlString = prismicH.asHTML(field)
+        .replace(/^<[^>]+>|<[^>]+>$/g, '')
+        // .replace(/<p[^>]*>|<\/p>/g, ' ')
+        
+    const replacer = (match, p1) => {
+        let replacedString =  p1
+             .split(' ') // Tách thành từng từ, bao gồm các từ có gạch nối
+             .map(word => `<span class="txt-green">${word}</span>`) // Bọc từng từ trong thẻ <span>
+             .join(' '); // Kết hợp lại thành chuỗi
+        if (replacedString.length > 0) {
+            replacedString += ' ';
+        }
+        return replacedString;
+    };
 
+    return htmlString.replace(/<span class="Highlight">(.*?)<\/span>/g, replacer);
+}
 const parseLabelsRichtext = (field, transformClass) => {
     const { inputLabel, outputClass } = transformClass;
     let htmlString = prismicH.asHTML(field)
@@ -80,6 +97,6 @@ function isEmpty(data) {
 function formatData(data) {
     return data && data.toLowerCase().replace(/ /g, "-").replace("&", "")
 }
-export { convertHighlight, parseLabelsRichtext, convertDate, cleanText, isEmpty, formatData }
+export { convertHighlight, parseLabelsRichtext, convertDate, cleanText, isEmpty, formatData, hotfixConvertHighlight }
 
 

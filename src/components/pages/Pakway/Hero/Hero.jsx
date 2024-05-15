@@ -38,8 +38,13 @@ function PakwayHero(props) {
                 <div className="txt txt-18 txt-med pak-hero-sub">
                     {props.subtitle}
                 </div>
-                <div className="txt txt-18 txt-med pak-hero-brc">
-                    {props.brcLogo}
+                <div className="pak-hero-brc">
+                    <div className="pak-hero-brc-img">
+                        {props.brcLogo}
+                    </div>
+                    <div className="txt txt-20 txt-semi pak-hero-brc-txt">
+                        {props.brcText}
+                    </div>    
                 </div>
                 <div className="pak-hero-img-wrap bg-light">
                     {props.heroImg}

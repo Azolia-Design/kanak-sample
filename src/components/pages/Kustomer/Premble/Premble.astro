@@ -1,10 +1,10 @@
 ---
-import { convertHighlight } from "@utils/text";
+import { hotfixConvertHighlight } from "@utils/text";
 import KustomerPremble from "./Premble";
 import VideoBadge from "@components/globals/BadgeVideo/Badge.astro";
 ---
 
 <KustomerPremble client:visible={{ rootMargin: "200% 0px 200% 0px" }}>
     <VideoBadge slot="badge" />
-    <Fragment set:html={convertHighlight(Astro.props.title)} slot="title" />
+    <Fragment set:html={hotfixConvertHighlight(Astro.props.title)} slot="title" />
 </KustomerPremble>
