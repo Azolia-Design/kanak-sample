@@ -189,7 +189,7 @@
                 cursor: grab;
                 overflow: hidden;
                 border: 0.2rem solid var(--cl-txt);
-                align-content: start;
+                align-content: center;
                 // @include md {
                 //     aspect-ratio: 0.7894736842;
                 // }
@@ -199,6 +199,7 @@
                 // }
                 @include sm {
                     // max-height: none;
+                    align-content: start;
                 }
 
                 &-inner {
