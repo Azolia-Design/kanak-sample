@@ -95,13 +95,30 @@
             &-title {
                 margin-top: auto;
                 margin-bottom: 1.8rem;
+                display: flex;
+                align-items: center;
+                column-gap: 2rem;
+                @include text(h2);
 
                 @include md {
                     margin-bottom: 3rem;
+                    column-gap: 1.6rem;
                 }
 
                 @include sm {
                     margin-bottom: 2.4rem;
+                    column-gap: 1rem;
+                }
+
+                .ic {
+                    @include size(4.8rem);
+
+                    @include md {
+                        @include size(4rem);
+                    }
+                    @include sm {
+                        @include size(3.2rem);
+                    }
                 }
             }
 

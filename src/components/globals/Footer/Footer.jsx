@@ -116,6 +116,7 @@ function GlobalFooter(props) {
                         </div>
                         <a href="/contact" className="heading h1 txt-up txt-black ft-left-body-title txt-link-bold">
                             Let's talk!
+                            <div className="ic">{props.arrow}</div>
                         </a>
                     </div>
                     <div className="ft-tail">
