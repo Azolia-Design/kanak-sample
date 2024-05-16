@@ -8,6 +8,7 @@ import GlobalExplore from "@components/globals/Explore";
 import { getAllByType, getPage, getByUID } from "@/prismic.js";
 
 import img from "@assets/ffment-thumb.jpg";
+import LetTalkArr from "@assets/LT-Arrow.svg?raw";
 
 const { title, bg, explore } = Astro.props;
 const currYear = new Date().getFullYear();
@@ -63,4 +64,5 @@ const exploreList = await Promise.all([
 >
     <Image src={logo} alt="kanak logo" class="img img-h" slot="logo" />
     <Image src={linkedIn} alt="Linkedin" class="ic ic-24" slot="imgLinkedIn" />
+    <Fragment set:html={LetTalkArr} slot="arrow" />
 </GlobalFooter>
