@@ -118,8 +118,8 @@ function GlobalFooter(props) {
                             Let's talk! 
                             <div className="ic ic-48">
                                 <svg width="100%" viewBox="0 0 48 49" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M6 42.0703L42 6.07031" stroke="currentColor" stroke-width="8" stroke-miterlimit="10"/>
-                                    <path d="M14.3999 6.07031H41.9999V33.6703" stroke="currentColor" stroke-width="8" stroke-miterlimit="10" stroke-linecap="square"/>
+                                    <path d="M6 42.0703L42 6.07031" stroke="currentColor" strokeWidth="8" strokeMiterlimit="10"/>
+                                    <path d="M14.3999 6.07031H41.9999V33.6703" stroke="currentColor" strokeWidth="8" strokeMiterlimit="10" strokeLinecap="square"/>
                                 </svg>
                             </div>
                         </a>
