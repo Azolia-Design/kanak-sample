@@ -19,7 +19,7 @@ const updateQueryParam = (data) => {
         }
     })
 
-    let new_url = `${wOrigin}${wPath}?${searchParams.toString()}${wHash}`
+    let new_url = `${wOrigin}${wPath}${searchParams != '' ? `?${searchParams.toString()}` : ''}${wHash}`
     return new_url;
 }
 

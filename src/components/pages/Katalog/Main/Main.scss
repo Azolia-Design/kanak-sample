@@ -603,10 +603,6 @@
                     justify-content: start;
                     transition: transform .4s ease;
                     @include size(100%);
-
-                    @include md {
-                        width: 23.3rem;
-                    }
                 }
 
                 img {

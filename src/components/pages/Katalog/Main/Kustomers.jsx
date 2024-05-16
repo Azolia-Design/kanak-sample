@@ -5,7 +5,7 @@ import { updateQueryParam } from '@utils/parse';
 import useOutsideAlerter from '@hooks/useOutsideAlerter';
 import ArrowDropdown from "@components/globals/IcArrow/ArrowDropdown.jsx";
 
-function Kustomer({ isActive, children, onClick }) {
+function Kustomer({ isActive, children, onClick, isEmpty }) {
     return (
         <button className={cn('katalog-main-filter-item', { "active": isActive })} onClick={onClick}>
             <div className="txt txt-20 txt-bold katalog-main-filter-item-txt">
@@ -16,7 +16,7 @@ function Kustomer({ isActive, children, onClick }) {
     )
 }
 
-function Kustomers({ list, filter, setFilter, setLimit }) {
+function Kustomers({ list, filter, setFilter, setLimit, setSortType, allItem }) {
     const ref = useRef();
     const [isDropdown, setIsDropdown] = useState(false);
     useOutsideAlerter(ref, () => setIsDropdown(false))
@@ -45,7 +45,8 @@ function Kustomers({ list, filter, setFilter, setLimit }) {
                     <Kustomer isActive={filter.kustomer === 'All'} onClick={() => {
                         setFilter?.({ category: 'All', kustomer: 'All' })
                         setIsDropdown(false);
-                        setLimit?.(4);
+                        setSortType('a')
+                        window.innerWidth < 768 && setLimit?.(4);
                         window.history.replaceState(null, null, updateQueryParam([
                             { key: 'kustomer', value: '' },
                             { key: 'category', value: '' }
@@ -53,18 +54,24 @@ function Kustomers({ list, filter, setFilter, setLimit }) {
                     }}>
                         All
                     </Kustomer>
-                    {list.map((kustomer) =>
-                        <Kustomer key={useId()} isActive={filter.kustomer === kustomer.uid} onClick={() => {
-                            setFilter?.({ category: 'All', kustomer: kustomer.uid })
-                            setIsDropdown(false);
-                            setLimit?.(4);
-                            window.history.replaceState(null, null, updateQueryParam([
-                                { key: 'kustomer', value: kustomer.uid },
-                                { key: 'category', value: '' }
-                            ]));
-                        }}>
-                            {kustomer.title}
-                        </Kustomer>
+                    {list.map((kustomer) => 
+                        allItem.filter((item) => item.data.tag_grp.some((target) => target.tags.uid == kustomer.uid)).length !== 0 && (
+                            <Kustomer key={useId()} 
+                                isActive={filter.kustomer === kustomer.uid}
+                                onClick={() => {
+                                    console.log()
+                                    setFilter?.({ category: 'All', kustomer: kustomer.uid })
+                                    setIsDropdown(false);
+                                    setSortType('a')
+                                    window.innerWidth < 768 && setLimit?.(4);
+                                    window.history.replaceState(null, null, updateQueryParam([
+                                        { key: 'kustomer', value: kustomer.uid },
+                                        { key: 'category', value: '' }
+                                    ]));
+                            }}>
+                                {kustomer.title}
+                            </Kustomer>
+                    )  
                     )}
                 </div>
             </div>

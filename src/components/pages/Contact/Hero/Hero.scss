@@ -49,10 +49,11 @@
     }
     .contact-info {
         &-list {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem 0;
-            padding-block: 2.4rem
+            display: none;
+            // display: flex;
+            // flex-direction: column;
+            // gap: 2rem 0;
+            // padding-block: 2.4rem;
         }
         &-item {
             .txt-18 {

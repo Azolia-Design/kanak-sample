@@ -5,12 +5,13 @@ import { formatData, isEmpty } from "@utils/text";
 import useOutsideAlerter from "@hooks/useOutsideAlerter";
 import { useState, useEffect, useRef, useMemo } from "react";
 import { getLenis } from '@components/core/lenis';
-
+import {convertHyphen} from '@utils/text';
 import { animate, timeline, stagger, inView } from "motion";
 import SplitType from 'split-type';
 import Kustomers from "./Kustomers";
 import Categories from './Categories'
 import ProductPopup from "@components/globals/ProductPopup";
+import { updateQueryParam } from "@utils/parse";
 
 function Item({ data, onClick, filter }) {
     const itemRef = useRef();
@@ -69,7 +70,7 @@ function Item({ data, onClick, filter }) {
             <div className="katalog-main-list-item-info">
                 <div className="line line-mid"></div>
                 <div className="katalog-main-list-item-info-name">
-                    <h4 className="heading h6 txt-black txt-up">{data.title}</h4>
+                    <h4 className="heading h6 txt-black txt-up">{convertHyphen(data.title)}</h4>
                 </div>
                 <div className="katalog-main-list-item-info-qr">
                     <div className="line line-ver line-qr"></div>
@@ -87,6 +88,7 @@ function Item({ data, onClick, filter }) {
 
 function KatalogMain({ allItem, ...props }) {
     const [filter, setFilter] = useState({ kustomer: 'All', category: 'All' });
+    const [sortType, setSortType] = useState('a');
     const [limit, setLimit] = useState(999999);
     const [currentList, setCurrentList] = useState(allItem);
     const [isOpenPopup, setIsOpenPopup] = useState(false);
@@ -98,8 +100,17 @@ function KatalogMain({ allItem, ...props }) {
             setCurrentList(listByKustomer)
         } else {
             let listByKustomer = allItem.filter((item) => item.data.tag_grp.some((target) => target.tags.uid == filter.kustomer));
-            let listByCatalog = filter.category !== 'All' ? listByKustomer.filter((item) => item.category == filter.category) : listByKustomer;
-            setCurrentList(listByCatalog);
+            let listByCategory = filter.category !== 'All' ? listByKustomer.filter((item) => item.category == filter.category) : listByKustomer;
+            if (listByCategory.length > 0) {
+                setCurrentList(listByCategory);
+            } else {
+                setCurrentList(allItem);
+                setFilter({ kustomer: 'All', category: 'All' })
+                window.history.replaceState(null, null, updateQueryParam([
+                    { key: 'kustomer', value: '' },
+                    { key: 'category', value: '' }
+                ]));
+            }
         }
     }, [filter])
 
@@ -119,7 +130,7 @@ function KatalogMain({ allItem, ...props }) {
                 />
             ))
         )
-    }, [filter, limit])
+    }, [filter, limit, currentList, sortType])
 
     useEffect(() => {
         if (window.innerWidth < 768) {
@@ -187,7 +198,15 @@ function KatalogMain({ allItem, ...props }) {
             setFilter((filter) => ({ ...filter, category: props.cateList.find(item => formatData(item) === searchParam.get("category")) ? props.cateList.find(item => formatData(item) === searchParam.get("category")) : "All" }))
         };
         if (searchParam.has("kustomer")) {
-            setFilter((filter) => ({ ...filter, kustomer: props.kustomerList.find(item => item.uid === searchParam.get("kustomer")) ? props.kustomerList.find(item => item.uid === searchParam.get("kustomer")).uid : "All" }))
+            let kustomerUID = props.kustomerList.find(item => item.uid === searchParam.get("kustomer"))
+            setFilter((filter) => ({ ...filter, kustomer: kustomerUID ? kustomerUID.uid : (() => {
+                window.history.replaceState(null, null, updateQueryParam([
+                    { key: 'kustomer', value: '' },
+                    { key: 'category', value: '' }
+                ]));
+                return 'All'
+            }) }))
+           
         }
     }, [])
     // useEffect(() => {
@@ -201,7 +220,14 @@ function KatalogMain({ allItem, ...props }) {
                     <div className="line line-top katalog-main-line-top"></div>
                     <div className="katalog-main-filter-inner">
                         <div className="katalog-main-filter-list">
-                            <Kustomers list={props.kustomerList} filter={filter} setFilter={setFilter} setLimit={setLimit}/>
+                            <Kustomers 
+                                list={props.kustomerList} 
+                                allItem={allItem} 
+                                filter={filter} 
+                                setFilter={setFilter} 
+                                setLimit={setLimit}
+                                setSortType={setSortType}
+                            />
                             <div className="katalog-main-filter-list-pdf-wrap">
                                 <a href="/contact?src=download" className="btn katalog-main-filter-list-pdf" data-cursor="txtLink" data-cursor-txtlink="child">
                                     <div className="txt katalog-main-filter-list-pdf-inner" data-cursor-txtlink-child>
@@ -216,7 +242,19 @@ function KatalogMain({ allItem, ...props }) {
                     </div>
                     <div className="line line-bot"></div>
                 </div>
-                <Categories data={filter.kustomer !== 'All' ? allItem.filter((item) => item.data.tag_grp.some((target) => target.tags.uid == filter.kustomer)) : allItem} originCategory={props.cateList} filter={filter} setFilter={setFilter} setLimit={setLimit} />
+                <Categories 
+                    data={filter.kustomer !== 'All' ? allItem.filter((item) => item.data.tag_grp.some((target) => target.tags.uid == filter.kustomer)) : allItem} 
+                    originCategory={props.cateList} 
+                    filter={filter} 
+                    setFilter={setFilter} 
+                    setLimit={setLimit}
+                    setSortType={setSortType}
+                    // stateKatalog={{
+                    //     filter: { val: filter, set: setFilter },
+                    //     limit: { val: limit, set: setLimit },
+                    //     sort: { val: sortType, set: setSortType }
+                    // }}
+                />
                 <div className="katalog-main-list">
                     <div className="katalog-main-list-wrap">
                         <div className="line line-ver katalog-main-list-line"></div>

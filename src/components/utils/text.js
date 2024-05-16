@@ -1,5 +1,8 @@
 import * as prismicH from "@prismicio/client";
 
+const convertHyphen = (field) => {
+    return field.replace(/-/g, '‑')
+}
 const convertHighlight = (field) => {
     let htmlString = prismicH.asHTML(field)
         .replace(/^<[^>]+>|<[^>]+>$/g, '')
@@ -97,6 +100,6 @@ function isEmpty(data) {
 function formatData(data) {
     return data && data.toLowerCase().replace(/ /g, "-").replace("&", "")
 }
-export { convertHighlight, parseLabelsRichtext, convertDate, cleanText, isEmpty, formatData, hotfixConvertHighlight }
+export { convertHighlight, parseLabelsRichtext, convertDate, cleanText, isEmpty, formatData, hotfixConvertHighlight, convertHyphen }
 
 

@@ -16,7 +16,7 @@ function Category({ children, isActive, onClick }) {
     )
 }
 
-function Categories({ data, originCategory, filter, setFilter, setLimit }) {
+function Categories({ data, originCategory, filter, setFilter, setLimit, setSortType }) {
     const ref = useRef();
     const [isDropdown, setIsDropdown] = useState(false);
     const [currentCategory, setCurrentCategory] = useState(filter.category);
@@ -80,7 +80,8 @@ function Categories({ data, originCategory, filter, setFilter, setLimit }) {
                             setFilter?.({ ...filter, category })
                             setCurrentCategory(category);
                             setIsDropdown(false);
-                            setLimit?.(4);
+                            setSortType('b');
+                            window.innerWidth < 768 && setLimit?.(4);
                             window.history.replaceState(null, null, updateQueryParam([{ key: 'category', value: formatData(category) }]));
                         }}>
                         {category}
