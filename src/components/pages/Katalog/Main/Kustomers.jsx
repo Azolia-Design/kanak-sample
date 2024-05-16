@@ -54,12 +54,11 @@ function Kustomers({ list, filter, setFilter, setLimit, setSortType, allItem }) 
                     }}>
                         All
                     </Kustomer>
-                    {list.map((kustomer) => 
+                    {list.map((kustomer) =>
                         allItem.filter((item) => item.data.tag_grp.some((target) => target.tags.uid == kustomer.uid)).length !== 0 && (
-                            <Kustomer key={useId()} 
+                            <Kustomer key={useId()}
                                 isActive={filter.kustomer === kustomer.uid}
                                 onClick={() => {
-                                    console.log()
                                     setFilter?.({ category: 'All', kustomer: kustomer.uid })
                                     setIsDropdown(false);
                                     setSortType('a')
@@ -71,7 +70,7 @@ function Kustomers({ list, filter, setFilter, setLimit, setSortType, allItem }) 
                             }}>
                                 {kustomer.title}
                             </Kustomer>
-                    )  
+                    )
                     )}
                 </div>
             </div>

@@ -42,7 +42,6 @@ function HomeCompareDesktop(props) {
     }
 
     useEffect(() => {
-        console.log('init compare')
         scroll(({y}) => {
             y.progress > 0 ? document.querySelector('.home-comp-main-prog-line').classList.add('active') : document.querySelector('.home-comp-main-prog-line').classList.remove('active')
             onUpdateProgress(y.progress);
@@ -63,7 +62,7 @@ function HomeCompareDesktop(props) {
         animate('.home-comp-main-prog-dot, .home-comp-main-prog-line svg', {scale: 1.1, opacity: 0}, {duration: 0})
         animate('.home-comp-main-prog-plates', {scale: .9, opacity: 0}, {duration: 0})
         animate('.home-comp-main-prog-dash', {opacity: 0}, {duration: 0})
-        
+
         const sequence = [
             [title.words, {opacity: 1, transform: 'none'}, {duration: .8, delay: stagger(.05)}],
             ['.home-comp-main-prog-dot, .home-comp-main-prog-line svg', {rotate: 0, scale: 1, opacity: 1}, {duration: 1, at: .2}],
@@ -77,7 +76,7 @@ function HomeCompareDesktop(props) {
             [subItemBad.words, {opacity: 1, transform: 'none'}, {duration: .6, delay: stagger(.04), at: 0.45}],
             [listTitle.words, {opacity: 1, transform: 'none'}, {duration: .8, delay: stagger(.05), at: 0.35}],
         ]
-        
+
         inView('.home-comp-main-prog', () => {
             timeline(sequence).finished.then(() => {
                 title.revert()
