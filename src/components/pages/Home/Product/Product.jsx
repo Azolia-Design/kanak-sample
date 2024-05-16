@@ -1,7 +1,8 @@
 import './Product.scss';
 import { useRef, useEffect } from 'react';
 import { useProductIndex } from '@contexts/StoreGlobal';
-import { scroll } from "motion"
+import { formatData } from '@utils/text';
+import { scroll } from "motion";
 
 function HomeProduct(props) {
     const { index, setIndex } = useProductIndex();
@@ -55,11 +56,18 @@ function HomeProduct(props) {
                     <div className="home-prod-cards-bottom">
                         <div className="home-prod-cards-bottom-txt-wrap">
                             {props.list.map((item, idx) => (
-                                <div
+                                <a
                                     key={idx}
+                                    href={`/katalog?category=${formatData(item.data.name)}`}
                                     className={`heading h5 txt-up txt-black home-prod-cards-bottom-txt ${index.value === idx ? 'active' : ''}`}>
                                     {item.data.name}
-                                </div>
+                                    <div className="ic ic-16">
+                                        <svg width="100%"viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M3 13.5L13 3.5" stroke="currentColor" strokeWidth="2" strokeMiterlimit="10"/>
+                                            <path d="M4.07227 3.5H13.0002V12.4271" stroke="currentColor" strokeWidth="2" strokeMiterlimit="10" strokeLinecap="square"/>
+                                        </svg>
+                                    </div>
+                                </a>
                             ))}
                         </div>
                         <div className="home-prod-cards-qr-wrap">

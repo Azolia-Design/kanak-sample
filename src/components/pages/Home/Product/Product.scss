@@ -161,6 +161,10 @@
                 @include md {
                     margin-left: 1.2rem;
                 }
+                @include sm {
+                    @include size(100%);
+                    margin-right: 1.2rem;
+                }
             }
 
             &-txt {
@@ -168,10 +172,22 @@
                 grid-row: 1/2;
                 opacity: 0;
                 pointer-events: none;
+                .ic {
+                    display: none;
+                }
                 @include transition(opacity 400ms ease);
 
                 @include md {
                     @include text(16);
+                }
+                @include sm {
+                    display: flex;
+                    align-items: center;
+                    width: 100%;
+                    justify-content: space-between;
+                    .ic {
+                        display: flex;
+                    }
                 }
 
                 &.active {
