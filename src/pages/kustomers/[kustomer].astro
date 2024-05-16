@@ -29,6 +29,7 @@ const { kustomer } = Astro.params;
 const { item } = Astro.props;
 const homeData = await getPage("home");
 
+
 const serviceItem = [];
 item.data.service_sub_items.forEach((el: any, idx: number) => {
     el.item.uid && serviceItem.push(el.item.uid);
@@ -108,7 +109,6 @@ const listCaseStudy = await getAllByType("case_study");
         !isEmpty(item.data.explore_title) && (
             <Explore
                 title={convertHighlight(item.data.explore_title)}
-                listGroup={item.data.explore_list}
                 listItems={[
                     {
                         uid: "private-label",
