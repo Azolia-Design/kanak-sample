@@ -23,11 +23,11 @@ function Content(props) {
         currentEl.rotation.y += .006
 
         products.current.children.forEach((el, idx) => {
-            products.current.children[idx].position.x = lerp(products.current.children[idx].position.x, (mapIndex[idx] * .2 ) / scaleOffset, .1)
+            products.current.children[idx].position.x = lerp(products.current.children[idx].position.x, (mapIndex[idx] * .2 ) / scaleOffset, .05)
             let local_scale = idx == props.currentIdx ? 1 : .7;
-            products.current.children[idx].scale.x = lerp(products.current.children[idx].scale.x, local_scale / scaleOffset, .1)
-            products.current.children[idx].scale.y = lerp(products.current.children[idx].scale.y, local_scale / scaleOffset, .1)
-            products.current.children[idx].scale.z = lerp(products.current.children[idx].scale.z, local_scale / scaleOffset, .1)
+            products.current.children[idx].scale.x = lerp(products.current.children[idx].scale.x, local_scale / scaleOffset, .05)
+            products.current.children[idx].scale.y = lerp(products.current.children[idx].scale.y, local_scale / scaleOffset, .05)
+            products.current.children[idx].scale.z = lerp(products.current.children[idx].scale.z, local_scale / scaleOffset, .05)
         })
     })
 

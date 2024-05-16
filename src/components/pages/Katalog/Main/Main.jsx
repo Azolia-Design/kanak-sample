@@ -99,7 +99,35 @@ function KatalogMain({ allItem, ...props }) {
             let listByKustomer = filter.category !== 'All' ? allItem.filter((item) => item.category == filter.category) : allItem
             setCurrentList(listByKustomer)
         } else {
-            let listByKustomer = allItem.filter((item) => item.data.tag_grp.some((target) => target.tags.uid == filter.kustomer));
+            /** (💡)  - List Product By Kustomer (not sorting) */
+            // let listByKustomer = allItem.filter((item) => item.data.tag_grp.some((target) => target.tags.uid == filter.kustomer));
+
+
+            /** (💡)  - Filter products based on target tag(uid) and get order of that tag(uid) */
+            const filteredProducts = allItem
+                .map(product => {
+                    const targetCategory = product.data.tag_grp.find(category => category.tags.uid === filter.kustomer);
+                    if (targetCategory) {
+                        return { ...product, targetOrder: targetCategory.order };
+                    }
+                    return null;
+                })
+                .filter(product => product !== null);
+
+            /** (💡)  - Sort filtered products based on target tag order */
+            const listByKustomer = filteredProducts.sort((a, b) => {
+                if (a.targetOrder === null) {
+                    return 1;
+                }
+                if (b.targetOrder === null) {
+                    return -1;
+                }
+                if (a.targetOrder === b.targetOrder) {
+                    return 0;
+                }
+                return a.targetOrder < b.targetOrder ? -1 : 1;
+            });
+
             let listByCategory = filter.category !== 'All' ? listByKustomer.filter((item) => item.category == filter.category) : listByKustomer;
             if (listByCategory.length > 0) {
                 setCurrentList(listByCategory);
@@ -206,13 +234,9 @@ function KatalogMain({ allItem, ...props }) {
                 ]));
                 return 'All'
             }) }))
-           
         }
     }, [])
-    // useEffect(() => {
-    //     let test = filter.kustomer !== 'All' ? allItem.filter((item) => item.data.tag_grp.some((target) => target.tags.uid == filter.kustomer)) : allItem
-    //     console.log(test);
-    // }, [filter]);
+
     return (
         <section className={`katalog-main ${isOpenPopup ? 'active' : ''}`}>
             <div className="container grid">
@@ -220,11 +244,11 @@ function KatalogMain({ allItem, ...props }) {
                     <div className="line line-top katalog-main-line-top"></div>
                     <div className="katalog-main-filter-inner">
                         <div className="katalog-main-filter-list">
-                            <Kustomers 
-                                list={props.kustomerList} 
-                                allItem={allItem} 
-                                filter={filter} 
-                                setFilter={setFilter} 
+                            <Kustomers
+                                list={props.kustomerList}
+                                allItem={allItem}
+                                filter={filter}
+                                setFilter={setFilter}
                                 setLimit={setLimit}
                                 setSortType={setSortType}
                             />
@@ -242,18 +266,13 @@ function KatalogMain({ allItem, ...props }) {
                     </div>
                     <div className="line line-bot"></div>
                 </div>
-                <Categories 
-                    data={filter.kustomer !== 'All' ? allItem.filter((item) => item.data.tag_grp.some((target) => target.tags.uid == filter.kustomer)) : allItem} 
-                    originCategory={props.cateList} 
-                    filter={filter} 
-                    setFilter={setFilter} 
+                <Categories
+                    data={filter.kustomer !== 'All' ? allItem.filter((item) => item.data.tag_grp.some((target) => target.tags.uid == filter.kustomer)) : allItem}
+                    cateList={props.cateList}
+                    filter={filter}
+                    setFilter={setFilter}
                     setLimit={setLimit}
                     setSortType={setSortType}
-                    // stateKatalog={{
-                    //     filter: { val: filter, set: setFilter },
-                    //     limit: { val: limit, set: setLimit },
-                    //     sort: { val: sortType, set: setSortType }
-                    // }}
                 />
                 <div className="katalog-main-list">
                     <div className="katalog-main-list-wrap">

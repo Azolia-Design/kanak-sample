@@ -33,7 +33,6 @@ let listCate = await Promise.all(
 		return item;
 	}),
 );
-const cateList = listCate.reduce((acc, curr) => acc.concat(curr.data.name), []);
 const productList = [];
 await Promise.all(
 	listCate
@@ -60,11 +59,35 @@ await Promise.all(
 			);
 		}),
 );
+
+/** (💡)  - Get categories based on previous sorting (like Home or Kustomer) */
+const cateListWithSort = listCate.reduce((acc, curr) => acc.concat(curr.data.name), []);
+
+/** (💡)  - Get the categories based on existing products */
+let cateListByProduct = [...new Set(productList.map((item) => item.category))];
+
+/** (💡)  - Sorting new categories based on existing products */
+const indexMapCategories = {};
+cateListWithSort.forEach((element, index) => {
+	indexMapCategories[element] = index;
+});
+let cateList = cateListByProduct.sort((a, b) => {
+	return indexMapCategories[a] - indexMapCategories[b];
+});
+
+/** (💡)  - Sorting new products based on new categories */
+const indexMapProducts = {}
+cateList.forEach((element, index) => {
+	indexMapProducts[element] = index;
+});
+let allItem = productList.sort((a, b) => {
+	return indexMapProducts[a.category] - indexMapProducts[b.category];
+});
 ---
 <KatalogMain
 	kustomerList={kustomerList}
 	cateList={cateList}
-	allItem={productList}
+	allItem={allItem}
 	client:visible={{ rootMargin: "100% 0% 100% 0%" }}
 >
 	<Fragment set:html={PDFIcon} slot="PDFIcon" />

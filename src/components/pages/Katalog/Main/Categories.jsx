@@ -16,23 +16,14 @@ function Category({ children, isActive, onClick }) {
     )
 }
 
-function Categories({ data, originCategory, filter, setFilter, setLimit, setSortType }) {
+function Categories({ data, cateList, filter, setFilter, setLimit, setSortType }) {
     const ref = useRef();
     const [isDropdown, setIsDropdown] = useState(false);
     const [currentCategory, setCurrentCategory] = useState(filter.category);
     useOutsideAlerter(ref, () => setIsDropdown(false))
     const list = useMemo(() => {
-        let currList = [...new Set(data.map((item) => item.category))];
-
-        const indexMap = {};
-        originCategory.forEach((element, index) => {
-            indexMap[element] = index;
-        });
-
-        currList.sort((a, b) => {
-            return indexMap[a] - indexMap[b];
-        });
-        return currList;
+        let currList = new Set(data.map((item) => item.category));
+        return cateList.filter(category => currList.has(category))
     }, [data, filter, currentCategory]);
 
     useEffect(() => {
@@ -44,11 +35,8 @@ function Categories({ data, originCategory, filter, setFilter, setLimit, setSort
         if (window.innerWidth > 767) {
             document.querySelector('.katalog-main-cate-list').removeAttribute('data-lenis-prevent')
         }
-    },[])
+    }, [])
 
-    useEffect(() => {
-        // console.log(data);
-    },[data])
     return (
         <div className="katalog-main-cate">
             <button
