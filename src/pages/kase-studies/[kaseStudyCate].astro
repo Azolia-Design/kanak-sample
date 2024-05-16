@@ -21,7 +21,7 @@ const { kaseStudyCate } = Astro.params;
 const { item } = Astro.props;
 ---
 
-<Layout title={item}>
+<Layout title={item} meta_desc={data.meta_desc}>
     <Hero
         currentCate={item}
         title={item}
