@@ -98,7 +98,7 @@ function ProductPopup({ data, isActive, setIsActive }) {
                                 <path d="M5 5L35 35" stroke="currentColor" strokeWidth="4" strokeMiterlimit="10" />
                             </svg>
                         </button>
-                        <div className="popup-itemdtl-wrap">
+                        <div className="popup-itemdtl-wrap bg-light">
                             <div className="popup-itemdtl-wrap-inner" data-lenis-prevent="true">
                                 <div className="heading h3 txt-black txt-up popup-itemdtl-title">{data.title}</div>
                                 <div className="popup-itemdtl-card">

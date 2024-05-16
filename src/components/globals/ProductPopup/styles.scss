@@ -22,7 +22,7 @@
 
     @include sm {
         height: 100dvh;
-        background-color: var(--cl-bg);
+        padding: 0;
     }
 
     &.active {
@@ -34,6 +34,9 @@
         display: flex;
         align-items: center;
         height: 100%;
+        @include sm {
+            padding: 0;
+        }
     }
 
     &-itemdtl {
@@ -54,6 +57,7 @@
         @include sm {
             width: unset;
             height: 100%;
+            width: 100%;
         }
 
         &-wrap {
@@ -84,10 +88,11 @@
 
                 @include sm {
                     display: block;
-                    padding-top: 2rem;
+                    padding-top: calc(2rem + 6.5vh);
                     height: 100%;
                     max-height: unset;
                     overflow-y: auto;
+                    padding-inline: var(--container-padding);
                 }
             }
         }
@@ -103,9 +108,9 @@
                 display: block;
                 width: 100%;
                 margin-bottom: 4rem;
+                text-align: center;
             }
         }
-
 
         &-btn {
             position: absolute;
@@ -138,8 +143,8 @@
 
             @include sm {
                 z-index: 10;
-                top: -4rem;
-                right: -1rem;
+                top: 0;
+                right: 0;
             }
 
             @media (hover: hover) {
@@ -169,6 +174,8 @@
             @include sm {
                 margin: unset;
                 margin-bottom: 4rem;
+                width: 80%;
+                margin-inline: auto;
             }
 
             &-img {
@@ -191,6 +198,9 @@
                 // @include sm {
                 //     aspect-ratio: 1.2077464789;
                 // }
+                @include sm {
+                    max-height: none;
+                }
 
                 &-inner {
                     grid-area: 1/1/2/2;
@@ -440,7 +450,7 @@
                     padding-bottom: .8rem;
 
                     @include md {
-                        grid-template-columns: 25.1fr 74.9fr;
+                        grid-template-columns: 3fr 7fr;
                         column-gap: unset;
                         padding: unset;
                     }

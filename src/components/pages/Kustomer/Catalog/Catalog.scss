@@ -462,6 +462,10 @@
                 @include md {
                     margin-left: 1.2rem;
                 }
+                @include sm {
+                    width: 100%;
+                    margin-right: 1.2rem;
+                }
             }
 
             &-txt {
@@ -472,16 +476,25 @@
                 transition: opacity .4s ease;
                 height: 100%;
                 align-content: center;
-
+                .ic {
+                    display: none;
+                }
                 @include md {
-                    @include text(h6);
+                    @include text(16);
                 }
 
                 @include sm {
-                    @include text(h5);
                     white-space: nowrap;
                     text-overflow: ellipsis;
                     overflow: hidden;
+                    display: flex;
+                    align-items: center;
+                    width: 100%;
+                    height: 100%;
+                    justify-content: space-between;
+                    .ic {
+                        display: flex;
+                    }
                 }
 
                 &.active {
