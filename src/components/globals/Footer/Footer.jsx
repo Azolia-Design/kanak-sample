@@ -115,8 +115,13 @@ function GlobalFooter(props) {
                             </a>
                         </div>
                         <a href="/contact" className="heading h1 txt-up txt-black ft-left-body-title txt-link-bold">
-                            Let's talk!
-                            <div className="ic">{props.arrow}</div>
+                            Let's talk! 
+                            <div className="ic ic-48">
+                                <svg width="100%" viewBox="0 0 48 49" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M6 42.0703L42 6.07031" stroke="currentColor" stroke-width="8" stroke-miterlimit="10"/>
+                                    <path d="M14.3999 6.07031H41.9999V33.6703" stroke="currentColor" stroke-width="8" stroke-miterlimit="10" stroke-linecap="square"/>
+                                </svg>
+                            </div>
                         </a>
                     </div>
                     <div className="ft-tail">
