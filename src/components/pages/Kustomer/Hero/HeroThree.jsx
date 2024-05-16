@@ -36,7 +36,7 @@ function Content(props) {
         } else if (window.innerWidth > 767) {
             // setScaleOffset()
         } else {
-            setScaleOffset(.8)
+            setScaleOffset(.85)
         }
     }, []);
 

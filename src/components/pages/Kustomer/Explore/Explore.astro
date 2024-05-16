@@ -6,10 +6,6 @@ import { getByUID } from "@/prismic";
 import KustomerExplore from "./Explore";
 import ExploreItem from "./ExploreItem";
 
-const listImage = await Promise.all(
-    Astro.props.listGroup.reduce((acc, curr) => acc.concat(curr.image), []),
-);
-
 const listItems = await Promise.all(
     Astro.props.listItems.map(async (data: any) => {
         // Use Promise.all to await all inner asynchronous operations
@@ -26,7 +22,6 @@ const listItems = await Promise.all(
 
 <KustomerExplore
     {...Astro.props}
-    listImg={listImage}
     client:visible={{ rootMargin: "200% 0px 200% 0px" }}
 >
     <Fragment slot="renderList">

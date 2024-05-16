@@ -6,142 +6,12 @@ import SplitType from 'split-type';
 import { isEmpty } from "@utils/text";
 
 function KustomerHero(props) {
-    const [currentIdx, setCurrentIdx] = useState(props.page_title === 'Medical' ? 0 : 2);
-    const productArr = {
-        "Retail": [
-            {
-                url: '/glb/plates-80-transformed.glb',
-                scale: [.8, .8, .8],
-                position: [0, 0.035, 0]
-            },
-            {
-                url: '/glb/3-elegant-compartments-plates-clean-transformed.glb',
-                scale: [1.6, 1.6, 1.6],
-                rotation: [Math.PI * -.5, 0, 0],
-                position: [0, 0.03, 0]
-            },
-            {
-                url: '/glb/xc-12g-bowl-clean-transformed.glb',
-                scale: [1.15, 1.15, 1.15]
-            },
-            {
-                url: '/glb/1-plate-clean-transformed.glb',
-                scale: [.8, .8, .8],
-                // rotation: [0, Math.PI * -.065, Math.PI * .03],
-                position: [0, 0.02, 0]
-            },
-            {
-                url: '/glb/elegant-oval-platter-clean-transformed.glb',
-                scale: [.6, .6, .6],
-                position: [0, 0.02, 0]
-            },
-            {
-                url: '/glb/Wall-Hot-Cup-Insert-RR5003-clean-transformed.glb',
-                scale: [.9, .9, .9]
-            }
-        ],
-        "Foodservice": [
-            {
-                url: '/glb/13-burger-box-clean-transformed.glb',
-                scale: [1.1, 1.1, 1.1],
-            },
-            {
-                url: '/glb/64-oval-bowl-clean-transformed.glb',
-                scale: [.85, .85, .85],
-                position: [0, 0.025, 0]
-            },
-            {
-                url: '/glb/42-ramen-grip-clean-transformed.glb',
-                scale: [.75, .75, .75],
-                rotation: [0, Math.PI * .25, 0]
-            },
-            {
-                url: '/glb/banking-dish-natural-clean-transformed.glb',
-                scale: [.7, .7, .7],
-                rotation: [Math.PI * .01, Math.PI * .5, 0],
-                position: [0, 0.025, 0]
-            },
-            {
-                url: '/glb/KA10054-clean-transformed.glb',
-                scale: [.75, .75, .75],
-                position: [0, 0.03, 0]
-            },
-        ],
-        "Food Processing": [
-            {
-                url: '/glb/48-monte-tray-clean-transformed.glb',
-                scale: [.85, .85, .85],
-                position: [0, 0.035, 0]
-            },
-            {
-                url: '/glb/PT8412-monte-tray-transformed.glb',
-                position: [0, 0.04, 0],
-                scale: [.85, .85, .85],
-            },
-            {
-                url: '/glb/53-square-food-clean-transformed.glb'
-            },
-            {
-                url: '/glb/PT9710-clean-transformed.glb',
-                scale: [.85, .85, .85],
-                position: [0, 0.03, 0]
-            },
-            {
-                url: '/glb/banking-dish-natural-clean-transformed.glb',
-                scale: [.65, .65, .65],
-                rotation: [Math.PI * .01, Math.PI * .5, 0],
-                position: [0, 0.025, 0]
-            },
-        ],
-        "Education": [
-            {
-                url: '/glb/3-elegant-compartments-plates-clean-transformed.glb',
-                scale: [1.6, 1.6, 1.6],
-                rotation: [Math.PI * -.5, 0, 0],
-                position: [0, 0.03, 0]
-            },
-            {
-                url: '/glb/78-white-clamshells-clean-transformed.glb',
-                scale: [.65, .65, .65],
-                rotation: [Math.PI * .02, Math.PI * .07, Math.PI * -.025],
-                position: [0, 0.03, 0]
-            },
-            {
-                url: '/glb/KA5516-clean-transformed.glb',
-                scale: [1.4, 1.4, 1.4],
-            },
-            {
-                url: '/glb/klamshell-79-transformed.glb',
-                scale: [.75, .75, .75],
-                rotation: [Math.PI * .02, Math.PI * -.05, Math.PI * .015],
-                position: [0, 0.03, 0]
-            },
-            {
-                url: '/glb/1-plate-clean-transformed.glb',
-                scale: [.8, .8, .8],
-                // rotation: [0, Math.PI * -.065, Math.PI * .03],
-                position: [0, 0.02, 0]
-            },
-            {
-                url: '/glb/58-bowl-clean-transformed.glb',
-                scale: [.35, .35, .35],
-                position: [0, 0.02, 0]
-            },
-        ],
-        "Medical": [
-            {
-                url: '/glb/surgical-tray-clean-transformed.glb',
-                scale: [.45, .45, .45],
-                position: [0, 0.03, 0]
-            },
-        ]
-    }
+    const [currentIdx, setCurrentIdx] = useState(props.modelList.length === 1 ? 0 : 2);
 
     const handleSwipe = (direction) => {
         const newIndex = currentIdx + direction;
-        if (newIndex >= 0 && newIndex < productArr[props.page_title]?.length) {
+        if (newIndex >= 0 && newIndex < props.modelList.length) {
             setCurrentIdx(newIndex);
-            setDirection(direction);
         }
     };
 
@@ -163,6 +33,16 @@ function KustomerHero(props) {
             document.removeEventListener('mousemove', handleMouseMove);
         }, { once: true });
     };
+
+    useEffect(() => {
+        const count = () => {
+            setCurrentIdx(prevIndex => (prevIndex + 1) % props.modelList.length);
+        };
+
+        const timerId = setInterval(count, 2000);
+
+        return () => clearInterval(timerId);
+    }, [props.modelList]);
 
     // const handleOnDown = (e) => {
     //     setOnDrag(true);
@@ -234,8 +114,11 @@ function KustomerHero(props) {
                 )}
                 <h1 className="heading h0 txt-black txt-up kustomer-hero-title">{props.title}</h1>
             </div>
-            <div className="kustomer-hero-slide" onMouseDown={handleMouseDown}>
-                <KustomerHeroThree list={productArr[props.page_title]} currentIdx={currentIdx} />
+            <div
+                className="kustomer-hero-slide"
+                // onMouseDown={handleMouseDown}
+            >
+                <KustomerHeroThree list={props.modelList} currentIdx={currentIdx} />
             </div>
         </section>
     )
