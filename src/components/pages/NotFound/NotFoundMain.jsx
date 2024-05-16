@@ -4,10 +4,6 @@ import { useEffect } from 'react';
 const currYear = new Date().getFullYear()
 
 function NotFoundMain(props) {
-    useEffect(() => {
-        console.log('Run Script');
-    }, [])
-
     return (
         <section className='notfound'>
             <div className="container">
