@@ -12,7 +12,7 @@ import ImageNumber4 from "@assets/404-4.svg";
 import ImageMainBowl from "@assets/404-img6.png";
 let imgList = [Image1, Image2, Image3, Image4, Image5];
 ---
-<NotFoundMain client:visible>
+<NotFoundMain>
     <Fragment slot="gridItems">
         {[...Array(15)].map((item, idx) => (
             <div class="notfound-item notfound-item-small">
@@ -23,3 +23,16 @@ let imgList = [Image1, Image2, Image3, Image4, Image5];
     <Image src={ImageNumber4} alt="" slot="number4" class="img"/>
     <Image src={ImageMainBowl} alt="" slot="mainbowl" class="img"/>
 </NotFoundMain>
+<script>
+    function isKanakNaturalsURL(url) {
+        const regex = /^\/catalog\/kanak_naturals\/.*\.html$/;
+        return regex.test(url)
+    }
+    if (isKanakNaturalsURL(window.location.pathname)) {
+        const newDomain = "https://qr-kanak.netlify.app";
+        window.location.href = newDomain + window.location.pathname;
+    }
+    else {
+        document.querySelector('.notfound').classList.add('show');
+    }
+</script>
