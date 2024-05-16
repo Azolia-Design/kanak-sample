@@ -19,6 +19,7 @@
 
     @include sm {
         --offset-top: 10rem;
+        padding-top: calc(var(--offset-top) + 0rem);
         // padding-top: calc(var(--offset-top));
     }
 
