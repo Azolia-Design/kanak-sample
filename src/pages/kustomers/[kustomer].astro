@@ -41,6 +41,8 @@ const listCaseStudy = await getAllByType("case_study");
 <Layout
     title={item.data.title}
     data_page={item.data.title}
+    title={item.data.page_title}
+    meta_desc={item.data.meta_desc}
     footer_cta={item.data.cta_title[0]?.text}
     footer_bg={item.data.cta_background}
 >
