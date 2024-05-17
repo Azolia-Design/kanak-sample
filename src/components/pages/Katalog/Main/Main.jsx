@@ -102,7 +102,6 @@ function KatalogMain({ allItem, ...props }) {
             /** (💡)  - List Product By Kustomer (not sorting) */
             // let listByKustomer = allItem.filter((item) => item.data.tag_grp.some((target) => target.tags.uid == filter.kustomer));
 
-
             /** (💡)  - Filter products based on target tag(uid) and get order of that tag(uid) */
             const filteredProducts = allItem
                 .map(product => {

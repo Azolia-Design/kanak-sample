@@ -13,12 +13,9 @@ const homeKustomerList = await Promise.all(
         return item;
     }),
 );
-const kustomerList = homeKustomerList.map(({ data, uid }) => (
-	{
-		title: data.title,
-		uid: uid,
-	}
-));
+const kustomerList = homeKustomerList.map(({ data, uid }) =>
+	({ title: data.title, uid: uid })
+);
 
 let listUidCate = [];
 await list
@@ -33,56 +30,31 @@ let listCate = await Promise.all(
 		return item;
 	}),
 );
-const productList = [];
-await Promise.all(
-	listCate
-		.reduce(
-			(acc, curr) =>
-				acc.concat({
-					list: curr.data.product_list,
-					name: curr.data.name,
-				}),
-			[],
-		)
-		.map(async (data: any) => {
-			await Promise.all(
-				data.list.map(async (el: any) => {
-					if (el.product.uid) {
-						await getByUID("product", el.product.uid).then((item) => {
-							productList.push({
-								...item,
-								category: data.name,
-							});
-						});
-					}
-				}),
-			);
-		}),
+const homeCategoryList = await Promise.all(
+    homeData.data.product_kategory_list.map((category: any) => {
+        let item = getByUID("product_group", category.item.uid);
+        return item;
+    }),
 );
 
-/** (💡)  - Get categories based on previous sorting (like Home or Kustomer) */
-const cateListWithSort = listCate.reduce((acc, curr) => acc.concat(curr.data.name), []);
-
-/** (💡)  - Get the categories based on existing products */
-let cateListByProduct = [...new Set(productList.map((item) => item.category))];
-
-/** (💡)  - Sorting new categories based on existing products */
-const indexMapCategories = {};
-cateListWithSort.forEach((element, index) => {
-	indexMapCategories[element] = index;
-});
-let cateList = cateListByProduct.sort((a, b) => {
-	return indexMapCategories[a] - indexMapCategories[b];
-});
-
-/** (💡)  - Sorting new products based on new categories */
-const indexMapProducts = {}
-cateList.forEach((element, index) => {
-	indexMapProducts[element] = index;
-});
-let allItem = productList.sort((a, b) => {
-	return indexMapProducts[a.category] - indexMapProducts[b.category];
-});
+const getProductByCategory = await Promise.all(
+	homeCategoryList
+		.reduce((acc, curr) => acc.concat({ list: curr.data.product_list, name: curr.data.name }), [])
+		.map(async (data: any) => ({
+			...data,
+			list: await Promise.all(
+				data.list.map(async (el: any) => {
+					if (el.product.uid) {
+						return await getByUID("product", el.product.uid).then((item) =>
+							({ ...item, category: data.name }));
+					}
+					return null;
+				})
+			).then(list => list.filter(item => item !== null))
+		}))
+)
+const allItem = getProductByCategory.reduce((acc, curr) => acc.concat(curr.list), [])
+const cateList = homeCategoryList.map(({ data }) => data.name)
 ---
 <KatalogMain
 	kustomerList={kustomerList}
