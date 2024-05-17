@@ -94,8 +94,9 @@
                 }
 
                 @include sm {
-                    flex-direction: column;
+                    flex-direction: column-reverse;
                     padding: 4rem 2rem 4rem 0;
+                    row-gap: 4rem;
                 }
             }
 
@@ -178,12 +179,8 @@
                 overflow: hidden;
 
                 @include md {
+                    @include size(10rem);
                     margin-top: 0;
-                }
-
-                @include sm {
-                    width: 18rem;
-                    height: auto;
                 }
 
                 img {

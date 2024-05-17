@@ -1,6 +1,6 @@
 import './Join.scss';
 import { useRef, useEffect } from "react";
-import { animate, timeline, stagger, inView, scroll } from "motion";
+import { animate, timeline, stagger, inView } from "motion";
 import SplitType from 'split-type';
 import useSelector from '@hooks/useSelector';
 

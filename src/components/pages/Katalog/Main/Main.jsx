@@ -286,7 +286,7 @@ function KatalogMain({ allItem, ...props }) {
             </div>
             <div className="container">
                 <div className={`katalog-main-load ${limit >= currentList.length ? 'hidden' : ''}`}>
-                    <button className="katalog-main-load-btn" onClick={() => setLimit(limit + 4)}>
+                    <button className="katalog-main-load-btn" onClick={() => setLimit(prevLimit => prevLimit + 4)}>
                         <div className="katalog-main-load-btn-ic">
                             <div className="ic ic-16">
                                 <ArrowDown />
