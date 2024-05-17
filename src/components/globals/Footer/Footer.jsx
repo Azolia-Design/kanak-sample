@@ -163,7 +163,7 @@ function GlobalFooter(props) {
                     >
                         <MenuItem link="/about">Know Us</MenuItem>
                         <MenuItem link="/pakway">Pakway</MenuItem>
-                        <MenuItem link="/sustainability">Sustainability Kommitment</MenuItem>
+                        {/* <MenuItem link="/sustainability">Sustainability Kommitment</MenuItem> */}
                         <MenuItem link="/fulfillment">Fulfillment</MenuItem>
                         <MenuItem link="/kase-studies">Kase Studies</MenuItem>
                         <MenuItem link="/kareers">Kareers</MenuItem>

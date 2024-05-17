@@ -65,7 +65,7 @@ function PrivateDistribute(props) {
                 <div className="private-distribute-sub-wrap">
                     <p className="txt txt-18 txt-med private-distribute-sub">{props.sub[0].text}</p>
                     <div className="private-distribute-btn-wrap">
-                        <a href="#" className="txt-link private-distribute-btn" data-cursor="txtLink">
+                        <a href="/fulfillment" className="txt-link private-distribute-btn" data-cursor="txtLink">
                             <div className="txt txt-18 txt-bold">{props.btn}</div>
                             <div className="ic ic-16"><ArrowUpRight /></div>
                         </a>
