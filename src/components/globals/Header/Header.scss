@@ -167,7 +167,7 @@
                 &.solutions {
                     grid-auto-columns: 27.6rem;
                 }
-                
+
                 // &.Katalog {
                 //     display: grid;
                 //     grid-template-rows: repeat(5, 1fr);
@@ -519,6 +519,8 @@
             grid-column: 1/-1;
             // order: 1;
             // overflow: visible;
+            -webkit-mask-image: linear-gradient(#fff 90%, transparent);
+            mask-image: linear-gradient(#fff 90%, transparent);
         }
 
         &-wrap {

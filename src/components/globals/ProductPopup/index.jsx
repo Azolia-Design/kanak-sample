@@ -85,6 +85,9 @@ function ProductPopup({ data, isActive, setIsActive }) {
             setIsActive(false);
             setCurrentIndex(0);
         }
+        else {
+            document.querySelector('.popup-itemdtl-wrap-inner').scrollTo({ top: 0 });
+        }
     }, [isActive, isValidData]);
 
     return (
