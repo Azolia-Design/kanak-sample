@@ -173,6 +173,15 @@ function HeaderGlobal(props) {
                 slideEl.style.setProperty('height', `${height}px`)
                 slideEl.classList.add('active')
                 e.target.classList.add('active')
+                if (islLastItem) {
+                    setTimeout(() => {
+                        document.querySelector('.nav-main').scrollTo({
+                            top: document.querySelector('.nav-main').clientHeight + height,
+                            left: 0,
+                            behavior: "smooth",
+                        })
+                    }, 610);
+                }
             } else {
                 document.querySelectorAll('.nav-main-item-dropdown').forEach(item => {
                     item.style.setProperty('height', "0")
@@ -317,7 +326,7 @@ function HeaderGlobal(props) {
                             <div className="nav-main-wrap">
                                 {props.pages.map((page, idx) => (
                                     <div href='#' className="nav-main-item" key={idx}>
-                                        <a href={page.type == 'dropdown' ? '#' : page.link} data-dropdown-idx={idx} onClick={page.type == 'dropdown' ? (e) => { menuOnClick(e, idx) } : null} className="nav-main-item-head">
+                                        <a href={page.type == 'dropdown' ? '#' : page.link} data-dropdown-idx={idx} onClick={page.type == 'dropdown' ? (e) => { menuOnClick(e, idx, idx === props.pages.length - 1) } : null} className="nav-main-item-head">
                                             <span className="heading h3 txt-black txt-up nav-main-item-head-txt" dangerouslySetInnerHTML={{ __html: page.name.replaceAll('[','<span class="txt-kanak">').replaceAll(']','</span>') }}></span>
                                             {page.type == "dropdown" && (
                                                 <div className="nav-main-item-head-ic">

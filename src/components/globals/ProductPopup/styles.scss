@@ -107,8 +107,9 @@
             @include sm {
                 display: block;
                 width: 100%;
-                margin-bottom: 4rem;
+                margin-bottom: 3.2rem;
                 text-align: center;
+                @include text(h5)
             }
         }
 
@@ -134,6 +135,9 @@
                 @media (min-height: 650px) {
                     @include size(4rem);
                 }
+                @include sm {
+                    @include size(3rem);
+                }
             }
 
             @include md {
@@ -145,6 +149,7 @@
                 z-index: 10;
                 top: 0;
                 right: 0;
+                padding: 1.6rem;
             }
 
             @media (hover: hover) {
