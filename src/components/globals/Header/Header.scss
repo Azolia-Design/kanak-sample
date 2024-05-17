@@ -22,11 +22,11 @@
         }
     }
 
-    transition: opacity 400ms ease;
+    transition: all 400ms ease;
 
     &.on-hide {
         opacity: 0;
-
+        transform: translateY(-100%);
         .header-cta {
             transform: translateY(-8rem);
         }
