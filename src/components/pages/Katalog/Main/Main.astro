@@ -4,8 +4,6 @@ import KatalogMain from "./Main";
 
 import PDFIcon from "@assets/ic-pdf.svg?raw";
 
-const { list_category: list } = Astro.props.data;
-
 const homeData = await getPage("home")
 const homeKustomerList = await Promise.all(
     homeData.data.industry_list.map((industry: any) => {
@@ -17,19 +15,6 @@ const kustomerList = homeKustomerList.map(({ data, uid }) =>
 	({ title: data.title, uid: uid })
 );
 
-let listUidCate = [];
-await list
-	.reduce((acc, curr) => acc.concat(curr.item.uid), [])
-	.map((el) => {
-		!listUidCate.includes(el) && listUidCate.push(el);
-	});
-
-let listCate = await Promise.all(
-	listUidCate.map((el: any) => {
-		const item = getByUID("product_group", el);
-		return item;
-	}),
-);
 const homeCategoryList = await Promise.all(
     homeData.data.product_kategory_list.map((category: any) => {
         let item = getByUID("product_group", category.item.uid);
