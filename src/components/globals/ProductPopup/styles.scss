@@ -190,7 +190,6 @@
                 overflow: hidden;
                 border: 0.2rem solid var(--cl-txt);
                 align-content: center;
-
                 // @include md {
                 //     aspect-ratio: 0.7894736842;
                 // }
@@ -199,7 +198,8 @@
                 //     aspect-ratio: 1.2077464789;
                 // }
                 @include sm {
-                    max-height: none;
+                    // max-height: none;
+                    align-content: start;
                 }
 
                 &-inner {
