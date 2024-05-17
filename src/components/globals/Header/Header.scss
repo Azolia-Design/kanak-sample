@@ -26,7 +26,7 @@
 
     &.on-hide {
         opacity: 0;
-        transform: translateY(-100%);
+        transform: translateY(-50%);
         .header-cta {
             transform: translateY(-8rem);
         }
