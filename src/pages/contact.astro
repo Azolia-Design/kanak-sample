@@ -7,7 +7,10 @@ import {getPage} from '@/prismic.js';
 const { data } = await getPage('contact');
 ---
 
-<Layout title={data.page_title} meta_desc={data.meta_desc}>
+<Layout
+    title={data.page_title}
+    meta_desc={data.meta_desc}
+    open_graph={data.open_graph.url}>
     <Hero title={data.hero_title[0].text} info_list={data.hero_info}/>
     <Form title={data.form_title} sub_title={data.form_subtitle}/>
 </Layout>

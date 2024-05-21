@@ -12,7 +12,10 @@ const title = await data.title[0].text;
 const subtitle = await data.subtitle[0].text;
 ---
 
-<Layout title={data.page_title} meta_desc={data.meta_desc}>
+<Layout
+    title={data.page_title}
+    meta_desc={data.meta_desc}
+	open_graph={data.open_graph.url}>
     <Hero title={title} sub={subtitle} />
     <Main />
 </Layout>

@@ -6,7 +6,7 @@ import SplitType from 'split-type';
 import { isEmpty } from "@utils/text";
 
 function KustomerHero(props) {
-    const [currentIdx, setCurrentIdx] = useState(props.modelList.length === 1 ? 0 : 2);
+    const [currentIdx, setCurrentIdx] = useState(0);
 
     const handleSwipe = (direction) => {
         const newIndex = currentIdx + direction;

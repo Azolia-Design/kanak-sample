@@ -43,6 +43,7 @@ const listCaseStudy = await getAllByType("case_study");
     data_page={item.data.title}
     title={item.data.page_title}
     meta_desc={item.data.meta_desc}
+    open_graph={item.data.open_graph.url}
     footer_cta={item.data.cta_title[0]?.text}
     footer_bg={item.data.cta_background}
 >
