@@ -11,6 +11,7 @@ function Content(props) {
     const products = useRef();
     const [degraded, degrade] = useState(false)
     const [scaleOffset, setScaleOffset] = useState(1);
+    const [lerpDistance, setLerpDistance] = useState(1);
 
     const mapIndex = useMemo(() => props.list.map((_, idx) => idx - props.currentIdx), [props.list, props.currentIdx]);
     const lerp = (a, b, t = 0.08) => {
@@ -23,15 +24,16 @@ function Content(props) {
         currentEl.rotation.y += .006
 
         products.current.children.forEach((el, idx) => {
-            products.current.children[idx].position.x = lerp(products.current.children[idx].position.x, (mapIndex[idx] * .2 ) / scaleOffset, .05)
+            products.current.children[idx].position.x = lerp(products.current.children[idx].position.x, (mapIndex[idx] * .2 ) / scaleOffset, lerpDistance)
             let local_scale = idx == props.currentIdx ? 1 : .7;
-            products.current.children[idx].scale.x = lerp(products.current.children[idx].scale.x, local_scale / scaleOffset, .05)
-            products.current.children[idx].scale.y = lerp(products.current.children[idx].scale.y, local_scale / scaleOffset, .05)
-            products.current.children[idx].scale.z = lerp(products.current.children[idx].scale.z, local_scale / scaleOffset, .05)
+            products.current.children[idx].scale.x = lerp(products.current.children[idx].scale.x, local_scale / scaleOffset, lerpDistance)
+            products.current.children[idx].scale.y = lerp(products.current.children[idx].scale.y, local_scale / scaleOffset, lerpDistance)
+            products.current.children[idx].scale.z = lerp(products.current.children[idx].scale.z, local_scale / scaleOffset, lerpDistance)
         })
     })
 
     useEffect(() => {
+        requestAnimationFrame(() => setLerpDistance(.05))
         if (window.innerWidth > 991) {
         } else if (window.innerWidth > 767) {
             // setScaleOffset()
@@ -45,12 +47,9 @@ function Content(props) {
             <group
                 position={[0, -.8 / scaleOffset, 0]}
                 scale={[20 / scaleOffset, 20 / scaleOffset, 20 / scaleOffset]}
-                // rotation={[Math.PI * -.11, Math.PI * .5, Math.PI * .22]}
+                rotation={[Math.PI * .1, 0, 0]}
             >
-                <group
-                    ref={products}
-                    rotation={[Math.PI * .1, 0, 0]}
-                >
+                <group ref={products}>
                 {props.list.map(({ url, ...props }, idx) => (
                     <group key={idx}>
                         <mesh {...props}>
@@ -81,6 +80,7 @@ function KustomerHeroThree(props) {
         <Canvas camera={{ fov: fov, near: 0.1, far: 10000, position: [0, 0, perspective], aspect: width / height }} shadows>
             <Content width={width} height={height} { ...props } />
             <AdaptiveDpr pixelated />
+            <gridHelper />
         </Canvas>
     )
 }

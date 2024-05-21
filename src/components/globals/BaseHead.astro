@@ -1,10 +1,13 @@
 ---
 import { ViewTransitions } from 'astro:transitions';
+import { getImage } from 'astro:assets';
 interface Props {
 	title: string;
     meta: string;
+    OP: any;
 }
-const { title, meta } = Astro.props;
+const { title, meta, OP } = Astro.props;
+// const OpenGraph = await getImage({src: OP, format: 'webp', width: OP.width})
 ---
 <head>
     <meta charset="UTF-8" />
@@ -13,6 +16,12 @@ const { title, meta } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={meta} />
+    <meta property="og:image" content={OP} />
     <!-- <ViewTransitions /> -->
     <script>
         window.scrollTo(0,0)

@@ -29,11 +29,12 @@ const {
 	footer_cta,
 	footer_bg,
 	explore_data,
+	open_graph
 } = Astro.props;
 ---
 
 <html lang="en" data-page={data_page ? data_page : ""}>
-	<BaseHead title={title} meta={meta_desc ? meta_desc : ''}/>
+	<BaseHead title={title} meta={meta_desc ? meta_desc : ''} OP={open_graph}/>
 
 	<body
 		style={`--bg-txt: url(${OpBgTexture.src}); --bg-txt-dark: url(${OpBgTextureDark.src});`}

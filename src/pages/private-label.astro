@@ -18,6 +18,7 @@ const { data, uid } = await getPage("privatelabel_page");
 <Layout
     title={data.page_title}
     meta_desc={data.meta_desc}
+    open_graph={data.open_graph.url}
     data_page="Private Label"
     explore_data={uid}
     footer_cta={data.cta_title[0]?.text}
