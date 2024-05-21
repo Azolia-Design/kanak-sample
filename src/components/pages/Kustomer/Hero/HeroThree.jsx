@@ -80,7 +80,6 @@ function KustomerHeroThree(props) {
         <Canvas camera={{ fov: fov, near: 0.1, far: 10000, position: [0, 0, perspective], aspect: width / height }} shadows>
             <Content width={width} height={height} { ...props } />
             <AdaptiveDpr pixelated />
-            <gridHelper />
         </Canvas>
     )
 }
