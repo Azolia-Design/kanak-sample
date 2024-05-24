@@ -28,6 +28,7 @@
     "clsx": "^2.1.0",
     "framer-motion": "^11.0.8",
     "gsap": "^3.12.5",
+    "jsdom": "^24.0.0",
     "keen-slider": "^6.8.6",
     "lodash.debounce": "^4.0.8",
     "motion": "^10.17.0",

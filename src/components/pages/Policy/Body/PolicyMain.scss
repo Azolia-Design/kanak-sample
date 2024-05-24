@@ -282,3 +282,40 @@
         }
     }
 }
+
+[data-custom-class='title'], [data-custom-class='title'] * {
+    display: none;
+    height: 0;
+    overflow: hidden;
+}
+[data-custom-class='subtitle'], [data-custom-class='subtitle'] * {
+    display: none;
+    height: 0;
+    overflow: hidden;
+}
+[data-custom-class='heading_1'], [data-custom-class='heading_1'] * {
+    font-family: 'HelveticaNowDisplay';
+    @include text(h5);
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-top: 5.6rem;
+    margin-bottom: 3rem;
+}
+[data-custom-class='heading_2'], [data-custom-class='heading_2'] * {
+    font-family: 'HelveticaNowDisplay';
+    @include text(h6);
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-top: 3.2rem;
+    margin-bottom: 3.2rem;
+}
+[data-custom-class='body_text'], [data-custom-class='body_text'] * {
+    font-family: "Inter Variable", sans-serif;
+    @include text(18);
+    color: var(--cl-txt);
+}
+[data-custom-class='link'], [data-custom-class='link'] * {
+    font-family: "Inter Variable", sans-serif;
+    @include text(18);
+    color: var(--cl-txt);
+}

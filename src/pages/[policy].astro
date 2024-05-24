@@ -19,5 +19,5 @@ const { item } = Astro.props;
 
 <Layout title={item.title}>
   <PolicyHero title={item.title} />
-  <PolicyMain body={item.body} last_update={item.last_update} />
+  <PolicyMain id={item.termly_id} last_update={item.last_update} />
 </Layout>

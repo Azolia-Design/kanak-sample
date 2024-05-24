@@ -1,13 +1,12 @@
 ---
+import { JSDOM } from 'jsdom';
+import fetch from 'node-fetch';
 import PolicyMain from "./PolicyMain.jsx";
 import {generateHtmlFromJson} from '@/js/utils.js';
-
-// const titleList = Astro.props.body.filter((item: any) => item.type == "h2");
 function removeInlineStyles(htmlString) {
     return htmlString.replace(/ style="[^"]*"/g, '');
 }
 ---
-<PolicyMain client:load title_list={[]} {...Astro.props}>
-    <Fragment slot="content" set:html={Astro.props.body}>
-    </Fragment>
-</PolicyMain>
+<PolicyMain client:visible title_list={[]} {...Astro.props}></PolicyMain>
+
+

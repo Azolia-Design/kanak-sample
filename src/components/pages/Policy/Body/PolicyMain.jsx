@@ -1,24 +1,81 @@
 import './PolicyMain.scss'
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import * as ut from "@/js/utils"
 import { getLenis } from '@components/core/lenis';
-
 
 import SplitType from 'split-type';
 import { animate, timeline, stagger, inView } from "motion";
 
-
 function PolicyMain({ ...props }) {
     const [activeToc, setActiveToc] = useState(0)
     const [richTxtIdx, setRichTxtIdx] = useState(0)
+    const [data, setData] = useState('');
+    const [listTOC, setListTOC] = useState([]);
 
-    // function activeScrollTo(e) {
-    //     let header = ut.dom('.header-div-main')
-    //     let el = ut.dom(`.policy-body-main-richtxt h2[data-scrollto="${e.target.getAttribute('data-scrollto')}"]`)
-    //     getLenis().scrollTo(el, {
-    //         offset: -header.clientHeight
-    //     })
-    // }
+    async function fetchDocument(url) {
+        try {
+            const response = await fetch(url, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Content-Encoding': 'br'
+                }
+            });
+
+            const html = await response.text();
+            return html;
+        }
+        catch (error) {
+            console.error('There has been a problem with your fetch operation:', error);
+        }
+    }
+
+    useEffect(() => {
+        fetchDocument(`https://app.termly.io/api/v1/snippets/websites/613278a6-0f3c-4a81-882b-a826d9d292ce/documents/${props.id}/preview`).then(json => {
+            const parsed = JSON.parse(json);
+            setData(parsed.content.replace(/<style[^>]*>[\s\S]*?<\/style>/gi, ''))
+        });
+    })
+
+    const renderTOC = useMemo(() => {
+        return (
+            listTOC.map((el, idx) => (
+                <li key={idx} className={`policy-nav-item ${idx == activeToc ? 'active' : ''}`}>
+                    <div className="dot"></div>
+                    <button
+                        className='txt txt-18 txt-med policy-nav-item-link'
+                        onClick={() => {
+                            activeScrollTo(el.href.replace('#', ''));
+                            setActiveToc(idx)
+                        }}
+                        data-cursor="hide">
+                            {el.content.charAt(0).toUpperCase() + el.content.substring(1).toLowerCase()}
+                    </button>
+                </li>
+            ))
+        );
+    }, [data, listTOC, activeToc])
+
+    useEffect(() => {
+        let headings = document.querySelectorAll('[data-custom-class="heading_1"]')
+        const regex = /^\d+\.\s/;
+        const filteredHeadings = Array.from(headings).filter(heading => {
+            return regex.test(heading.textContent.trim());
+        }).map(({ textContent }) => textContent.trim());
+        const list = Array
+            .from(document.querySelectorAll('[data-custom-class="link"]'))
+            .filter((item) => filteredHeadings.includes(item.textContent))
+            .map((item) => ({ content: item.textContent.replace(regex, ''), href: item.getAttribute('href') }))
+        setListTOC(list);
+    }, [data])
+
+    function activeScrollTo(id) {
+        let header = ut.dom('.header-div-main')
+        let el = ut.dom(`[id="${id}"]`)
+        getLenis().scrollTo(el, {
+            offset: -header.clientHeight
+        })
+    }
 
     // function ActiveTocFunc() {
     //     let allHeading = ut.dom('.policy-body-main-richtxt h2');
@@ -109,19 +166,12 @@ function PolicyMain({ ...props }) {
                 </div>
                 <div className="policy-nav">
                     <ul className="policy-nav-list">
-                        {props.title_list.map((el, idx) => (
-                            <li key={idx} className={`policy-nav-item ${idx == activeToc ? 'active' : ''}`}>
-                                <div className="dot"></div>
-                                <button className='txt txt-18 txt-med policy-nav-item-link' onClick={(e) => { activeScrollTo(e) }} data-scrollto={encodeURI(el.content)} data-cursor="txtLink">{el.content.charAt(0).toUpperCase() + el.content.substring(1).toLowerCase()}</button>
-                            </li>
-                        ))}
+                        {renderTOC}
                     </ul>
                 </div>
                 <div className="policy-body">
                     <div className="policy-body-main">
-                        <div className="txt txt-20 txt-med policy-body-main-richtxt">
-                            {props.content}
-                        </div>
+                        <div className="txt txt-20 txt-med policy-body-main-richtxt" dangerouslySetInnerHTML={{ __html: data }}></div>
                     </div>
                 </div>
             </div>
