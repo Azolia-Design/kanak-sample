@@ -1,12 +1,7 @@
 ---
-import { JSDOM } from 'jsdom';
-import fetch from 'node-fetch';
 import PolicyMain from "./PolicyMain.jsx";
-import {generateHtmlFromJson} from '@/js/utils.js';
-function removeInlineStyles(htmlString) {
-    return htmlString.replace(/ style="[^"]*"/g, '');
-}
+
 ---
-<PolicyMain client:visible title_list={[]} {...Astro.props}></PolicyMain>
+<PolicyMain client:visible {...Astro.props}></PolicyMain>
 
 

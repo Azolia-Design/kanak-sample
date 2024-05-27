@@ -6,7 +6,7 @@ import { getLenis } from '@components/core/lenis';
 import SplitType from 'split-type';
 import { animate, timeline, stagger, inView } from "motion";
 
-function PolicyMain({ ...props }) {
+function PolicyMain(props) {
     const [activeToc, setActiveToc] = useState(0)
     const [richTxtIdx, setRichTxtIdx] = useState(0)
     const [data, setData] = useState('');
