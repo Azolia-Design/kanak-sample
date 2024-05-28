@@ -418,6 +418,7 @@
             &-inner {
                 user-select: none;
                 @include size(100%);
+                position: relative;
 
                 img {
                     margin-left: -25%;
@@ -437,6 +438,10 @@
                     * {
                         pointer-events: none !important;
                     }
+                }
+                &-link {
+                    position: absolute;
+                    @include size(100%);
                 }
             }
         }
@@ -518,8 +523,11 @@
             @include md {
                 @include size(5.7rem, 5.6rem);
 
-                .ic {
-                    @include size(4rem);
+                .ic-80 {
+                    display: none;
+                }
+                .ic-40 {
+                    @include size(4rem)
                 }
             }
 
@@ -531,6 +539,16 @@
             &-wrap {
                 display: grid;
                 grid-template-columns: 1fr;
+            }
+            &-link {
+                position: absolute;
+                @include size(100%);
+                display: none;
+                @include md {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
             }
         }
 

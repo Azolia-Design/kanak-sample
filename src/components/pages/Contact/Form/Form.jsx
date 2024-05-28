@@ -128,7 +128,6 @@ function ContactForm(props) {
             document.querySelector('.input-src').value = 'Download Catalog'
         }
         // /Kanak_Catalog_Print_spreads.pdf
-        console.log(document.querySelector('.input-src').value)
         animate('.contact-form-main > .line-ver', {scaleY: 0, transformOrigin: 'top'}, {duration: 0})
         const title = new SplitType('.contact-form-head-title-main', {types: 'lines,words', lineClass: 'split-line'})
         const submit = new SplitType('.contact-form-submit .heading', {types: 'lines,words', lineClass: 'split-line'})

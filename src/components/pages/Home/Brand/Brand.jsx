@@ -16,7 +16,7 @@ function HomeBrand(props) {
     const [sliderRef, instanceRef] = useKeenSlider(options)
 
     useEffect(() => {
-        if (window.innerWidth < 767) {
+        if (window.innerWidth <= 767) {
             setOptions({
                 initial: 0,
                 mode: "snap",

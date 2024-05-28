@@ -400,10 +400,26 @@
                         }
 
                         &-inner {
-                            @include size(8rem);
-
+                            position: relative;
                             @include md {
-                                @include size(4rem);
+                                @include size(5.7rem, 5.6rem);
+
+                                .ic-80 {
+                                    display: none;
+                                }
+                                .ic-40 {
+                                    @include size(100%)
+                                }
+                            }
+                        }
+                        &-link {
+                            position: absolute;
+                            @include size(100%);
+                            display: none;
+                            @include md {
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
                             }
                         }
                     }

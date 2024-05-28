@@ -58,29 +58,39 @@ function SustainableItem(props) {
             })
         })
     }, [props.filter])
+
     return (
-        <button className="kustomer-sus-main-table-item" ref={itemRef} onClick={props.onClick}>
-            <div className="kustomer-sus-main-table-item-img">
+        <div className="kustomer-sus-main-table-item" ref={itemRef}>
+            <div className="kustomer-sus-main-table-item-img" onClick={props.onClick}>
                 <div className="kustomer-sus-main-table-item-img-inner data-thumb">
                     <img src={props.data.thumbnail.url} alt={props.data.thumbnail.alt} width={props.data.thumbnail.dimensions.width} className="img" />
                 </div>
             </div>
             <div className="kustomer-sus-main-table-item-info">
                 <div className="line line-mid"></div>
-                <h4 className="heading h6 txt-black txt-up kustomer-sus-main-table-item-info-name">
+                <h4 className="heading h6 txt-black txt-up kustomer-sus-main-table-item-info-name" onClick={props.onClick}>
                     {props.data.title}
                 </h4>
                 <div className="kustomer-sus-main-table-item-info-qr">
                     <div className="line line-ver line-qr"></div>
                     <div className="kustomer-sus-main-table-item-info-qr-inner">
-                        <img src={props.data.qr?.url} alt={props.data.qr?.alt} width={props.data.qr?.dimensions.width} />
+                        <img src={props.data.qr?.url} alt={props.data.qr?.alt} className="ic ic-80"/>
+                        {props.data.qr_url.url ?
+                            (
+                                <a href={props.data.qr_url.url} target='_blank' className='kustomer-sus-main-table-item-info-qr-link'>
+                                    {props.QR3DExplore}
+                                </a>
+                            ) : (
+                                <img src={props.data.qr.url} alt="" className="kustomer-sus-main-table-item-info-qr-link ic ic-40" />
+                            )
+                        }
                     </div>
                 </div>
             </div>
             <div className="line line-ver line-left"></div>
             <div className="line line-bot"></div>
             <div className="line line-ver line-right"></div>
-        </button>
+        </div>
     )
 }
 
@@ -101,11 +111,19 @@ function KustomerSustain(props) {
         setListLength(list.length);
         return (
             list.map(({ data }, idx) => (
-                idx < limit && <SustainableItem data={data} key={idx} filter={filter} onClick={() => {
-                    setIsOpenPopup(true);
-                    setDetailProductData(data);
-                    getLenis().stop();
-                }} />
+                idx < limit && (
+                    <SustainableItem
+                        data={data}
+                        key={idx}
+                        filter={filter}
+                        QR3DExplore={props.QR3DExplore}
+                        onClick={() => {
+                            setIsOpenPopup(true);
+                            setDetailProductData(data);
+                            getLenis().stop();
+                        }}
+                    />
+                )
             ))
         )
     }, [filter, limit]);

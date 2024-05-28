@@ -1,7 +1,8 @@
 ---
+import { Image } from 'astro:assets';
 import { getByUID, getPage } from "@/prismic";
 import KatalogMain from "./Main";
-
+import QR3DExplore from '@assets/qr-3d-explore.svg';
 import PDFIcon from "@assets/ic-pdf.svg?raw";
 
 const homeData = await getPage("home")
@@ -21,17 +22,16 @@ const homeCategoryList = await Promise.all(
         return item;
     }),
 );
-
 const getProductByCategory = await Promise.all(
 	homeCategoryList
-		.reduce((acc, curr) => acc.concat({ list: curr.data.product_list, name: curr.data.name }), [])
+		.reduce((acc, curr) => acc.concat({ list: curr.data.product_list, name: curr.data.name, uid: curr.uid }), [])
 		.map(async (data: any) => ({
 			...data,
 			list: await Promise.all(
 				data.list.map(async (el: any) => {
 					if (el.product.uid) {
 						return await getByUID("product", el.product.uid).then((item) =>
-							({ ...item, category: data.name }));
+							({ ...item, category: data.uid }));
 					}
 					return null;
 				})
@@ -39,7 +39,7 @@ const getProductByCategory = await Promise.all(
 		}))
 )
 const allItem = getProductByCategory.reduce((acc, curr) => acc.concat(curr.list), [])
-const cateList = homeCategoryList.map(({ data }) => data.name)
+const cateList = homeCategoryList.map(({ data, uid }) => ({ name: data.name, uid }))
 ---
 <KatalogMain
 	kustomerList={kustomerList}
@@ -48,4 +48,5 @@ const cateList = homeCategoryList.map(({ data }) => data.name)
 	client:visible={{ rootMargin: "100% 0% 100% 0%" }}
 >
 	<Fragment set:html={PDFIcon} slot="PDFIcon" />
+	<Image src={QR3DExplore} alt="" class="ic ic-40" width={QR3DExplore.width / 2} slot='QR3DExplore'/>
 </KatalogMain>

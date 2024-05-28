@@ -1,7 +1,6 @@
 import "./Main.scss"
 import ArrowDropdown from "@components/globals/IcArrow/ArrowDropdown.jsx";
 import ArrowDown from "@components/globals/IcArrow/ArrowDown.jsx";
-import { formatData, isEmpty } from "@utils/text";
 import useOutsideAlerter from "@hooks/useOutsideAlerter";
 import { useState, useEffect, useRef, useMemo } from "react";
 import { getLenis } from '@components/core/lenis';
@@ -13,7 +12,7 @@ import Categories from './Categories'
 import ProductPopup from "@components/globals/ProductPopup";
 import { updateQueryParam } from "@utils/parse";
 
-function Item({ data, onClick, filter }) {
+function Item({ data, onClick, filter, QR3DExplore }) {
     const itemRef = useRef();
     const [animationStarted, setAnimationStarted] = useState(false);
 
@@ -61,34 +60,42 @@ function Item({ data, onClick, filter }) {
         })
     }, [filter])
     return (
-        <button className="katalog-main-list-item" data-popup="open" onClick={onClick} ref={itemRef}>
-            <div className="katalog-main-list-item-img">
+        <div className="katalog-main-list-item" ref={itemRef}>
+            <div className="katalog-main-list-item-img" onClick={onClick}>
                 <div className="katalog-main-list-item-img-inner data-thumb">
                     <img src={data.thumbnail.url} alt={data.thumbnail.alt} width={data.thumbnail?.dimensions?.width} className="img" />
                 </div>
             </div>
             <div className="katalog-main-list-item-info">
                 <div className="line line-mid"></div>
-                <div className="katalog-main-list-item-info-name">
+                <div className="katalog-main-list-item-info-name" onClick={onClick}>
                     <h4 className="heading h6 txt-black txt-up">{convertHyphen(data.title)}</h4>
                 </div>
                 <div className="katalog-main-list-item-info-qr">
                     <div className="line line-ver line-qr"></div>
                     <div className="katalog-main-list-item-info-qr-inner">
-                        <img src={data.qr?.url} alt={data.qr?.alt} width={data.qr.dimensions?.width} />
+                        <img src={data.qr?.url} alt={data.qr?.alt} className="ic ic-80" />
+                        {data.qr_url.url ?
+                            (
+                                <a href={data.qr_url.url} target='_blank' className='katalog-main-list-item-info-qr-link'>
+                                    {QR3DExplore}
+                                </a>
+                            ) : (
+                                <img src={data.qr.url} alt="" className="katalog-main-list-item-info-qr-link ic ic-40" />
+                            )
+                        }
                     </div>
                 </div>
             </div>
             <div className="line line-ver line-left"></div>
             <div className="line line-bot"></div>
             <div className="line line-ver line-right"></div>
-        </button >
+        </div >
     )
 }
 
 function KatalogMain({ allItem, ...props }) {
     const [filter, setFilter] = useState({ kustomer: 'All', category: 'All' });
-    const [sortType, setSortType] = useState('a');
     const [limit, setLimit] = useState(999999);
     const [currentList, setCurrentList] = useState(allItem);
     const [isOpenPopup, setIsOpenPopup] = useState(false);
@@ -149,6 +156,7 @@ function KatalogMain({ allItem, ...props }) {
                     key={idx}
                     data={data}
                     filter={filter}
+                    QR3DExplore={props.QR3DExplore}
                     onClick={() => {
                         setIsOpenPopup(true);
                         setDetailProductData(data);
@@ -157,7 +165,7 @@ function KatalogMain({ allItem, ...props }) {
                 />
             ))
         )
-    }, [filter, limit, currentList, sortType])
+    }, [filter, limit, currentList])
 
     useEffect(() => {
         if (window.innerWidth < 768) {
@@ -222,7 +230,7 @@ function KatalogMain({ allItem, ...props }) {
     useEffect(() => {
         const searchParam = new URLSearchParams(window.location.search);
         if (searchParam.has("category")) {
-            setFilter((filter) => ({ ...filter, category: props.cateList.find(item => formatData(item) === searchParam.get("category")) ? props.cateList.find(item => formatData(item) === searchParam.get("category")) : "All" }))
+            setFilter((filter) => ({ ...filter, category: props.cateList.find(({ uid }) => uid === searchParam.get("category")) ? props.cateList.find(({ uid }) => uid === searchParam.get("category")).uid : "All" }))
         };
         if (searchParam.has("kustomer")) {
             let kustomerUID = props.kustomerList.find(item => item.uid === searchParam.get("kustomer"))
@@ -249,7 +257,6 @@ function KatalogMain({ allItem, ...props }) {
                                 filter={filter}
                                 setFilter={setFilter}
                                 setLimit={setLimit}
-                                setSortType={setSortType}
                             />
                             <div className="katalog-main-filter-list-pdf-wrap">
                                 <a href="/contact?src=download" className="btn katalog-main-filter-list-pdf" data-cursor="txtLink" data-cursor-txtlink="child">
@@ -271,7 +278,6 @@ function KatalogMain({ allItem, ...props }) {
                     filter={filter}
                     setFilter={setFilter}
                     setLimit={setLimit}
-                    setSortType={setSortType}
                 />
                 <div className="katalog-main-list">
                     <div className="katalog-main-list-wrap">

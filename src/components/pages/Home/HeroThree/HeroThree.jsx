@@ -99,7 +99,7 @@ function Content(props) {
         scroll(({ y }) => {
             if (y.progress >= 0 && y.progress < 1) {
                 if (document.querySelectorAll('.home-prod-cards-inner').length >= 1) {
-                    if (y.progress >= (window.innerWidth < 767 ? .76 : .9)) {
+                    if (y.progress >= (window.innerWidth <= 767 ? .76 : .9)) {
                         if (isLock == false) {
                             isLock = true;
                             setIndex({ direction: -1, value: 0 });
@@ -156,7 +156,7 @@ function Content(props) {
             if (y.progress > 0 && y.progress <= 1) {
                 if (!productsWrap.current) return;
                 animate('.home-hero-three-stick-inner', {x: leftOffset * y.progress}, {duration: 0})
-                productsWrap.current.position.set(animThreeVal(-.3 / scaleOffset, 0 / scaleOffset, y.progress), animThreeVal(0 / scaleOffset, (window.innerWidth < 767 ? -.05 : -.15) / scaleOffset, y.progress), 0)
+                productsWrap.current.position.set(animThreeVal(-.3 / scaleOffset, 0 / scaleOffset, y.progress), animThreeVal(0 / scaleOffset, (window.innerWidth <= 767 ? -.05 : -.15) / scaleOffset, y.progress), 0)
                 productsWrap.current.rotation.set(animThreeValRot(-1, -1.91, y.progress), animThreeValRot(0, .33, y.progress), animThreeValRot(-.05, 0, y.progress))
             }
         }, {
@@ -179,7 +179,7 @@ function Content(props) {
                 if (!productsWrap.current) return;
                 let scale = {
                     from: 5 / scaleOffset,
-                    to: (window.innerWidth < 767 ? 6 : 7) / scaleOffset
+                    to: (window.innerWidth <= 767 ? 6 : 7) / scaleOffset
                 }
                 productsWrap.current.scale.set(
                     animThreeVal(scale.from, scale.to, y.progress),
@@ -191,11 +191,6 @@ function Content(props) {
             offset: [`${scrollDis * .6}px start`, `${scrollDis}px start`]
         })
     }, [scaleOffset])
-
-    useEffect(() => {
-    console.log(props.list)
-
-    }, []);
 
     return (
         <>
@@ -216,15 +211,17 @@ function Content(props) {
                 <ContactShadows opacity={.2} ref={contactShadow}
                     scale={[7 / scaleOffset, 7 / scaleOffset, 7 / scaleOffset]}
                     position={[0, -.4 / scaleOffset, 0]}  blur={2} far={1.2} />
-                <Suspense>
-                    <group ref={forkWrap} scale={[11 / scaleOffset, 11 / scaleOffset, 11 / scaleOffset]}
-                        position={[1.4 / scaleOffset, 1.2 / scaleOffset, -.4 / scaleOffset]}
-                        rotation={[Math.PI * .6, -Math.PI * .1, Math.PI * .2]}>
-                        <mesh ref={fork}>
-                            <Fork material={<CustomMaterial color='#F9833A' roughness={.2} />} />
-                        </mesh>
-                    </group>
-                </Suspense>
+                {props.width > 767 && (
+                    <Suspense>
+                        <group ref={forkWrap} scale={[11 / scaleOffset, 11 / scaleOffset, 11 / scaleOffset]}
+                            position={[1.4 / scaleOffset, 1.2 / scaleOffset, -.4 / scaleOffset]}
+                            rotation={[Math.PI * .6, -Math.PI * .1, Math.PI * .2]}>
+                            <mesh ref={fork}>
+                                <Fork material={<CustomMaterial color='#F9833A' roughness={.2} />} />
+                            </mesh>
+                        </group>
+                    </Suspense>
+                )}
             </group>
             <Environment files={suspend(warehouse)} frames={degraded ? 1 : Infinity} resolution={256}/>
         </>

@@ -58,8 +58,8 @@
         padding-bottom: 6rem;
         align-items: flex-start;
         position: sticky;
-        max-height: calc(100vh - 10.3rem);
-        top: 8.3rem;
+        max-height: calc(100vh - 5.8rem);
+        top: 5.8rem;
         overflow: hidden;
 
         &-list {
@@ -70,7 +70,11 @@
             overflow-y: auto;
             overflow-x: hidden;
             height: 100%;
+            padding-block: 2.5rem;
             padding-right: 1.2rem;
+            margin-block: -2.5rem;
+            mask-image: linear-gradient(transparent, #fff 3.2rem,#fff calc(100% - 4rem), transparent);
+            -webkit-mask-image: linear-gradient(transparent, #fff 3.2rem,#fff calc(100% - 4rem), transparent);
             @include custom-scroll(.3rem, transparent, var(--cl-orange));
         }
 

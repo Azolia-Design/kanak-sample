@@ -27,7 +27,7 @@ function CursorMain({ ...props }) {
     }
     useEffect(() => {
         if (!cursor.current.classList.contains('on-load')) return;
-        if (window.innerWidth < 991) return;
+        if (window.innerWidth <= 991) return;
         console.log('init cursor once')
         pointer = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
         window.addEventListener('pointermove', (e) => getCursor(e));
@@ -62,7 +62,6 @@ function CursorMain({ ...props }) {
                         }
                         speed = .1
                         if (targetEl.hasAttribute('data-cursor-txtlink-top')) {
-                            console.log('top')
                             targetX = targetEl.getBoundingClientRect().left + targetEl.getBoundingClientRect().width / 2;
                             targetY = targetEl.getBoundingClientRect().top + parseRem(4) - document.querySelector('.cursor-main-inner-dot').getBoundingClientRect().width / 2;
                         } else {

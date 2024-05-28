@@ -1,7 +1,6 @@
 import './Product.scss';
 import { useRef, useEffect } from 'react';
 import { useProductIndex } from '@contexts/StoreGlobal';
-import { formatData } from '@utils/text';
 import { scroll } from "motion";
 
 function HomeProduct(props) {
@@ -10,7 +9,7 @@ function HomeProduct(props) {
     useEffect(() => {
         scroll(({ y }) => {
             if (document.querySelectorAll('.home-prod-cards-inner').length >= 1) {
-                if (y.progress >= (window.innerWidth < 767 ? .76 : .9)) {
+                if (y.progress >= (window.innerWidth <= 767 ? .76 : .9)) {
                     if (!document.querySelector('.home-prod-cards-inner').classList.contains('active')) {
                         document.querySelector('.home-prod-cards-inner').classList.add('active')
                     }
@@ -25,6 +24,7 @@ function HomeProduct(props) {
             offset: ['start end', "center center"]
         })
     }, [])
+
     return (
         <>
             <div className="home-prod-cards">
@@ -50,15 +50,16 @@ function HomeProduct(props) {
                             </button>
                         </div>
                     </div>
-                    <div className="home-prod-cards-middle">
+                    <div className="home-prod-cards-middle" data-cursor="ext">
                         <div className="home-prod-cards-middle-inner"></div>
+                        <a href={`/katalog?category=${props.list[index.value].uid}`} className="home-prod-cards-middle-link"></a>
                     </div>
                     <div className="home-prod-cards-bottom">
                         <div className="home-prod-cards-bottom-txt-wrap">
                             {props.list.map((item, idx) => (
                                 <a
                                     key={idx}
-                                    href={`/katalog?category=${formatData(item.data.name)}`}
+                                    href={`/katalog?category=${item.uid}`}
                                     className={`heading h5 txt-up txt-black home-prod-cards-bottom-txt ${index.value === idx ? 'active' : ''}`}>
                                     {item.data.name}
                                     <div className="ic ic-16">
@@ -76,6 +77,15 @@ function HomeProduct(props) {
                                     key={idx}
                                     className={`home-prod-cards-qr ${index.value === idx ? 'active' : ''}`}>
                                     <img src={item.data.qr.url} alt="" className="ic ic-80" />
+                                        {item.data.qr_url.url ?
+                                            (
+                                                <a href={item.data.qr_url.url} target='_blank' className='home-prod-cards-qr-link'>
+                                                    {props.QR3DExplore}
+                                                </a>
+                                            ) : (
+                                                <img src={item.data.qr.url} alt="" className="home-prod-cards-qr-link ic ic-40" />
+                                            )
+                                        }
                                 </div>
                             ))}
                         </div>
