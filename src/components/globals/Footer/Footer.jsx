@@ -56,7 +56,7 @@ const MenuColumn = ({ title, children, tail, tail_link, isOpen, onClick, onClick
             <div className="ft-tail">
                 <div className="line line-top"></div>
                 {tail_link ? (
-                    <a href={tail_link} target='_blank' className="txt txt-12 txt-bold txt-up ft-right-tail-link txt-link">
+                    <a href={tail_link} className="txt txt-12 txt-bold txt-up ft-right-tail-link txt-link">
                         {tail}
                     </a>
                 ) : (
@@ -115,7 +115,7 @@ function GlobalFooter(props) {
                             </a>
                         </div>
                         <a href="/contact" className="heading h1 txt-up txt-black ft-left-body-title txt-link-bold">
-                            Let's talk! 
+                            Let's talk!
                             <div className="ic ic-48">
                                 <svg width="100%" viewBox="0 0 48 49" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M6 42.0703L42 6.07031" stroke="currentColor" strokeWidth="8" strokeMiterlimit="10"/>
@@ -131,7 +131,7 @@ function GlobalFooter(props) {
                 <div className="ft-right">
                     <MenuColumn
                         title="Products & Services"
-                        tail_link="https://app.termly.io/document/terms-of-service/89061706-a2a2-4217-a4aa-a53ba72a4334"
+                        tail_link="/terms-and-conditions"
                         tail="Terms of Use"
                         isOpen={activeIndex === 0}
                         onClick={() => accordionClick(0)}
@@ -143,7 +143,7 @@ function GlobalFooter(props) {
                     </MenuColumn>
                     <MenuColumn
                         title="Kustomers"
-                        tail_link="https://app.termly.io/document/privacy-policy/319e0d22-20e7-449c-a002-bf22aa177cb8"
+                        tail_link="/privacy-policy"
                         tail="Privacy Policy"
                         isOpen={activeIndex === 1}
                         onClick={() => accordionClick(1)}
@@ -171,9 +171,9 @@ function GlobalFooter(props) {
                 </div>
                 <div className='ft-copyright-mb'>
                     <div className="txt txt-12 txt-bold ft-copyright-mb-wrap">
-                        <a href="https://app.termly.io/document/terms-of-service/89061706-a2a2-4217-a4aa-a53ba72a4334" target='_blank' className="txt-link ft-copyright-mb-link">TERMS OF USE</a>
+                        <a href="/terms-and-conditions" className="txt-link ft-copyright-mb-link">TERMS OF USE</a>
                         <span className="ft-copyright-mb-div">-</span>
-                        <a href="https://app.termly.io/document/privacy-policy/319e0d22-20e7-449c-a002-bf22aa177cb8" target='_blank' className="txt-link txt-up ft-copyright-mb-link">PRIVACY POLICY</a>
+                        <a href="/privacy-policy" className="txt-link txt-up ft-copyright-mb-link">PRIVACY POLICY</a>
                     </div>
                     <CopyRight>{props.currYear}</CopyRight>
                 </div>
