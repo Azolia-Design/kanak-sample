@@ -2,7 +2,6 @@ import './ProductList.scss';
 import { useEffect, useRef } from 'react';
 import { inView, timeline, animate } from "motion"
 import { useProductIndex } from '@contexts/StoreGlobal';
-import { formatData } from '@utils/text';
 import useDebounceCallback from '@hooks/useDebounce';
 
 function HomeProductList(props) {
@@ -48,7 +47,7 @@ function HomeProductList(props) {
                 {props.list.map((item, idx) => (
                     <a
                         key={idx}
-                        href={`/katalog?category=${formatData(item.data.name)}`}
+                        href={`/katalog?category=${item.uid}`}
                         className={`home-prod-main-item${idx == index.value ? ' active' : ''}`}
                         onMouseEnter={() => debounceHover({ value: idx, direction: 1 })}
                         data-cursor="txtLink"

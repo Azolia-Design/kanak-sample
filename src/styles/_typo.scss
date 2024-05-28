@@ -343,6 +343,13 @@ $txtSizes: 10, 12, 14, 16, 18, 20, 36, 180;
             }
         }
     }
+
+    table {
+        margin-block: 3.2rem;
+        @include sm {
+            margin-block: 2.4rem;
+        }
+    }
 }
 
 //Icon

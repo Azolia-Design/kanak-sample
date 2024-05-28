@@ -1,9 +1,9 @@
 import { memo, useId, useState, useRef } from 'react';
 import cn from 'clsx';
-import { formatData } from '@utils/text';
 import { updateQueryParam } from '@utils/parse';
 import useOutsideAlerter from '@hooks/useOutsideAlerter';
 import ArrowDropdown from "@components/globals/IcArrow/ArrowDropdown.jsx";
+import { getLenis } from '@/components/core/lenis';
 
 function Kustomer({ isActive, children, onClick, isEmpty }) {
     return (
@@ -16,7 +16,7 @@ function Kustomer({ isActive, children, onClick, isEmpty }) {
     )
 }
 
-function Kustomers({ list, filter, setFilter, setLimit, setSortType, allItem }) {
+function Kustomers({ list, filter, setFilter, setLimit, allItem }) {
     const ref = useRef();
     const [isDropdown, setIsDropdown] = useState(false);
     useOutsideAlerter(ref, () => setIsDropdown(false))
@@ -45,8 +45,8 @@ function Kustomers({ list, filter, setFilter, setLimit, setSortType, allItem }) 
                     <Kustomer isActive={filter.kustomer === 'All'} onClick={() => {
                         setFilter?.({ category: 'All', kustomer: 'All' })
                         setIsDropdown(false);
-                        setSortType('a')
                         window.innerWidth < 768 && setLimit?.(4);
+                        window.innerWidth < 768 && getLenis().scrollTo(document.querySelector('.katalog-main'));
                         window.history.replaceState(null, null, updateQueryParam([
                             { key: 'kustomer', value: '' },
                             { key: 'category', value: '' }
@@ -61,8 +61,8 @@ function Kustomers({ list, filter, setFilter, setLimit, setSortType, allItem }) 
                                 onClick={() => {
                                     setFilter?.({ category: 'All', kustomer: kustomer.uid })
                                     setIsDropdown(false);
-                                    setSortType('a')
                                     window.innerWidth < 768 && setLimit?.(4);
+                                    window.innerWidth < 768 && getLenis().scrollTo(document.querySelector('.katalog-main'));
                                     window.history.replaceState(null, null, updateQueryParam([
                                         { key: 'kustomer', value: kustomer.uid },
                                         { key: 'category', value: '' }

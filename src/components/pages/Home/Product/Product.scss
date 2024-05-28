@@ -133,6 +133,10 @@
             border: solid .2rem var(--cl-txt);
             border-bottom: none;
             border-top: none;
+            &-link {
+                position: absolute;
+                @include size(100%);
+            }
 
             @include sm {
                 height: auto;
@@ -199,6 +203,7 @@
         }
 
         &-qr {
+            position: relative;
             border-left: solid .2rem var(--cl-txt);
             display: flex;
             align-items: center;
@@ -213,7 +218,10 @@
                 @include size(5.6rem);
 
                 .ic-80 {
-                    @include size(4rem);
+                    display: none;
+                }
+                .ic-40 {
+                    @include size(4rem)
                 }
             }
 
@@ -225,6 +233,16 @@
             &-wrap {
                 display: grid;
                 grid-template-columns: 1fr;
+            }
+            &-link {
+                position: absolute;
+                @include size(100%);
+                display: none;
+                @include md {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
             }
         }
 

@@ -132,7 +132,7 @@ function CasedtlRel({ ...props }) {
             })
         }, { margin: '-15% 0px -15% 0px' })
 
-        if (window.innerWidth < 767) {
+        if (window.innerWidth <= 767) {
             const btnTxt = new SplitType('.casedtl-rel-load-btn-txt', { types: 'lines, words', lineClass: 'split-line' })
             animate('.casedtl-rel-load-btn', { opacity: 0 }, { duration: 0 })
             animate('.casedtl-rel-load-btn .ic svg', { opacity: 0, transform: 'translateY(-40%) scale(.8)' }, { duration: 0 })

@@ -11,7 +11,6 @@ import { useTransition, animated } from '@react-spring/three'
 import GetModel from "@components/common/GetModel.jsx";
 import { useCatalogIndex } from "@contexts/StoreGlobal.js";
 import cn from 'clsx';
-import { formatData } from "@utils/text";
 
 const warehouse = import('/envMap/warehouse.hdr?url').then((module) => module.default)
 function CustomMaterial({...props}) {
@@ -177,7 +176,7 @@ function KustomerCatalogThree(props) {
                     </div>
                 </div>
                 <div className="kustomer-cata-card-middle">
-                    <div className="kustomer-cata-card-middle-inner">
+                    <div className="kustomer-cata-card-middle-inner" data-cursor="ext">
                         <div className="kustomer-cata-card-middle-inner-canvas">
                             <Canvas camera={{ fov: fov, near: 0.1, far: 10000, position: [0, 0, perspective], aspect: width / height }} shadows>
                                 <Content
@@ -191,6 +190,7 @@ function KustomerCatalogThree(props) {
                                 <AdaptiveDpr pixelated />
                             </Canvas>
                         </div>
+                        <a href={`/katalog?kustomer=${props.currPage}&category=${props.listItem[props.isMobile ? itemIndex : index].uid}`} className="kustomer-cata-card-middle-inner-link"></a>
                     </div>
                 </div>
                 <div className="kustomer-cata-card-bottom">
@@ -198,7 +198,7 @@ function KustomerCatalogThree(props) {
                         {props.listItem.map((el, idx) => (
                             <a
                                 key={idx}
-                                href={`/katalog?kustomer=retail&category=${formatData(el.data.name)}`}
+                                href={`/katalog?kustomer=${props.currPage}&category=${el.uid}`}
                                 className={cn("heading h5 txt-up txt-black kustomer-cata-card-bottom-txt", { "active": conditionIndexWithDevice(idx) })}>
                                 {el.data.name}
                                 <div className="ic ic-16">
@@ -216,6 +216,15 @@ function KustomerCatalogThree(props) {
                                 key={idx}
                                 className={cn("kustomer-cata-card-qr", { "active": conditionIndexWithDevice(idx) })}>
                                 <img src={product_feature.qr.url} alt="" className="ic ic-80" />
+                                {product_feature.qr_url.url ?
+                                    (
+                                        <a href={product_feature.qr_url.url} target='_blank' className='kustomer-cata-card-qr-link'>
+                                            {props.QR3DExplore}
+                                        </a>
+                                    ) : (
+                                        <img src={product_feature.qr.url} alt="" className="kustomer-cata-card-qr-link ic ic-40" />
+                                    )
+                                }
                             </div>
                         ))}
                     </div>

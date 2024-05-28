@@ -1,9 +1,11 @@
 ---
+import { Image } from 'astro:assets';
 import KustomerCatalogTitle from "./CatalogTitle";
 import KustomerCatalogThree from "./CatalogThree";
 import KustomerCatalogGroup from "./CatalogGroup";
 
 import arrIcon from "@assets/arr-right.svg?raw";
+import QR3DExplore from '@assets/qr-3d-explore.svg';
 import "./Catalog.scss";
 import { getByUID } from "@/prismic";
 import { isEmpty } from "@utils/text";
@@ -67,6 +69,7 @@ let listItem = await Promise.all(
 									<KustomerCatalogThree
 										slot="card"
 										isMobile={true}
+										currPage={currPage}
 										listItem={listItem.filter((item1) =>
 											group.list.some(
 												(item2) =>
@@ -80,6 +83,7 @@ let listItem = await Promise.all(
 											set:html={arrIcon}
 											slot="arrIcon"
 										/>
+										<Image src={QR3DExplore} alt="" class="ic ic-40" width={QR3DExplore.width / 2} slot='QR3DExplore'/>
 									</KustomerCatalogThree>
 								</KustomerCatalogGroup>
 							),
@@ -89,10 +93,12 @@ let listItem = await Promise.all(
 			<KustomerCatalogThree
 				listItem={listItem}
 				page_title={page_title}
+				currPage={currPage}
 				client:media="(min-width: 768px)"
 				client:idle
 			>
 				<Fragment set:html={arrIcon} slot="arrIcon" />
+				<Image src={QR3DExplore} alt="" class="ic ic-40" width={QR3DExplore.width / 2} slot='QR3DExplore'/>
 			</KustomerCatalogThree>
 		</div>
 	</div>

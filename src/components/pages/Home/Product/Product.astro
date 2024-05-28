@@ -3,7 +3,7 @@ const { product_kategory_list } = Astro.props;
 
 import { Image } from 'astro:assets';
 import arrIcon from '@assets/arr-right.svg?raw';
-import sampleQR from '@assets/image 11.png';
+import QR3DExplore from '@assets/qr-3d-explore.svg';
 import PDFIcon from '@assets/ic-pdf.svg?raw';
 import { getByUID } from '@/prismic.js';
 import HomeProductTitle from './ProductTitle';
@@ -31,7 +31,7 @@ let featuredItemList = await Promise.all(
 
         <HomeProduct list={standardList} itemList={featuredItemList} client:load>
             <Fragment set:html={arrIcon} slot='arrIcon'/>
-            <Image src={sampleQR} alt="" class="ic ic-80" width={sampleQR.width / 2} slot='sampleQR'/>
+            <Image src={QR3DExplore} alt="" class="ic ic-40" width={QR3DExplore.width / 2} slot='QR3DExplore'/>
             <Fragment set:html={PDFIcon} slot='PDFIcon'/>
         </HomeProduct>
     </div>

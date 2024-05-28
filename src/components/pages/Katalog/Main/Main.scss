@@ -592,6 +592,7 @@
                 width: 100%;
                 aspect-ratio: 1.068;
                 overflow: hidden;
+                cursor: pointer;
 
                 @include md {
                     aspect-ratio: 0.9271523179;
@@ -619,6 +620,7 @@
                 align-self: end;
                 width: 100%;
                 flex: 1;
+                cursor: pointer;
 
                 &-name {
                     display: flex;
@@ -649,12 +651,28 @@
                     @include md {
                         padding: .8rem;
                     }
-
                     &-inner {
-                        @include size(8rem);
-
+                        position: relative;
                         @include md {
-                            @include size(4rem);
+                            @include size(5.7rem, 5.6rem);
+
+                            .ic-80 {
+                                display: none;
+                            }
+                            .ic-40 {
+                                @include size(100%)
+                            }
+                        }
+                    }
+
+                    &-link {
+                        position: absolute;
+                        @include size(100%);
+                        display: none;
+                        @include md {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
                         }
                     }
                 }

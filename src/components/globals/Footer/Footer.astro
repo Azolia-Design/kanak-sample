@@ -5,7 +5,8 @@ import linkedIn from "@assets/ic-linkedin-ft.svg";
 import GlobalFooter from "./Footer";
 import GlobalCTA from "@components/globals/CTA";
 import GlobalExplore from "@components/globals/Explore";
-import { getAllByType, getPage, getByUID } from "@/prismic.js";
+import { getPage, getByUID } from "@/prismic.js";
+import policyData from "@pages/Policy/Data/policy-data";
 
 import img from "@assets/ffment-thumb.jpg";
 import LetTalkArr from "@assets/LT-Arrow.svg?raw";
@@ -60,6 +61,7 @@ const exploreList = await Promise.all([
     currYear={currYear}
     list={industryList}
     hideLine={explore ? true : false}
+    policyData={policyData}
     client:visible={{ rootMargin: "50% 0% 50% 0%" }}
 >
     <Image src={logo} alt="kanak logo" class="img img-h" slot="logo" />

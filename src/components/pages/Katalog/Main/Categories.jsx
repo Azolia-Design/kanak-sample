@@ -1,9 +1,9 @@
 import { memo, useMemo, useState, useEffect, useRef } from 'react';
 import cn from 'clsx';
-import { formatData } from '@utils/text';
 import { updateQueryParam } from '@utils/parse';
 import useOutsideAlerter from '@hooks/useOutsideAlerter';
 import ArrowDropdown from "@components/globals/IcArrow/ArrowDropdown.jsx";
+import { getLenis } from '@/components/core/lenis';
 
 function Category({ children, isActive, onClick }) {
     return (
@@ -16,14 +16,14 @@ function Category({ children, isActive, onClick }) {
     )
 }
 
-function Categories({ data, cateList, filter, setFilter, setLimit, setSortType }) {
+function Categories({ data, cateList, filter, setFilter, setLimit }) {
     const ref = useRef();
     const [isDropdown, setIsDropdown] = useState(false);
     const [currentCategory, setCurrentCategory] = useState(filter.category);
     useOutsideAlerter(ref, () => setIsDropdown(false))
     const list = useMemo(() => {
         let currList = new Set(data.map((item) => item.category));
-        return cateList.filter(category => currList.has(category))
+        return cateList.filter(category => currList.has(category.uid))
     }, [data, filter, currentCategory]);
 
     useEffect(() => {
@@ -62,17 +62,19 @@ function Categories({ data, cateList, filter, setFilter, setLimit, setSortType }
             >
                 {list.map((category) => (
                     <Category
-                        key={category}
-                        isActive={currentCategory === category}
+                        key={category.uid}
+                        isActive={currentCategory === category.uid}
                         onClick={() => {
-                            setFilter?.({ ...filter, category })
-                            setCurrentCategory(category);
+                            setFilter?.({ ...filter, category: category.uid })
+                            setCurrentCategory(category.uid);
                             setIsDropdown(false);
-                            setSortType('b');
                             window.innerWidth < 768 && setLimit?.(4);
-                            window.history.replaceState(null, null, updateQueryParam([{ key: 'category', value: formatData(category) }]));
+                            window.history.replaceState(null, null, updateQueryParam([{ key: 'category', value: category.uid }]));
+                            getLenis().scrollTo(document.querySelector('.katalog-main'), {
+                                offset: window.innerWidth < 768 ? 0 : -100
+                            });
                         }}>
-                        {category}
+                        {category.name}
                     </Category>
                 ))}
             </ul>

@@ -7,7 +7,6 @@ import useOutsideAlerter from '@hooks/useOutsideAlerter';
 
 import { animate, timeline, stagger, inView } from "motion";
 import SplitType from 'split-type';
-import { formatData } from '@utils/text';
 
 function HeaderGlobal(props) {
     const dropdownRef = useRef();
@@ -58,7 +57,7 @@ function HeaderGlobal(props) {
                 getLenis().stop()
                 navAnim.open()
 
-                if (window.innerWidth < 991) {
+                if (window.innerWidth <= 991) {
                     setIsSubHide(true)
                 }
 
@@ -260,7 +259,7 @@ function HeaderGlobal(props) {
                     if (page.type == 'dropdown') {
                         return (
                             <div className={cn("header-dropdown", { "active": idx === dropdownIdx })} key={idx} data-dropdown-idx={idx}>
-                                <div className={`header-dropdown-inner ${formatData(page.name.replaceAll('[','').replaceAll(']',''))}`}>
+                                <div className={`header-dropdown-inner ${page.name.toLowerCase().replaceAll('[','').replaceAll(']','').replaceAll(' ', '-')}`}>
                                     {page.sub_menu.map((el, idx) => (
                                         <a
                                             key={idx}

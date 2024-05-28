@@ -1,6 +1,7 @@
 ---
-import Image from "astro/components/Image.astro";
+import { Image } from 'astro:assets';
 import { getAllByType, getByUID } from "@/prismic";
+import QR3DExplore from '@assets/qr-3d-explore.svg';
 
 import KustomerSustain from "./Sustainable";
 
@@ -45,4 +46,5 @@ const productList = await Promise.all(
     <Fragment set:html={PDFIcon} slot="PDFIcon" />
     <Fragment set:html={arrIcon} slot="arrIcon" />
     <Image src={sustainable} alt="" slot="sustainable" class="img img-fill" />
+	<Image src={QR3DExplore} alt="" class="ic ic-40" width={QR3DExplore.width / 2} slot='QR3DExplore'/>
 </KustomerSustain>

@@ -3,7 +3,6 @@ import SplitType from 'split-type';
 import { useEffect, useState } from 'react';
 import useDebounceCallback from "@hooks/useDebounce";
 import { animate, timeline, stagger, inView } from "motion";
-import { formatData } from "@utils/text";
 
 function KustomerCatalogGroup({ ...props }) {
     const { index, setIndex } = useCatalogIndex();
@@ -80,7 +79,7 @@ function KustomerCatalogGroup({ ...props }) {
                 {props.data.list.map((item, idx) => (
                     <a
                         key={item.uid}
-                        href={`/katalog?kustomer=${formatData(props.currPage)}&category=${formatData(item.data.name)}`}
+                        href={`/katalog?kustomer=${props.currPage}&category=${item.uid}`}
                         className={`kustomer-cata-main-content-list-item ${index == (props.listItem.findIndex(listItem => listItem.uid == item.uid)) ? "active" : ''}`}
                         onMouseEnter={() => debounceHover(props.listItem.findIndex(listItem => listItem.uid == item.uid))}
                         data-cursor="txtLink"

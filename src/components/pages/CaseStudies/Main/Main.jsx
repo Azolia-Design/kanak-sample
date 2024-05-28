@@ -61,7 +61,7 @@ function CaseMain({ ...props }) {
             setItemList([])
             setFilter(type)
         }
-        window.innerWidth < 991 && setCategoryToggle(false)
+        window.innerWidth <= 991 && setCategoryToggle(false)
     }
     useEffect(() => {
         if (filter == 'All') {
