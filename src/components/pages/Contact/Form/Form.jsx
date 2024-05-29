@@ -254,6 +254,7 @@ function ContactForm(props) {
                                         placeholder=" "
                                         defaultValue={formData.email}
                                         name="email"
+                                        required
                                         onChange={(e) => debounceForm({ ...formData, email: e.target.value })}
                                     />
                                     <FormLabel>Email Address</FormLabel>

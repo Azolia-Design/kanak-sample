@@ -1,7 +1,10 @@
 ---
 import PolicyMain from "./PolicyMain.jsx";
+import icLoad from "@assets/contact-form-load.svg?raw";
 
 ---
-<PolicyMain client:visible {...Astro.props}></PolicyMain>
+<PolicyMain client:visible {...Astro.props}>
+    <Fragment set:html={icLoad} alt="" slot="icLoad"/>
+</PolicyMain>
 
 

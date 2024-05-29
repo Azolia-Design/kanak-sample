@@ -1,7 +1,6 @@
 @use '@styles/colors' as *;
 @use '@styles/mixins' as *;
 
-
 .policy {
     &-main {
         .container.grid {
@@ -113,8 +112,23 @@
             padding-top: 6rem;
             padding-right: 6rem;
             padding-bottom: 16rem;
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            &.loaded {
+                .policy-body-main-richtxt {
+                    opacity: 1;
+                }
+                .policy-body-main-loading {
+                    opacity: 0;
+                }
+            }
 
             &-richtxt {
+                opacity: 0;
+                transition: opacity 0.4s ease-in-out 300ms;
+                width: 100%;
                 ul,li,p {
                     font-size: var(--fs-18) !important;
                     line-height: var(--lh-18) !important;
@@ -135,6 +149,21 @@
                         margin-block: .8rem;
                     }
                 }
+            }
+            &-loading {
+                position: relative;
+                display: inline-block;
+                width: 15rem;
+                height: 15rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin: 0 auto;
+                position: absolute;
+                top: 10rem;
+                opacity: 1;
+                pointer-events: none;
+                transition:opacity 0.4s ease-in-out;
             }
         }
     }
@@ -213,6 +242,7 @@
 
         &-update {
             padding: 2.4rem 0;
+            min-height: 6.8rem;
         }
 
         &-navtitle,
