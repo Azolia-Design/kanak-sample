@@ -8,10 +8,10 @@ import { animate, timeline, stagger, inView } from "motion";
 
 function PolicyMain(props) {
     const [activeToc, setActiveToc] = useState(0)
-    const [richTxtIdx, setRichTxtIdx] = useState(0)
     const [data, setData] = useState('');
     const [listTOC, setListTOC] = useState([]);
     const [lastUpdated, setLastUpdated] = useState('');
+    const [loaded, setLoaded] = useState(false);
 
     function removeInlineStyledElements(parent) {
         if (!parent) return;
@@ -79,7 +79,8 @@ function PolicyMain(props) {
     useEffect(() => {
         fetchDocument(`https://app.termly.io/api/v1/snippets/websites/613278a6-0f3c-4a81-882b-a826d9d292ce/documents/${props.id}/preview`).then(json => {
             const parsed = JSON.parse(json);
-            setData(parsed.content.replace(/<style[^>]*>[\s\S]*?<\/style>/gi, ''))
+            setData(parsed.content.replace(/<style[^>]*>[\s\S]*?<\/style>/gi, ''));
+            setLoaded(true);
         });
     })
 
@@ -131,7 +132,7 @@ function PolicyMain(props) {
                 return data;
             })
         setListTOC(list);
-        setLastUpdated(document.querySelector('[data-custom-class="subtitle"]')?.textContent)
+        setLastUpdated(document.querySelector('[data-custom-class="subtitle"]')?.textContent);
     }, [data])
 
     function activeScrollTo(id) {
@@ -235,8 +236,9 @@ function PolicyMain(props) {
                     </ul>
                 </div>
                 <div className="policy-body">
-                    <div className="policy-body-main">
+                    <div className={`policy-body-main ${loaded ? 'loaded' : ''}`}>
                         <div className="txt txt-18 txt-med richtext policy-body-main-richtxt" dangerouslySetInnerHTML={{ __html: data }}></div>
+                        <div className="policy-body-main-loading">{props.icLoad}</div>
                     </div>
                 </div>
             </div>
