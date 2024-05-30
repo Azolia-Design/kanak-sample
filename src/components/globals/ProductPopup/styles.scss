@@ -417,6 +417,11 @@
                 &:hover {
                     color: var(--cl-orange);
                 }
+                @include md {
+                    &.active {
+                        color: var(--cl-orange);
+                    }
+                }
                 &:first-child {
                     .popup-itemdtl-table-item-div {
                         @include sm {

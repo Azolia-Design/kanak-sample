@@ -157,7 +157,7 @@ function ProductPopup({ data, isActive, setIsActive }) {
                                         <div className="popup-itemdtl-table-item-wrap" data-lenis-prevent>
                                             <div className="popup-itemdtl-table-item-inner">
                                                 {data.variants?.map((item, idx) => (
-                                                    <div className="txt txt-16 txt-med popup-itemdtl-table-item" key={idx}>
+                                                    <div className={`txt txt-16 txt-med popup-itemdtl-table-item ${currentIndex == idx ? 'active' : ''}`} key={idx}>
                                                         <div className="popup-itemdtl-table-item-div desktop" onClick={() => setCurrentIndex(idx)}>
                                                             <div className="popup-itemdtl-table-code">{item.sku ? item.sku : '-'}</div>
                                                             <div className="popup-itemdtl-table-size">{item.size ? item.size : '-'}</div>
