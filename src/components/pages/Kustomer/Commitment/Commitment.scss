@@ -192,10 +192,11 @@
             .line {
                 position: absolute;
                 top: -.1rem;
-                left: 0;
-                width: calc(100% - var(--container-padding) * 2);
-                transition: width .4s ease;
+                left: var(--container-padding);
+                right: var(--container-padding);
+                transition: left .4s ease-in-out 200ms, right .4s ease-in-out 200ms;
                 background: none;
+                width: auto;
 
                 @include md {
                     width: 100%;
@@ -242,19 +243,20 @@
                 @include md-up {
                     &:hover {
                         z-index: 2;
-    
+
                         .kustomer-commit-main-item {
                             &-title {
                                 color: var(--cl-orange);
                             }
-    
+
                             &-bg {
                                 opacity: 1;
                             }
                         }
-    
+
                         .line {
-                            width: 100%;
+                            left: 0;
+                            right: 0;
                         }
                     }
                 }

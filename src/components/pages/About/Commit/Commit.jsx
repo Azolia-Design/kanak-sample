@@ -62,7 +62,7 @@ function AboutCommit({ ...props }) {
                 <div className="abt-commit-img-wrap">{props.thumbnail}</div>
                 <div className="abt-commit-sub-wrap">
                     <div className="txt txt-18 txt-med abt-commit-sub-rictxt">{props.subtitle}</div>
-                    <a href="#" className="txt txt-18 txt-bold txt-link abt-commit-link hidden" data-cursor="txtLink">
+                    <a href="/sustainability" className="txt txt-18 txt-bold txt-link abt-commit-link" data-cursor="txtLink">
                         <span>Read more</span>
                         <div className="ic ic-16">{props.icArrExt}</div>
                     </a>

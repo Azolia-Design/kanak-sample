@@ -181,8 +181,20 @@ html[data-page='Know Us'] {
                 max-width: 26rem;
             }
 
-            @include md {
+            @include sm {
                 max-width: unset;
+            }
+        }
+    }
+}
+
+html[data-page='Sustainable'] {
+    .global-cta {
+        &-main {
+            max-width: 54.5rem;
+
+            @include md {
+                grid-column: 1/6;
             }
         }
     }

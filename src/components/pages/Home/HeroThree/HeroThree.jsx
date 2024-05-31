@@ -230,14 +230,13 @@ function Content(props) {
 
 function HomeHeroThree({...props}) {
     const { width, height } = useWindowSize();
-    const threeRef = useRef();
     if (width == 0) {
         return;
     } else {
         let perspective = 5;
         let fov = 30;
         return (
-            <div className="home-hero-three" ref={threeRef}>
+            <div className="home-hero-three">
                 <div className="home-hero-three-stick">
                     <div className="home-hero-three-stick-inner">
                         <Canvas camera={{ fov: fov, near: 0.1, far: 10000, position: [0, 0, perspective], aspect: width / height }} shadows>

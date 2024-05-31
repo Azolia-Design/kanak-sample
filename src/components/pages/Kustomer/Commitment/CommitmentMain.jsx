@@ -16,7 +16,6 @@ function CommitItem({ title, describle, img, idx, ...props }) {
         animate(item.querySelectorAll(".line-inner"), { scaleX: 0, transformOrigin: 'left' }, { duration: 0 })
         animate(item.querySelector('.kustomer-commit-main-item-img'), { opacity: 0, scale: .9 }, { duration: 0 })
 
-
         let lineList = []
         item.querySelectorAll(".line-inner").forEach((el, idx) => {
             lineList.push(el)

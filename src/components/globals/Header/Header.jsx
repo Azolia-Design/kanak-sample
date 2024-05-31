@@ -237,7 +237,7 @@ function HeaderGlobal(props) {
                         </div>
                         <div className="txt txt-10 txt-med header-sub-txt">
                             <span className="txt-semi header-sub-label">
-                                Our mission:
+                                Sustainable lifecycle:
                             </span>
                             To kraft responsibly-sourced packaging and products that not only prioritize quality, functionality, and affordability but also champion a profound commitment to enhancing the health and beauty of our planet.
                         </div>

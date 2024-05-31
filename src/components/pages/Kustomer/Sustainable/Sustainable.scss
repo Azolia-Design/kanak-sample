@@ -1,7 +1,6 @@
 @use '@styles/colors' as *;
 @use '@styles/mixins' as *;
 
-
 .kustomer-sus {
     position: relative;
     padding-bottom: 21rem;
@@ -86,7 +85,6 @@
             background-color: transparent;
             padding: 0;
             color: var(--cl-txt);
-            transition: all 400ms ease;
 
             &-ic {
                 position: relative;

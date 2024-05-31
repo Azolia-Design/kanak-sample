@@ -82,7 +82,7 @@ function PakwayPartner(props) {
                         Each year, less than 0.5% of the plastic produced enters the oceans, yet this amounts to over 1 million metric tons. Our collaborative efforts aim to significantly decrease this figure by promoting a circular economy where plastic reuse is prioritized.
                         </p>
                     </div>
-                    <a href="#" className="txt txt-18 txt-bold txt-link pak-partner-link hidden" data-cursor="txtLink">
+                    <a href="/sustainability" className="txt txt-18 txt-bold txt-link pak-partner-link" data-cursor="txtLink">
                         <span>Our Sustainability Kommitment</span>
                         <div className="ic ic-16">
                             {props.icArrExt}
