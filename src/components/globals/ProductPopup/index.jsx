@@ -157,7 +157,7 @@ function ProductPopup({ data, isActive, setIsActive }) {
                                         <div className="popup-itemdtl-table-item-wrap" data-lenis-prevent>
                                             <div className="popup-itemdtl-table-item-inner">
                                                 {data.variants?.map((item, idx) => (
-                                                    <div className="txt txt-16 txt-med popup-itemdtl-table-item" key={idx}>
+                                                    <div className={`txt txt-16 txt-med popup-itemdtl-table-item ${currentIndex == idx ? 'active' : ''}`} key={idx}>
                                                         <div className="popup-itemdtl-table-item-div desktop" onClick={() => setCurrentIndex(idx)}>
                                                             <div className="popup-itemdtl-table-code">{item.sku ? item.sku : '-'}</div>
                                                             <div className="popup-itemdtl-table-size">{item.size ? item.size : '-'}</div>
@@ -187,7 +187,7 @@ function ProductPopup({ data, isActive, setIsActive }) {
                                                                                 <img src={item.qr_code.url} alt={item.qr_code.alt} className='popup-itemdtl-table-model-link desk-ver' />
                                                                                 {item.qr_code_url.url ?
                                                                                 (
-                                                                                    <a href={item.qr_code_url.url} target='_blank' className='popup-itemdtl-table-model-link'>
+                                                                                    <a href={item.qr_code_url.url} target={item.qr_code_url.target ? item.qr_code_url.target : ''} className='popup-itemdtl-table-model-link'>
                                                                                         <svg width="100%" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                                             <path d="M0.869565 12.1739C1.10019 12.1739 1.32137 12.0823 1.48444 11.9192C1.64752 11.7561 1.73913 11.535 1.73913 11.3043V4.54261C1.74005 3.79936 2.03571 3.08682 2.56127 2.56127C3.08682 2.03571 3.79936 1.74005 4.54261 1.73913H11.3043C11.535 1.73913 11.7561 1.64752 11.9192 1.48444C12.0823 1.32137 12.1739 1.10019 12.1739 0.869565C12.1739 0.638942 12.0823 0.417765 11.9192 0.25469C11.7561 0.0916148 11.535 0 11.3043 0H4.54261C3.33826 0.00138087 2.18363 0.480419 1.33202 1.33202C0.480419 2.18363 0.00138087 3.33826 0 4.54261V11.3043C0 11.535 0.0916148 11.7561 0.25469 11.9192C0.417765 12.0823 0.638942 12.1739 0.869565 12.1739Z" fill="#3D3D3D"/>
                                                                                             <path d="M35.4575 0H28.6957C28.4651 0 28.2439 0.0916148 28.0809 0.25469C27.9178 0.417765 27.8262 0.638942 27.8262 0.869565C27.8262 1.10019 27.9178 1.32137 28.0809 1.48444C28.2439 1.64752 28.4651 1.73913 28.6957 1.73913H35.4575C36.2007 1.74005 36.9133 2.03571 37.4388 2.56127C37.9644 3.08682 38.26 3.79936 38.261 4.54261V11.3043C38.261 11.535 38.3526 11.7561 38.5156 11.9192C38.6787 12.0823 38.8999 12.1739 39.1305 12.1739C39.3611 12.1739 39.5823 12.0823 39.7454 11.9192C39.9085 11.7561 40.0001 11.535 40.0001 11.3043V4.54261C39.9987 3.33826 39.5197 2.18363 38.6681 1.33202C37.8165 0.480419 36.6618 0.00138087 35.4575 0Z" fill="#3D3D3D"/>

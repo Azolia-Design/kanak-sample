@@ -77,7 +77,7 @@ function Item({ data, onClick, filter, QR3DExplore }) {
                         <img src={data.qr?.url} alt={data.qr?.alt} className="ic ic-80" />
                         {data.qr_url.url ?
                             (
-                                <a href={data.qr_url.url} target='_blank' className='katalog-main-list-item-info-qr-link'>
+                                <a href={data.qr_url.url} target={data.qr_url.target ? data.qr_url.target : ''} className='katalog-main-list-item-info-qr-link'>
                                     {QR3DExplore}
                                 </a>
                             ) : (

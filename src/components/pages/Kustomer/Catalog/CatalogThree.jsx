@@ -218,7 +218,7 @@ function KustomerCatalogThree(props) {
                                 <img src={product_feature.qr.url} alt="" className="ic ic-80" />
                                 {product_feature.qr_url.url ?
                                     (
-                                        <a href={product_feature.qr_url.url} target='_blank' className='kustomer-cata-card-qr-link'>
+                                        <a href={product_feature.qr_url.url} target={product_feature.qr_url.target ? product_feature.qr_url.target : ''} className='kustomer-cata-card-qr-link'>
                                             {props.QR3DExplore}
                                         </a>
                                     ) : (

@@ -79,7 +79,7 @@ function HomeProduct(props) {
                                     <img src={item.data.qr.url} alt="" className="ic ic-80" />
                                         {item.data.qr_url.url ?
                                             (
-                                                <a href={item.data.qr_url.url} target='_blank' className='home-prod-cards-qr-link'>
+                                                <a href={item.data.qr_url.url} target={item.data.qr_url.target ? item.data.qr_url.target : ''} className='home-prod-cards-qr-link'>
                                                     {props.QR3DExplore}
                                                 </a>
                                             ) : (
