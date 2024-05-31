@@ -2,7 +2,6 @@ import './Perk.scss';
 import { stagger, inView, animate, timeline } from "motion";
 import SplitType from 'split-type';
 import { useEffect } from 'react';
-import useDevice from '@hooks/useDevice';
 
 function KareersPerk(props) {
     useEffect(() => {

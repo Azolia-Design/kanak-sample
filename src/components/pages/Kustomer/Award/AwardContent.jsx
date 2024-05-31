@@ -9,7 +9,6 @@ function KustomerAwardContent(props) {
         const describe = new SplitType('.kustomer-award-content-des p', { types: 'lines, words', lineClass: 'split-line' })
         const viewAll = new SplitType('.kustomer-award-content-link .txt', { types: 'lines, words', lineClass: 'split-line' })
 
-
         animate('.kustomer-award-head-img img', { opacity: 0, transform: "scale(.8) translateY(40%)" }, { duration: 0 })
         animate(title.words, { opacity: 0, transform: 'translateY(100%)' }, { duration: 0 })
         animate(label.words, { opacity: 0, transform: 'translateY(100%)' }, { duration: 0 })

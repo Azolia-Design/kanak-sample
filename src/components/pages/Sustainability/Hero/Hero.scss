@@ -1,0 +1,77 @@
+@use '@styles/mixins' as *;
+@use '@styles/colors' as *;
+
+.sustainable-hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include sm {
+        height: 100dvh;
+        display: block;
+    }
+    &-title {
+        max-width: 129.5rem;
+        text-align: center;
+        margin: 0 auto;
+        padding-top: 25.2rem;
+        padding-bottom: 27.4rem;
+        @include md {
+            padding-top: 23rem;
+            padding-bottom: 13.5rem;
+
+            @include text(h1);
+            max-width: 64rem;
+        }
+        @include sm {
+            padding-top: 18rem;
+            padding-bottom: 0;
+
+            @include text(h3);
+            max-width: 40rem;
+        }
+        @include xs {
+            @include text(h4);
+        }
+        .txt-180 {
+            @include md {
+                @include text(h0);
+            }
+            @include sm {
+                @include text(h1);
+            }
+            @include xs {
+                @include text(h2);
+            }
+        }
+    }
+    &-three {
+        position: absolute;
+        z-index: 99;
+        top: 0;
+        left: 0;
+
+        @include size(100%);
+
+        pointer-events: none;
+        &-wrap {
+            position: relative;
+            z-index: 2;
+        }
+        &-stick {
+            position: sticky;
+            top: 0;
+            left: 0;
+
+            @include size(100%, 100vh);
+
+            overflow: hidden;
+            &-inner {
+                @include size(100%);
+            }
+        }
+        * {
+            pointer-events: none !important;
+        }
+    }
+}

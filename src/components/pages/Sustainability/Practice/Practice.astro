@@ -1,0 +1,38 @@
+---
+import { Image } from 'astro:assets';
+import { convertHighlight } from '@/components/utils/text';
+import SustainPractice from './Practice';
+---
+<SustainPractice
+    subtitle={Astro.props.data.practice_subtitle}
+    client:visible={{ rootMargin: "200% 0px 200% 0px" }}
+    >
+    <Fragment set:html={convertHighlight(Astro.props.data.practice_title)} slot="title"/>
+    <Fragment slot="list">
+        {Astro.props.data.practice_list.map((item: any, idx) => (
+            <div class='sustainable-practice-item'>
+                <div class='sustainable-practice-item-ic'>
+                    <Image
+                        src={item.icon.url}
+                        alt=""
+                        class='ic ic-80'
+                        width={item.icon.dimensions.width || "80"}
+                        height={item.icon.dimensions.height || "80"}
+                    />
+                    {item.icon_2.url && (
+                        <Image
+                            src={item.icon_2.url}
+                            alt=""
+                            class='ic ic-80'
+                            width={item.icon_2.dimensions.width || "80"}
+                            height={item.icon_2.dimensions.height || "80"}
+                        />
+                    )}
+                </div>
+                <h3 set:html={item.title[0].text} class="heading h2 txt-black txt-up sustainable-practice-item-title"/>
+                <p class='txt txt-18 txt-med sustainable-practice-item-desc'>{item.desc}</p>
+                {idx < (Astro.props.data.practice_list.length - 1) && (<div class='line line-bot'></div>)}
+            </div>
+        ))}
+    </Fragment>
+</SustainPractice>

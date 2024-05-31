@@ -1,0 +1,10 @@
+---
+import { convertHighlight } from "@/components/utils/text";
+import SustainCommit from "./Commit";
+---
+<SustainCommit
+    list={Astro.props.data.commitment_list} client:visible={{ rootMargin: "200% 0px 200% 0px" }}
+    client:visible={{ rootMargin: "200% 0px 200% 0px" }}
+    >
+    <Fragment set:html={convertHighlight(Astro.props.data.commitment_title)} slot="title"/>
+</SustainCommit>

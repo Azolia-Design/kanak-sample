@@ -235,6 +235,7 @@ button {
 .btn-outline {
     position: relative;
     overflow: hidden;
+    transition: all 400ms ease-in-out;
     &::before,
     &::after {
         content: '';
@@ -245,7 +246,7 @@ button {
         top: 0;
         left: -100%;
         z-index: -1;
-        @include transition(transform 0.3s cubic-bezier(0.75, 0, 0.125, 1));
+        @include transition(transform 0.4s cubic-bezier(0.75, 0, 0.125, 1));
     }
 
     &::before {
@@ -264,11 +265,12 @@ button {
             &:hover {
                 color: var(--cl-white);
                 border-color: var(--cl-orange);
+
                 &::before,
                 &::after {
                     @include transform(translate3d(100%, 0, 0));
                 }
-    
+
                 &::after {
                     transition-duration: .38s;
                     @include transition-delay(0.08s);

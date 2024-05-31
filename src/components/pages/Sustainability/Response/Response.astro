@@ -1,0 +1,10 @@
+---
+import SustainResponse from "./Response";
+import { convertHighlight } from "@/components/utils/text";
+---
+<SustainResponse
+    list={Astro.props.data.response_list}
+    client:visible={{ rootMargin: "200% 0px 200% 0px" }}
+    >
+    <Fragment set:html={convertHighlight(Astro.props.data.response_title)} slot="title"/>
+</SustainResponse>
