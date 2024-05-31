@@ -77,7 +77,7 @@ function SustainableItem(props) {
                         <img src={props.data.qr?.url} alt={props.data.qr?.alt} className="ic ic-80"/>
                         {props.data.qr_url.url ?
                             (
-                                <a href={props.data.qr_url.url} target='_blank' className='kustomer-sus-main-table-item-info-qr-link'>
+                                <a href={props.data.qr_url.url} target={props.data.qr_url.target ? props.data.qr_url.target : ''} className='kustomer-sus-main-table-item-info-qr-link'>
                                     {props.QR3DExplore}
                                 </a>
                             ) : (

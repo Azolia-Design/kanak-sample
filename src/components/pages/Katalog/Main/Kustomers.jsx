@@ -30,7 +30,7 @@ function Kustomers({ list, filter, setFilter, setLimit, allItem }) {
                     <div className="katalog-main-filter-list-toggle-txt-wrap">
                         <div className="txt-16 txt-up txt-black katalog-main-filter-list-toggle-txt-head">Kustomer</div>
                         <div className="katalog-main-filter-list-toggle-txt-title">
-                            {filter.kustomer}
+                            {list.find((kustomer) => kustomer.uid === filter.kustomer)?.title || 'All'}
                         </div>
                     </div>
                 </div>
