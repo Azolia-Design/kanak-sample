@@ -47,7 +47,7 @@ function Content(props) {
                 modelWrapRef.current.position.set(animThreeVal(0 / scaleOffset, .3 / scaleOffset, y.progress), animThreeVal(-.6 / scaleOffset, -.4 / scaleOffset, y.progress), animThreeVal(0 / scaleOffset, -.1 / scaleOffset, y.progress))
                 modelWrapRef.current.rotation.set(animThreeValRot(0, .4, y.progress), animThreeValRot(0, .02, y.progress), animThreeValRot(0, -.35, y.progress))
 
-                contactShadow.current.position.y = animThreeVal(-1.1 / scaleOffset, -1.1 / scaleOffset, y.progress)
+                contactShadow.current.position.y = animThreeVal(-1.1 / scaleOffset, -1.2 / scaleOffset, y.progress)
             }
         }, {
                 target: document.querySelector('.sustainable-intro') ,
@@ -60,7 +60,7 @@ function Content(props) {
                 modelWrapRef.current.rotation.set(animThreeValRot(0.4, 2.2, y.progress), animThreeValRot(.02, -1, y.progress), animThreeValRot(-.35, -.2, y.progress))
                 modelWrapRef.current.scale.set(animThreeVal(7 / scaleOffset, 7.4 / scaleOffset, y.progress), animThreeVal(7 / scaleOffset, 7.4 / scaleOffset, y.progress), animThreeVal(7 / scaleOffset, 7.4 / scaleOffset, y.progress))
 
-                contactShadow.current.position.y = animThreeVal(-1.1 / scaleOffset, -1.35 / scaleOffset, y.progress)
+                contactShadow.current.position.y = animThreeVal(-1.2 / scaleOffset, -1.35 / scaleOffset, y.progress)
             }
         }, {
                 target: document.querySelector('.sustainable-practice-wrap') ,
@@ -73,7 +73,7 @@ function Content(props) {
                 modelWrapRef.current.rotation.set(animThreeValRot(2.2, 2.1, y.progress), animThreeValRot(-1, -1.1, y.progress), animThreeValRot(-.2, .2, y.progress))
                 modelWrapRef.current.scale.set(animThreeVal(7.4 / scaleOffset, 5.5 / scaleOffset, y.progress), animThreeVal(7.4 / scaleOffset, 5.5 / scaleOffset, y.progress), animThreeVal(7.4 / scaleOffset, 5.5 / scaleOffset, y.progress))
 
-                contactShadow.current.position.y = animThreeVal(-1.3 / scaleOffset, -1.2 / scaleOffset, y.progress)
+                contactShadow.current.position.y = animThreeVal(-1.35 / scaleOffset, -1.2 / scaleOffset, y.progress)
             }
         }, {
                 target: document.querySelectorAll('.sustainable-practice-item')[0],
