@@ -1,9 +1,9 @@
 import { useGLTF } from '@react-three/drei'
-import {memo} from 'react';
+import { memo } from 'react';
 let path;
 function GetModel(props) {
   path = props.file
-  const { nodes } = useGLTF(props.file)
+  const { nodes } = useGLTF(props.file);
   return (
     <group {...props} dispose={null}>
       {nodes.Scene.children.map((item, idx) => (
