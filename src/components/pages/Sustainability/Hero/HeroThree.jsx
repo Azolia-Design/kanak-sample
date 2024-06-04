@@ -29,7 +29,7 @@ function Content(props) {
 
     useFrame(({ clock }) => {
         if (!modelRef.current) return;
-        modelRef.current.rotation.x += (0 - modelRef.current.rotation.x + Math.cos(clock.getElapsedTime() / 2) * Math.PI * .02) * .08
+        modelRef.current.rotation.x += (0 - modelRef.current.rotation.x + Math.sin(clock.getElapsedTime() / 2) * Math.PI * .02) * .08
         modelRef.current.rotation.y += (0 - modelRef.current.rotation.y + Math.cos(clock.getElapsedTime() / 2) * Math.PI * .02) * .08
     })
 
@@ -116,6 +116,12 @@ function Content(props) {
                 offset: ["start 50%", "end 50%"]
         })
     }, []);
+
+    useEffect(() => {
+        // modelRef.current?.traverse((object) => {
+        //     console.log(object.uuid == '9d63d066-2fb2-4116-a7aa-fe23a5671be6');
+        // })
+    }, [modelRef]);
     return (
         <>
             <group>
@@ -126,7 +132,7 @@ function Content(props) {
                 >
                     <Suspense>
                         <mesh ref={modelRef}  material-color="white">
-                            <GetModel file='/glb/klamshell-79-transformed.glb' />
+                            <GetModel file='/glb/klamshell-79-clean-rig-transformed.glb' />
                         </mesh>
                     </Suspense>
                 </group>
