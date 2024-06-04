@@ -26,11 +26,16 @@ function Content(props) {
         return (oldVal + ( (-oldVal + newVal) * ease(prog)));
     }
 
-
+    let isSet = false;
     useFrame(({ clock }) => {
         if (!modelRef.current) return;
         modelRef.current.rotation.x += (0 - modelRef.current.rotation.x + Math.sin(clock.getElapsedTime() / 2) * Math.PI * .02) * .08
         modelRef.current.rotation.y += (0 - modelRef.current.rotation.y + Math.cos(clock.getElapsedTime() / 2) * Math.PI * .02) * .08
+        modelRef.current.children[0].children[1].position.set(0, 0.041, -0.08)
+        if (!isSet) {
+            modelRef.current.children[0].children[1].rotation.x = -Math.PI / 2
+            isSet = true
+        }
     })
 
     useEffect(() => {
@@ -48,6 +53,10 @@ function Content(props) {
                 modelWrapRef.current.rotation.set(animThreeValRot(0, .1, y.progress), 0, 0)
 
                 contactShadow.current.position.y = animThreeVal(-1.1 / scaleOffset, -1.2 / scaleOffset, y.progress)
+
+                if (modelRef.current) {
+                    modelRef.current.children[0].children[1].rotation.x = animThreeValRot(-.5, 0, y.progress)    
+                };
             }
         }, {
                 target: document.querySelector('.sustainable-hero') ,
@@ -115,12 +124,11 @@ function Content(props) {
                 target: document.querySelectorAll('.sustainable-practice-item')[2],
                 offset: ["start 50%", "end 50%"]
         })
-    }, []);
+    }, [modelRef]);
 
     useEffect(() => {
-        // modelRef.current?.traverse((object) => {
-        //     console.log(object.uuid == '9d63d066-2fb2-4116-a7aa-fe23a5671be6');
-        // })
+        console.log(modelRef.current)
+        
     }, [modelRef]);
     return (
         <>
