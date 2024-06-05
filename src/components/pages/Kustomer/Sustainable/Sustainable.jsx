@@ -71,7 +71,7 @@ function SustainableItem(props) {
                 <h4 className="heading h6 txt-black txt-up kustomer-sus-main-table-item-info-name" onClick={props.onClick}>
                     {props.data.title}
                 </h4>
-                <div className="kustomer-sus-main-table-item-info-qr">
+                <div className={cn("kustomer-sus-main-table-item-info-qr", { "hidden": !props.data.qr?.url })}>
                     <div className="line line-ver line-qr"></div>
                     <div className="kustomer-sus-main-table-item-info-qr-inner">
                         <img src={props.data.qr?.url} alt={props.data.qr?.alt} className="ic ic-80"/>

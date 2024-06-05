@@ -2,6 +2,7 @@ import './Product.scss';
 import { useRef, useEffect } from 'react';
 import { useProductIndex } from '@contexts/StoreGlobal';
 import { scroll } from "motion";
+import cn from 'clsx';
 
 function HomeProduct(props) {
     const { index, setIndex } = useProductIndex();
@@ -75,7 +76,7 @@ function HomeProduct(props) {
                             {props.itemList.map((item, idx) => (
                                 <div
                                     key={idx}
-                                    className={`home-prod-cards-qr ${index.value === idx ? 'active' : ''}`}>
+                                    className={cn("home-prod-cards-qr", { "active": index.value === idx, "hidden": !item.data.qr.url })}>
                                     <img src={item.data.qr.url} alt="" className="ic ic-80" />
                                         {item.data.qr_url.url ?
                                             (
