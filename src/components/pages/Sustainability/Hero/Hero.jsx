@@ -39,9 +39,8 @@ function SustainHero(props) {
             position: absolute;
             top: ${elRect.top}px;
             left: ${elRect.left}px;
-            z-index: 999
+            z-index: 3
         `;
-        console.log(elRect);
     }, [width, height])
     return(
         <>

@@ -84,8 +84,9 @@
 
         width: calc(50% - 10rem);
         &:not(:last-child) {
-            padding-bottom: 8rem;
+            min-height: 70vh;
             @include sm {
+                min-height: unset;
                 padding-bottom: 3.2rem;
             }
         }

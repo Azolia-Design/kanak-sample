@@ -37,7 +37,6 @@ function Content(props) {
             isSet = true
         }
     })
-
     useEffect(() => {
         if (window.innerWidth > 991) {
         } else if (window.innerWidth > 767) {
@@ -45,80 +44,82 @@ function Content(props) {
         } else {
             setScaleOffset(1.5)
         }
+    }, []);
+
+    useEffect(() => {
+        if (!modelWrapRef.current) return;
 
         scroll(({ y }) => {
-            if (!modelWrapRef.current) return;
             if (y.progress >= 0 && y.progress < 1) {
-                modelWrapRef.current.position.set(0, animThreeVal(-.6 / scaleOffset, -.4 / scaleOffset, y.progress), 0)
-                modelWrapRef.current.rotation.set(animThreeValRot(0, .1, y.progress), 0, 0)
+                modelWrapRef.current.position.set(0, animThreeVal(-.65 / scaleOffset, -.4 / scaleOffset, y.progress), 0)
+                modelWrapRef.current.rotation.set(animThreeValRot(.18, .1, y.progress), 0, 0)
 
                 contactShadow.current.position.y = animThreeVal(-1.1 / scaleOffset, -1.2 / scaleOffset, y.progress)
 
                 if (modelRef.current) {
-                    modelRef.current.children[0].children[1].rotation.x = animThreeValRot(-.5, 0, y.progress)    
+                    modelRef.current.children[0].children[1].rotation.set(animThreeValRot(-.5, 0, y.progress), 0,0)
                 };
             }
         }, {
-                target: document.querySelector('.sustainable-hero') ,
+                target: document.querySelector('.sustainable-hero'),
                 offset: ["start start", "end 50%"]
         })
 
         scroll(({ y }) => {
-            if (!modelWrapRef.current) return;
             if (y.progress > 0 && y.progress <= 1) {
                 modelWrapRef.current.position.set(animThreeVal(0 / scaleOffset, .3 / scaleOffset, y.progress), animThreeVal(-.4 / scaleOffset, -.4 / scaleOffset, y.progress), animThreeVal(0 / scaleOffset, -.1 / scaleOffset, y.progress))
                 modelWrapRef.current.rotation.set(animThreeValRot(.1, .4, y.progress), animThreeValRot(0, .02, y.progress), animThreeValRot(0, -.35, y.progress))
 
-                contactShadow.current.position.y = animThreeVal(-1.2 / scaleOffset, -1.25 / scaleOffset, y.progress)
+                contactShadow.current.position.set(animThreeVal(0 / scaleOffset, 0 / scaleOffset, y.progress), animThreeVal(-1.2 / scaleOffset, -2 / scaleOffset, y.progress), animThreeVal(0 / scaleOffset, 5 / scaleOffset, y.progress))
+                if (modelRef.current) {
+                    modelRef.current.children[0].children[1].rotation.x = 0;
+                };
             }
         }, {
                 target: document.querySelector('.sustainable-intro') ,
                 offset: ["start 50%", "end 50%"]
         })
+
         scroll(({ y }) => {
-            if (!modelWrapRef.current) return;
             if (y.progress > 0 && y.progress <= 1) {
                 modelWrapRef.current.position.set(animThreeVal(.3 / scaleOffset, 1.6 / scaleOffset, y.progress), animThreeVal(-.4 / scaleOffset, -.1 / scaleOffset, y.progress), animThreeVal(-.1 / scaleOffset, -.25 / scaleOffset, y.progress))
                 modelWrapRef.current.rotation.set(animThreeValRot(0.4, 2.2, y.progress), animThreeValRot(.02, -1, y.progress), animThreeValRot(-.35, -.2, y.progress))
                 modelWrapRef.current.scale.set(animThreeVal(7 / scaleOffset, 7.4 / scaleOffset, y.progress), animThreeVal(7 / scaleOffset, 7.4 / scaleOffset, y.progress), animThreeVal(7 / scaleOffset, 7.4 / scaleOffset, y.progress))
-
-                contactShadow.current.position.y = animThreeVal(-1.25 / scaleOffset, -1.35 / scaleOffset, y.progress)
             }
         }, {
                 target: document.querySelector('.sustainable-practice-wrap') ,
                 offset: ["start 50%", "end 50%"]
         })
+
         scroll(({ y }) => {
-            if (!modelWrapRef.current) return;
             if (y.progress > 0 && y.progress <= 1) {
                 modelWrapRef.current.position.set(animThreeVal(1.6 / scaleOffset, -1.2 / scaleOffset, y.progress), animThreeVal(-.1 / scaleOffset, -.6 / scaleOffset, y.progress), animThreeVal(-.25 / scaleOffset, 0 / scaleOffset, y.progress))
                 modelWrapRef.current.rotation.set(animThreeValRot(2.2, 2.1, y.progress), animThreeValRot(-1, -1.1, y.progress), animThreeValRot(-.2, .2, y.progress))
                 modelWrapRef.current.scale.set(animThreeVal(7.4 / scaleOffset, 5.5 / scaleOffset, y.progress), animThreeVal(7.4 / scaleOffset, 5.5 / scaleOffset, y.progress), animThreeVal(7.4 / scaleOffset, 5.5 / scaleOffset, y.progress))
-
-                contactShadow.current.position.y = animThreeVal(-1.35 / scaleOffset, -1.2 / scaleOffset, y.progress)
             }
         }, {
                 target: document.querySelectorAll('.sustainable-practice-item')[0],
                 offset: ["start 50%", "end 50%"]
         })
+
         scroll(({ y }) => {
-            if (!modelWrapRef.current) return;
             if (y.progress > 0 && y.progress <= 1) {
                 modelWrapRef.current.position.set(animThreeVal(-1.2 / scaleOffset, 1 / scaleOffset, y.progress), animThreeVal(-.6 / scaleOffset, -.8 / scaleOffset, y.progress), animThreeVal(0 / scaleOffset, 0 / scaleOffset, y.progress))
                 modelWrapRef.current.rotation.set(animThreeValRot(2.1, .8, y.progress), animThreeValRot(-1.1, -.8, y.progress), animThreeValRot(.2, .8, y.progress))
-                contactShadow.current.position.y = animThreeVal(-1.2 / scaleOffset, -1.36 / scaleOffset, y.progress)
+
+                contactShadow.current.position.set(0, animThreeVal(-4 / scaleOffset, -1.36 / scaleOffset, y.progress), animThreeVal(5 / scaleOffset, 0 / scaleOffset, y.progress))
             }
         }, {
                 target: document.querySelectorAll('.sustainable-practice-item')[1],
                 offset: ["start 50%", "end 50%"]
         })
+
         scroll(({ y }) => {
-            if (!modelWrapRef.current) return;
             if (y.progress > 0 && y.progress <= 1) {
                 modelWrapRef.current.position.set(animThreeVal(1 / scaleOffset, -1 / scaleOffset, y.progress), animThreeVal(-.8 / scaleOffset, -.7 / scaleOffset, y.progress), animThreeVal(0 / scaleOffset, 0 / scaleOffset, y.progress))
                 modelWrapRef.current.rotation.set(animThreeValRot(.8, 1.08, y.progress), animThreeValRot(-.8, -1.045, y.progress), animThreeValRot(.8, .98, y.progress))
 
-                contactShadow.current.position.y = animThreeVal(-1.36 / scaleOffset, -1 / scaleOffset, y.progress)
+                contactShadow.current.position.set(0, animThreeVal(-1.36 / scaleOffset, -1 / scaleOffset, y.progress), 0)
             }
         }, {
                 target: document.querySelectorAll('.sustainable-practice-item')[2],
@@ -126,10 +127,6 @@ function Content(props) {
         })
     }, [modelRef]);
 
-    useEffect(() => {
-        console.log(modelRef.current)
-        
-    }, [modelRef]);
     return (
         <>
             <group>
