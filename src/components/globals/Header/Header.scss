@@ -239,6 +239,15 @@
     }
 
     &-sub {
+        @keyframes spin {
+            0% {
+                transform: rotate(0);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
         grid-column: 1/15;
         grid-row: 2/3;
         justify-self: start;
@@ -248,6 +257,9 @@
         padding-top: 2rem;
         transition: all 400ms ease;
 
+        .ic {
+            animation: spin 5s linear infinite;
+        }
         @include md {
             grid-column: 1/8;
         }

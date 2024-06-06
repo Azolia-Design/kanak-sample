@@ -209,7 +209,6 @@
 
                 &-inner {
                     grid-area: 1/1/2/2;
-                    padding: 2rem;
                     display: flex;
                     justify-content: center;
                     align-items: center;
@@ -478,6 +477,9 @@
                         grid-template-columns: 3fr 7fr;
                         column-gap: unset;
                         padding: unset;
+                    }
+                    > * {
+                        word-wrap: break-word;
                     }
 
                     &.desktop {
