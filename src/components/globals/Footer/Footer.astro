@@ -38,7 +38,7 @@ const exploreList = await Promise.all([
         >
             <Image
                 src={Astro.props.bg.url}
-                alt=""
+                alt={Astro.props.bg.alt || ""}
                 slot="background"
                 class="img img-fill"
                 width={Astro.props.bg.dimensions.width}

@@ -98,11 +98,10 @@
 
         &-item {
             --height-overlap: 10rem;
-            --top-distance: 14rem;
-
+            --top-distance: -1.99rem;
             @include md {
                 --height-overlap: 14rem;
-                --top-distance: 6rem;
+                --top-distance: -6.4rem;
             }
 
             background-color: var(--cl-bg);

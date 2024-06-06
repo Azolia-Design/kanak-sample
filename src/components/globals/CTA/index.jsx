@@ -27,7 +27,7 @@ function GlobalCTA(props) {
     }, [])
     return (
         <section className="global-cta">
-            <div className="global-cta-bg">
+            <div className="global-cta-bg bg-light">
                 {props.background}
             </div>
             <div className="container grid">

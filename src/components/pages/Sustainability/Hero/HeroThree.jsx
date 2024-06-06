@@ -84,7 +84,7 @@ function Content(props) {
             if (y.progress > 0 && y.progress <= 1) {
                 modelWrapRef.current.position.set(animThreeVal(.3 / scaleOffset, 1.6 / scaleOffset, y.progress), animThreeVal(-.4 / scaleOffset, -.1 / scaleOffset, y.progress), animThreeVal(-.1 / scaleOffset, -.25 / scaleOffset, y.progress))
                 modelWrapRef.current.rotation.set(animThreeValRot(0.4, 2.2, y.progress), animThreeValRot(.02, -1, y.progress), animThreeValRot(-.35, -.2, y.progress))
-                modelWrapRef.current.scale.set(animThreeVal(7 / scaleOffset, 7.4 / scaleOffset, y.progress), animThreeVal(7 / scaleOffset, 7.4 / scaleOffset, y.progress), animThreeVal(7 / scaleOffset, 7.4 / scaleOffset, y.progress))
+                modelWrapRef.current.scale.set(animThreeVal(6.5 / scaleOffset, 7.4 / scaleOffset, y.progress), animThreeVal(6.5 / scaleOffset, 7.4 / scaleOffset, y.progress), animThreeVal(6.5 / scaleOffset, 7.4 / scaleOffset, y.progress))
             }
         }, {
                 target: document.querySelector('.sustainable-practice-wrap') ,
@@ -132,7 +132,7 @@ function Content(props) {
             <group>
                 <group
                     ref={modelWrapRef}
-                    scale={[7 / scaleOffset, 7 / scaleOffset, 7 / scaleOffset]}
+                    scale={[6.5 / scaleOffset, 6.5 / scaleOffset, 6.5 / scaleOffset]}
                     position={[0, -.6 / scaleOffset, 0]}
                 >
                     <Suspense>
