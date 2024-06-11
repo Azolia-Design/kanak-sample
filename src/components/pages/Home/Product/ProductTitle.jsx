@@ -1,7 +1,7 @@
 import './ProductTitle.scss'
 import SplitType from 'split-type';
 import { stagger, inView, timeline, animate, scroll } from "motion"
-import { useRef, useEffect } from 'react';
+import { useEffect } from 'react';
 
 function HomeProductTitle(props) {
     useEffect(() => {

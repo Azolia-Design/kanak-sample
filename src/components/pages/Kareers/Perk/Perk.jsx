@@ -11,8 +11,8 @@ function KareersPerk(props) {
         animate(title.words, {opacity: 0, transform: 'translateY(100%)'}, {duration: 0})
         animate(subTitle.words, {opacity: 0, transform: 'translateY(100%)'}, {duration: 0})
         const sequence = [
-            [subTitle.words, {opacity: 1, transform: 'none'}, {duration: .6, delay: stagger(.02)}],
-            [title.words, {opacity: 1, transform: 'none'}, {duration: .8, delay: stagger(.02), at: '<'}]
+            [title.words, {opacity: 1, transform: 'none'}, {duration: .8, delay: stagger(.02)}],
+            [subTitle.words, {opacity: 1, transform: 'none'}, {duration: .6, delay: stagger(.02), at: '<'}]
         ]
 
         inView('.kareer-perk', () => {
