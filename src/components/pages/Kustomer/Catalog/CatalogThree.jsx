@@ -214,7 +214,7 @@ function KustomerCatalogThree(props) {
                         {props.listItem.map(({ product_feature }, idx) => (
                             <div
                                 key={idx}
-                                className={cn("kustomer-cata-card-qr", { "active": conditionIndexWithDevice(idx) })}>
+                                className={cn("kustomer-cata-card-qr", { "active": conditionIndexWithDevice(idx), "hidden": !product_feature.qr.url })}>
                                 <img src={product_feature.qr.url} alt="" className="ic ic-80" />
                                 {product_feature.qr_url.url ?
                                     (

@@ -205,6 +205,10 @@
         }
     }
     &-sub {
+        @keyframes spin {
+            0% { transform: rotate(0); }
+            100% { transform: rotate(360deg);}
+        }
         position: absolute;
         top: calc(50vh - 3.2rem - 3rem - 3.2rem);
         left: 6rem;
@@ -222,6 +226,7 @@
         }
         .ic {
             flex: none;
+            animation: spin 5s linear infinite;
         }
     }
 }

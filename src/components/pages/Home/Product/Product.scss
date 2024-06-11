@@ -229,6 +229,9 @@
                 opacity: 1;
                 pointer-events: auto;
             }
+            &.hidden {
+                display: none;
+            }
 
             &-wrap {
                 display: grid;

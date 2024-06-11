@@ -11,6 +11,7 @@ import Kustomers from "./Kustomers";
 import Categories from './Categories'
 import ProductPopup from "@components/globals/ProductPopup";
 import { updateQueryParam } from "@utils/parse";
+import cn  from 'clsx';
 
 function Item({ data, onClick, filter, QR3DExplore }) {
     const itemRef = useRef();
@@ -71,7 +72,7 @@ function Item({ data, onClick, filter, QR3DExplore }) {
                 <div className="katalog-main-list-item-info-name" onClick={onClick}>
                     <h4 className="heading h6 txt-black txt-up">{convertHyphen(data.title)}</h4>
                 </div>
-                <div className="katalog-main-list-item-info-qr">
+                <div className={cn("katalog-main-list-item-info-qr", { "hidden": !data.qr?.url })}>
                     <div className="line line-ver line-qr"></div>
                     <div className="katalog-main-list-item-info-qr-inner">
                         <img src={data.qr?.url} alt={data.qr?.alt} className="ic ic-80" />

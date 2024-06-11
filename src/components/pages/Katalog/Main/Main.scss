@@ -651,6 +651,9 @@
                     @include md {
                         padding: .8rem;
                     }
+                    &.hidden {
+                        display: none;
+                    }
                     &-inner {
                         position: relative;
                         @include md {
