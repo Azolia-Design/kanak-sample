@@ -228,7 +228,7 @@ function Content(props) {
     )
 }
 
-function HomeHeroThree({...props}) {
+function HomeHeroThree(props) {
     const { width, height } = useWindowSize();
     if (width == 0) {
         return;
@@ -239,12 +239,12 @@ function HomeHeroThree({...props}) {
             <div className="home-hero-three">
                 <div className="home-hero-three-stick">
                     <div className="home-hero-three-stick-inner">
-                        <Canvas camera={{ fov: fov, near: 0.1, far: 10000, position: [0, 0, perspective], aspect: width / height }} shadows>
-                            <Suspense fallback={null}>
+                        <Suspense fallback={<div className="home-hero-three-loading">{props.icLoad}</div>}>
+                            <Canvas camera={{ fov: fov, near: 0.1, far: 10000, position: [0, 0, perspective], aspect: width / height }} shadows>
                                 <Content width={width} height={height} list={props.list}/>
                                 <AdaptiveDpr pixelated />
-                            </Suspense>
-                        </Canvas>
+                            </Canvas>
+                        </Suspense>
                     </div>
                 </div>
             </div>

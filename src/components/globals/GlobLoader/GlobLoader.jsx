@@ -1,9 +1,8 @@
 import './GlobLoader.scss';
-import { progressPercent } from '@contexts/StoreGlobal';
-import {animate, inView, timeline, stagger} from 'motion'
+import { animate } from 'motion'
 import { useEffect, useRef, useState } from 'react';
-import { useProgress } from '@react-three/drei'
 import gsap from 'gsap';
+import cn from 'clsx';
 
 const dataLoadingBreakdown = [
     { progression: 0, width: 0 },
@@ -23,19 +22,7 @@ function GlobLoaderMain({ ...props }) {
     const loaderRef = useRef();
     const ROOT_DURATION = 3;
     const [counter, setCounter] = useState('00');
-
-    // function handlePercentChange() {
-    //     activateElement(percent);
-    // }
-    // function activateElement(percent) {
-    //     const elements = document.querySelectorAll('.loader-circle-imgs-item');
-
-    //     // Deactivate all elements
-    //     // elements.forEach(element => element.classList.remove('active'));
-
-    //     // Activate the selected element
-    //     // elements[index].classList.add('active');
-    // }
+    const [preventLoading, setPreventLoading] = useState(false);
 
     const calculateDistance = (arr) => {
         let result = [];
@@ -46,48 +33,53 @@ function GlobLoaderMain({ ...props }) {
     }
 
     useEffect(() => {
-        const counter = { value: 0 };
-
-        const ROOT_DELAY = 0.1;
-        const loadingProgress = gsap.timeline({
-            onComplete: () => {
-                loadingProgress.clear();
-                document.querySelector('.loader').classList.add('done-anim')
-                // onFinishIntro();
-            }
-        });
-
-        const loadingTo = (timeline, value, duration) => {
-            timeline
-                .to('.loader-circle', { left: `${value}%`, duration: duration, ease: 'linear' })
-                .to(counter, {
-                    value: value, duration: duration, ease: 'none', onUpdate: () => {
-                        setCounter(Math.round(counter.value) < 10 ? `0${Math.round(counter.value)}`: Math.round(counter.value))
-                }}, '<=0');
+        if (Boolean(window.sessionStorage.getItem('loadedScreen'))) {
+            setPreventLoading(true)
         }
+        else {
+            const counter = { value: 0 };
+            const ROOT_DELAY = 0.1;
+            const loadingProgress = gsap.timeline({
+                onComplete: () => {
+                    loadingProgress.clear();
+                    document.querySelector('.loader').classList.add('done-anim')
+                    window.sessionStorage.setItem('loadedScreen', true)
+                }
+            });
 
-        const distanceArr = calculateDistance(dataLoadingBreakdown.map((item) => item.progression));
-        const dataLoading = dataLoadingBreakdown.map((obj, index) => ({...obj, distance: distanceArr[index - 1] || 0}))
+            const loadingTo = (timeline, value, duration) => {
+                timeline
+                    .to('.loader-circle', { left: `${value}%`, duration: duration, ease: 'linear' })
+                    .to(counter, {
+                        value: value, duration: duration, ease: 'none', onUpdate: () => {
+                            setCounter(Math.round(counter.value) < 10 ? `0${Math.round(counter.value)}`: Math.round(counter.value))
+                    }}, '<=0');
+            }
 
-        loadingProgress
-            .set('.loader-circle', { left: '0%' }, 1.3)
-            .set(counter, { value: 0 }, 1)
-            dataLoading.map(({ width, distance }) => loadingTo(loadingProgress, width, distance))
+            const distanceArr = calculateDistance(dataLoadingBreakdown.map((item) => item.progression));
+            const dataLoading = dataLoadingBreakdown.map((obj, index) => ({...obj, distance: distanceArr[index - 1] || 0}))
 
-        loadingProgress.duration(ROOT_DURATION);
-        loadingProgress.delay(ROOT_DELAY);
+            gsap.to('.loader-wrap', { opacity: 1, duration: 0.4 });
+            loadingProgress
+                .set('.loader-circle', { left: '0%' }, 1.3)
+                .set(counter, { value: 0 }, 1)
+                dataLoading.map(({ width, distance }) => loadingTo(loadingProgress, width, distance))
 
-        const allImgs = document.querySelectorAll(".loader-circle-imgs-item");
-        allImgs.forEach((item, idx) => {
-            animate(item,
-                { opacity: idx == allImgs.length - 1 ? [0, 1, 1] : idx == 0 ? [1, 1, 0] : [0, 1, 0]},
-                { duration: (ROOT_DURATION / allImgs.length) + .2, delay: idx * ((ROOT_DURATION / allImgs.length)), easing: 'ease-in-out' }
-            )
-        })
-    }, []);
+            loadingProgress.duration(ROOT_DURATION);
+            loadingProgress.delay(ROOT_DELAY);
+
+            const allImgs = document.querySelectorAll(".loader-circle-imgs-item");
+            allImgs.forEach((item, idx) => {
+                animate(item,
+                    { opacity: idx == allImgs.length - 1 ? [0, 1, 1] : idx == 0 ? [1, 1, 0] : [0, 1, 0]},
+                    { duration: (ROOT_DURATION / allImgs.length) + .2, delay: idx * ((ROOT_DURATION / allImgs.length)), easing: 'ease-in-out' }
+                )
+            })
+        }
+    }, [preventLoading]);
 
     return (
-        <div className='loader' ref={loaderRef}>
+        <div className={cn('loader', { 'hidden': preventLoading })} ref={loaderRef}>
             <div className="loader-wrap">
                 <div className="loader-line">
                     <div className="loader-logo">

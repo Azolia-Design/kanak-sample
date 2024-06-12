@@ -31,6 +31,23 @@
     font-family: 'Kanak';
     src: url('/fonts/Kanak.woff') format('woff');
     font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Kanak-semi';
+    src: url('/fonts/Kanak-semi.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Kanak-black';
+    src: url('/fonts/Kanak-black.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
     font-display: swap;
 }
 
@@ -168,22 +185,32 @@ $txtSizes: 10, 12, 14, 16, 18, 20, 36, 180;
 
     &-med {
         font-weight: 500;
+        &.txt-kanak,
+        .txt-kanak {
+            font-family: 'Kanak-semi';
+        }
     }
 
     &-semi {
         font-weight: 600;
+        &.txt-kanak,
+        .txt-kanak {
+            font-family: 'Kanak-semi';
+        }
     }
 
     &-bold {
         font-weight: 700;
     }
-
     &-kanak {
         font-family: 'Kanak';
-        font-weight: 400;
     }
     &-black {
         font-weight: 900;
+        &.txt-kanak,
+        .txt-kanak {
+            font-family: 'Kanak-black';
+        }
     }
 
     &-up {

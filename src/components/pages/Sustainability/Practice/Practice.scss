@@ -2,6 +2,8 @@
 @use '@styles/colors' as *;
 
 .sustainable-practice {
+    position: relative;
+    z-index: 5;
     &-wrap {
         padding-top: 15rem;
         padding-bottom: 12.6rem;
@@ -27,17 +29,41 @@
         }
     }
     &-title {
-        @include md {
-            @include text(h1);
-            max-width: 50rem;
-        }
-        @include sm {
-            @include text(h2);
-            max-width: 40rem;
-        }
-        @include xs {
-            @include text(h3);
-            max-width: 30rem;
+        text-align: center;
+        margin: 0 auto;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        &-grp {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            @include md {
+                @include text(h1);
+                max-width: 50rem;
+            }
+            @include sm {
+                @include text(h2);
+                max-width: 40rem;
+            }
+            @include xs {
+                @include text(h3);
+                max-width: 30rem;
+            }
+            span {
+                display: inline-block;
+                text-align: center;
+            }
+            &.title-bot:not(.clone-el) {
+                opacity: 0 !important;
+            }
+            &.clone-el {
+                top: 100vh;
+                z-index: -1;
+            }
         }
     }
     &-link {
@@ -68,7 +94,7 @@
         padding-bottom: 20rem;
         @include md {
             grid-column: 1/-1;
-
+            gap: 12rem 0;
             padding-bottom: 10rem;
         }
         @include sm {
@@ -85,8 +111,10 @@
         width: calc(50% - 10rem);
         &:not(:last-child) {
             min-height: 70vh;
-            @include sm {
+            @include md {
                 min-height: unset;
+            }
+            @include sm {
                 padding-bottom: 3.2rem;
             }
         }

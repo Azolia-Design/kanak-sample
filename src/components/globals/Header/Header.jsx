@@ -9,7 +9,7 @@ import { animate, timeline, stagger, inView } from "motion";
 import SplitType from 'split-type';
 
 function HeaderGlobal(props) {
-    const dropdownRef = useRef();
+    const dropdownRef = useRef(null);
     const [navOpen, setNavOpen] = useState(false);
     const [dropdownIdx, setDropdownIdx] = useState(-1);
     const [isHide, setIsHide] = useState(false);
@@ -316,7 +316,7 @@ function HeaderGlobal(props) {
                                     <a href="https://maps.app.goo.gl/YxM91MZmzBCW5F1C6" target='_blank' className="heading h6 txt-black txt-up nav-info-item-content">321 Hovan Drive, Fort Wayne, IN 46825, US</a>
                                 </div>
                                 <a href="/contact" className="btn btn-lg btn-wide nav-info-btn">
-                                    <div className="heading txt-16 txt-black txt-up">Kontact us</div>
+                                    <div className="heading txt-16 txt-black txt-up"><span className='txt-kanak'>K</span>ontact us</div>
                                 </a>
                             </div>
                             <div className="txt txt-16 txt-semi nav-info-footer">⁠©⁠ {props.currYear} KANAK NATURALS </div>

@@ -2,6 +2,7 @@
 const { product_kategory_list } = Astro.props;
 import { getByUID } from "@/prismic.js";
 import HomeHeroThree from "./HeroThree.jsx";
+import icLoad from "@assets/contact-form-load.svg?raw";
 const list = await Promise.all(
     product_kategory_list.map((product_group: any) => {
         let group = getByUID("product_group", product_group.item.uid);
@@ -21,5 +22,7 @@ let featuredItemList = await Promise.all(
     })
 )
 ---
+<HomeHeroThree list={featuredItemList} client:load>
+    <Fragment set:html={icLoad} alt="" slot="icLoad"/>
+</HomeHeroThree>
 
-<HomeHeroThree list={featuredItemList} client:load />
