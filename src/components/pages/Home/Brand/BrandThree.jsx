@@ -1,6 +1,6 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState, Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
-import { Environment, ContactShadows, AdaptiveDpr } from "@react-three/drei";
+import { Environment, AdaptiveDpr } from "@react-three/drei";
 import useWindowSize from "@hooks/useWindowSize";
 import gsap from 'gsap';
 import { suspend } from 'suspend-react'
@@ -90,7 +90,7 @@ function Content({ ...props }) {
     )
 }
 
-function HomeBrandThree({ ...props }) {
+function HomeBrandThree(props) {
     const { width, height } = useWindowSize();
     const activeIndex = useStore(brandIndex);
     if (width == 0) {
@@ -99,7 +99,7 @@ function HomeBrandThree({ ...props }) {
         let perspective = 4;
         let fov = 60;
         return (
-            <>
+            <Suspense fallback={<div className="home-brand-loading">{props.icLoad}</div>}>
                 <div className={`home-brand-canvas-inner-item ${activeIndex == 1 ? 'blur' : ''}`}>
                     <Canvas camera={{ fov: fov, near: 0.1, far: 10000, position: [0, 0, perspective], aspect: width / height }} shadows>
                         <Content width={width} height={height} list={props.list} top={true} />
@@ -112,7 +112,7 @@ function HomeBrandThree({ ...props }) {
                         <AdaptiveDpr pixelated />
                     </Canvas>
                 </div>
-            </>
+            </Suspense>
         )
     }
 }

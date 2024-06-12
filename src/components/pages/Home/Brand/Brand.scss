@@ -10,6 +10,13 @@
     .container {
         height: 100%;
     }
+    &-loading {
+        width: 20rem;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
     &-canvas {
         grid-column: 1/9;
         margin: 0 -20rem;
@@ -130,14 +137,14 @@
             margin-left: 0;
             flex-direction: row;
             padding-bottom: 3.2rem;
-            
+
         }
         &-list {
             @include sm {
                 height: 100%;
                 overflow: visible !important;
                 display: flex;
-                
+
             }
         }
         &-item {

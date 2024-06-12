@@ -26,6 +26,11 @@
         margin-bottom: 6rem;
         align-self: center;
         padding-top: 18.4rem;
+        @media screen and (max-device-aspect-ratio: 2.0451) {
+            font-size: calc(7.7 * 1.25vh);
+            margin-bottom: calc(3.3 * 1.25vh);
+            max-width: calc(80 * 1.25vh);
+        }
         @include md {
             grid-column: 2/12;
             text-align: center;

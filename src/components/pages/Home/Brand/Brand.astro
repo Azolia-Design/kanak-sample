@@ -5,6 +5,7 @@ import { getByUID } from "@/prismic.js";
 import { Image } from "astro:assets";
 import arrIconDesk from "@assets/arr-ext-21.svg";
 import arrIconMob from "@assets/arrow-small.svg";
+import icLoad from "@assets/contact-form-load.svg?raw";
 import HomeBrand from "./Brand";
 
 let replaceWord = title.split(",")[title.split(",").length - 1];
@@ -24,7 +25,9 @@ const list = await Promise.all(
 ---
 
 <HomeBrand list={list} client:visible={{ rootMargin: "200% 0px 200% 0px" }}>
-    <HomeBrandThree list={list} slot="brandThree" client:load />
+    <HomeBrandThree list={list} slot="brandThree" client:load>
+        <Fragment set:html={icLoad} alt="" slot="icLoad"/>
+    </HomeBrandThree>
     <Fragment set:html={newTitle} slot="title" />
     <Image src={arrIconDesk} alt="" slot="arrIconDesk" />
     <Image src={arrIconMob} alt="" slot="arrIconMob" />

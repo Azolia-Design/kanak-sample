@@ -24,7 +24,7 @@ let newTitle = Astro.props.title.replaceAll('\n','<br/>')
     <Fragment set:html={newTitle} slot="title"/>
     <Fragment slot="list">
         {list.map((item: any, idx: number) => (
-            <HomeValueItem idx={idx} key={idx} sub_title={item.data.sub_title} link={idx == 0 ? '/fulfillment' : idx == 1 ? '' : '/about#Award'}>
+            <HomeValueItem idx={idx} key={idx} sub_title={item.data.sub_title} link={idx == 0 ? '/fulfillment' : idx == 1 ? '/sustainability' : '/about#Award'}>
                 <Fragment set:html={item.data.title[0].text.replaceAll('\n','<br/>')} slot="title"/>
                 <Image src={item.data.icon.url} alt="" class="ic ic-150" slot="ic" width={item.data.icon.dimensions.width} height={item.data.icon.dimensions.height}/>
             </HomeValueItem>

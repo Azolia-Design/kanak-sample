@@ -32,13 +32,13 @@ function SustainResponse(props) {
             const itemDesc = new SplitType(item.querySelector('.sustainable-response-main-item-desc'), { types: 'lines, words', lineClass: 'split-line' })
 
             animate([...itemTitle.words, ...itemDesc.words], { opacity: 1, transform: "translateY(100%)" }, { duration: 0 })
-            animate(item.querySelector('.sustainable-response-main-item-img'), { opacity: 0, transform: 'scale(.4)', transformOrigin: "right bottom" }, { duration: 0 })
+            animate(item.querySelector('.sustainable-response-main-item-img'), { opacity: 0, transform: "translate(2rem, 2rem) scale(.9)", transformOrigin: "right bottom" }, { duration: 0 })
             animate(item.querySelector('.line'), { scaleX: 0, opacity: 0, transformOrigin: window.outerWidth <= 767 ? 'left' : (idx % 2) ? 'left' : 'right' }, { duration: 0 })
 
             const itemSequence = [
                 [itemTitle.words, {opacity: 1, transform: 'none'}, {duration: .8, delay: stagger(.05)}],
                 [itemDesc.words, {opacity: 1, transform: 'none'}, {duration: .6, delay: stagger(.05), at: '<'}],
-                [item.querySelector('.sustainable-response-main-item-img'), { opacity: 1, transform: 'none' }, { duration: .6, at: .4, delay: stagger(.05) }],
+                [item.querySelector('.sustainable-response-main-item-img'), { transform: "none", opacity: 1 }, { duration: .6, at: .4,  delay: stagger(.05) }],
                 [item.querySelector('.line'), { opacity: 1, scaleX: 1 }, { duration: 1.2, at: .35 }]
             ]
 
@@ -56,8 +56,10 @@ function SustainResponse(props) {
             const itemDetail = new SplitType(item.querySelectorAll('.sustainable-response-main-item-desc p'), { types: 'lines, words', lineClass: 'split-line' })
 
             animate(itemDetail.words, { opacity: 0, transform: "translateY(100%)" }, { duration: 0 })
+            animate(item.querySelectorAll('.sustainable-response-main-item-desc'), { opacity: 0 }, { duration: 0 })
             animate(item.querySelectorAll('.line'), { scaleX: 0, opacity: 0, transformOrigin: window.outerWidth <= 767 ? 'left' : (idx % 2) ? 'left' : 'right' }, { duration: 0 })
             const itemSequence = [
+                [item.querySelectorAll('.sustainable-response-main-item-desc'), { opacity: 1 }, { duration: .6, delay: stagger(.05), at: '<' }],
                 [itemDetail.words, {opacity: 1, transform: 'none'}, {duration: .6, delay: stagger(.05), at: '<'}],
                 [item.querySelectorAll('.line'), { opacity: 1, scaleX: 1 }, { duration: 1.2, at: .35 }]
             ]
@@ -66,6 +68,7 @@ function SustainResponse(props) {
                 timeline(itemSequence).finished.then(() => {
                     itemDetail.revert();
                     item.querySelectorAll('.line').forEach((line) => line.removeAttribute('style'));
+                    item.querySelectorAll('.sustainable-response-main-item-desc').removeAttribute('style');
                 })
             }, { margin: "-40% 0px -40% 0px" })
         })

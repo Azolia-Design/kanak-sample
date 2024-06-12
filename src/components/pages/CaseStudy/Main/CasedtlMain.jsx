@@ -70,7 +70,7 @@ function CasedtlMain(props) {
         let richtextSequence = []
         document.querySelectorAll('.casedtl-content-richtext *:not(ul, astro-slot, .holder)').forEach((item, idx) => {
             const richTxt = new SplitType(item, { types: 'lines, words', lineClass: 'split-line' })
-            animate(richTxt.words, { opacity: 0, transform: "translateY(100%)" }, { duration: 0 })
+            richTxt.words.length > 0 && animate(richTxt.words, { opacity: 0, transform: "translateY(100%)" }, { duration: 0 })
             if (item.nodeName == 'P') {
                 richtextSequence.push(
                     [richTxt.words, { opacity: 1, transform: "none" }, { duration: .4, delay: stagger(.004), at: idx * .1 + .2 }]
