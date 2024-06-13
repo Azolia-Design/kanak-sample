@@ -77,7 +77,6 @@
 
             &-three {
                 z-index: 3;
-                position: relative;
                 @include size(150%);
 
                 @include md {
@@ -138,6 +137,12 @@
             top: 50%;
             left: 50%;
             transform: translateY(-50%, -50%);
+            @include md {
+                width: 15rem;
+            }
+            @include sm {
+                width: 8rem;
+            }
         }
     }
 
