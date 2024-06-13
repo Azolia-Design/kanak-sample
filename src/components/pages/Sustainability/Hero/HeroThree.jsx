@@ -225,11 +225,9 @@ function Content(props) {
                     scale={[6.5 / scaleOffset, 6.5 / scaleOffset, 6.5 / scaleOffset]}
                     position={[0, (window.innerWidth > 767 ? -.65 : -1.15) / scaleOffset, 0]}
                 >
-                    <Suspense>
-                        <mesh ref={modelRef}  material-color="white">
-                            <GetModel file='/glb/klamshell-79-clean-rig-transformed.glb' />
-                        </mesh>
-                    </Suspense>
+                    <mesh ref={modelRef}  material-color="white">
+                        <GetModel file='/glb/klamshell-79-clean-rig-transformed.glb' />
+                    </mesh>
                 </group>
                 <ambientLight intensity={0.1} />
                 <directionalLight />
