@@ -1,5 +1,6 @@
 ---
 import KustomerHero from "./Hero";
+import icLoad from "@assets/contact-form-load.svg?raw";
 const productArr = {
     "Retail": [
         {
@@ -138,4 +139,5 @@ const productArr = {
     client:load
 >
     <Fragment set:html={Astro.props.title} slot="title" />
+    <Fragment set:html={icLoad} alt="" slot="icLoad"/>
 </KustomerHero>

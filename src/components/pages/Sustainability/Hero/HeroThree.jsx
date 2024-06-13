@@ -225,11 +225,9 @@ function Content(props) {
                     scale={[6.5 / scaleOffset, 6.5 / scaleOffset, 6.5 / scaleOffset]}
                     position={[0, (window.innerWidth > 767 ? -.65 : -1.15) / scaleOffset, 0]}
                 >
-                    <Suspense>
-                        <mesh ref={modelRef}  material-color="white">
-                            <GetModel file='/glb/klamshell-79-clean-rig-transformed.glb' />
-                        </mesh>
-                    </Suspense>
+                    <mesh ref={modelRef}  material-color="white">
+                        <GetModel file='/glb/klamshell-79-clean-rig-transformed.glb' />
+                    </mesh>
                 </group>
                 <ambientLight intensity={0.1} />
                 <directionalLight />
@@ -253,12 +251,12 @@ function SustainHeroThree(props) {
             <div className="sustainable-hero-three">
                 <div className="sustainable-hero-three-stick">
                     <div className="sustainable-hero-three-stick-inner">
-                        <Canvas camera={{  fov: fov, near: 0.1, far: 10000, position: [0, 0, perspective], aspect: width / height }} shadows>
-                            <Suspense fallback={null}>
+                        <Suspense fallback={<div className="sustainable-hero-three-loading">{props.icLoad}</div>}>
+                            <Canvas camera={{  fov: fov, near: 0.1, far: 10000, position: [0, 0, perspective], aspect: width / height }} shadows>
                                 <Content width={width} height={height}/>
                                 <AdaptiveDpr pixelated />
-                            </Suspense>
-                        </Canvas>
+                            </Canvas>
+                        </Suspense>
                     </div>
                 </div>
             </div>

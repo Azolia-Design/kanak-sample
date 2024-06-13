@@ -6,6 +6,7 @@ import Intro from '@pages/Sustainability/Intro/Intro.astro';
 import Practice from '@pages/Sustainability/Practice/Practice.astro';
 import Commit from '@pages/Sustainability/Commit/Commit.astro';
 import Response from "@pages/Sustainability/Response/Response.astro";
+import icLoad from "@assets/contact-form-load.svg?raw";
 
 import { getPage } from "@/prismic.js";
 const { data } = await getPage("sustainability_page");
@@ -19,7 +20,7 @@ const { data } = await getPage("sustainability_page");
     >
     <div class="sustainable-hero-three-wrap">
         <Hero/>
-        <HeroThree client:load/>
+        <HeroThree client:load><Fragment set:html={icLoad} alt="" slot="icLoad"/></HeroThree>
         <Intro data={data}/>
         <Practice data={data}/>
     </div>

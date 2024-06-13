@@ -53,9 +53,7 @@ function Content(props) {
                 {props.list.map(({ url, ...props }, idx) => (
                     <group key={idx}>
                         <mesh {...props}>
-                            <Suspense>
-                                <GetModel file={url}/>
-                            </Suspense>
+                            <GetModel file={url}/>
                         </mesh>
                     </group>
                 ))}
@@ -77,10 +75,12 @@ function KustomerHeroThree(props) {
     let fov = 12;
 
     return (
-        <Canvas camera={{ fov: fov, near: 0.1, far: 10000, position: [0, 0, perspective], aspect: width / height }} shadows>
-            <Content width={width} height={height} { ...props } />
-            <AdaptiveDpr pixelated />
-        </Canvas>
+        <Suspense fallback={<div className="kustomer-hero-slide-loading">{props.icLoad}</div>}>
+            <Canvas camera={{ fov: fov, near: 0.1, far: 10000, position: [0, 0, perspective], aspect: width / height }} shadows>
+                <Content width={width} height={height} { ...props } />
+                <AdaptiveDpr pixelated />
+            </Canvas>
+        </Suspense>
     )
 }
 export default KustomerHeroThree;

@@ -1,6 +1,7 @@
 ---
 import PrivateHeroThree from "./HeroThree";
 import PrivateHeroContent from "./HeroContent";
+import icLoad from "@assets/contact-form-load.svg?raw";
 ---
 <section class="private-hero">
     <div class="container grid">
@@ -9,5 +10,7 @@ import PrivateHeroContent from "./HeroContent";
             client:visible={{ rootMargin: "200% 0px 200% 0px" }}
         />
     </div>
-    <PrivateHeroThree client:idle/>
+    <PrivateHeroThree client:load>
+        <Fragment set:html={icLoad} alt="" slot="icLoad"/>
+    </PrivateHeroThree>
 </section>

@@ -1,6 +1,6 @@
 import './Hero.scss';
 import { animate, stagger, inView } from "motion";
-import { useEffect  } from 'react';
+import { useEffect } from 'react';
 import SplitType from 'split-type';
 
 function SustainHero(props) {

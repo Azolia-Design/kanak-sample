@@ -81,5 +81,12 @@
         > * {
             pointer-events: none !important;
         }
+        &-loading {
+            width: 20rem;
+            position: absolute;
+            top: 50%;
+            left: 65%;
+            transform: translate(-50%, -50%);
+        }
     }
 }

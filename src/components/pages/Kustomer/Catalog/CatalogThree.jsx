@@ -65,43 +65,40 @@ function Content(props) {
                             props.list.map(({ product_feature }, idx) => (
                                 idx === currentIndex && (
                                     <animated.group key={idx} {...style}>
-                                        <animated.mesh
-                                            material-color="white">
-                                            <Suspense>
-                                                {product_feature.uid == 'burrito-bowls-ka1065' ? (
-                                                    props.page_title == 'Retail' ? (
-                                                        <Image url="/Natural-20oz-oct-bowl.png" transparent segments={10} scale={[.2,.2]} side={DoubleSide} position={[0,.01,0]}/>
-                                                    ) : (
-                                                        <GetModel file='/glb/64-oval-bowl-clean-transformed.glb' scale={[.9,.9,.9]} rotation={[0, Math.PI * -.5, 0]}/>
-                                                    )
-                                                ) : product_feature.uid == 'compartment-trays-st5515' ? (
-                                                    <GetModel file='/glb/KA10054-clean-transformed.glb' scale={[.8,.8,.8]} position={[0, .02, 0]} />
-                                                ) : product_feature.uid == '9-molded-fiber-3-compartment-plates-ba5504' ? (
-                                                    <GetModel file='/glb/3-elegant-compartments-plates-clean-transformed.glb' rotation={[Math.PI * -.5, 0, 0]} scale={[2, 2, 2]} position={[0, 0.015, 0]} />
-                                                ) : product_feature.uid == 'soup-bowls-dc0825' ? (
-                                                    <GetModel file='/glb/41-ramen-clean-transformed.glb' scale={[.68,.68,.68]} position={[0,-.015,0]}/>
-                                                ) : product_feature.uid == '8-produce-trays-pt8412' ? (
-                                                    <GetModel file='/glb/48-monte-tray-clean-transformed.glb' scale={[1.2,1.2,1.2]}/>
-                                                ) : product_feature.uid == 'pla-cutlery-ct6523' ? (
-                                                    <Fork material={<CustomMaterial color='#F9833A' roughness={.2} />} />
-                                                ) : product_feature.uid == 'custom-double-wall-hot-cups-dw1204' ? (
-                                                    <GetModel file='/glb/kup-5-transformed.glb' scale={[.76,.76,.76]} position={[0,-.02,0]}/>
-                                                ) : product_feature.uid == 'pla-straw' ? (
-                                                    <Image url="/image-straw.png" transparent segments={10} scale={[.2,.2]} side={DoubleSide} position={[0,.02,0]}/>
-                                                ) : product_feature.uid == '6-square-single-compartment-clamshells-ba6631' ? (
-                                                    <GetModel file='/glb/klamshell-79-transformed.glb' scale={[.8,.8,.8]} position={[0,-.01,0]}/>
-                                                ) : product_feature.uid == 'take-away-bags-ka355231150' ? (
-                                                    <Image url="/image-bag.png" transparent segments={10} scale={[.2,.2]} side={DoubleSide} position={[0,.02,0]}/>
-                                                ) : product_feature.uid == 'take-away-trays-ka99co' ? (
-                                                    <GetModel file='/glb/BA-CFH-700-salad-box-clean-transformed.glb' scale={[.8,.8,.8]} position={[0,-.02,0]}/>
-                                                ) : product_feature.uid == 'takeaway-containers' ? (
-                                                    <GetModel file='/glb/cfh-900-saladbox-lid-clearn-transformed.glb' scale={[.8,.8,.8]} position={[0,-.01,0]}/>
-                                                ) : product_feature.uid == 'baking-dishes-ka1117' ? (
-                                                    <GetModel file='/glb/53-square-food-clean-transformed.glb' scale={[.8,.8,.8]} position={[0,-.01,0]}/>
+                                        <animated.mesh material-color="white">
+                                            {product_feature.uid == 'burrito-bowls-ka1065' ? (
+                                                props.page_title == 'Retail' ? (
+                                                    <Image url="/Natural-20oz-oct-bowl.png" transparent segments={10} scale={[.2,.2]} side={DoubleSide} position={[0,.01,0]}/>
                                                 ) : (
-                                                    <GetModel file='/glb/m_box-clean-transformed.glb' scale={[.8,.8,.8]} position={[0,.01,0]}/>
-                                                )}
-                                            </Suspense>
+                                                    <GetModel file='/glb/64-oval-bowl-clean-transformed.glb' scale={[.9,.9,.9]} rotation={[0, Math.PI * -.5, 0]}/>
+                                                )
+                                            ) : product_feature.uid == 'compartment-trays-st5515' ? (
+                                                <GetModel file='/glb/KA10054-clean-transformed.glb' scale={[.8,.8,.8]} position={[0, .02, 0]} />
+                                            ) : product_feature.uid == '9-molded-fiber-3-compartment-plates-ba5504' ? (
+                                                <GetModel file='/glb/3-elegant-compartments-plates-clean-transformed.glb' rotation={[Math.PI * -.5, 0, 0]} scale={[2, 2, 2]} position={[0, 0.015, 0]} />
+                                            ) : product_feature.uid == 'soup-bowls-dc0825' ? (
+                                                <GetModel file='/glb/41-ramen-clean-transformed.glb' scale={[.68,.68,.68]} position={[0,-.015,0]}/>
+                                            ) : product_feature.uid == '8-produce-trays-pt8412' ? (
+                                                <GetModel file='/glb/48-monte-tray-clean-transformed.glb' scale={[1.2,1.2,1.2]}/>
+                                            ) : product_feature.uid == 'pla-cutlery-ct6523' ? (
+                                                <Fork material={<CustomMaterial color='#F9833A' roughness={.2} />} />
+                                            ) : product_feature.uid == 'custom-double-wall-hot-cups-dw1204' ? (
+                                                <GetModel file='/glb/kup-5-transformed.glb' scale={[.76,.76,.76]} position={[0,-.02,0]}/>
+                                            ) : product_feature.uid == 'pla-straw' ? (
+                                                <Image url="/image-straw.png" transparent segments={10} scale={[.2,.2]} side={DoubleSide} position={[0,.02,0]}/>
+                                            ) : product_feature.uid == '6-square-single-compartment-clamshells-ba6631' ? (
+                                                <GetModel file='/glb/klamshell-79-transformed.glb' scale={[.8,.8,.8]} position={[0,-.01,0]}/>
+                                            ) : product_feature.uid == 'take-away-bags-ka355231150' ? (
+                                                <Image url="/image-bag.png" transparent segments={10} scale={[.2,.2]} side={DoubleSide} position={[0,.02,0]}/>
+                                            ) : product_feature.uid == 'take-away-trays-ka99co' ? (
+                                                <GetModel file='/glb/BA-CFH-700-salad-box-clean-transformed.glb' scale={[.8,.8,.8]} position={[0,-.02,0]}/>
+                                            ) : product_feature.uid == 'takeaway-containers' ? (
+                                                <GetModel file='/glb/cfh-900-saladbox-lid-clearn-transformed.glb' scale={[.8,.8,.8]} position={[0,-.01,0]}/>
+                                            ) : product_feature.uid == 'baking-dishes-ka1117' ? (
+                                                <GetModel file='/glb/53-square-food-clean-transformed.glb' scale={[.8,.8,.8]} position={[0,-.01,0]}/>
+                                            ) : (
+                                                <GetModel file='/glb/m_box-clean-transformed.glb' scale={[.8,.8,.8]} position={[0,.01,0]}/>
+                                            )}
                                         </animated.mesh>
                                     </animated.group>
                                 )
@@ -178,17 +175,19 @@ function KustomerCatalogThree(props) {
                 <div className="kustomer-cata-card-middle">
                     <div className="kustomer-cata-card-middle-inner" data-cursor="ext">
                         <div className="kustomer-cata-card-middle-inner-canvas">
-                            <Canvas camera={{ fov: fov, near: 0.1, far: 10000, position: [0, 0, perspective], aspect: width / height }} shadows>
-                                <Content
-                                    width={width}
-                                    height={height}
-                                    index={props.isMobile ? itemIndex : index}
-                                    direction={direction}
-                                    list={props.listItem}
-                                    page_title={props.page_title}
-                                />
-                                <AdaptiveDpr pixelated />
-                            </Canvas>
+                            <Suspense fallback={<div className="kustomer-cata-card-middle-loading">{props.icLoad}</div>}>
+                                <Canvas camera={{ fov: fov, near: 0.1, far: 10000, position: [0, 0, perspective], aspect: width / height }} shadows>
+                                    <Content
+                                        width={width}
+                                        height={height}
+                                        index={props.isMobile ? itemIndex : index}
+                                        direction={direction}
+                                        list={props.listItem}
+                                        page_title={props.page_title}
+                                    />
+                                    <AdaptiveDpr pixelated />
+                                </Canvas>
+                            </Suspense>
                         </div>
                         <a href={`/katalog?kustomer=${props.currPage}&category=${props.listItem[props.isMobile ? itemIndex : index].uid}`} className="kustomer-cata-card-middle-inner-link"></a>
                     </div>

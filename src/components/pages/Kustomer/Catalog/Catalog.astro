@@ -4,6 +4,7 @@ import KustomerCatalogTitle from "./CatalogTitle";
 import KustomerCatalogThree from "./CatalogThree";
 import KustomerCatalogGroup from "./CatalogGroup";
 
+import icLoad from "@assets/contact-form-load.svg?raw";
 import arrIcon from "@assets/arr-right.svg?raw";
 import QR3DExplore from '@assets/qr-3d-explore.svg';
 import "./Catalog.scss";
@@ -79,10 +80,8 @@ let listItem = await Promise.all(
 										client:media="(max-width: 767px)"
 										client:idle
 									>
-										<Fragment
-											set:html={arrIcon}
-											slot="arrIcon"
-										/>
+										<Fragment set:html={arrIcon} slot="arrIcon" />
+										<Fragment set:html={icLoad} alt="" slot="icLoad"/>
 										<Image src={QR3DExplore} alt="" class="ic ic-40" width={QR3DExplore.width / 2} slot='QR3DExplore'/>
 									</KustomerCatalogThree>
 								</KustomerCatalogGroup>
@@ -98,6 +97,7 @@ let listItem = await Promise.all(
 				client:idle
 			>
 				<Fragment set:html={arrIcon} slot="arrIcon" />
+				<Fragment set:html={icLoad} alt="" slot="icLoad"/>
 				<Image src={QR3DExplore} alt="" class="ic ic-40" width={QR3DExplore.width / 2} slot='QR3DExplore'/>
 			</KustomerCatalogThree>
 		</div>
