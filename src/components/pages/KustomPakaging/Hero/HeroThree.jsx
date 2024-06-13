@@ -33,13 +33,9 @@ function Content(props) {
                 scale={[9.5 / scaleOffset, 9.5 / scaleOffset, 9.5 / scaleOffset]}
                 rotation={[Math.PI * -.02, Math.PI * -.25, Math.PI * -.2]}
             >
-                <group
-                    rotation={[0, Math.PI * .48, 0]}>
-                    <mesh
-                        ref={product}>
-                        <Suspense>
-                            <GetModel file='/glb/BA-CFH-700-salad-box-clean-transformed.glb' position={[0, -.02, 0]} />
-                        </Suspense>
+                <group rotation={[0, Math.PI * .48, 0]}>
+                    <mesh ref={product}>
+                        <GetModel file='/glb/BA-CFH-700-salad-box-clean-transformed.glb' position={[0, -.02, 0]} />
                     </mesh>
                 </group>
             </group>
@@ -62,10 +58,12 @@ function KustomPackagingHeroThree(props) {
         let fov = 30;
         return (
             <div className="kuspack-hero-three" ref={threeRef}>
-                <Canvas camera={{ fov: fov, near: 0.1, far: 10000, position: [0, 0, perspective], aspect: width / height }} shadows>
-                    <Content width={width} height={height} list={props.list} />
-                    <AdaptiveDpr pixelated />
-                </Canvas>
+                <Suspense fallback={<div className="kuspack-hero-three-loading">{props.icLoad}</div>}>
+                    <Canvas camera={{ fov: fov, near: 0.1, far: 10000, position: [0, 0, perspective], aspect: width / height }} shadows>
+                        <Content width={width} height={height} list={props.list} />
+                        <AdaptiveDpr pixelated />
+                    </Canvas>
+                </Suspense>
             </div>
         )
     }

@@ -2,6 +2,7 @@
 import * as prismicH from "@prismicio/client";
 import { Image } from 'astro:assets';
 import imgPlate from "@assets/kustomer-plate.png";
+import icLoad from "@assets/contact-form-load.svg?raw";
 import KustomerAwardThree from "./AwardThree";
 import KustomerAwardContent from "./AwardContent";
 import PLMA from "@assets/kus-aw-lg.png";
@@ -12,6 +13,7 @@ import "./Award.scss";
     <div class="container grid">
         <KustomerAwardThree qr={Astro.props.qr} client:idle>
             <Image src={imgPlate} alt="" slot="imgPlate" />
+            <Fragment set:html={icLoad} alt="" slot="icLoad"/>
         </KustomerAwardThree>
         <KustomerAwardContent
             label={Astro.props.label}

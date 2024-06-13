@@ -36,13 +36,9 @@ function Content(props) {
                 scale={[6 / scaleOffset, 6 / scaleOffset, 6 / scaleOffset]}
                 rotation={[Math.PI * -.08, Math.PI * -.22, Math.PI * -.25]}
             >
-                <group
-                    rotation={[0, Math.PI * .48, 0]}>
-                    <mesh
-                        ref={product}>
-                        <Suspense>
-                            <GetModel file='/glb/78-white-clamshells-clean-transformed.glb' position={[0, -.01, 0]} />
-                        </Suspense>
+                <group rotation={[0, Math.PI * .48, 0]}>
+                    <mesh ref={product}>
+                        <GetModel file='/glb/78-white-clamshells-clean-transformed.glb' position={[0, -.01, 0]} />
                     </mesh>
                 </group>
             </group>
@@ -67,10 +63,12 @@ function PrivateHeroThree(props) {
         let fov = 30;
         return (
             <div className="private-hero-three" ref={threeRef}>
-                <Canvas camera={{ fov: fov, near: 0.1, far: 10000, position: [0, 0, perspective], aspect: width / height }} shadows>
-                    <Content width={width} height={height} list={props.list} />
-                    <AdaptiveDpr pixelated />
-                </Canvas>
+                <Suspense fallback={<div className="private-hero-three-loading">{props.icLoad}</div>}>
+                    <Canvas camera={{ fov: fov, near: 0.1, far: 10000, position: [0, 0, perspective], aspect: width / height }} shadows>
+                        <Content width={width} height={height} list={props.list} />
+                        <AdaptiveDpr pixelated />
+                    </Canvas>
+                </Suspense>
             </div>
         )
     }

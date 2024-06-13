@@ -75,7 +75,14 @@ function CasedtlMain(props) {
                 richtextSequence.push(
                     [richTxt.words, { opacity: 1, transform: "none" }, { duration: .4, delay: stagger(.004), at: idx * .1 + .2 }]
                 )
-            } else {
+            } else if (item.nodeName == 'LI') {
+                animate(item, { opacity: 0 }, { duration: 0 });
+                richtextSequence.push(
+                    [item, { opacity: 1 }, { duration: .4, delay: stagger(.004), at: idx * .1 + .2 }],
+                    [richTxt.words, { opacity: 1, transform: "none" }, { duration: .6, delay: stagger(.008), at: idx * .1 + .2 }]
+                )
+            }
+            else {
                 richtextSequence.push(
                     [richTxt.words, { opacity: 1, transform: "none" }, { duration: .6, delay: stagger(.008), at: idx * .1 + .2 }]
                 )

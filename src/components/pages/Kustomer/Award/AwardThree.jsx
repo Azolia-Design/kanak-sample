@@ -112,12 +112,13 @@ function KustomerAwardThree(props) {
     return (
         <div className="kustomer-award-product">
             <div className="kustomer-award-product-img">
-                <div
-                    className="kustomer-award-product-img-three">
-                    <Canvas camera={{ fov: fov, near: 0.1, far: 10000, position: [0, 0, perspective], aspect: width / height }} shadows>
-                        <Content width={width} height={height} { ...props } />
-                        <AdaptiveDpr pixelated />
-                    </Canvas>
+                <div className="kustomer-award-product-img-three">
+                    <Suspense fallback={<div className="kustomer-award-product-loading">{props.icLoad}</div>}>
+                        <Canvas camera={{ fov: fov, near: 0.1, far: 10000, position: [0, 0, perspective], aspect: width / height }} shadows>
+                            <Content width={width} height={height} { ...props } />
+                            <AdaptiveDpr pixelated />
+                        </Canvas>
+                    </Suspense>
                 </div>
             </div>
             <div className="kustomer-award-product-qr">

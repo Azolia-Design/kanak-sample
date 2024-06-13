@@ -118,7 +118,7 @@ function KustomerHero(props) {
                 className="kustomer-hero-slide"
                 // onMouseDown={handleMouseDown}
             >
-                <KustomerHeroThree list={props.modelList} currentIdx={currentIdx} />
+                <KustomerHeroThree icLoad={props.icLoad} list={props.modelList} currentIdx={currentIdx} />
             </div>
         </section>
     )

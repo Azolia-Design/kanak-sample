@@ -253,12 +253,12 @@ function SustainHeroThree(props) {
             <div className="sustainable-hero-three">
                 <div className="sustainable-hero-three-stick">
                     <div className="sustainable-hero-three-stick-inner">
-                        <Canvas camera={{  fov: fov, near: 0.1, far: 10000, position: [0, 0, perspective], aspect: width / height }} shadows>
-                            <Suspense fallback={null}>
+                        <Suspense fallback={<div className="sustainable-hero-three-loading">{props.icLoad}</div>}>
+                            <Canvas camera={{  fov: fov, near: 0.1, far: 10000, position: [0, 0, perspective], aspect: width / height }} shadows>
                                 <Content width={width} height={height}/>
                                 <AdaptiveDpr pixelated />
-                            </Suspense>
-                        </Canvas>
+                            </Canvas>
+                        </Suspense>
                     </div>
                 </div>
             </div>
