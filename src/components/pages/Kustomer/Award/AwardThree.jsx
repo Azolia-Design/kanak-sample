@@ -90,9 +90,7 @@ function Content(props) {
                 rotation={[0, Math.PI * .5, Math.PI * .5]}>
                 <group ref={product}>
                     <mesh ref={productInner}>
-                        <Suspense>
-                            <GetModel file="/glb/plates-80-transformed.glb"/>
-                        </Suspense>
+                        <GetModel file="/glb/plates-80-transformed.glb"/>
                     </mesh>
                 </group>
             </group>

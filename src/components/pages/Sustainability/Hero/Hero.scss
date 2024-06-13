@@ -67,6 +67,12 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
+            @include md {
+                width: 15rem;
+            }
+            @include sm {
+                width: 8rem;
+            }
         }
         &-wrap {
             position: relative;

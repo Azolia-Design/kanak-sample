@@ -38,6 +38,14 @@
         top: 50%;
         right: 10%;
         transform: translateY(-50%);
+        @include md {
+            width: 10rem;
+        }
+        @include sm {
+            top: 70%;
+            right: 0;
+            width: 8rem;
+        }
     }
     * {
         pointer-events: none !important;

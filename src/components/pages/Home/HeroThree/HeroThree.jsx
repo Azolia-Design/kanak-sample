@@ -21,39 +21,36 @@ function CustomMaterial({...props}) {
 function Model({ item, ...styles }) {
     return (
         <animated.group {...styles}>
-            <animated.mesh
-                material-color="white">
-                    <Suspense>
-                        {item.uid == 'burrito-bowls-ka1065' ? (
-                            <GetModel file='/glb/64-oval-bowl-clean-transformed.glb' scale={[.9,.9,.9]} rotation={[0, Math.PI * -.5, 0]}/>
-                        ) : item.uid == 'compartment-trays-st5515' ? (
-                            <GetModel file='/glb/KA10054-clean-transformed.glb' scale={[.8,.8,.8]} position={[0, .02, 0]} />
-                        ) : item.uid == '9-molded-fiber-3-compartment-plates-ba5504' ? (
-                            <GetModel file='/glb/3-elegant-compartments-plates-clean-transformed.glb' rotation={[Math.PI * -.5, 0, 0]} scale={[2, 2, 2]} position={[0, 0.015, 0]} />
-                        ) : item.uid == 'soup-bowls-dc0825' ? (
-                            <GetModel file='/glb/41-ramen-clean-transformed.glb' scale={[.68,.68,.68]} position={[0,-.015,0]}/>
-                        ) : item.uid == '8-produce-trays-pt8412' ? (
-                            <GetModel file='/glb/48-monte-tray-clean-transformed.glb' scale={[1.2,1.2,1.2]}/>
-                        ) : item.uid == 'pla-cutlery-ct6523' ? (
-                            <Fork material={<CustomMaterial color='#F9833A' roughness={.2} />} />
-                        ) : item.uid == 'custom-double-wall-hot-cups-dw1204' ? (
-                            <GetModel file='/glb/kup-5-transformed.glb' scale={[.76,.76,.76]} position={[0,-.02,0]}/>
-                        ) : item.uid == 'pla-straw' ? (
-                            <Image url="/image-straw.png" transparent segments={10} scale={[.2,.2]} side={DoubleSide} position={[0,.02,0]}/>
-                        ) : item.uid == '6-square-single-compartment-clamshells-ba6631' ? (
-                            <GetModel file='/glb/klamshell-79-transformed.glb' scale={[.8,.8,.8]} position={[0,-.01,0]}/>
-                        ) : item.uid == 'take-away-bags-ka355231150' ? (
-                            <Image url="/image-bag.png" transparent segments={10} scale={[.2,.2]} side={DoubleSide} position={[0,.02,0]}/>
-                        ) : item.uid == 'take-away-trays-ka99co' ? (
-                            <GetModel file='/glb/BA-CFH-700-salad-box-clean-transformed.glb' scale={[.8,.8,.8]} position={[0,-.02,0]}/>
-                        ) : item.uid == 'takeaway-containers' ? (
-                            <GetModel file='/glb/cfh-900-saladbox-lid-clearn-transformed.glb' scale={[.8,.8,.8]} position={[0,-.01,0]}/>
-                        ) : item.uid == 'baking-dishes-ka1117' ? (
-                            <GetModel file='/glb/53-square-food-clean-transformed.glb' scale={[.8,.8,.8]} position={[0,-.01,0]}/>
-                        ) : (
-                            <GetModel file='/glb/m_box-clean-transformed.glb' scale={[.8,.8,.8]} position={[0,.01,0]}/>
-                        )}
-                    </Suspense>
+            <animated.mesh material-color="white">
+                {item.uid == 'burrito-bowls-ka1065' ? (
+                    <GetModel file='/glb/64-oval-bowl-clean-transformed.glb' scale={[.9,.9,.9]} rotation={[0, Math.PI * -.5, 0]}/>
+                ) : item.uid == 'compartment-trays-st5515' ? (
+                    <GetModel file='/glb/KA10054-clean-transformed.glb' scale={[.8,.8,.8]} position={[0, .02, 0]} />
+                ) : item.uid == '9-molded-fiber-3-compartment-plates-ba5504' ? (
+                    <GetModel file='/glb/3-elegant-compartments-plates-clean-transformed.glb' rotation={[Math.PI * -.5, 0, 0]} scale={[2, 2, 2]} position={[0, 0.015, 0]} />
+                ) : item.uid == 'soup-bowls-dc0825' ? (
+                    <GetModel file='/glb/41-ramen-clean-transformed.glb' scale={[.68,.68,.68]} position={[0,-.015,0]}/>
+                ) : item.uid == '8-produce-trays-pt8412' ? (
+                    <GetModel file='/glb/48-monte-tray-clean-transformed.glb' scale={[1.2,1.2,1.2]}/>
+                ) : item.uid == 'pla-cutlery-ct6523' ? (
+                    <Fork material={<CustomMaterial color='#F9833A' roughness={.2} />} />
+                ) : item.uid == 'custom-double-wall-hot-cups-dw1204' ? (
+                    <GetModel file='/glb/kup-5-transformed.glb' scale={[.76,.76,.76]} position={[0,-.02,0]}/>
+                ) : item.uid == 'pla-straw' ? (
+                    <Image url="/image-straw.png" transparent segments={10} scale={[.2,.2]} side={DoubleSide} position={[0,.02,0]}/>
+                ) : item.uid == '6-square-single-compartment-clamshells-ba6631' ? (
+                    <GetModel file='/glb/klamshell-79-transformed.glb' scale={[.8,.8,.8]} position={[0,-.01,0]}/>
+                ) : item.uid == 'take-away-bags-ka355231150' ? (
+                    <Image url="/image-bag.png" transparent segments={10} scale={[.2,.2]} side={DoubleSide} position={[0,.02,0]}/>
+                ) : item.uid == 'take-away-trays-ka99co' ? (
+                    <GetModel file='/glb/BA-CFH-700-salad-box-clean-transformed.glb' scale={[.8,.8,.8]} position={[0,-.02,0]}/>
+                ) : item.uid == 'takeaway-containers' ? (
+                    <GetModel file='/glb/cfh-900-saladbox-lid-clearn-transformed.glb' scale={[.8,.8,.8]} position={[0,-.01,0]}/>
+                ) : item.uid == 'baking-dishes-ka1117' ? (
+                    <GetModel file='/glb/53-square-food-clean-transformed.glb' scale={[.8,.8,.8]} position={[0,-.01,0]}/>
+                ) : (
+                    <GetModel file='/glb/m_box-clean-transformed.glb' scale={[.8,.8,.8]} position={[0,.01,0]}/>
+                )}
             </animated.mesh>
         </animated.group>
     )
@@ -212,15 +209,13 @@ function Content(props) {
                     scale={[7 / scaleOffset, 7 / scaleOffset, 7 / scaleOffset]}
                     position={[0, -.4 / scaleOffset, 0]}  blur={2} far={1.2} />
                 {props.width > 767 && (
-                    <Suspense>
-                        <group ref={forkWrap} scale={[11 / scaleOffset, 11 / scaleOffset, 11 / scaleOffset]}
-                            position={[1.4 / scaleOffset, 1.2 / scaleOffset, -.4 / scaleOffset]}
-                            rotation={[Math.PI * .6, -Math.PI * .1, Math.PI * .2]}>
-                            <mesh ref={fork}>
-                                <Fork material={<CustomMaterial color='#F9833A' roughness={.2} />} />
-                            </mesh>
-                        </group>
-                    </Suspense>
+                    <group ref={forkWrap} scale={[11 / scaleOffset, 11 / scaleOffset, 11 / scaleOffset]}
+                        position={[1.4 / scaleOffset, 1.2 / scaleOffset, -.4 / scaleOffset]}
+                        rotation={[Math.PI * .6, -Math.PI * .1, Math.PI * .2]}>
+                        <mesh ref={fork}>
+                            <Fork material={<CustomMaterial color='#F9833A' roughness={.2} />} />
+                        </mesh>
+                    </group>
                 )}
             </group>
             <Environment files={suspend(warehouse)} frames={degraded ? 1 : Infinity} resolution={256}/>
