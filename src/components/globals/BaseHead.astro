@@ -26,9 +26,14 @@ const { title, meta, OP } = Astro.props;
     <script>
         window.scrollTo(0,0)
     </script>
-    <!-- <script is:inline>
-        !function(Gleap,t,i){if(!(Gleap=window.Gleap=window.Gleap||[]).invoked){for(window.GleapActions=[],Gleap.invoked=!0,Gleap.methods=["identify","setEnvironment","setTags","attachCustomData","setCustomData","removeCustomData","clearCustomData","registerCustomAction","trackEvent","log","preFillForm","showSurvey","sendSilentCrashReport","startFeedbackFlow","startBot","setAppBuildNumber","setAppVersionCode","setApiUrl","setFrameUrl","isOpened","open","close","on","setLanguage","setOfflineMode","startClassicForm","initialize","disableConsoleLogOverwrite","logEvent","hide","enableShortcuts","showFeedbackButton","destroy","getIdentity","isUserIdentified","clearIdentity","openConversations","openConversation","openHelpCenterCollection","openHelpCenterArticle","openHelpCenter","searchHelpCenter","openNewsArticle","openChecklists","startChecklist","openNews","openFeatureRequests","isLiveMode"],Gleap.f=function(e){return function(){var t=Array.prototype.slice.call(arguments);window.GleapActions.push({e:e,a:t})}},t=0;t<Gleap.methods.length;t++)Gleap[i=Gleap.methods[t]]=Gleap.f(i);Gleap.load=function(){var t=document.getElementsByTagName("head")[0],i=document.createElement("script");i.type="text/javascript",i.async=!0,i.src="https://sdk.gleap.io/latest/index.js",t.appendChild(i)},Gleap.load(),
-            Gleap.initialize("UMRE6DPfB5t25CCS1x0LtoVxiMDcrapH")
-        }}();
-    </script> -->
+    <script async defer src="https://app.visitortracking.com/assets/js/tracer.js" is:inline> </script>
+    <script is:inline>
+        function init_tracer() {
+            var tracer = new Tracer({
+                websiteId : 'a0e2d7b2-fd59-4cee-b57d-05c81524bd6f',
+                async : true,
+                debug : false
+            });
+        }
+    </script>
 </head>
