@@ -18,7 +18,7 @@ const { title, meta, OP } = Astro.props;
     <title>{title}</title>
 
     <meta property="og:type" content="website" />
-    <meta property="og:url" content={Astro.url} />
+    <meta property="og:url" content={`https://www.kanaknaturals.com${Astro.url.pathname}`} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={meta} />
     <meta property="og:image" content={OP} />
