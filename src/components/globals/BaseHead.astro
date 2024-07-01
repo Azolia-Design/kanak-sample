@@ -36,4 +36,12 @@ const { title, meta, OP } = Astro.props;
             });
         }
     </script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-P6JL7PWT9D" is:inline></script>
+    <script is:inline>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-P6JL7PWT9D');
+    </script>
 </head>
