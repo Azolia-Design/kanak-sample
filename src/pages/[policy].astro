@@ -17,7 +17,7 @@ const { policy } = Astro.params;
 const { item } = Astro.props;
 ---
 
-<Layout title={item.title}>
+<Layout title={item.page_title} meta_desc={item.meta_desc}>
   <PolicyHero title={item.title} />
   <PolicyMain id={item.termly_id} />
 </Layout>
