@@ -18,7 +18,7 @@ const { kaseStudy } = Astro.params;
 const { item } = Astro.props;
 ---
 <Layout
-    title={item.data.title[0].text}
+    title={item.data.page_title}
     meta_desc={item.data.meta_desc}
     >
     <Main {...item}/>
