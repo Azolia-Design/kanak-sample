@@ -106,8 +106,8 @@ function GlobalFooter(props) {
                     <div className="ft-left-body">
                         <div className="ft-left-body-list">
                             <ContactItem label="Get in touch" content="info@kanaknaturals.com" link="mailto:info@kanaknaturals.com" />
-                            <ContactItem label="Contact" content="+1 (260) 490 4790" link="tel:+1 (260) 490 4790" />
-                            <ContactItem label="Headquarters" content="321 Hovan Drive, Fort Wayne, IN 46825, US" link="https://maps.app.goo.gl/YxM91MZmzBCW5F1C6" target="_blank" />
+                            <ContactItem label="Contact" content="+1 (260) 490 4790" link="tel:+1 (260) 490-4790" />
+                            <ContactItem label="Headquarters" content="321 Hovan Drive, Fort Wayne, IN 46825" link="https://maps.app.goo.gl/YxM91MZmzBCW5F1C6" target="_blank" />
                         </div>
                         <div className="ft-left-body-social">
                             <a href="https://www.linkedin.com/company/kanaknaturals" target='__blank' className="ft-left-body-social-item txt-bg-link hide-mb">

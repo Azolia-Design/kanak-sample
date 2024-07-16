@@ -309,11 +309,11 @@ function HeaderGlobal(props) {
                                 </div>
                                 <div className="nav-info-item">
                                     <div className="txt txt-14 txt-med nav-info-item-head">Contact</div>
-                                    <a href="tel:+1 (260) 490 4790" className="heading h6 txt-black txt-up nav-info-item-content">+1 (260) 490 4790</a>
+                                    <a href="tel:+1 (260) 490 4790" className="heading h6 txt-black txt-up nav-info-item-content">+1 (260) 490-4790</a>
                                 </div>
                                 <div className="nav-info-item">
                                     <div className="txt txt-14 txt-med nav-info-item-head">Headquarters</div>
-                                    <a href="https://maps.app.goo.gl/YxM91MZmzBCW5F1C6" target='_blank' className="heading h6 txt-black txt-up nav-info-item-content">321 Hovan Drive, Fort Wayne, IN 46825, US</a>
+                                    <a href="https://maps.app.goo.gl/YxM91MZmzBCW5F1C6" target='_blank' className="heading h6 txt-black txt-up nav-info-item-content">321 Hovan Drive, Fort Wayne, IN 46825</a>
                                 </div>
                                 <a href="/contact" className="btn btn-lg btn-wide nav-info-btn">
                                     <div className="heading txt-16 txt-black txt-up"><span className='txt-kanak'>K</span>ontact us</div>
