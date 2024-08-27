@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState, Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 import { Environment, AdaptiveDpr } from "@react-three/drei";
-import useWindowSize from "@hooks/useWindowSize";
+import useElementSize from "@hooks/useElementSize";
 import gsap from 'gsap';
 import { suspend } from 'suspend-react'
 import GetModel from "../../../common/GetModel.jsx";
@@ -91,7 +91,7 @@ function Content({ ...props }) {
 }
 
 function HomeBrandThree(props) {
-    const { width, height } = useWindowSize();
+    const { width, height } = useElementSize('.home-brand-canvas-inner');
     const activeIndex = useStore(brandIndex);
     if (width == 0) {
         return

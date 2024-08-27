@@ -1,6 +1,6 @@
 import { useRef, useEffect, useState, Suspense } from "react";
 import { Environment, ContactShadows, AdaptiveDpr } from "@react-three/drei";
-import useWindowSize from "@hooks/useWindowSize";
+import useElementSize from "@hooks/useElementSize";
 import { suspend } from 'suspend-react'
 import GetModel from "@components/common/GetModel.jsx";
 import { Canvas, useThree } from "@react-three/fiber";
@@ -86,7 +86,7 @@ function Content(props) {
     return (
         <>
             <group
-                scale={[8 / scaleOffset, 8 / scaleOffset, 8 / scaleOffset]}
+                scale={[8, 8, 8]}
                 rotation={[0, Math.PI * .5, Math.PI * .5]}>
                 <group ref={product}>
                     <mesh ref={productInner}>
@@ -103,7 +103,7 @@ function Content(props) {
     )
 }
 function KustomerAwardThree(props) {
-    const { width, height } = useWindowSize();
+    const { width, height } = useElementSize('.kustomer-award-product-img-three');
     let perspective = 15;
     let fov = 12;
 
