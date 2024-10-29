@@ -105,9 +105,9 @@ function ContactForm(props) {
         animate([...title.words, ...body.words], {opacity: 0, transform: 'translateY(100%)'}, {duration: 0}).finished.then(() => {
             getLenis().scrollTo(0)
             setTimeout(() => {
-                if (window.location.search.includes('download')) {
-                    window.location.href = '/Kanak_Catalog_Print_spreads.pdf'
-                }
+                // if (window.location.search.includes('download')) {
+                //     window.location.href = '/Kanak_Catalog_Print_spreads.pdf'
+                // }
             }, 600);
         })
         requestAnimationFrame(() => {

@@ -259,7 +259,7 @@ function KatalogMain({ allItem, ...props }) {
                                 setFilter={setFilter}
                                 setLimit={setLimit}
                             />
-                            <div className="katalog-main-filter-list-pdf-wrap">
+                            {/* <div className="katalog-main-filter-list-pdf-wrap">
                                 <a href="/contact?src=download" className="btn katalog-main-filter-list-pdf" data-cursor="txtLink" data-cursor-txtlink="child">
                                     <div className="txt katalog-main-filter-list-pdf-inner" data-cursor-txtlink-child>
                                         <div className="ic ic-32 katalog-main-filter-list-pdf-ic">
@@ -268,7 +268,7 @@ function KatalogMain({ allItem, ...props }) {
                                         <div className="txt-20 txt-med katalog-main-filter-list-pdf-txt">Download Catalog</div>
                                     </div>
                                 </a>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                     <div className="line line-bot"></div>
