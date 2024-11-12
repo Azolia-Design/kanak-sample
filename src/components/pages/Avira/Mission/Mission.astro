@@ -1,0 +1,29 @@
+---
+import { Image } from "astro:assets";
+import AviMission from "./Mission";
+import aviraQuality from '@assets/avira-quality.jpg';
+
+---
+
+<AviMission
+  title={Astro.props.data.mission_title[0].text}
+  subtitle={Astro.props.data.mission_subtitle[0].text}
+  client:visible={{ rootMargin: "200% 0px 200% 0px" }}
+>
+  <Image
+    src={aviraQuality}
+    class="img-fill"
+    alt={Astro.props.data.mission_image.alt || ""}
+    width={1728}
+    height={1042}
+    slot="thumbnail"
+    />
+    <!-- <Image
+    src={Astro.props.data.mission_image.url}
+    class="img-fill"
+    alt={Astro.props.data.mission_image.alt || ""}
+    width={Astro.props.data.mission_image?.dimensions.width}
+    height={Astro.props.data.mission_image?.dimensions.height}
+    slot="thumbnail"
+    /> -->
+</AviMission>

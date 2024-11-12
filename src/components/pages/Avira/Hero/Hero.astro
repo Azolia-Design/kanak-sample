@@ -1,0 +1,38 @@
+---
+import { Image } from "astro:assets";
+import AviraHero from "./Hero";
+import { parseLabelsRichtext } from '@utils/text';
+import aviraLogo from '@assets/avira-logo.svg';
+import aviraHeroImg from '@assets/avira-hero.jpg';
+---
+<AviraHero
+  title={Astro.props.data.hero_title[0].text}
+  client:visible={{ rootMargin: "200% 0px 200% 0px" }}
+>
+  <Fragment
+    set:html={parseLabelsRichtext(Astro.props.data.hero_subtitle, {
+      inputLabel: 'Bold',
+      outputClass: 'txt-bold'
+    })}
+  slot="subtitle" />
+  <Image
+    src={aviraHeroImg}
+    class="img-fill"
+    alt={Astro.props.data.hero_image.alt || ""}
+    width={1000}
+    height={1300}
+    slot="heroImg" />
+    <!-- <Image
+    src={Astro.props.data.hero_image.url}
+    class="img-fill"
+    alt={Astro.props.data.hero_image.alt || ""}
+    width={Astro.props.data.hero_image?.dimensions.width}
+    height={Astro.props.data.hero_image?.dimensions.height}
+    slot="heroImg" /> -->
+  <Image
+    src={aviraLogo}
+    alt="BRC logo"
+    slot="brcLogo" 
+    class="img-h"/>
+    
+</AviraHero>
