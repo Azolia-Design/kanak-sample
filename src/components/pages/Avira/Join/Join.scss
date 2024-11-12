@@ -61,7 +61,7 @@
                 --height-overlap: 14rem;
                 --top-distance: -6.4rem;
             }
-
+            background: var(--bg-txt);
             background-color: var(--cl-bg);
             position: sticky;
             top: calc(var(--top-distance) + var(--height-overlap) * var(--idx));

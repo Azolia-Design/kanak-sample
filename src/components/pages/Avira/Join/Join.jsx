@@ -67,8 +67,10 @@ function AviJoin(props) {
         <section className="avi-join " ref={sectionRef}>
             <div className="container grid">
                 <div className="avi-join-title-wrap">
-                    <div className="heading h4 txt-black txt-up avi-join-label">{props.label}</div>
-                    <h2 className="heading h0 txt-black txt-up avi-join-title">{props.title}</h2>
+                    {/* <div className="heading h4 txt-black txt-up avi-join-label">{props.label}</div> */}
+                    {/* <h2 className="heading h0 txt-black txt-up avi-join-title">{props.title}</h2> */}
+                    <div className="heading h4 txt-black txt-up avi-join-label">Join our movement</div>
+                    <h2 className="heading h0 txt-black txt-up avi-join-title">dedication to <span className="txt-green">excellence</span></h2>
                 </div>
                 <div className="avi-join-main">
                     {props.list.map((el, idx) => (

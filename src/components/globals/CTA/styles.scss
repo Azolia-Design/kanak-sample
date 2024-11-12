@@ -144,6 +144,23 @@ html[data-page='Education'] {
         }
     }
 }
+html[data-page='Avira'] {
+    .global-cta {
+        &-main {
+            max-width: 64rem;
+            grid-column: 1/7;
+
+            @include md {
+                grid-column: 1/5;
+            }
+
+            @include sm {
+                grid-column: 1/-1;
+                margin-right: unset;
+            }
+        }
+    }
+}
 
 html[data-page='Compliance'] {
     .global-cta {

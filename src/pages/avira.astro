@@ -7,7 +7,7 @@ import aviraCta from '@assets/avira-cta.jpg';
 
 import { getPage } from "@/prismic.js";
 const { data } = await getPage("pakway_page");
-console.log(data)
+console.log(data.movement_list)
 let bg_cta = {
   dimensions: { width: 1728, height: 900 },
   alt: null,
@@ -23,7 +23,7 @@ let bg_cta = {
     meta_desc={data.meta_desc}
     open_graph={data.open_graph.url}
     data_page="Avira"
-    footer_cta={data.cta_title[0]?.text}
+    footer_cta={'Explore a partnerShip with us today!'}
     footer_bg={bg_cta}
 >
     <Hero data={data}/>
