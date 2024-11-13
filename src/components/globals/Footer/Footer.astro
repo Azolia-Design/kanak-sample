@@ -11,7 +11,7 @@ import policyData from "@pages/Policy/Data/policy-data";
 import img from "@assets/ffment-thumb.jpg";
 import LetTalkArr from "@assets/LT-Arrow.svg?raw";
 
-const { title, bg, explore } = Astro.props;
+const { title, bg, explore, btn_txt } = Astro.props;
 const currYear = new Date().getFullYear();
 const homeData = await getPage("home")
 const industryList = await Promise.all(
@@ -35,6 +35,7 @@ const exploreList = await Promise.all([
         <GlobalCTA
             title={Astro.props.title}
             client:visible={{ rootMargin: "100% 0% 100% 0%" }}
+            {...(Astro.props.cta_btn_txt && { cta_btn_txt: Astro.props.cta_btn_txt })}
         >
             <Image
                 src={Astro.props.bg.url}

@@ -39,12 +39,10 @@ function AviraHero(props) {
                     
                 </div>
                 <h1 className="heading h0 txt-up txt-black avi-hero-title">
-                    {/* {props.title} */}
-                    Pioneering Earth-Friendly Packaging Solutions
+                    {props.title}
                 </h1>
                 <div className="txt txt-18 txt-med avi-hero-sub">
-                    {/* {props.subtitle} */}
-                    With over 14 years of trusted experience serving the North American market, we're proud to announce our state-of-the-art molded fiber facility in Gujarat, India. Our 188,000-square-foot plant was meticulously designed and calibrated by the same technical experts who have served our North American customers for years,  ensuring identical quality standards and seamless product continuity. India's democratic values and robust manufacturing sector align perfectly with our commitment to providing stable, long-term supply chain solutions for our global partners
+                    {props.subtitle}
                 </div>
                 
                 <div className="avi-hero-img-wrap bg-light">

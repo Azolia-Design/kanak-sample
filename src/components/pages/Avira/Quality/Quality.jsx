@@ -1,11 +1,11 @@
-import './Mission.scss';
+import './Quality.scss';
 import { useEffect, useRef } from 'react';
 import { animate, timeline, stagger, inView, scroll } from "motion";
 import SplitType from 'split-type';
 import useSelector from '@hooks/useSelector';
 import { transform } from 'framer-motion';
 
-function AviMission({ ...props }) {
+function AviQuality({ ...props }) {
     const sectionRef = useRef();
     const q = useSelector(sectionRef);
     useEffect(() => {
@@ -72,4 +72,4 @@ function AviMission({ ...props }) {
     );
 }
 
-export default AviMission;
+export default AviQuality;

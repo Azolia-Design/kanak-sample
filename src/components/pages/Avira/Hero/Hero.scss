@@ -12,7 +12,7 @@
     @include sm {
         padding-top: 15.4rem;
     }
-
+    
     &-title {
         grid-column: 1/8;
         margin-right: -3rem;
@@ -61,7 +61,7 @@
     }
 
     &-brc {
-        grid-column: 1/7;
+        // grid-column: 1/7;
         margin-bottom: 3rem;
         align-self: start;
         &-img {
@@ -73,10 +73,9 @@
         }
         @include md {
             grid-row: 2/3;
-            margin-top: 2.4rem;
             column-gap: 2.4rem;
             &-img {
-                width: 6rem;
+                height: 6rem;
             }
             &-txt {
                 @include text(18);
@@ -87,9 +86,8 @@
             grid-column: 1/-1;
             grid-row: 1/2;
             margin-bottom: 2.4rem;
-            column-gap: 1.6rem;
             &-img {
-                width: 8rem;
+                height: 5rem;
             }
         }
     }

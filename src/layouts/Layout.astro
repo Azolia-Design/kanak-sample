@@ -29,7 +29,8 @@ const {
 	footer_cta,
 	footer_bg,
 	explore_data,
-	open_graph
+	open_graph,
+	cta_btn_txt
 } = Astro.props;
 ---
 <html lang="en" data-page={data_page ? data_page : ""}>
@@ -64,6 +65,7 @@ const {
 					title={footer_cta}
 					bg={footer_bg}
 					explore={explore_data}
+					{...(Astro.props.cta_btn_txt && { cta_btn_txt: Astro.props.cta_btn_txt })}
 				/>
 			)
 		}

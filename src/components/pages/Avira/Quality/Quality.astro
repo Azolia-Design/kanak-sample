@@ -1,0 +1,21 @@
+---
+import { Image } from "astro:assets";
+import AviQuality from "./Quality";
+import aviraQuality from '@assets/avira-quality.jpg';
+
+---
+
+<AviQuality
+  title={Astro.props.data.quality_title[0].text}
+  subtitle={Astro.props.data.quality_subtitle[0].text}
+  client:visible={{ rootMargin: "200% 0px 200% 0px" }}
+>
+    <Image
+    src={Astro.props.data.quality_image.url}
+    class="img-fill"
+    alt={Astro.props.data.quality_image.alt || ""}
+    width={Astro.props.data.quality_image?.dimensions.width}
+    height={Astro.props.data.quality_image?.dimensions.height}
+    slot="thumbnail"
+    />
+</AviQuality>

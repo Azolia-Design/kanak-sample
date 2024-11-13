@@ -93,7 +93,7 @@ function AviJoin(props) {
                                         </h3>
                                     </div>
                                     {/* <p className="txt txt-20 txt-med avi-join-main-item-sub" dangerouslySetInnerHTML={{ __html: el.subtitle.replace('9% of plastic waste', '<span class="txt-bold">9% of plastic waste</span>') }}></p> */}
-                                    <p className="txt txt-20 txt-med avi-join-main-item-sub">{el.subtitle}</p>
+                                    <p className="txt txt-18 txt-med avi-join-main-item-sub">{el.subtitle}</p>
                                 </div>
                                 <div className="avi-join-main-item-img">
                                     <img

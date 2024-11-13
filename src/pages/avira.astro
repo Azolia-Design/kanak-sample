@@ -1,21 +1,13 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import Hero from "@pages/Avira/Hero/Hero.astro";
-import Mission from "@pages/Avira/Mission/Mission.astro";
+import Quality from "@/components/pages/Avira/Quality/Quality.astro";
 import Join from "@pages/Avira/Join/Join.astro";
 import aviraCta from '@assets/avira-cta.jpg';
 
 import { getPage } from "@/prismic.js";
-const { data } = await getPage("pakway_page");
-console.log(data.movement_list)
-let bg_cta = {
-  dimensions: { width: 1728, height: 900 },
-  alt: null,
-  copyright: null,
-  url: aviraCta,
-  id: 'ZmGQ4Jm069VX1gk2',
-  edit: { x: 0, y: 0, zoom: 1, background: 'transparent' }
-}
+const { data } = await getPage("avira_page");
+console.log(data)
 ---
 
 <Layout
@@ -23,22 +15,11 @@ let bg_cta = {
     meta_desc={data.meta_desc}
     open_graph={data.open_graph.url}
     data_page="Avira"
-    footer_cta={'Explore a partnerShip with us today!'}
-    footer_bg={bg_cta}
->
-    <Hero data={data}/>
-    <Mission data={data} />
-    <Join data={data}/>
-</Layout>
-<!-- <Layout
-    title={data.page_title}
-    meta_desc={data.meta_desc}
-    open_graph={data.open_graph.url}
-    data_page="Avira"
     footer_cta={data.cta_title[0]?.text}
     footer_bg={data.cta_background}
+    cta_btn_txt="KONNECT WITH US"
 >
     <Hero data={data}/>
-    <Mission data={data} />
+    <Quality data={data} />
     <Join data={data}/>
-</Layout> -->
+</Layout> 
