@@ -1,13 +1,10 @@
 ---
 import { Image } from "astro:assets";
 import AviQuality from "./Quality";
-import aviraQuality from '@assets/avira-quality.jpg';
-
+import * as prismicH from "@prismicio/client";
 ---
-
 <AviQuality
   title={Astro.props.data.quality_title[0].text}
-  subtitle={Astro.props.data.quality_subtitle[0].text}
   client:visible={{ rootMargin: "200% 0px 200% 0px" }}
 >
     <Image
@@ -18,4 +15,5 @@ import aviraQuality from '@assets/avira-quality.jpg';
     height={Astro.props.data.quality_image?.dimensions.height}
     slot="thumbnail"
     />
+    <Fragment set:html={prismicH.asHTML(Astro.props.data.quality_subtitle)} slot="subtitle" />
 </AviQuality>
