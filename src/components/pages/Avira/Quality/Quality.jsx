@@ -50,8 +50,8 @@ function AviQuality({ ...props }) {
             <div className="container">
                 <div className="avi-miss-content-wrap">
                     <h2 className="heading h0 txt-up txt-black avi-miss-title">
-                        {/* {props.title} */}
-                        Quality You Can Trust, Service You Can Count On
+                        {props.title}
+                        {/* Quality You Can Trust, Service You Can Count On */}
                     </h2>
                     <div className="avi-miss-img-wrap">
                         <div className="avi-miss-img-inner">
@@ -63,8 +63,8 @@ function AviQuality({ ...props }) {
             <div className="avi-miss-main bg-dark">
                 <div className="container grid">
                     <h3 className="heading h2 txt-black txt-up avi-miss-main-title">
-                        {/* {props.subtitle} */}
-                        Our India facility sets the gold standard in molded fiber production, matching North American quality with precision equipment and protocols.With a 600-ton monthly capacity, we ensure premium dinnerware using top-grade bagasse pulp and RO water. As India's sole advanced lamination facility, we deliver unmatched manufacturing and supply chain reliability.
+                        {props.subtitle}
+                        {/* Our India facility sets the gold standard in molded fiber production, matching North American quality with precision equipment and protocols.With a 600-ton monthly capacity, we ensure premium dinnerware using top-grade bagasse pulp and RO water. As India's sole advanced lamination facility, we deliver unmatched manufacturing and supply chain reliability. */}
                     </h3>
                 </div>
             </div>
