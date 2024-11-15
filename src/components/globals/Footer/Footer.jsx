@@ -15,14 +15,12 @@ const ContactItem = ({ label, content, link = "#", target }) => {
     )
 }
 const MenuItem = ({ link = "#", children }) => {
-    if (link != '/avira') {
-        return (
-            <a href={link} className="ft-right-body-link txt-link-child" data-cursor="txtLink" data-cursor-txtlink="child">
-                <div className="dot"></div>
-                <div className="txt txt-18 txt-med ft-right-body-link-txt" data-cursor-txtlink-child>{children}</div>
-            </a>
-        )
-    }
+    return (
+        <a href={link} className="ft-right-body-link txt-link-child" data-cursor="txtLink" data-cursor-txtlink="child">
+            <div className="dot"></div>
+            <div className="txt txt-18 txt-med ft-right-body-link-txt" data-cursor-txtlink-child>{children}</div>
+        </a>
+    )
 }
 const MenuColumn = ({ title, children, tail, tail_link, isOpen, onClick, onClickTail }) => {
     const contentHeight = useRef();
@@ -165,7 +163,7 @@ function GlobalFooter(props) {
                     >
                         <MenuItem link="/about">Know Us</MenuItem>
                         <MenuItem link="/pakway">Pakway</MenuItem>
-                        <MenuItem link="/avira">Avira</MenuItem>
+                        <MenuItem link="/avira-naturals">Avira Naturals</MenuItem>
                         <MenuItem link="/sustainability">Sustainability Kommitment</MenuItem>
                         <MenuItem link="/fulfillment">Fulfillment</MenuItem>
                         <MenuItem link="/kase-studies">Kase Studies</MenuItem>
