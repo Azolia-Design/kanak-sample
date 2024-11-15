@@ -7,7 +7,6 @@ import aviraCta from '@assets/avira-cta.jpg';
 
 import { getPage } from "@/prismic.js";
 const { data } = await getPage("avira_page");
-console.log(data)
 ---
 
 <Layout
@@ -21,4 +20,4 @@ console.log(data)
     <Hero data={data}/>
     <Quality data={data} />
     <Join data={data}/>
-</Layout> 
+</Layout>
