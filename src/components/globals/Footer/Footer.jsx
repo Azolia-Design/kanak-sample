@@ -15,12 +15,14 @@ const ContactItem = ({ label, content, link = "#", target }) => {
     )
 }
 const MenuItem = ({ link = "#", children }) => {
-    return (
-        <a href={link} className="ft-right-body-link txt-link-child" data-cursor="txtLink" data-cursor-txtlink="child">
-            <div className="dot"></div>
-            <div className="txt txt-18 txt-med ft-right-body-link-txt" data-cursor-txtlink-child>{children}</div>
-        </a>
-    )
+    if (link != '/avira') {
+        return (
+            <a href={link} className="ft-right-body-link txt-link-child" data-cursor="txtLink" data-cursor-txtlink="child">
+                <div className="dot"></div>
+                <div className="txt txt-18 txt-med ft-right-body-link-txt" data-cursor-txtlink-child>{children}</div>
+            </a>
+        )
+    }
 }
 const MenuColumn = ({ title, children, tail, tail_link, isOpen, onClick, onClickTail }) => {
     const contentHeight = useRef();
