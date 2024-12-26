@@ -4,7 +4,7 @@ import fetch from 'node-fetch';
 export async function handler(event, context) {
     const policyUUID = event.queryStringParameters.policyUUID;
 
-    const url = `https://app.termly.io/policy-viewer/policy.html?policyUUID=${policyUUID}`;
+    const url = `https://app.termly.io/api/v1/consumer/policies/${policyUUID}/content?lang=en`;
 
     try {
         const response = await fetch(url);
