@@ -1,7 +1,7 @@
 // filepath: /netlify/functions/fetchPolicy.js
-import fetch from 'node-fetch';
+const fetch = require('node-fetch');
 
-export async function handler(event, context) {
+exports.handler = async (event, context) => {
     const policyUUID = event.queryStringParameters.policyUUID;
 
     const url = `https://app.termly.io/api/v1/consumer/policies/${policyUUID}/content?lang=en`;
