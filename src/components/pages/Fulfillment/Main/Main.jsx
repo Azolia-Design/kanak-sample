@@ -1,4 +1,5 @@
 import './Main.scss'
+import ArrowUpRight from "@components/globals/IcArrow/ArrowUpRight";
 import { useEffect, useState, useRef, Fragment } from 'react'
 import { animate, timeline, stagger, inView, scroll } from "motion";
 import SplitType from 'split-type';
@@ -11,15 +12,17 @@ function Item({ ...props }) {
         const item = itemRef.current
         const title = new SplitType(item.querySelector('.fulfill-main-content-item-head-title'), { types: "lines,words", lineClass: 'split-line' })
         const sub = new SplitType(item.querySelectorAll('.fulfill-main-content-item-sub p'), { types: "lines,words", lineClass: 'split-line' })
+        const subLink = new SplitType(item.querySelectorAll('.fulfill-main-content-item-sub-link span'), { types: "lines,words", lineClass: 'split-line' })
+        let allSub = [...sub.words, ...subLink.words, ...item.querySelectorAll('.fulfill-main-content-item-sub-link .ic')]
 
         animate(title.words, { opacity: 0, transform: "translateY(100%)" }, { duration: 0 })
-        animate(sub.words, { opacity: 0, transform: "translateY(100%)" }, { duration: 0 })
+        animate(allSub, { opacity: 0, transform: "translateY(100%)" }, { duration: 0 })
         animate(item.querySelector('.line'), { scaleX: 0, transformOrigin: 'left' }, { duration: 0 })
         animate(item.querySelector('.fulfill-main-content-item-img'), { opacity: 0, transform: 'translateY(2rem)' }, { duration: 0 })
         const itemSequence = [
             [item.querySelector('.line'), { scaleX: 1 }, { duration: .6, at: 0 }],
             [title.words, { opacity: 1, transform: "none" }, { duration: .5, delay: stagger(.02), at: 0.05 }],
-            [sub.words, { opacity: 1, transform: "none" }, { duration: .4, delay: stagger(.0025), at: .25 }],
+            [allSub, { opacity: 1, transform: "none" }, { duration: .4, delay: stagger(.0025), at: .25 }],
             [item.querySelector('.fulfill-main-content-item-img'), { opacity: 1, transform: 'none' }, { duration: .6, at: .3 }],
         ]
 
@@ -27,6 +30,7 @@ function Item({ ...props }) {
             timeline(itemSequence).finished.then(() => {
                 title.revert()
                 sub.revert()
+                subLink.revert()
                 item.querySelectorAll('.line').forEach(item => item.removeAttribute('style'))
             })
         }, { margin: '-20% 0px -20% 0px' })
@@ -46,6 +50,22 @@ function Item({ ...props }) {
                         {idx < props.data.describe.length - 1 && <br />}
                     </Fragment>
                 ))}
+                {props.data.title[0].text.includes('We have you covered') && 
+                    <div className="fulfill-main-content-item-sub-link-grp">
+                        <a href="https://www.pakway.net/" className="txt txt-18 txt-med txt-orange txt-link fulfill-main-content-item-sub-link" data-cursor="txtLink" target='_blank'>
+                            <span>Visit Pakway</span>
+                            <div className="ic ic-16">
+                                <ArrowUpRight />
+                            </div>
+                        </a>
+                        <a href="https://aviranaturals.com/" className="txt txt-18 txt-med txt-orange txt-link fulfill-main-content-item-sub-link" data-cursor="txtLink" target='_blank'>
+                            <span>Visit Avira</span>
+                            <div className="ic ic-16">
+                                <ArrowUpRight />
+                            </div>
+                        </a>
+                    </div>
+                }
             </div>
             <div className="fulfill-main-content-item-img">
                 <div className="fulfill-main-content-item-img-inner">

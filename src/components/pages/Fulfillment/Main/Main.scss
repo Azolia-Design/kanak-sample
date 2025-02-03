@@ -142,6 +142,20 @@
                     margin-right: 2rem;
                     margin-bottom: 2.4rem;
                 }
+                &-link-grp {
+                    display: flex;
+                    align-items: center;
+                    column-gap: 3.2rem;
+                    margin-top: 2.4rem;
+                    @include md {
+                        column-gap: 2.4rem;
+                    }
+                }
+                &-link {
+                    display: inline-flex;
+                    align-items: center;
+                    column-gap: 0.8rem;
+                }
             }
 
             &-img {
