@@ -52,13 +52,13 @@ function Item({ ...props }) {
                 ))}
                 {props.data.title[0].text.includes('We have you covered') && 
                     <div className="fulfill-main-content-item-sub-link-grp">
-                        <a href="https://www.pakway.net/" className="txt txt-18 txt-med txt-orange txt-link fulfill-main-content-item-sub-link" data-cursor="txtLink" target='_blank'>
+                        <a href="https://www.pakway.net/" className="txt txt-18 txt-med txt-link fulfill-main-content-item-sub-link" data-cursor="txtLink" target='_blank'>
                             <span>Visit Pakway</span>
                             <div className="ic ic-16">
                                 <ArrowUpRight />
                             </div>
                         </a>
-                        <a href="https://aviranaturals.com/" className="txt txt-18 txt-med txt-orange txt-link fulfill-main-content-item-sub-link" data-cursor="txtLink" target='_blank'>
+                        <a href="https://aviranaturals.com/" className="txt txt-18 txt-med txt-link fulfill-main-content-item-sub-link" data-cursor="txtLink" target='_blank'>
                             <span>Visit Avira</span>
                             <div className="ic ic-16">
                                 <ArrowUpRight />
