@@ -4,6 +4,9 @@
 .fulfill-main {
     contain: paint;
     padding-bottom: 6.4rem;
+    @include sm {
+        padding-bottom: 4.2rem;
+    }
 
     &-img {
         overflow: hidden;

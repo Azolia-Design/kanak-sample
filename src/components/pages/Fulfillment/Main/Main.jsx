@@ -50,7 +50,7 @@ function Item({ ...props }) {
                         {idx < props.data.describe.length - 1 && <br />}
                     </Fragment>
                 ))}
-                {props.data.title[0].text.includes('We have you covered') && 
+                {/* {props.data.title[0].text.includes('We have you covered') &&
                     <div className="fulfill-main-content-item-sub-link-grp">
                         <a href="https://www.pakway.net/" className="txt txt-18 txt-med txt-link fulfill-main-content-item-sub-link" data-cursor="txtLink" target='_blank'>
                             <span>Visit Pakway</span>
@@ -65,7 +65,7 @@ function Item({ ...props }) {
                             </div>
                         </a>
                     </div>
-                }
+                } */}
             </div>
             <div className="fulfill-main-content-item-img">
                 <div className="fulfill-main-content-item-img-inner">
