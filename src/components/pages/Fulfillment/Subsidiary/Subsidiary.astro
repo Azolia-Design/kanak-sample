@@ -1,0 +1,15 @@
+---
+import { Image } from "astro:assets";
+import { convertHighlight } from "@utils/text";
+import icArrowExt from "@assets/ic-arrow-small.svg?raw";
+import FulfillSubsidiary from "./Subsidiary";
+import SubsidiaryItem from './SubsidiaryItem';
+---
+
+<FulfillSubsidiary
+    list={Astro.props.list}
+    client:visible={{ rootMargin: "200% 0px 200% 0px" }}>
+    <!-- <Fragment set:html={convertHighlight(Astro.props.title)} slot="title" /> -->
+    <Fragment set:html={convertHighlight(Astro.props.title)} slot="title" />
+    <Fragment slot="icArrowExt" set:html={icArrowExt} />
+</FulfillSubsidiary>

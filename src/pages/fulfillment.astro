@@ -2,6 +2,7 @@
 import Layout from "@/layouts/Layout.astro";
 import Hero from "@pages/Fulfillment/Hero/Hero.astro";
 import Main from "@pages/Fulfillment/Main/Main.astro";
+import Subsidiary from "@pages/Fulfillment/Subsidiary/Subsidiary.astro";
 
 import { getPage } from "@/prismic.js";
 const { data } = await getPage("fullfilment_page");
@@ -17,4 +18,5 @@ const { data } = await getPage("fullfilment_page");
 >
     <Hero title={data.hero_title} sub={data.hero_sub} />
     <Main img={data.hero_image} title={data.list_title} list={data.list_item} />
+    <Subsidiary title={data.subsidiary_title} list={data.subsidiary_list} />
 </Layout>

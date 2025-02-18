@@ -1,0 +1,175 @@
+@use '@styles/colors' as *;
+@use '@styles/mixins' as *;
+
+.fulfill-subsidiary {
+    position: relative;
+    z-index: 2;
+    padding-block: 4.7rem 11.7rem;
+    @include md {
+        padding-block: 4.2rem 8rem;
+    }
+    &-title {
+        margin-bottom: 10rem;
+        max-width: 89.6rem;
+        @include md {
+            margin-bottom: 6rem;
+            @include text(h3);
+            max-width: 42rem;
+        }
+        @include sm {
+            margin-bottom: 4rem;
+            @include text(h4);
+        }
+        .txt-green {
+            @include text(h0);
+
+            @include md {
+                @include text(h1);
+            }
+
+            @include sm {
+                @include text(h2);
+            }
+        }
+    }
+    &-listing {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        @include sm {
+            grid-template-columns: 1fr;
+        }
+    }
+    &-item {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        padding: 6rem 6rem 0;
+        position: relative;
+        background-color: var(--cl-bg);
+        @include md {
+            padding: 2.4rem 2.4rem 0;
+        }
+        &-inner {
+            width: 100%;
+            margin-top: 3.2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+            transition: color 400ms ease;
+            cursor: pointer;
+            @include md {
+                margin-top: 1.2rem;
+            }
+
+            @media (hover: hover) {
+                &:hover {
+                    color: var(--cl-orange);
+
+                    .fulfill-subsidiary-item-img {
+                        transform: scale(1.98);
+                    }
+                }
+            }
+        }
+        &-title {
+            margin-bottom: 5.3rem;
+            max-width: 75.4rem;
+            min-height: calc(3 * var(--lh-h3));
+            font-kerning: none;
+            @include md {
+                margin-bottom: 2.7rem;
+                @include text(h4);
+                min-height: calc(4* var(--lh-h4));
+            }
+            @include sm {
+                @include text(h5);
+                min-height: calc(3* var(--lh-h5));
+            }
+        }
+        &-label {
+            cursor: pointer;
+            @include md {
+                @include text(16);
+            }
+            @include sm {
+                @include text(14);
+            }
+        }
+        &-bot {
+            margin-top: auto;
+            width: 100%;
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            padding-bottom: 6rem;
+            @include md {
+                padding-bottom: 2.4rem;
+            }
+        }
+        &-img {
+            width: 15rem;
+            height: 18.8rem;
+            transition: all 600ms ease;
+            transform-origin: left bottom;
+            mix-blend-mode: multiply;
+            @include md {
+                height: 8.8rem;
+                width: 7rem;
+            }
+
+            &-inner {
+                width: 100%;
+                height: 100%;
+            }
+        }
+        &-link {
+            display: flex;
+            align-items: center;
+            column-gap: .8rem;
+            overflow: hidden;
+            &-txt {
+                @include md {
+                    @include text(16);
+                }
+            }
+        }
+        .line-ver {
+            height: calc(100% + .1rem);
+            position: absolute;
+            top: 0;
+            @include sm {
+                top: -.1rem;
+                height: calc(100% + .2rem);
+            }
+        }
+        .line-right {
+            right: -.1rem;
+        }
+        .line-left {
+            left: -.1rem;
+        }
+        .line-bot {
+            position: absolute;
+            bottom: -.1rem;
+            left: 0;
+        }
+        .line-top {
+            position: absolute;
+            top: 0;
+            @include sm {
+                top: -.1rem;
+            }
+            left: 0;
+        }
+        &:first-child .line-right {
+            right: 0;
+        }
+        &:last-child .line-left {
+            display: none;
+            @include sm {
+                display: block;
+            }
+        }
+    }
+}
