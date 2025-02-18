@@ -1,0 +1,12 @@
+---
+import AviJoin from "./Join";
+import { convertHighlight } from "@utils/text";
+---
+
+<AviJoin
+    label={Astro.props.data.movement_label}
+    list={Astro.props.data.movement_list}
+    client:visible={{ rootMargin: "200% 0px 200% 0px" }}
+>
+    <Fragment set:html={convertHighlight(Astro.props.data.movement_title)} slot="title" />
+</AviJoin>

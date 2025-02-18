@@ -262,9 +262,9 @@ function HeaderGlobal(props) {
                                 <div className={`header-dropdown-inner ${page.name.toLowerCase().replaceAll('[','').replaceAll(']','').replaceAll(' ', '-')}`}>
                                     {page.sub_menu.map((el, idx) => (
                                         <a
-                                            key={idx}
-                                            href={el.url}
-                                            className={cn("header-dropdown-item bg-light", { "active": el.url === props.pathname })}>
+                                        key={idx}
+                                        href={el.url}
+                                        className={cn("header-dropdown-item bg-light", { "active": el.url === props.pathname })}>
                                             <span className="txt txt-14 txt-up txt-semi" dangerouslySetInnerHTML={{ __html: el.name.replaceAll('[','<span class="txt-kanak">').replaceAll(']','</span>') }}></span>
                                             <div className="header-dropdown-item-ic">
                                                 <div className="ic ic-16">

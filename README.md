@@ -52,3 +52,12 @@ All commands are run from the root of the project, from a terminal:
 ## 👀 Want to learn more?
 
 Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+
+
+
+## 29/10/2024 Note:
+
+Hide Download Katalog at:
+Home page: home-prod-pdf
+Katalog page: katalog-main-filter-list-pdf-wrap
+Contact page: trigger download with /Kanak_Catalog_Print_spreads.pdf

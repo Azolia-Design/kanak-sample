@@ -46,6 +46,8 @@ function Model({ item, ...styles }) {
                     <GetModel file='/glb/BA-CFH-700-salad-box-clean-transformed.glb' scale={[.8,.8,.8]} position={[0,-.02,0]}/>
                 ) : item.uid == 'takeaway-containers' ? (
                     <GetModel file='/glb/cfh-900-saladbox-lid-clearn-transformed.glb' scale={[.8,.8,.8]} position={[0,-.01,0]}/>
+                ) : item.uid == '6x8-rectangle-3-compartment-container' ? (
+                    <Image url="/RC6814.png" transparent segments={10} scale={[.2,.2]} side={DoubleSide} position={[0,.02,0]}/>
                 ) : item.uid == 'baking-dishes-ka1117' ? (
                     <GetModel file='/glb/53-square-food-clean-transformed.glb' scale={[.8,.8,.8]} position={[0,-.01,0]}/>
                 ) : (

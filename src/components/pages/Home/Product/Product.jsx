@@ -102,7 +102,7 @@ function HomeProduct(props) {
                     ))}
                 </div>
             </div>
-            <div className="home-prod-pdf">
+            {/* <div className="home-prod-pdf">
                 <a href="/contact?src=download" className="btn-outline home-prod-pdf-link" data-cursor="hide">
                     <div className="btn-outline-ic home-prod-pdf-link-ic">
                         <div className="ic ic-32">
@@ -113,7 +113,7 @@ function HomeProduct(props) {
                         Download Catalog
                     </div>
                 </a>
-            </div>
+            </div> */}
         </>
 
     )

@@ -1,0 +1,23 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Hero from "@pages/Avira/Hero/Hero.astro";
+import Quality from "@/components/pages/Avira/Quality/Quality.astro";
+import Join from "@pages/Avira/Join/Join.astro";
+import aviraCta from '@assets/avira-cta.jpg';
+
+import { getPage } from "@/prismic.js";
+const { data } = await getPage("avira_page");
+---
+
+<Layout
+    title={data.page_title}
+    meta_desc={data.meta_desc}
+    open_graph={data.open_graph.url}
+    data_page="Avira"
+    footer_cta={data.cta_title[0]?.text}
+    footer_bg={data.cta_background}
+>
+    <Hero data={data}/>
+    <Quality data={data} />
+    <Join data={data}/>
+</Layout>

@@ -59,25 +59,32 @@ function PolicyMain(props) {
     }
 
     async function fetchDocument(url) {
-        try {
-            const response = await fetch(url, {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Content-Encoding': 'br'
-                }
-            });
+        // try {
+        //     const response = await fetch(url, {
+        //         method: 'GET',
+        //         headers: {
+        //             'Content-Type': 'application/json',
+        //             'Content-Encoding': 'br'
+        //         }
+        //     });
 
+        //     const html = await response.text();
+        //     return html;
+        // }
+        // catch (error) {
+        //     console.error('There has been a problem with your fetch operation:', error);
+        // }
+        try {
+            const response = await fetch(url);
             const html = await response.text();
             return html;
-        }
-        catch (error) {
+        } catch (error) {
             console.error('There has been a problem with your fetch operation:', error);
         }
     }
 
     useEffect(() => {
-        fetchDocument(`https://app.termly.io/api/v1/snippets/websites/613278a6-0f3c-4a81-882b-a826d9d292ce/documents/${props.id}/preview`).then(json => {
+        fetchDocument(`/.netlify/functions/fetchPolicy?policyUUID=${props.id}`).then(json => {
             const parsed = JSON.parse(json);
             setData(parsed.content.replace(/<style[^>]*>[\s\S]*?<\/style>/gi, ''));
             setLoaded(true);

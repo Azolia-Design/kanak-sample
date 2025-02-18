@@ -1,6 +1,6 @@
 import { Suspense, useRef, useState, useEffect, useMemo } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import useWindowSize from "@hooks/useWindowSize";
+import useElementSize from "@hooks/useElementSize";
 import GetModel from "@components/common/GetModel";
 import { suspend } from 'suspend-react'
 import { Environment, ContactShadows, AdaptiveDpr } from "@react-three/drei";
@@ -69,7 +69,7 @@ function Content(props) {
 }
 
 function KustomerHeroThree(props) {
-    const { width, height } = useWindowSize();
+    const { width, height } = useElementSize('.kustomer-hero-slide');
     if (width === 0) return;
     let perspective = 15;
     let fov = 12;

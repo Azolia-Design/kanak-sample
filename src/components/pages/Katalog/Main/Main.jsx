@@ -177,7 +177,7 @@ function KatalogMain({ allItem, ...props }) {
         animate('.katalog-main-line-left', { scaleY: 0, transformOrigin: "top" }, { duration: 0 })
         animate('.katalog-main-line-right', { scaleY: 0, transformOrigin: "top" }, { duration: 0 })
         animate('.katalog-main-list-line', { scaleY: 0, transformOrigin: "top" }, { duration: 0 })
-        animate('.katalog-main-filter-list-pdf-wrap', { opacity: 0 }, { duration: 0 })
+        // animate('.katalog-main-filter-list-pdf-wrap', { opacity: 0 }, { duration: 0 })
         animate('.katalog-main-filter-list-toggle-btn', { opacity: 0 }, { duration: 0 })
         animate('.katalog-main-filter .line-bot', { scaleX: 0, transformOrigin: "left" }, { duration: 0 })
         animate('.katalog-main-cate-list .katalog-main-cate-item', { transform: "translateX(-2rem)", opacity: 0 }, { duration: 0 })
@@ -202,15 +202,15 @@ function KatalogMain({ allItem, ...props }) {
             )
             splitTitles.push(label)
         })
-        if (window.innerWidth > 767) {
-            sequence.push(
-                ['.katalog-main-filter-list-pdf-wrap', { opacity: 1 }, { duration: .6, at: .6 }]
-            )
-        } else {
-            sequence.push(
-                ['.katalog-main-filter-list-pdf-wrap', { opacity: 1 }, { duration: .6, at: .1 }]
-            )
-        }
+        // if (window.innerWidth > 767) {
+        //     sequence.push(
+        //         ['.katalog-main-filter-list-pdf-wrap', { opacity: 1 }, { duration: .6, at: .6 }]
+        //     )
+        // } else {
+        //     sequence.push(
+        //         ['.katalog-main-filter-list-pdf-wrap', { opacity: 1 }, { duration: .6, at: .1 }]
+        //     )
+        // }
 
         inView(".katalog-main", () => {
             timeline(sequence).finished.then(() => {
@@ -220,7 +220,7 @@ function KatalogMain({ allItem, ...props }) {
                 document.querySelector('.katalog-main-line-left').removeAttribute('style')
                 document.querySelector('.katalog-main-line-right').removeAttribute('style')
                 document.querySelector('.katalog-main-list-line').removeAttribute('style')
-                document.querySelector('.katalog-main-filter-list-pdf-wrap').removeAttribute('style')
+                // document.querySelector('.katalog-main-filter-list-pdf-wrap').removeAttribute('style')
                 document.querySelector('.katalog-main-filter-list-toggle-btn').removeAttribute('style')
                 document.querySelector('.katalog-main-filter .line-bot').removeAttribute('style')
                 document.querySelectorAll('.katalog-main-cate-list .katalog-main-cate-item').forEach(item => item.removeAttribute('style'))
@@ -259,7 +259,7 @@ function KatalogMain({ allItem, ...props }) {
                                 setFilter={setFilter}
                                 setLimit={setLimit}
                             />
-                            <div className="katalog-main-filter-list-pdf-wrap">
+                            {/* <div className="katalog-main-filter-list-pdf-wrap">
                                 <a href="/contact?src=download" className="btn katalog-main-filter-list-pdf" data-cursor="txtLink" data-cursor-txtlink="child">
                                     <div className="txt katalog-main-filter-list-pdf-inner" data-cursor-txtlink-child>
                                         <div className="ic ic-32 katalog-main-filter-list-pdf-ic">
@@ -268,7 +268,7 @@ function KatalogMain({ allItem, ...props }) {
                                         <div className="txt-20 txt-med katalog-main-filter-list-pdf-txt">Download Catalog</div>
                                     </div>
                                 </a>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                     <div className="line line-bot"></div>

@@ -9,15 +9,20 @@
     pointer-events: none;
     height: calc(100% - var(--SectionPadBot) - var(--btnHeight) + ((100vh - var(--HomeProductCardHeight)) / 2));
     &-wrap {
-        --btnHeight: 16.8rem;
+        // --btnHeight: 16.8rem;
+        --btnHeight: 0rem;
         --HomeProductCardHeight: 66.2rem;
         --SectionPadBot: 28.8rem;
         position: relative;
         z-index: 2;
         @include md {
             --HomeProductCardHeight: 41rem;
-            --btnHeight: 13.6rem;
+            // --btnHeight: 13.6rem;
+            --btnHeight: 0rem;
             --SectionPadBot: 13rem;
+        }
+        @include sm {
+            --btnHeight: 4rem;
         }
     }
     &-stick {
